@@ -5,6 +5,8 @@ import Login from "./user_auth/Login";
 import Register from "./user_auth/Register";
 import Nav from "./nav/Nav";
 
+import "./App.css";
+
 const App = () => {
 	return (
 		<div>
