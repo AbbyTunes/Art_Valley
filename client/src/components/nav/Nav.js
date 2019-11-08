@@ -59,7 +59,7 @@ const Nav = props => {
       </div>
       <div className="nav-extends">
         <div className="nav-search">
-
+          <input type="text" placeholder="Search Art Valley" />
         </div>
       </div>
     </div>

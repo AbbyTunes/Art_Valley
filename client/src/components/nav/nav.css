@@ -58,10 +58,26 @@
 }
 
 .nav-search {
-    display: block;
+    display: flex;
+    justify-content: center;
     height: 123px; 
-    width: 100%;
     padding: 0 15px;
+   
+}
+
+.nav-search > input{
+    width: 270px;
+    height: 45px;
+    padding: 7px;
+    margin: 10px;
+    font-size: 18px;
+    border: none;
+    border-bottom: 1px solid #888;
+    box-sizing: border-box;
+}
+
+.nav-search > input:focus {
+    outline:none;
 }
 
 
@@ -87,6 +103,22 @@
 
     .nav-logo{
         font-size: 26px;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .nav-search > input{
+        width: 650px; 
+        height: 60px;
+        font-size: 24px;
+    }
+}
+
+
+@media screen and (min-width: 1200px){
+    .nav-container, .nav-extends{
+        width: 1200px;
+        margin: 0 auto;
     }
 }
 
