@@ -3,7 +3,7 @@ import { Mutation } from "react-apollo";
 import { withRouter, Link } from "react-router-dom";
 import mutations from "../../graphql/mutations";
 import './session.css';
-const { REGISTER_USER } = mutations;
+const { REGISTER_USER, LOGIN_USER } = mutations;
 
 class Register extends Component {
   constructor(props) {
@@ -14,7 +14,9 @@ class Register extends Component {
       email: "",
       password: ""
 		};
-		this.updateCache = this.updateCache.bind(this);
+    this.updateCache = this.updateCache.bind(this);
+    this.updateLoginCache = this.updateLoginCache.bind(this);
+
   }
 
   updateCache(client, { data }) {
@@ -24,11 +26,47 @@ class Register extends Component {
     });
   }
 
+  updateLoginCache(client, { data}) {
+    client.writeData({
+      data: { isLoggedIn: data.login.loggedIn }
+    })
+  }
+
   update(field) {
     return e => this.setState({ [field]: e.target.value });
   }
 
+  
+  
   render() {
+    const guestLogin = (
+        <Mutation
+          mutation={LOGIN_USER}
+          onCompleted={data => {
+            const { token } = data.login;
+            localStorage.setItem("auth-token", token);
+            this.props.history.push("/");
+          }}
+          update={(client, data) => this.updateLoginCache(client, data)}
+        >
+          {loginUser => (
+            <div
+              className="session-guest-link"
+              onClick={e => {
+                e.preventDefault();
+                loginUser({
+                  variables: {
+                    email: "GuestUser@guest.com",
+                    password: "hunter2"
+                  }
+                });
+              }}>
+              Guest Demo
+          </div>
+          )}
+        </Mutation>
+    )
+
     return (
       <Mutation
         mutation={REGISTER_USER}
@@ -80,7 +118,7 @@ class Register extends Component {
                 type="password"
               />
               {/* login is the placeholder path */}
-              <Link to="/register" className="session-guest-link">Guest Demo</Link>
+              {guestLogin}
               <div className="session-spacer" />
               <button
                 className="session-button"

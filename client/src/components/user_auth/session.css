@@ -88,4 +88,5 @@ input[type=password]{
   text-decoration: underline;
   color: black;
   transition: 0.8s;
+  cursor: pointer;
 }
