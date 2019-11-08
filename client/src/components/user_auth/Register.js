@@ -60,6 +60,7 @@ class Register extends Component {
                 className="session-input-box"
                 value={this.state.name}
                 onChange={this.update("name")}
+                required
                 type="text"
               />
               <h3 className="session-input-title">Email Address</h3>
@@ -67,6 +68,7 @@ class Register extends Component {
                 className="session-input-box"
                 value={this.state.email}
                 onChange={this.update("email")}
+                required
                 type="text"
               />
               <h3 className="session-input-title">Password</h3>
@@ -74,6 +76,7 @@ class Register extends Component {
                 className="session-input-box"
                 value={this.state.password}
                 onChange={this.update("password")}
+                required
                 type="password"
               />
               {/* login is the placeholder path */}
