@@ -1,6 +1,4 @@
-body {
-  font-family: proxima-nova, Montserrat, sans-serif
-}
+
 
 :focus{
   outline: none;
@@ -34,11 +32,13 @@ input[type=password]{
   font-weight: 900;
   margin-bottom: 70px;
   text-align: center;
+  font-family: sans-serif
 }
 
 .session-input-title {
   font-size: 16px;
   font-weight: 500;
+  font-family: sans-serif
 }
 
 .session-input-box {
@@ -78,7 +78,7 @@ input[type=password]{
 }
 
 .session-guest-link {
-
+  font-family: sans-serif;
   text-decoration: none;
   color: #3f9598;
   margin-bottom: 10px;
