@@ -1,6 +1,6 @@
 .banner{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     position: fixed;
     background-color: #FFFFFF;
     width: 100%;
@@ -8,25 +8,73 @@
     border-bottom: 1px solid #888;
 }
 
+
 .nav-container{
+    width: 100%;
     display: flex;
     justify-content: space-between;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
+    padding: 10px 15px 0px 15px;
 }
 
-@media screen and (min-width: 768px){
+
+
+.nav-links {
+    display: none;
+}
+
+
+.nav-icon-container{
+    display: flex;
+    flex-wrap: wrap;
+    height: 57px; 
+    width: 68px;
+}
+
+.fa-search, .fa-bars, .fa-indent{
+    display: inline-block;
+    height: 18px;
+    font-size: 18px;
+    color: #888888;
+    padding: 4px 12px 4px 0px;
+}
+
+.fa-indent{
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+
+
+
+
+
+
+.nav-logo{
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+
+
+/* @media screen and (min-width: 768px){
     .nav-container {
         width: 100%;
         max-width: 100%;
-        padding-right: 15px;
-        padding-left: 15px;
+        
     }
-}
+} */
 
 
-
-
-p {
-   font-family: 'Montserrat', sans-serif; 
-}
+/* @media screen and (min-width: 632px){
+    .fa-search {
+        width: 100%;
+        max-width: 100%;
+        
+    }
+} */
