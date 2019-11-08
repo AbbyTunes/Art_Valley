@@ -1,6 +1,6 @@
 .banner{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     position: fixed;
     background-color: #FFFFFF;
     width: 100%;
@@ -10,7 +10,6 @@
 
 
 .nav-container{
-    width: 100%;
     display: flex;
     justify-content: space-between;
     font-family: 'Montserrat', sans-serif;
@@ -46,10 +45,9 @@
     height: 20px;
 }
 
-
-
-
-
+.fa-user{
+    display: none;
+}
 
 
 .nav-logo{
@@ -59,16 +57,38 @@
     letter-spacing: 1px;
 }
 
+.nav-search {
+    display: block;
+    height: 123px; 
+    width: 100%;
+    padding: 0 15px;
+}
 
 
 
-/* @media screen and (min-width: 768px){
-    .nav-container {
-        width: 100%;
-        max-width: 100%;
+
+@media screen and (min-width: 321px){
+    .nav-icon-container {
+        width: 181px;
+        /* max-width: 100%; */
         
     }
-} */
+
+    .fa-search, .fa-bars, .fa-indent, .fa-user{
+       padding: 4px 12px; 
+    }
+
+    .fa-user{
+        display: inline-block;
+        height: 18px;
+        font-size: 18px;
+        color: #888888; 
+    }
+
+    .nav-logo{
+        font-size: 26px;
+    }
+}
 
 
 /* @media screen and (min-width: 632px){
