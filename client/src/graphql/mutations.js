@@ -25,18 +25,18 @@ export default {
       }
     }
   `,
-  CREATE_PRODUCT: gql`
-    mutation CreateProduct(
-      $name: String!
-      $description: String!
-      $weight: Float!
-    ) {
-      newProduct(name: $name, description: $description, weight: $weight) {
-        id
-        name
-        description
-        weight
-      }
-    }
-  `
+  // CREATE_PRODUCT: gql`
+  //   mutation CreateProduct(
+  //     $name: String!
+  //     $description: String!
+  //     $weight: Float!
+  //   ) {
+  //     newProduct(name: $name, description: $description, weight: $weight) {
+  //       id
+  //       name
+  //       description
+  //       weight
+  //     }
+  //   }
+  // `
 };

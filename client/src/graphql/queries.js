@@ -6,5 +6,19 @@ export default {
       isLoggedIn @client
     }
   `,
-
+	FETCH_ART: gql`
+		query art($_id: ID!) {
+			art(id: $id) {
+				id
+				authorId
+				videoLink
+				photoLink
+				title
+				description
+				likes
+				likers
+				category
+			}
+		}
+	`
 };

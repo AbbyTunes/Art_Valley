@@ -11,6 +11,8 @@ import { ApolloProvider } from "react-apollo";
 import { onError } from "apollo-link-error";
 import { ApolloLink } from "apollo-link";
 import { HashRouter } from "react-router-dom";
+// const models = require('../models/index');
+// const schema = require('./schema/schema');
 
 import Mutations from "./graphql/mutations";
 const { VERIFY_USER } = Mutations;
