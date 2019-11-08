@@ -17,7 +17,7 @@ const ArtSchema = new Schema({
 	videoLink: {
 		type: String
 	},
-	pictureLink: {
+	photoLink: {
 		type: String
 	},
 	title: {

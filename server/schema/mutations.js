@@ -4,14 +4,12 @@ const {
   GraphQLString,
   GraphQLInt,
   GraphQLID,
-	GraphQLFloat,
 	GraphQLBoolean
 } = graphql;
 const mongoose = require("mongoose");
 const AuthService = require("../services/auth");
 const UserType = require("./types/user_type");
 // const CategoryType = require("./types/category_type");
-// const ProductType = require("./types/product_type");
 
 const mutation = new GraphQLObjectType({
 	name: "Mutation",
