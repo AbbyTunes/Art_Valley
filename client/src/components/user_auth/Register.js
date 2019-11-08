@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
+import { withRouter } from "react-router-dom";
 import mutations from "../../graphql/mutations";
 const { REGISTER_USER } = mutations;
 
@@ -11,12 +12,12 @@ class Register extends Component {
       name: "",
       email: "",
       password: ""
-    };
+		};
+		this.updateCache = this.updateCache.bind(this);
   }
 
   updateCache(client, { data }) {
-    console.log(data);
-    // here we can write directly to our cache with our returned mutation data
+    // console.log(data);
     client.writeData({
       data: { isLoggedIn: data.register.loggedIn }
     });
@@ -31,7 +32,7 @@ class Register extends Component {
       <Mutation
         mutation={REGISTER_USER}
         onCompleted={data => {
-          console.log(data);
+          // console.log(data);
           const { token } = data.register;
           localStorage.setItem("auth-token", token);
           this.props.history.push("/");
@@ -77,4 +78,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default withRouter(Register);
