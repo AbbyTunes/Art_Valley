@@ -12,9 +12,11 @@ class Nav extends React.Component {
     this.extend = this.extend.bind(this);
   }
 
-  extend(clickable, targetId) {
-    let target = document.getElementById(targetId);
+  extend(targetId1, targetId2) {
+    let target = document.getElementById(targetId1);
+    let target2 = document.getElementById(targetId2);
     target.classList.toggle("show");
+    target2.classList.toggle("show");
   }
 
   render() {
@@ -59,18 +61,17 @@ class Nav extends React.Component {
             </div>
             <div className="nav-icon-container">
               <i className="fas fa-bars"></i>
-              <i id="search" className="fas fa-search" onClick={() => this.extend("search", "search-input")}></i>
+              <i id="search" className="fas fa-search" onClick={() => this.extend("search-input", "search-input-2")}></i>
               <i className="fas fa-user"></i>
               <i className="fas fa-indent"></i>
             </div>
             <div className="nav-logo">
               ArtValley
-            </div>
-            
+            </div>     
         </div>
         <div className="nav-extends">
           <div id="search-input" className="nav-search">
-            <input type="text" placeholder="Search Art Valley" />
+            <input id="search-input-2" type="text" placeholder="Search Art Valley" />
           </div>
         </div>
       </div>
