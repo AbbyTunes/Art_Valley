@@ -1,0 +1,10 @@
+nav-container{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+p {
+   font-family: 'Montserrat', sans-serif; 
+}
