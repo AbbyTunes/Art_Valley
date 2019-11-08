@@ -77,10 +77,6 @@ input[type=password]{
   cursor: pointer; 
 }
 
-.session-button:required{
-  border-bottom: 2px solid #c42626;
-}
-
 .session-guest-link {
 
   text-decoration: none;
