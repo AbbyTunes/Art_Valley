@@ -16,13 +16,6 @@ const UserSchema = new Schema({
     min: 6,
     max: 32
 	},
-	// token: {
-	// 	type: String
-	// },
-	// isLoggedIn: {
-  //   type: Boolean,
-	// 	default: false
-	// },
   date: {
     type: Date,
     default: Date.now
