@@ -1,9 +1,31 @@
-nav-container{
+.banner{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: #FFFFFF;
+    width: 100%;
+    z-index: 100;
+    border-bottom: 1px solid #888;
+}
+
+.nav-container{
     display: flex;
     justify-content: space-between;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
 }
+
+@media screen and (min-width: 768px){
+    .nav-container {
+        width: 100%;
+        max-width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+
+
+
 
 p {
    font-family: 'Montserrat', sans-serif; 
