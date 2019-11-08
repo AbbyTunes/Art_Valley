@@ -82,7 +82,8 @@
     border: none;
     border-bottom: 1px solid #888;
     box-sizing: border-box;
-
+    /* animation: searchClose .2s;
+    animation-fill-mode: forwards; */
 }
 
 .nav-search > input.show{
@@ -100,6 +101,11 @@
     0% { opacity: 0;}
     100% { opacity: 1;}
 }
+/* 
+@keyframes searchClose{
+     0% { opacity: 1;}
+    100% { opacity: 0;}
+} */
 
 
 /* MEDIA QUERIES BELOW */
