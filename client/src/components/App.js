@@ -10,7 +10,6 @@ import "./App.css";
 const App = () => {
 	return (
 		<div>
-			<h1>Art Valley</h1>
 			<Nav />
 			<Switch>
         {/* debug buttons */}
