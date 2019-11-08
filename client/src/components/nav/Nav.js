@@ -47,13 +47,20 @@ const Nav = props => {
             </ApolloConsumer>
           </div>
           <div className="nav-icon-container">
-            <i class="fas fa-bars"></i>
+            <i className="fas fa-bars"></i>
             <i className="fas fa-search"></i>
-            <i class="fas fa-indent"></i>
+            <i className="fas fa-user"></i>
+            <i className="fas fa-indent"></i>
           </div>
           <div className="nav-logo">
             ArtValley
           </div>
+          
+      </div>
+      <div className="nav-extends">
+        <div className="nav-search">
+
+        </div>
       </div>
     </div>
   );
