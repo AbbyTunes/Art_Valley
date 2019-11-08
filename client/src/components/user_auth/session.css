@@ -1,0 +1,95 @@
+body {
+  font-family: proxima-nova, Montserrat, sans-serif
+}
+
+:focus{
+  outline: none;
+}
+
+input[type=text]{
+  padding: 7px;
+  font-size: 16px;
+}
+
+input[type=password]{
+  padding: 7px;
+  font-size: 16px;
+}
+
+.session-spacer {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+  height: 20px;
+}
+
+.session-form {
+  box-sizing: border-box;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.session-header {
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 70px;
+  text-align: center;
+}
+
+.session-input-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.session-input-box {
+  border: none;
+  border-bottom: 2px solid #3f9598;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 34px;
+}
+
+.session-input-box:hover {
+  border-bottom: 2px solid #295f61;
+  transition: 0.8s;
+}
+
+.session-input-box:focus {
+  outline: none;
+  border-bottom: 2px solid #295f61;
+  transition: 0.8s;
+}
+
+.session-button {
+  width: calc(100% + 14px);
+  height: 40px;
+  background: black;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+.session-button:hover {
+  background: #3f9598;
+  transition: 0.5s;
+  cursor: pointer; 
+}
+
+.session-button:required{
+  border-bottom: 2px solid #c42626;
+}
+
+.session-guest-link {
+
+  text-decoration: none;
+  color: #3f9598;
+  margin-bottom: 10px;
+}
+
+.session-guest-link:hover {
+  text-decoration: underline;
+  color: black;
+  transition: 0.8s;
+}
