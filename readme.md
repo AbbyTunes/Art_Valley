@@ -6,20 +6,27 @@
 Despite ongoing associations with tech, Bay Area remains rooted in art, and it has so much more to to be discovered.
 Art Valley seeks to make discovering talent in art, film, and local criticism easy. 
 
-Through Art Valley, users can view a collection of essays on local contemporary art.  Users an discover new talent with our curated videos and assorted photography.  Users can join a community of enthusiasts and create their own blog posts and share their takes on the direction that art is taking in this 
+Through Art Valley, users can view a collection of essays on local contemporary art.  Users can discover new talent with our curated videos and assorted photography. Users can take part in the conversation by uploading their own blog posts to share their takes on the exciting, new directions of Bay Area art. 
 <!-- "hi-tech modern art", biotech, new material, art device, into our collection. -->
 
 ## Functionality and MVP
 - [ ] User Auth
+    <!-- login, register, demo -->
 - [ ] Nav Bar
+    <!-- login/signup, search, playlist carousel, category dropdown -->
 - [ ] Art Index
+    <!-- -->
 - [ ] Art Show
+    <!-- Video/Photo URL, Title, Bio, Likes, Related videos -->
 - [ ] Comments, Likes
 - [ ] Category/Playlist
 - [ ] User Profile
 ### BONUS 
 - [ ] Search functionality 
 - [ ] Video Uploading
+- [ ] Blog
+- [ ] Post text editor 
+- [ ] Related Videos/Editor's Picks 
 
 ## Technologies
  * Database: MongoDB, Express
