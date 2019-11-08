@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter} from "react-router-dom";
 import mutations from "../../graphql/mutations";
 import './session.css';
 const { REGISTER_USER, LOGIN_USER } = mutations;
@@ -95,19 +95,21 @@ class Register extends Component {
             >
               <h3 className="session-input-title">Username</h3>
               <input
+                type="text"
                 className="session-input-box"
                 value={this.state.name}
                 onChange={this.update("name")}
                 required
-                type="text"
+                
               />
               <h3 className="session-input-title">Email Address</h3>
               <input
+                type="text"
                 className="session-input-box"
                 value={this.state.email}
                 onChange={this.update("email")}
                 required
-                type="text"
+                
               />
               <h3 className="session-input-title">Password</h3>
               <input
