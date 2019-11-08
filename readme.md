@@ -1,5 +1,5 @@
 # [artvalley.com](https://art-valley.herokuapp.com)
-![ArtValley Logo](github)
+![ArtValley Logo]
 
 ## Background and Overview
 
