@@ -6,6 +6,7 @@ const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLList } =
 const User = mongoose.model("users");
 // const CategoryType = require("./category_type");
 const Category = mongoose.model("categories");
+const Art = mongoose.model("arts");
 
 const ArtType = new GraphQLObjectType({
 	name: "ArtType",
