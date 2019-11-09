@@ -32,4 +32,22 @@ const UserSchema = new Schema({
   // }]
 });
 
+
+UserSchema.statics.addLikedArt = (userId, artId ) => {
+  const User = mongoose.model("users");
+  const Art = mongoose.model("arts");
+
+  return User.findById(userId).then(user => {
+    return Art.findById(artId).then(art => {
+      user.likedArts.push(art);
+      art.likers.push(user);
+      art.likes += 1;
+
+      return Promise.all([user.save(), art.save()]).then(
+        ([user, art]) => art
+      );
+    });
+  });
+};
+
 module.exports = mongoose.model("users", UserSchema);
