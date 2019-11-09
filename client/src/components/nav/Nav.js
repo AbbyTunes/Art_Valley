@@ -73,7 +73,7 @@ class Nav extends React.Component {
                     if (error) return `Error! ${error.message}`;
                     if (data.isLoggedIn) {
                       return (
-                        <div className="nav-links">
+                        <div id="nav-links-2" className="nav-links">
                           <button
                             onClick={e => {
                               e.preventDefault();
