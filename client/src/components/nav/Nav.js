@@ -39,7 +39,6 @@ class Nav extends React.Component {
       <>
         <div className="banner">
           <div id="modal" className="nav-modal" onClick={() => this.closeModal(this.state.elements)}>
-            I am a modal
           </div>
           <div className="nav-container">
               <div className="nav-icon-container">
