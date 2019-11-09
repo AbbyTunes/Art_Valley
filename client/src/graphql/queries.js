@@ -20,5 +20,18 @@ export default {
 				category
 			}
 		}
-	`
+	`,
+	FETCH_USER: gql`
+		query user($id: ID!) {
+			user(id: $id) {
+				id
+				name
+				email
+				likedArts {
+					id
+					title
+				}
+			}
+		}
+	`,
 };
