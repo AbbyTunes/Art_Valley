@@ -66,9 +66,21 @@
 .nav-modal.active {
     display: block; 
     position: absolute;
+    /* background: rgba(0, 0, 0, 0.7); */
     background: transparent;
     z-index: 101;
 }
+
+.nav-extends {
+    position: relative;
+    z-index: 102;
+}
+
+.fa-bars, .fa-search, .fa-user, .fa-indent{
+    position: relative;
+    z-index: 102;
+}
+
 
 /* NAV LINKS */
 
