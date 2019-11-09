@@ -104,6 +104,7 @@ class Nav extends React.Component {
                             Logout
                           </Link>
                           <Link to="/">Home</Link>
+                          <Link to={`/users/${localStorage.getItem("currentUserId")}`}>Profile</Link>
                         </div>
                       );
                     } else {
