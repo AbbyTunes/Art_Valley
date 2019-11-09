@@ -75,8 +75,10 @@ const login = async data => {
     }
 
     if (bcrypt.compareSync(password, user.password)) {
-      const token = jwt.sign({ id: user._id }, keys.secretOrKey);
-      return { token, loggedIn: true, ...user._doc, password: null };
+			const token = jwt.sign({ id: user._id }, keys.secretOrKey);
+			// console.log(user);
+			return { token, loggedIn: true,...user._doc, password: null };
+			
     } else {
       throw new Error("Username/Password is wrong");
     }
@@ -98,9 +100,9 @@ const verifyUser = async data => {
     // making sure we await the response
     const loggedIn = await User.findById(id).then(user => {
       return user ? true : false;
-    });
-
-    return { loggedIn };
+		});
+		debugger;
+    return { loggedIn, id };
   } catch (err) {
     return { loggedIn: false };
   }

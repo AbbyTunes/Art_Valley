@@ -14,14 +14,15 @@ export default {
     mutation LoginUser($email: String!, $password: String!) {
       login(email: $email, password: $password) {
         token
-        loggedIn
+				loggedIn
+				currentUserId
       }
     }
   `,
   VERIFY_USER: gql`
     mutation VerifyUser($token: String!) {
       verifyUser(token: $token) {
-        loggedIn
+				loggedIn
       }
     }
   `,

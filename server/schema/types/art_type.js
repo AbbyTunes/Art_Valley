@@ -20,10 +20,10 @@ const ArtType = new GraphQLObjectType({
 		likers: {
 			type: new GraphQLList(require("./user_type")),
 			resolve(parentValue) {
-				// return Art.findById(parentValue.ID)
-				// 	.populate("likers")
-				// 	.then(art => art.likers)
-				return User.getUsers(parentValue.id)
+				return Art.findById(parentValue.ID)
+					.populate("likers")
+					.then(art => art.likers)
+				// return User.getUsers(parentValue.id)
 			}
 		},
 		category: {
