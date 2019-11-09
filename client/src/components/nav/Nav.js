@@ -14,11 +14,11 @@ class Nav extends React.Component {
   }
 
   extend(targetId1, targetId2) {
+    this.closeModal(this.state.elements);
     let target = document.getElementById(targetId1);
     let target2 = document.getElementById(targetId2);
     let modal = document.getElementById("modal");
     this.setState({elements: [target, target2]}); 
-    // debugger;
     target.classList.add("show");
     target2.classList.add("show");
     modal.classList.add("active");
@@ -30,7 +30,8 @@ class Nav extends React.Component {
         ele.classList.remove("show");
       })
     }
-    // this.setState({elements: ""});
+    let modal = document.getElementById("modal");
+    modal.classList.remove("active");
   }
 
   render() {
