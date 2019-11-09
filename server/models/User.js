@@ -20,6 +20,16 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now
   }
+  // ,
+  // likedArts: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: "arts" 
+  // }]
+  // ,
+  // playlist: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: "videos" 
+  // }]
 });
 
 module.exports = mongoose.model("users", UserSchema);
