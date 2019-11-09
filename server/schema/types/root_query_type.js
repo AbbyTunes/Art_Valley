@@ -24,34 +24,34 @@ const RootQueryType = new GraphQLObjectType({
       resolve(_, args) {
         return User.findById(args._id);
       }
-		},
-		categories: {
-			type: new GraphQLList(CategoryType),
-			resolve() {
-				return Category.find({});
-			}
-		},
-		category: {
-			type: CategoryType,
-			args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
-			resolve(_, args) {
-				return Category.findById(args._id)
-			}
-		},
-		arts: {
-			type: new GraphQLList(ArtType),
-			resolve() {
-				return Art.find({});
-			}
-		},
-		artById: {
-			type: ArtType,
-			args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
-			resolve(_, args) {
-				return Art.findById(args._id);
-			}
+	},
+	categories: {
+		type: new GraphQLList(CategoryType),
+		resolve() {
+			return Category.find({});
 		}
-		
+	},
+	category: {
+		type: CategoryType,
+		args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
+		resolve(_, args) {
+			return Category.findById(args._id)
+		}
+	},
+	arts: {
+		type: new GraphQLList(ArtType),
+		resolve() {
+			return Art.find({});
+		}
+	},
+	artById: {
+		type: ArtType,
+		args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
+		resolve(_, args) {
+			return Art.findById(args._id);
+		}
+	}
+	
 		// artByAuthor: {
 		// 	type: ArtType,
 		// 	args: { authorId: { type: new GraphQLNonNull(GraphQLID) } },
