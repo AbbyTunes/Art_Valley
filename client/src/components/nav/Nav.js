@@ -64,7 +64,7 @@ class Nav extends React.Component {
                       );
                     } else {
                       return (
-                        <div className="nav-links">
+                        <div id="nav-links-2" className="nav-links">
                           <Link to="/">Home</Link>
                           <Link to="/login">Login</Link>
                           <Link to="/register">Register</Link>
