@@ -66,7 +66,7 @@ class Nav extends React.Component {
               <i className="fas fa-indent"></i>
             </div>
             <div className="nav-logo">
-              ArtValley
+              <Link to="/">Art Valley</Link>
             </div>     
         </div>
         <div className="nav-extends">
