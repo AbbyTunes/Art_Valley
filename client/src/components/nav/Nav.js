@@ -18,9 +18,12 @@ class Nav extends React.Component {
     let target = document.getElementById(targetId1);
     let target2 = document.getElementById(targetId2);
     let modal = document.getElementById("modal");
+    // let icon = document.getElementById(clickable);
     this.setState({elements: [target, target2]}); 
+    // this.setState({icon: icon});
     target.classList.add("show");
     target2.classList.add("show");
+    // icon.classList.add("show");
     modal.classList.add("active");
   }
 
@@ -30,6 +33,10 @@ class Nav extends React.Component {
         ele.classList.remove("show");
       })
     }
+    // if (this.state.icon){
+    //   icon.classList.remove("show");
+    //   this.setState({icon: ""});
+    // }
     let modal = document.getElementById("modal");
     modal.classList.remove("active");
   }
@@ -42,7 +49,7 @@ class Nav extends React.Component {
           </div>
           <div className="nav-container">
               <div className="nav-icon-container">
-                <i id="nav-links" className="fas fa-bars" onClick={() => this.extend("nav-links", "nav-links-2")}></i>
+                <i id="links" className="fas fa-bars" onClick={() => this.extend("nav-links", "nav-links-2")}></i>
                 <i id="search" className="fas fa-search" onClick={() => this.extend("search-input", "search-input-2")}></i>
                 <i className="fas fa-user"></i>
                 <i className="fas fa-indent"></i>
@@ -57,7 +64,7 @@ class Nav extends React.Component {
             </div> 
           </div>
         </div>
-          <div id="nav-links-2" className="nav-links-container">
+          <div id="nav-links" className="nav-links-container">
             <ApolloConsumer>
               {client => (
                 <Query query={IS_LOGGED_IN}>
