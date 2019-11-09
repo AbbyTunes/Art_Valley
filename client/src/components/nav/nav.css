@@ -55,6 +55,21 @@
 }
 
 
+.nav-modal {
+    display: none;
+    position: absolute; 
+    height: 100vh;
+    width: 100vh;
+    z-index: -100;
+}
+
+.nav-modal.active {
+    display: block; 
+    position: absolute;
+    background: transparent;
+    z-index: 101;
+}
+
 /* NAV LINKS */
 
 .nav-links-container{
@@ -69,7 +84,7 @@
     min-height: 30px;
     width: 260px;
     top: 50px;
-    z-index: 101;
+    z-index: 102;
     background: #fff;
     box-shadow: 5px 5px 10px 0 rgba(0,0,0,.3);
     transition: all .5s;
@@ -89,7 +104,7 @@
 .nav-links{
     display: flex;
     flex-direction: column;
-    z-index: 101;
+    z-index: 102;
 }
 
 

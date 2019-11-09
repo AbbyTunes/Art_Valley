@@ -10,19 +10,36 @@ class Nav extends React.Component {
   constructor(props){
     super(props);
     this.extend = this.extend.bind(this);
+    this.state = { elements: ""};
   }
 
   extend(targetId1, targetId2) {
     let target = document.getElementById(targetId1);
     let target2 = document.getElementById(targetId2);
-    target.classList.toggle("show");
-    target2.classList.toggle("show");
+    let modal = document.getElementById("modal");
+    this.setState({elements: [target, target2]}); 
+    // debugger;
+    target.classList.add("show");
+    target2.classList.add("show");
+    modal.classList.add("active");
+  }
+
+  closeModal(elements) {
+    if (this.state.elements){
+      elements.forEach(ele => {
+        ele.classList.remove("show");
+      })
+    }
+    // this.setState({elements: ""});
   }
 
   render() {
       return (
       <>
         <div className="banner">
+          <div id="modal" className="nav-modal" onClick={() => this.closeModal(this.state.elements)}>
+            I am a modal
+          </div>
           <div className="nav-container">
               <div className="nav-icon-container">
                 <i id="nav-links" className="fas fa-bars" onClick={() => this.extend("nav-links", "nav-links-2")}></i>
