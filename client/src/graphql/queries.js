@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-
+ 
 export default {
   IS_LOGGED_IN: gql`
     query IsUserLoggedIn {
@@ -22,8 +22,8 @@ export default {
 		}
 	`,
 	FETCH_USER: gql`
-		query user($id: ID!) {
-			user(id: $id) {
+		query user($_id: ID!) {
+			user(_id: $_id) {
 				id
 				name
 				email
