@@ -21,65 +21,62 @@ class Nav extends React.Component {
 
   render() {
       return (
-      <div className="banner">
-        <div className="nav-container">
-            <div className="nav-icon-container">
-              <i className="fas fa-bars"></i>
-              <i id="search" className="fas fa-search" onClick={() => this.extend("search-input", "search-input-2")}></i>
-              <i className="fas fa-user"></i>
-              <i className="fas fa-indent"></i>
-            </div>
-            <div className="nav-logo">
-              <Link to="/">Art Valley</Link>
-            </div>     
-        </div>
-        <div className="nav-extends">
-          <div id="search-input" className="nav-search">
-            <input id="search-input-2" type="text" placeholder="Search Art Valley" />
+      <>
+        <div className="banner">
+          <div className="nav-container">
+              <div className="nav-icon-container">
+                <i id="nav-links" className="fas fa-bars" onClick={() => this.extend("nav-links", "nav-links-2")}></i>
+                <i id="search" className="fas fa-search" onClick={() => this.extend("search-input", "search-input-2")}></i>
+                <i className="fas fa-user"></i>
+                <i className="fas fa-indent"></i>
+              </div>
+              <div className="nav-logo">
+                <Link to="/">Art Valley</Link>
+              </div>     
           </div>
-
-            <div>
-              <ApolloConsumer>
-                {client => (
-                  <Query query={IS_LOGGED_IN}>
-                    {({ data, loading, error }) => {
-                      if (loading) { return <p>loading...</p> }
-                      if (error) return `Error! ${error.message}`;
-                      if (data.isLoggedIn) {
-                        return (
-                          <div className="nav-links">
-                            <button
-                              onClick={e => {
-                                e.preventDefault();
-                                localStorage.removeItem("auth-token");
-                                client.writeData({ data: { isLoggedIn: false } });
-                                this.props.history.push("/");
-                              }} >
-                              Logout
-                            </button>
-                            <Link to="/">Home</Link>
-                          </div>
-                        );
-                      } else {
-                        return (
-                          <div className="nav-links">
-                            <Link to="/">Home</Link>
-                            <Link to="/login">Login</Link>
-                            <Link to="/register">Register</Link>
-                          </div>
-                        );
-                      }
-                    }}
-                  </Query>
-                )}
-              </ApolloConsumer>
-            </div>
-            
-          <div id="navigation" className="nav-links">
-
+          <div className="nav-extends">
+            <div id="search-input" className="nav-search">
+              <input id="search-input-2" type="text" placeholder="Search Art Valley" />
+            </div> 
           </div>
         </div>
-      </div>
+          <div id="nav-links-2" className="nav-links-container">
+            <ApolloConsumer>
+              {client => (
+                <Query query={IS_LOGGED_IN}>
+                  {({ data, loading, error }) => {
+                    if (loading) { return <p>loading...</p> }
+                    if (error) return `Error! ${error.message}`;
+                    if (data.isLoggedIn) {
+                      return (
+                        <div className="nav-links">
+                          <button
+                            onClick={e => {
+                              e.preventDefault();
+                              localStorage.removeItem("auth-token");
+                              client.writeData({ data: { isLoggedIn: false } });
+                              this.props.history.push("/");
+                            }} >
+                            Logout
+                              </button>
+                          <Link to="/">Home</Link>
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div className="nav-links">
+                          <Link to="/">Home</Link>
+                          <Link to="/login">Login</Link>
+                          <Link to="/register">Register</Link>
+                        </div>
+                      );
+                    }
+                  }}
+                </Query>
+              )}
+            </ApolloConsumer>
+          </div>
+      </>
     );
   };
 }
