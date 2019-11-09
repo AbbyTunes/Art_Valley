@@ -5,17 +5,24 @@ import Queries from "../../graphql/queries";
 const { FETCH_USER } = Queries;
 
 const Profile = (props) => {
-  debugger;
     return (
       <Query query={FETCH_USER} variables={{ _id: props.match.params.userId }}>
         {({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error</p>;
 
+          let artList = data.user.likedArts.forEach(art => {
+            return <li>
+                {art.title}
+              </li>;
+          })
           return (
             <div className="temp">
               <p>{data.user.name}</p>
-              <p>{data.user.email}</p>
+              <p>{data.user.email}</p>  
+              <div>
+                {artList}
+              </div>
             </div>
           );
         }}
