@@ -89,9 +89,24 @@ class Nav extends React.Component {
                     } else {
                       return (
                         <div id="nav-links-2" className="nav-links">
-                          <Link to="/">Home</Link>
-                          <Link to="/login">Login</Link>
-                          <Link to="/register">Register</Link>
+                          <Link
+                            onClick={() => this.closeModal(this.state.elements)}
+                            to="/"
+                          >
+                            Home
+                          </Link>
+                          <Link
+                            onClick={() => this.closeModal(this.state.elements)}
+                            to="/login"
+                          >
+                            Login
+                          </Link>
+                          <Link
+                            onClick={() => this.closeModal(this.state.elements)}
+                            to="/register"
+                          >
+                            Register
+                          </Link>
                         </div>
                       );
                     }
