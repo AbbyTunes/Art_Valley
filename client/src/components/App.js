@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, Link } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import AuthRoute from "../util/route_util";
 import Login from "./user_auth/Login";
 import Register from "./user_auth/Register";

@@ -13,38 +13,31 @@ export default {
   LOGIN_USER: gql`
     mutation LoginUser($email: String!, $password: String!) {
       login(email: $email, password: $password) {
+				id
         token
-        loggedIn
-      }
-    }
-  `,
-  LOGIN_GUEST_USER: gql`
-    mutation LoginUser($email: String!, $password: String!) {
-      login(email: "GuestUser@guest.com", password: "hunter2") {
-        token
-        loggedIn
+				loggedIn
       }
     }
   `,
   VERIFY_USER: gql`
     mutation VerifyUser($token: String!) {
       verifyUser(token: $token) {
-        loggedIn
+				loggedIn
       }
     }
   `,
-  CREATE_PRODUCT: gql`
-    mutation CreateProduct(
-      $name: String!
-      $description: String!
-      $weight: Float!
-    ) {
-      newProduct(name: $name, description: $description, weight: $weight) {
-        id
-        name
-        description
-        weight
-      }
-    }
-  `
+  // CREATE_PRODUCT: gql`
+  //   mutation CreateProduct(
+  //     $name: String!
+  //     $description: String!
+  //     $weight: Float!
+  //   ) {
+  //     newProduct(name: $name, description: $description, weight: $weight) {
+  //       id
+  //       name
+  //       description
+  //       weight
+  //     }
+  //   }
+  // `
 };
