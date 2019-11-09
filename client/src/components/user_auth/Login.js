@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { Mutation } from "react-apollo";
 import mutations from "../../graphql/mutations";
+import './session.css';
 const { LOGIN_USER } = mutations;
 
 class Login extends Component {
@@ -20,8 +21,8 @@ class Login extends Component {
     // here we can write directly to our cache with our returned mutation data
     client.writeData({
 			data: {
-				isLoggedIn: data.login.loggedIn,
-				currentUserId: data.login.id
+				isLoggedIn: data.login.loggedIn
+				// currentUserId: data.login.id
 			}
     });
   }
@@ -45,7 +46,8 @@ class Login extends Component {
         update={(client, data) => this.updateCache(client, data)}
       >
         {loginUser => (
-          <div>
+          <div className="session-form">
+            <h1 className="session-header">Log In</h1>
             <form
               onSubmit={e => {
                 e.preventDefault();
@@ -57,18 +59,44 @@ class Login extends Component {
                 });
               }}
             >
+              <h3 className="session-input-title">Email Address</h3>
               <input
+                className="session-input-box"
                 value={this.state.email}
                 onChange={this.update("email")}
-                placeholder="Email"
+                required
+                type="text"
               />
+              <h3 className="session-input-title">Password</h3>
               <input
+                className="session-input-box"
                 value={this.state.password}
                 onChange={this.update("password")}
+                required
                 type="password"
-                placeholder="Password"
               />
-              <button type="submit">Log In</button>
+              
+            
+              <div
+                className="session-guest-link"
+                onClick={e => {
+                  e.preventDefault();
+                  loginUser({
+                    variables: {
+                      email: "GuestUser@guest.com",
+                      password: "hunter2"
+                    }});
+                }}>
+                  Guest Demo
+              </div>
+
+              <div className="session-spacer" />
+              <button
+                className="session-button" 
+                type="submit">
+                  Log In
+              </button>
+              
             </form>
           </div>
         )}
