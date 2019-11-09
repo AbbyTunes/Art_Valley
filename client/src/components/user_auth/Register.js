@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import mutations from "../../graphql/mutations";
+import './session.css';
 const { REGISTER_USER } = mutations;
 
 class Register extends Component {
@@ -40,7 +41,8 @@ class Register extends Component {
         update={(client, data) => this.updateCache(client, data)}
       >
         {registerUser => (
-          <div>
+          <div className="session-form">
+            <h1 className="session-header">Register</h1>
             <form
               onSubmit={e => {
                 e.preventDefault();
@@ -53,23 +55,38 @@ class Register extends Component {
                 });
               }}
             >
+              <h3 className="session-input-title">Username</h3>
               <input
+                className="session-input-box"
                 value={this.state.name}
                 onChange={this.update("name")}
-                placeholder="Name"
+                required
+                type="text"
               />
+              <h3 className="session-input-title">Email Address</h3>
               <input
+                className="session-input-box"
                 value={this.state.email}
                 onChange={this.update("email")}
-                placeholder="Email"
+                required
+                type="text"
               />
+              <h3 className="session-input-title">Password</h3>
               <input
+                className="session-input-box"
                 value={this.state.password}
                 onChange={this.update("password")}
+                required
                 type="password"
-                placeholder="Password"
               />
-              <button type="submit">Register</button>
+              {/* login is the placeholder path */}
+              <Link to="/register" className="session-guest-link">Guest Demo</Link>
+              <div className="session-spacer" />
+              <button
+                className="session-button"
+                type="submit">
+                Register
+              </button>
             </form>
           </div>
         )}
