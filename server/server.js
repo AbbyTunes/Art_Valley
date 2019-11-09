@@ -22,6 +22,7 @@ app.use(
 			schema,
 			context: {
 				token: req.headers.authorization
+				// currentUserId: req.headers.currentUserId
 			},
 			graphiql: true
 		}
