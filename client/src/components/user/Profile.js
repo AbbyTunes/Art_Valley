@@ -10,8 +10,8 @@ const Profile = (props) => {
         {({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error</p>;
-
-          let artList = data.user.likedArts.forEach(art => {
+          
+          let artList = data.user.likedArts.map(art => {
             return <li>
                 {art.title}
               </li>;
