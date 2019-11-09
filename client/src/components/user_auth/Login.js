@@ -70,9 +70,20 @@ class Login extends Component {
                 type="password"
               />
               
-              
-              {/* login is the placeholder path */}
-              <Link to="/login" className="session-guest-link">Guest Demo</Link>
+            
+              <div
+                className="session-guest-link"
+                onClick={e => {
+                  e.preventDefault();
+                  loginUser({
+                    variables: {
+                      email: "GuestUser@guest.com",
+                      password: "hunter2"
+                    }});
+                }}>
+                  Guest Demo
+              </div>
+
               <div className="session-spacer" />
               <button
                 className="session-button" 

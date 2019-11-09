@@ -18,6 +18,14 @@ export default {
       }
     }
   `,
+  LOGIN_GUEST_USER: gql`
+    mutation LoginUser($email: String!, $password: String!) {
+      login(email: "GuestUser@guest.com", password: "hunter2") {
+        token
+        loggedIn
+      }
+    }
+  `,
   VERIFY_USER: gql`
     mutation VerifyUser($token: String!) {
       verifyUser(token: $token) {
