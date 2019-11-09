@@ -19,9 +19,6 @@
     padding: 10px 15px 0px 15px;
 }
 
-.nav-links {
-    display: none;
-}
 
 
 .nav-icon-container{
@@ -56,6 +53,17 @@
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
+
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+}
+
+
+
 
 .nav-search {
     display: hidden;

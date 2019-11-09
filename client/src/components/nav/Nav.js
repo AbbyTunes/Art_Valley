@@ -23,7 +23,22 @@ class Nav extends React.Component {
       return (
       <div className="banner">
         <div className="nav-container">
-            <div className="nav-links">
+            <div className="nav-icon-container">
+              <i className="fas fa-bars"></i>
+              <i id="search" className="fas fa-search" onClick={() => this.extend("search-input", "search-input-2")}></i>
+              <i className="fas fa-user"></i>
+              <i className="fas fa-indent"></i>
+            </div>
+            <div className="nav-logo">
+              <Link to="/">Art Valley</Link>
+            </div>     
+        </div>
+        <div className="nav-extends">
+          <div id="search-input" className="nav-search">
+            <input id="search-input-2" type="text" placeholder="Search Art Valley" />
+          </div>
+
+            <div>
               <ApolloConsumer>
                 {client => (
                   <Query query={IS_LOGGED_IN}>
@@ -32,7 +47,7 @@ class Nav extends React.Component {
                       if (error) return `Error! ${error.message}`;
                       if (data.isLoggedIn) {
                         return (
-                          <div>
+                          <div className="nav-links">
                             <button
                               onClick={e => {
                                 e.preventDefault();
@@ -47,7 +62,7 @@ class Nav extends React.Component {
                         );
                       } else {
                         return (
-                          <div>
+                          <div className="nav-links">
                             <Link to="/">Home</Link>
                             <Link to="/login">Login</Link>
                             <Link to="/register">Register</Link>
@@ -59,19 +74,9 @@ class Nav extends React.Component {
                 )}
               </ApolloConsumer>
             </div>
-            <div className="nav-icon-container">
-              <i className="fas fa-bars"></i>
-              <i id="search" className="fas fa-search" onClick={() => this.extend("search-input", "search-input-2")}></i>
-              <i className="fas fa-user"></i>
-              <i className="fas fa-indent"></i>
-            </div>
-            <div className="nav-logo">
-              <Link to="/">Art Valley</Link>
-            </div>     
-        </div>
-        <div className="nav-extends">
-          <div id="search-input" className="nav-search">
-            <input id="search-input-2" type="text" placeholder="Search Art Valley" />
+            
+          <div id="navigation" className="nav-links">
+
           </div>
         </div>
       </div>
