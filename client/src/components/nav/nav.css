@@ -83,6 +83,7 @@
     padding: 9px 0 9px 15px;
     animation: searchOpen .2s;
     animation-delay: .3s;
+    animation-fill-mode: backwards;
 }
 
 .nav-links{
