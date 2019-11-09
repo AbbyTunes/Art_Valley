@@ -74,15 +74,16 @@ class Nav extends React.Component {
                     if (data.isLoggedIn) {
                       return (
                         <div id="nav-links-2" className="nav-links">
-                          <button
+                          <Link
                             onClick={e => {
                               e.preventDefault();
                               localStorage.removeItem("auth-token");
                               client.writeData({ data: { isLoggedIn: false } });
                               this.props.history.push("/");
+                              this.closeModal(this.state.elements);
                             }} >
                             Logout
-                              </button>
+                              </Link>
                           <Link to="/">Home</Link>
                         </div>
                       );
