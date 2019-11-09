@@ -43,33 +43,51 @@ class Nav extends React.Component {
 
   render() {
       return (
-      <>
-        <div className="banner">
-          <div id="modal" className="nav-modal" onClick={() => this.closeModal(this.state.elements)}>
-          </div>
-          <div className="nav-container">
+        <>
+          <div className="banner">
+            <div
+              id="modal"
+              className="nav-modal"
+              onClick={() => this.closeModal(this.state.elements)}
+            ></div>
+            <div className="nav-container">
               <div className="nav-icon-container">
-                <i id="links" className="fas fa-bars" onClick={() => this.extend("nav-links", "nav-links-2")}></i>
-                <i id="search" className="fas fa-search" onClick={() => this.extend("search-input", "search-input-2")}></i>
+                <i
+                  id="links"
+                  className="fas fa-bars"
+                  onClick={() => this.extend("nav-links", "nav-links-2")}
+                ></i>
+                <i
+                  id="search"
+                  className="fas fa-search"
+                  onClick={() => this.extend("search-input", "search-input-2")}
+                ></i>
                 <i className="fas fa-user"></i>
                 <i className="fas fa-indent"></i>
               </div>
               <div className="nav-logo">
                 <Link to="/">Art Valley</Link>
-              </div>     
+              </div>
+            </div>
+
+            <div className="nav-extends">
+              <div id="search-input" className="nav-search">
+                <input
+                  id="search-input-2"
+                  type="text"
+                  placeholder="Search Art Valley"
+                />
+              </div>
+            </div>
           </div>
-          <div className="nav-extends">
-            <div id="search-input" className="nav-search">
-              <input id="search-input-2" type="text" placeholder="Search Art Valley" />
-            </div> 
-          </div>
-        </div>
           <div id="nav-links" className="nav-links-container">
             <ApolloConsumer>
               {client => (
                 <Query query={IS_LOGGED_IN}>
                   {({ data, loading, error }) => {
-                    if (loading) { return <p>loading...</p> }
+                    if (loading) {
+                      return <p>loading...</p>;
+                    }
                     if (error) return `Error! ${error.message}`;
                     if (data.isLoggedIn) {
                       return (
@@ -81,9 +99,10 @@ class Nav extends React.Component {
                               client.writeData({ data: { isLoggedIn: false } });
                               this.props.history.push("/");
                               this.closeModal(this.state.elements);
-                            }} >
+                            }}
+                          >
                             Logout
-                              </Link>
+                          </Link>
                           <Link to="/">Home</Link>
                         </div>
                       );
@@ -116,8 +135,15 @@ class Nav extends React.Component {
               )}
             </ApolloConsumer>
           </div>
-      </>
-    );
+          <div className="nav-categories-container">
+            <ul className="nav-categories-list">
+              <li><Link to="#">Art</Link></li>
+              <li><Link to="#">Videos</Link></li>
+              <li><Link to="#">Something Else</Link></li>
+            </ul>
+          </div>
+        </>
+      );
   };
 }
 

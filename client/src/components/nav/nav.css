@@ -92,6 +92,12 @@
     z-index: 100;
 } */
 
+
+.nav-categories-container{
+    display: none;
+}
+
+
 /* NAV LINKS */
 
 .nav-links-container{
@@ -212,6 +218,36 @@
     .nav-logo{
         font-size: 26px;
     }
+}
+
+@media screen and (min-width: 401px){
+    .nav-categories-container{
+        display: flex;
+        position: relative;
+        justify-content: center;
+        top: 67px;
+        border-bottom: 1px solid #888;
+    }
+
+
+    .nav-categories-list{
+        display: flex;
+        justify-content: space-around;
+        min-width: 400px;
+        max-width: 40%;
+        padding: 20px;
+    }
+
+    .nav-categories-list > li{
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .nav-categories-list > li:hover{
+        color: #3F9598;
+    }
+
 }
 
 @media screen and (min-width: 768px){
