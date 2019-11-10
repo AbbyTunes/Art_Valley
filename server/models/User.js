@@ -24,6 +24,10 @@ const UserSchema = new Schema({
   likedArts: [{
     type: Schema.Types.ObjectId,
     ref: "arts" 
+  }],
+  publishedArts: [{
+    type: Schema.Types.ObjectId,
+    ref: "arts"
   }]
   // ,
   // playlist: [{
@@ -49,5 +53,21 @@ UserSchema.statics.addLikedArt = (userId, artId ) => {
     });
   });
 };
+
+UserSchema.statics.addPublishedArt = (userId, artId) => {
+  const User = mongoose.model("users");
+  const Art = mongoose.model("arts");
+
+  return User.findById(userId).then(user => {
+    return Art.findById(artId).then(art => {
+      user.publishedArts.push(art);
+
+      return Promise.all([user.save(), art.save()]).then(
+        ([user, art]) => art
+      );
+    });
+  });
+};
+
 
 module.exports = mongoose.model("users", UserSchema);

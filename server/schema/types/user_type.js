@@ -26,6 +26,14 @@ const UserType = new GraphQLObjectType({
           .then(user => user.likedArts);
       }
     },
+    publishedArts: {
+      type: new GraphQLList(ArtType),
+      resolve(parentValue) {
+        return User.findById(parentValue.id)
+        .populate("publishedArts")
+        .then(user => user.publishedArts);
+      }
+    },
     token: { type: GraphQLString },
     loggedIn: { type: GraphQLBoolean }
   })
