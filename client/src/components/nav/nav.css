@@ -244,7 +244,7 @@
         font-weight: 500;
     }
 
-    .nav-categories-list > li:hover{
+    .nav-categories-list > li > a:hover{
         color: #3F9598;
     }
 
