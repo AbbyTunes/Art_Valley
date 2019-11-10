@@ -1,5 +1,50 @@
-.temp{
-    display: block;
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: relative;
     top: 90px;
+}
+
+.user-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.settings-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background: #3f9598;
+}
+
+.settings-link > a {
+    color: white;
+    font-weight: 400;
+}
+
+.settings-link:hover{
+    background: #225d5f;
+    cursor: pointer;
+}
+
+.profile-header, .user-header{
+    display: inline-block;
+    min-width: 200px;
+    padding: 0px 10px;
+    font-size: 24px;
+    border-top: 2px solid #3f9598;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.user-header{
+    font-weight: 800;
+    border-top: none;
 }
