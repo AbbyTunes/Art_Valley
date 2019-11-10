@@ -57,13 +57,12 @@
 }
 
 .liked-list{
-    display: grid;
+    /* display: grid;
     grid-template-columns: 100%;
     grid-row-gap: 20px;
-    width: 300px;
-    /* height: auto; */
-    padding-bottom: 20px;
-}
+    width: 300px; */
+   padding-bottom: 20px;
+} 
 
 .liked-list > li{
     background: green;
@@ -90,6 +89,21 @@
     .see-more-button{
        display: none;
    }
+
+   .liked-list{
+       display: flex;
+       justify-content: space-between;
+       overflow-x: scroll;
+       width: 960px;
+   }
+
+   .liked-list > li{
+       min-width: 300px;
+       width: 300px;
+       height: 300px;
+       margin-right: 20px;
+   }
+
 }
 
 /* @media screen and (min-width: 768px){
