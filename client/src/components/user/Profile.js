@@ -34,7 +34,7 @@ const Profile = (props) => {
                 <h1 className="user-header">{data.user.name}</h1>
                 <div className="settings-link">
                   {/* <Link to="/settings">Settings</Link> */}
-                  <Link to="#">+</Link>
+                  <Link to="/settings">+</Link>
                 </div>
               </div>
               <div className="recently-liked">

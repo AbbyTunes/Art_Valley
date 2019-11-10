@@ -1,0 +1,18 @@
+.settings-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 90px;
+}
+
+.settings-header{
+    display: inline-block;
+    min-width: 200px;
+    padding: 0px 10px;
+    font-size: 24px;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
