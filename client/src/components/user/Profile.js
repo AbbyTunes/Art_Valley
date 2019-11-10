@@ -21,13 +21,21 @@ const Profile = (props) => {
             </div>
           );
 
-          let artListLimit = data.user.likedArts.slice(0, 5);
+          let artListLimit = data.user.likedArts.slice(0, 6);
           let artList = artListLimit.map(art => {
             return <li key={art.id}>
                 {/* {art.title} */}
                 <img className="profile-photo-thumbnail" src={art.photoLink}/>
               </li>;
           })
+
+          let artPublishedLimit = data.user.publishedArts.slice(0, 6);
+          let artPubList = artPublishedLimit.map(art => {
+            return <li key={art.id}>
+              <img className="profile-photo-thumbnail" src={art.photoLink} />
+            </li>;
+          })
+
           return (
             <div className="profile-container">
               <div className="user-info">
@@ -54,14 +62,11 @@ const Profile = (props) => {
                   <Link to="#">See More</Link> */}
                 {/* </div> */}
               </div>
-              <div className="profile-playlist">
+              <div className="profile-published">
                 <h1 className="profile-header">Recently Published</h1>
-                {/* <ul className="liked-list">
-                  {artList}
-                </ul> */}
-                {/* <div className="see-more-button">
-                  <Link to="#">See More</Link> */}
-                {/* </div> */}
+                <ul className="published-list">
+                  {artPubList}
+                </ul>
               </div>
             </div>
           );

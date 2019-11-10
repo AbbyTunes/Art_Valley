@@ -32,6 +32,11 @@ export default {
 					title
 					photoLink
 				}
+				publishedArts {
+					id 
+					title
+					photoLink
+				}
 			}
 		}
 	`,
