@@ -30,8 +30,12 @@ const Profile = (props) => {
               </div>
               <div className="recently-liked">
                 <h1 className="profile-header">Recently Liked</h1>
-                {artList}
-                <Link to="#">See More</Link>
+                <ul className="liked-list">
+                  {artList}
+                </ul>
+                <div className="see-more-button">
+                  <Link to="#">See More</Link>
+                </div>
               </div>
             </div>
           );
