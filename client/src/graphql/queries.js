@@ -30,6 +30,7 @@ export default {
 				likedArts {
 					id
 					title
+					photoLink
 				}
 			}
 		}

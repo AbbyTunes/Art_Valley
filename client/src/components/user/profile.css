@@ -70,6 +70,12 @@
     height: 300px;
 }
 
+.profile-photo-thumbnail{
+    object-fit: cover;
+    max-height: 100%;
+    width: 100%;
+}
+
 @media screen and (min-width: 1000px){
    .liked-list{
        grid-template-columns: 33% 33% 33%;
