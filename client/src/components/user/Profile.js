@@ -21,6 +21,15 @@ const Profile = (props) => {
             </div>
           );
 
+          let settings;
+          if (props.match.params.userId === localStorage.getItem("currentUserId")){
+            settings =
+              <div className="settings-link">
+                <Link to="/settings">+</Link>
+              </div>
+          }
+
+
           let recentlyLiked;
           if (data.user.likedArts.length !== 0) {
             let artListLimit = data.user.likedArts.slice(0, 6);
@@ -56,9 +65,7 @@ const Profile = (props) => {
             <div className="profile-container">
               <div className="user-info">
                 <h1 className="user-header">{data.user.name}</h1>
-                <div className="settings-link">
-                  <Link to="/settings">+</Link>
-                </div>
+                {settings}
               </div>
               {recentlyLiked}
               {/* <div className="profile-playlist">
