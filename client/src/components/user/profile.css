@@ -44,6 +44,10 @@
     padding-bottom: 40px;
 }
 
+.profile-published{
+    text-align: center;
+}
+
 .user-header{
     font-weight: 800;
     border-top: none;
