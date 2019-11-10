@@ -76,11 +76,11 @@
 }
 
 @media screen and (min-width: 1000px){
-   /* .liked-list{
+   .published-list{
        grid-template-columns: 33% 33% 33%;
        column-gap: 20px;
        width: 940px;
-   } */
+   }
 
    .profile-header, .user-header{
         width: 80%;
@@ -90,7 +90,7 @@
        display: none;
    }
 
-   .liked-list, .published-list{
+   .liked-list {
        display: flex;
        justify-content: space-between;
        overflow-x: scroll;
