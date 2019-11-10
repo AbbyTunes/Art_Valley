@@ -21,13 +21,28 @@ const Profile = (props) => {
             </div>
           );
 
-          let artListLimit = data.user.likedArts.slice(0, 6);
-          let artList = artListLimit.map(art => {
-            return <li key={art.id}>
-                {/* {art.title} */}
-                <img className="profile-photo-thumbnail" src={art.photoLink}/>
-              </li>;
-          })
+          let recentlyLiked;
+          if (data.user.likedArts.length !== 0) {
+            let artListLimit = data.user.likedArts.slice(0, 6);
+            let artList = artListLimit.map(art => {
+              return <li key={art.id}>
+                  {/* {art.title} */}
+                  <img className="profile-photo-thumbnail" src={art.photoLink}/>
+                </li>;
+            })
+            recentlyLiked = 
+              < div className = "recently-liked" >
+                <h1 className="profile-header">Recently Liked</h1>
+                <ul className="liked-list">
+                  {artList}
+                </ul>
+                <div className="see-more-button">
+                  <Link to="#">See More</Link>
+                </div>
+              </div>;
+          }
+
+          
 
           let artPublishedLimit = data.user.publishedArts.slice(0, 6);
           let artPubList = artPublishedLimit.map(art => {
@@ -44,24 +59,16 @@ const Profile = (props) => {
                   <Link to="/settings">+</Link>
                 </div>
               </div>
-              <div className="recently-liked">
-                <h1 className="profile-header">Recently Liked</h1>
-                <ul className="liked-list">
-                  {artList}
-                </ul>
-                <div className="see-more-button">
-                  <Link to="#">See More</Link>
-                </div>
-              </div>
-              <div className="profile-playlist">
-                <h1 className="profile-header">Playlist</h1>
+              {recentlyLiked}
+              {/* <div className="profile-playlist">
+                <h1 className="profile-header">Playlist</h1> */}
                 {/* <ul className="liked-list">
                   {artList}
                 </ul> */}
                 {/* <div className="see-more-button">
                   <Link to="#">See More</Link> */}
                 {/* </div> */}
-              </div>
+              {/* </div> */}
               <div className="profile-published">
                 <h1 className="profile-header">Recently Published</h1>
                 <ul className="published-list">
