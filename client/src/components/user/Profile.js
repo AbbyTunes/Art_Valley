@@ -13,7 +13,8 @@ const Profile = (props) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error</p>;
 
-          let artList = data.user.likedArts.map(art => {
+          let artListLimit = data.user.likedArts.slice(0, 5);
+          let artList = artListLimit.map(art => {
             return <li key={art.id}>
                 {art.title}
               </li>;
