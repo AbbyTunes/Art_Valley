@@ -104,8 +104,8 @@ class Nav extends React.Component {
                           >
                             Logout
                           </Link>
-                          <Link to="/">Home</Link>
-                          <Link to={`/users/${localStorage.getItem("currentUserId")}`}>Profile</Link>
+                          <Link to="/" onClick={() => this.closeModal(this.state.elements)}>Home</Link>
+                          <Link to={`/users/${localStorage.getItem("currentUserId")}`} onClick={() => this.closeModal(this.state.elements)}>Profile</Link>
                         </div>
                       );
                     } else {
