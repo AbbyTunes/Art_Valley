@@ -57,11 +57,11 @@
 }
 
 .liked-list{
-    /* display: grid;
+    display: grid;
     grid-template-columns: 100%;
     grid-row-gap: 20px;
-    width: 300px; */
-   padding-bottom: 20px;
+    width: 300px;
+    padding-bottom: 20px;
 } 
 
 .liked-list > li{
@@ -76,11 +76,11 @@
 }
 
 @media screen and (min-width: 1000px){
-   .liked-list{
+   /* .liked-list{
        grid-template-columns: 33% 33% 33%;
        column-gap: 20px;
        width: 940px;
-   }
+   } */
 
    .profile-header, .user-header{
         width: 80%;
@@ -104,7 +104,26 @@
        margin-right: 20px;
    }
 
+   ::-webkit-scrollbar{
+        display: block;
+        width: 5px;
+        background-color: #F5F5F5;
+    }
+
+    ::-webkit-scrollbar-track{
+        background-color: #F5F5F5;
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background-color: #3f9598;
+    }
+
 }
+
+
+
+
+
 
 /* @media screen and (min-width: 768px){
    
