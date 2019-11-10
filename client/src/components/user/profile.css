@@ -49,7 +49,7 @@
     border-top: none;
 }
 
-.recently-liked{
+.recently-liked, .profile-playlist{
     display: flex;
     flex-direction: column;
     align-items: center;

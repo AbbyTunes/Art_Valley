@@ -46,6 +46,24 @@ const Profile = (props) => {
                   <Link to="#">See More</Link>
                 </div>
               </div>
+              <div className="profile-playlist">
+                <h1 className="profile-header">Playlist</h1>
+                {/* <ul className="liked-list">
+                  {artList}
+                </ul> */}
+                {/* <div className="see-more-button">
+                  <Link to="#">See More</Link> */}
+                {/* </div> */}
+              </div>
+              <div className="profile-playlist">
+                <h1 className="profile-header">Recently Published</h1>
+                {/* <ul className="liked-list">
+                  {artList}
+                </ul> */}
+                {/* <div className="see-more-button">
+                  <Link to="#">See More</Link> */}
+                {/* </div> */}
+              </div>
             </div>
           );
         }}
