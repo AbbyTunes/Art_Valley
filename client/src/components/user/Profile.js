@@ -24,7 +24,8 @@ const Profile = (props) => {
           let recentlyLiked;
           if (data.user.likedArts.length !== 0) {
             let artListLimit = data.user.likedArts.slice(0, 6);
-            let artList = artListLimit.map(art => {
+            // let artList = artListLimit.map(art => {
+            let artList = data.user.likedArts.map(art => {
               return <li key={art.id}>
                   {/* {art.title} */}
                   <img className="profile-photo-thumbnail" src={art.photoLink}/>
