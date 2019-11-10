@@ -10,13 +10,22 @@ const Profile = (props) => {
     return (
       <Query query={FETCH_USER} variables={{ _id: props.match.params.userId }}>
         {({ loading, error, data }) => {
-          if (loading) return <p>Loading...</p>;
-          if (error) return <p>Error</p>;
+          if (loading) return (
+            <div className="profile-container">
+              <p>Loading...</p>
+            </div>
+            );
+          if (error) return (
+            <div className="profile-container">
+              <p>Error</p>
+            </div>
+          );
 
           let artListLimit = data.user.likedArts.slice(0, 5);
           let artList = artListLimit.map(art => {
             return <li key={art.id}>
-                {art.title}
+                {/* {art.title} */}
+                <img className="profile-photo-thumbnail" src={art.photoLink}/>
               </li>;
           })
           return (
