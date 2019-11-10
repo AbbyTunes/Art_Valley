@@ -20,6 +20,54 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now
   }
+  ,
+  likedArts: [{
+    type: Schema.Types.ObjectId,
+    ref: "arts" 
+  }],
+  publishedArts: [{
+    type: Schema.Types.ObjectId,
+    ref: "arts"
+  }]
+  // ,
+  // playlist: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: "videos" 
+  // }]
 });
+
+
+UserSchema.statics.addLikedArt = (userId, artId ) => {
+  const User = mongoose.model("users");
+  const Art = mongoose.model("arts");
+
+  return User.findById(userId).then(user => {
+    return Art.findById(artId).then(art => {
+      user.likedArts.push(art);
+      art.likers.push(user);
+      art.likes += 1;
+
+      return Promise.all([user.save(), art.save()]).then(
+        ([user, art]) => art
+      );
+    });
+  });
+};
+
+UserSchema.statics.addPublishedArt = (userId, artId) => {
+  const User = mongoose.model("users");
+  const Art = mongoose.model("arts");
+
+  return User.findById(userId).then(user => {
+    return Art.findById(artId).then(art => {
+      user.publishedArts.push(art);
+
+      return Promise.all([user.save(), art.save()]).then(
+        ([user, art]) => art
+      );
+    });
+  });
+};
+
 
 module.exports = mongoose.model("users", UserSchema);
