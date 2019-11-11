@@ -15,6 +15,8 @@ const Art = mongoose.model("arts");
 const ArtType = require("./types/art_type");
 const Category = mongoose.model("categories");
 const CategoryType = require("./types/category_type");
+const Comment = mongoose.model("comments");
+const CommentType = require("./types/comment_type");
 
 const mutation = new GraphQLObjectType({
 	name: "Mutation",
@@ -150,17 +152,42 @@ const mutation = new GraphQLObjectType({
 				return User.addPublishedArt(userId, artId);
 			}
 		},
-		addUserPublishedComment: {
-			type: UserType,
+		newComment: { 
+			type: CommentType,
 			args: {
-				userId: { type: GraphQLID },
-				artId: { type: GraphQLID },
-				commentId: { type: GraphQLID }
+				body: { type: GraphQLString },
+				author: { type: GraphQLID },
+				art: { type: GraphQLID }
 			},
-			resolve(_, { userId, artId, commentId }) {
-				return User.addPublishedComment(userId, artId, commentId);
+			async resolve(_, args) {
+				return new Comment(args).save()
+					.then(comment => {
+						return User.findById(comment.author).then(user => {
+							user.publishedComments.push(comment);
+							return user.save()
+								.then(user => comment);
+						})
+					.then(comment => {
+						return Art.findById(comment.art).then(art => {
+							art.comments.push(comment);
+							return art.save()
+								.then(art => comment);
+						})
+					})
+				})
 			}
-		}
+		},
+		// addUserPublishedComment: {
+		// 	type: UserType,
+		// 	args: {
+		// 		userId: { type: GraphQLID },
+		// 		artId: { type: GraphQLID },
+		// 		commentId: { type: GraphQLID }
+		// 	},
+		// 	resolve(_, { userId, artId, commentId }) {
+		// 		return User.addPublishedComment(userId, artId, commentId);
+		// 	}
+		// }
 	}
 });
 
