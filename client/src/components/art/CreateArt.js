@@ -13,30 +13,27 @@ class CreateArt extends Component {
     console.log(this.props);
     
     this.state = {
-      category: "",
+      category: "Photo", // default to debug
       authorId: "",
       title: "",
       description: "",
       photoLink: ""
     };
+
+
   }
 
   update(field) {
     return e => this.setState({ [field]: e.target.value });
   }
 
-  // we need to remember to update our cache directly with our new art
   updateCache(cache, { data }) {
     let arts;
-    console.log(data);
     try {
-      // if we've already fetched the arts then we can read the
-      // query here
       arts = cache.readQuery({ query: FETCH_ART });
     } catch (err) {
       return;
     }
-    // if we had previously fetched arts we'll add our new art to our cache
     if (arts) {
       let artArray = arts.arts;
       let newArt = data.newArt;
@@ -49,7 +46,13 @@ class CreateArt extends Component {
 
   handleSubmit(e, newArt, user) {
     e.preventDefault();
+    console.log(this.state)
     console.log(user)
+    if (this.state.category === "Photo"){
+      this.setState({
+        category: "5dc9a1c883d5a53746a785a2"
+      })
+    }
     newArt({
       variables: {
         category: this.state.category,
@@ -60,14 +63,14 @@ class CreateArt extends Component {
       }
     });
   }
-
+  
   render() {
+
     const fetchUser = (
       <Query query={FETCH_USER} variables={{ _id: localStorage.currentUserId }}>
         {({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error</p>;
-          console.log(data);
           const user = data.user;
 
           return (
@@ -97,30 +100,45 @@ class CreateArt extends Component {
               <div className="art-form-header-bar">
                   <select 
                     className="art-form-category"
-                    name="select"
-                    id="select"> 
-                  <option value="Photo">Photo</option>
-                  <option value="Video">Video</option>
-
+                    value={this.state.category}
+                    onChange={this.update("category")}> 
+                      <option value="Photo">Photo</option>
+                      <option value="Video">Video</option>
                   </select>
               </div>
               
               <div className="art-form-content">
-                <div className="art-form-image-preview">
-                  adsfdsfsfda
-              </div>
+                <div className="art-form-image-container">
+                  <div className="art-form-image-preview">
+                    <span role="img" alt="" aria-label="debug" className="art-form-image-debug-icon">
+                      📷
+                    </span>
+                  </div>
+                  <div className="art-form-field-link-container">
+                    <input
+                      className="art-form-field-link-url"
+                      onChange={this.update("photoLink")}
+                      value={this.state.photoLink}
+                      placeholder="Link"
+                      type="text"
+                    />
+
+                  </div>
+                </div>
+                
               
                 <input
                   className="art-form-field-title"
                   onChange={this.update("title")}
                   value={this.state.title}
                   placeholder="Add your title"
+                  maxLength="40"
                 />
                 <div className="art-form-field-name">
                   <div className="art-form-field-user-icon">
-                    <div className="art-form-field-user-icon-pic">
+                    <span role="img" alt="" aria-label="debug" className="art-form-field-user-icon-pic">
                     👤
-                    </div>
+                    </span>
                   </div>
                   <span className="art-form-field-user-icon-text">{user.name}</span>
                   
@@ -128,33 +146,17 @@ class CreateArt extends Component {
 
                 <div
                   className="art-form-field-description"
+                  onChange={this.update("description")}
                   contentEditable="true"
                   value={this.state.description}
                   type="text"
-                  data-text="Tell everybody what your art is about">
-                </div>
-                
- 
-                {/* <textarea
-                  className="art-form-field-description"
-                  onChange={this.update("description")}
-                  value={this.state.description}
-                  placeholder="Tell everybody what your Art is about"
-                  type="text"
-                /> */}
-                <input
-                  onChange={this.update("photoLink")}
-                  value={this.state.photoLink}
-                  placeholder="Link"
-                  type="text"
-                />
+                  data-text="Tell everybody what your art is about"
+                  spellCheck="false" />
 
-
-                <button type="submit">Create Art</button>
               </div>
-             
               
               
+              <button className="art-form-field-submit" type="submit">Create Art</button>
              
             </form>
             <p>{this.state.message}</p>
