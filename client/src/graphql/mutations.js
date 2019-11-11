@@ -26,18 +26,19 @@ export default {
       }
     }
   `,
-  // CREATE_PRODUCT: gql`
-  //   mutation CreateProduct(
-  //     $name: String!
-  //     $description: String!
-  //     $weight: Float!
-  //   ) {
-  //     newProduct(name: $name, description: $description, weight: $weight) {
-  //       id
-  //       name
-  //       description
-  //       weight
-  //     }
-  //   }
-  // `
+  CREATE_ART: gql`
+    mutation CreateArt($category: String!, $authorId: ID!, $title: String!, $description: String!, $photoLink: String!) {
+      newArt(category: $category, authorId: $authorId, title: $title, description: $description, photoLink: $photoLink) {
+          category {
+            id
+            name
+          }
+          authorId
+          title
+          description
+          photoLink
+      }
+      
+    }
+  `
 };
