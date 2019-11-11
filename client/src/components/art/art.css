@@ -1,0 +1,84 @@
+.art-form-container {
+  width: 780px;
+  height: 500px;
+  border-radius: 5px;
+  background: rgb(240, 239, 239);
+  padding-top: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.art-form-header-bar {
+  width: 100%;
+  margin-bottom: 20px;
+  height: 50px;
+}
+
+.art-form-content {
+  padding-bottom: 40px;
+}
+
+.art-form-category {
+  height: 40px;
+  width: 100px;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+  float: right;
+}
+
+.art-form-image-preview {
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  background: rgb(230, 230, 230);
+  /* display: inline-block; */
+  border-radius: 10px;
+  float: left;
+  margin-right: 30px;
+}
+
+.art-form-field-title {
+  background: inherit;
+  border: none;
+  width: 400px;
+  font-size: 36px;
+  font-weight: 700;
+  border-bottom: 1px solid rgb(110, 110, 110);
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+
+
+.art-form-field-user-icon {
+  width: 44px;
+  height: 44px;
+  background: white;
+  border-radius: 50%;
+  float: left;
+}
+
+.art-form-field-name {
+  display: inline-block;
+  margin-bottom: 20px;
+  height: 40px;
+  width: 300px;
+  
+}
+
+.art-form-field-description {
+  display: inline-block;
+  resize: none;
+  width: 400px;
+
+  border: none;
+  font-size: 18px;
+  background: inherit;
+  border-bottom: 1px solid rgb(110, 110, 110);
+  overflow: auto;
+}
+
+.art-form-field-description[contentEditable=true]:empty:not(:focus):before{
+    content:attr(data-text)
+}

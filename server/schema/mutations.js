@@ -44,7 +44,7 @@ const mutation = new GraphQLObjectType({
 				authorId: { type: GraphQLID },
 				title: { type: GraphQLString },
 				description: { type: GraphQLString },
-				videoLink: { type: GraphQLString },
+				// videoLink: { type: GraphQLString },
 				photoLink: { type: GraphQLString }
 			},
 			async resolve(_, args, context) {
