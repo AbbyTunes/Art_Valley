@@ -34,6 +34,14 @@ const UserType = new GraphQLObjectType({
         .then(user => user.publishedArts);
       }
     },
+    publishedComments: {
+      type: new GraphQLList(require("./comment_type")),
+      resolve(parentValue) {
+        return User.findById(parentValue.id)
+          .populate("publishedComments")
+          .then(user => user.publishedComments);
+      }
+    },
     token: { type: GraphQLString },
     loggedIn: { type: GraphQLBoolean }
   })

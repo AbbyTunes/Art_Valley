@@ -164,30 +164,21 @@ const mutation = new GraphQLObjectType({
 					.then(comment => {
 						return User.findById(comment.author).then(user => {
 							user.publishedComments.push(comment);
-							return user.save()
-								.then(user => comment);
+							user.save();
+							return comment;
 						})
 					.then(comment => {
 						return Art.findById(comment.art).then(art => {
-							art.comments.push(comment);
-							return art.save()
-								.then(art => comment);
+							console.log(art);
+							art.comments.push(comment._id);
+							art.save();
+							return comment;
 						})
 					})
+					.catch(err => console.log(err));
 				})
 			}
 		},
-		// addUserPublishedComment: {
-		// 	type: UserType,
-		// 	args: {
-		// 		userId: { type: GraphQLID },
-		// 		artId: { type: GraphQLID },
-		// 		commentId: { type: GraphQLID }
-		// 	},
-		// 	resolve(_, { userId, artId, commentId }) {
-		// 		return User.addPublishedComment(userId, artId, commentId);
-		// 	}
-		// }
 	}
 });
 
