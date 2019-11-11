@@ -28,15 +28,15 @@ const mutation = new GraphQLObjectType({
 				return new Category(args).save();
 			}
 		},
-		deleteCategory: {
-			type: CategoryType,
-			args: {
-				_id: { type: GraphQLID }
-			},
-			resolve(_, { _id }) {
-				return Category.findByIdAndRemove(_id);
-			}
-		},
+		// deleteCategory: {
+		// 	type: CategoryType,
+		// 	args: {
+		// 		_id: { type: GraphQLID }
+		// 	},
+		// 	resolve(_, { _id }) {
+		// 		return Category.findByIdAndRemove(_id);
+		// 	}
+		// },
 		newArt: {
 			type: ArtType,
 			args: {
