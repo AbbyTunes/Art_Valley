@@ -87,7 +87,7 @@ UserSchema.statics.addPublishedComment = (userId, artId, commentId) => {
         comment.artId = artId;
         
         return Promise.all([user.save(), art.save()]).then(
-          ([user, art]) => art
+          ([user, art, comment]) => user
         );
       })
     });
