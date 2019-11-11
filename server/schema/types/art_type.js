@@ -6,6 +6,7 @@ const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLList } =
 const User = mongoose.model("users");
 // const CategoryType = require("./category_type");
 const Category = mongoose.model("categories");
+const Art = mongoose.model("arts");
 
 const ArtType = new GraphQLObjectType({
 	name: "ArtType",
@@ -20,7 +21,7 @@ const ArtType = new GraphQLObjectType({
 		likers: {
 			type: new GraphQLList(require("./user_type")),
 			resolve(parentValue) {
-				return Art.findById(parentValue.ID)
+				return Art.findById(parentValue.id)
 					.populate("likers")
 					.then(art => art.likers)
 				// return User.getUsers(parentValue.id)
