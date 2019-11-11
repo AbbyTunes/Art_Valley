@@ -2,11 +2,9 @@ const mongoose = require("mongoose");
 const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLList } = graphql;
 
-// const UserType = require("./user_type");
-const User = mongoose.model("users");
-// const CategoryType = require("./category_type");
-const Category = mongoose.model("categories");
 const Art = mongoose.model("arts");
+const User = mongoose.model("users");
+const Category = mongoose.model("categories");
 
 const ArtType = new GraphQLObjectType({
 	name: "ArtType",
@@ -24,7 +22,6 @@ const ArtType = new GraphQLObjectType({
 					.catch(err => null);
 			}
 		},
-		likes: { type: GraphQLInt },
 		likers: {
 			type: new GraphQLList(require("./user_type")),
 			resolve(parentValue) {

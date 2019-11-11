@@ -44,15 +44,7 @@ const RootQueryType = new GraphQLObjectType({
 				return Art.find({});
 			}
 		},
-		// artById and art, will only keep one
 		artById: {
-			type: ArtType,
-			args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
-			resolve(_, args) {
-				return Art.findById(args._id);
-			}
-		},
-		art: {
 			type: ArtType,
 			args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
 			resolve(_, args) {
