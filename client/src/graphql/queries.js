@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-
+ 
 export default {
   IS_LOGGED_IN: gql`
     query IsUserLoggedIn {
@@ -20,5 +20,24 @@ export default {
 				category
 			}
 		}
-	`
+	`,
+	FETCH_USER: gql`
+		query user($_id: ID!) {
+			user(_id: $_id) {
+				id
+				name
+				email
+				likedArts {
+					id
+					title
+					photoLink
+				}
+				publishedArts {
+					id 
+					title
+					photoLink
+				}
+			}
+		}
+	`,
 };

@@ -22,6 +22,10 @@ input[type=password]{
 }
 
 .session-form {
+  /* temp add - tell chris */
+  position: relative;
+  top: 100px;
+/* temp add - tell chris */
   box-sizing: border-box;
   max-width: 350px;
   margin: 0 auto;
@@ -89,4 +93,14 @@ input[type=password]{
   color: black;
   transition: 0.8s;
   cursor: pointer;
+}
+
+/* temp add - tell chris */
+@media screen and (min-width: 321px){
+  .session-form {
+  /* temp add - tell chris */
+  position: relative;
+  top: 150px;
+/* temp add - tell chris */
+  }
 }
