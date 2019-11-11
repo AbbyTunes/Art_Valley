@@ -13,7 +13,6 @@ import "./App.css";
 const App = () => {
 	return (
 		<div>
-			<Link classname="art-debug" to="/create">CreateArtDebug</Link>
 			<Nav />
 			<Switch>
         {/* debug buttons */}
