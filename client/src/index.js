@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const httpLink = createHttpLink({
-	uri: "http://localhost:5000/graphql",
+	uri,
 	headers: {
 		authorization: localStorage.getItem("auth-token") || ""
 		// currentUserId: localStorage.getItem("currentUserId")
