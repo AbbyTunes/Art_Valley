@@ -26,19 +26,11 @@ const ArtSchema = new Schema({
 	},
 	description: {
 		type: String
-<<<<<<< HEAD
-	},
-	likes: {
-		type: Number,
-		default: 0
 	},
 	comments: [{
 		type: Schema.Types.ObjectId,
 		ref: "comments"
 	}]
-=======
-	}
->>>>>>> master
 });
 
 ArtSchema.pre("findByIdAndDelete", function() {
