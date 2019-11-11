@@ -12,11 +12,18 @@ const ArtType = new GraphQLObjectType({
 	name: "ArtType",
 	fields: () => ({
 		id: { type: GraphQLID },
-		authorId: { type: GraphQLID },
 		videoLink: { type: GraphQLString },
 		photoLink: { type: GraphQLString },
 		title: { type: GraphQLString },
 		description: { type: GraphQLString },
+		author: {
+			type: require("./user_type"),
+			resolve(parentValue) {
+				return User.findById(parentValue.author)
+					.then(author => author)
+					.catch(err => null);
+			}
+		},
 		likes: { type: GraphQLInt },
 		likers: {
 			type: new GraphQLList(require("./user_type")),
@@ -24,7 +31,6 @@ const ArtType = new GraphQLObjectType({
 				return Art.findById(parentValue.id)
 					.populate("likers")
 					.then(art => art.likers)
-				// return User.getUsers(parentValue.id)
 			}
 		},
 		category: {
