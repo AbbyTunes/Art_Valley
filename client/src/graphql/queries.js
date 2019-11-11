@@ -18,47 +18,62 @@ export default {
 		}
 	`,
 	FETCH_ART: gql`
-		query art($_id: ID!) {
-			art(id: $id) {
+		query artById($_id: ID!) {
+			artById(id: $id) {
 				id
 				authorId
 				videoLink
 				photoLink
 				title
 				description
-				likes
 				likers
 				category
 			}
 		}
 	`,
-	FETCH_ART_BY_CATEGORY: gql`
-		query findArtByCategory($categoryId: ID!) {
-			art(categoryId: $categoryId) {
+	FETCH_ARTS_BY_CATEGORY: gql`
+		query artsByCategory($categoryId: ID!) {
+			artsByCategory(categoryId: $categoryId) {
 				id
-				authorId
+				author{
+					id
+					name
+				}
 				videoLink
 				photoLink
 				title
 				description
-				likes
-				likers
-				category
+				likers{
+					id
+					name
+				}
+				category {
+					id
+					name
+				}
 			}
 		}
 	`,
-	FETCH_ART_BY_USER: gql`
-		query findArtbyUser($userId: ID!) {
-			art(userId: $userId) {
+	FETCH_ARTS_BY_AUTHOR: gql`
+		query artsByAuthor($authorId: ID!) {
+			artsByAuthor(authorId: $authorId) {
 				id
-				authorId
+				author{
+					id
+					name
+				}
 				videoLink
 				photoLink
 				title
 				description
-				likes
-				likers
-				category
+				likers{
+					id
+					name
+				}
+				category {
+					id
+					name
+				}
 			}
 		}
 	`,
