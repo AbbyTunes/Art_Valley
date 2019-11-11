@@ -7,6 +7,7 @@ const User = mongoose.model("users");
 // const CategoryType = require("./category_type");
 const Category = mongoose.model("categories");
 const Art = mongoose.model("arts");
+const Comment = mongoose.model("comments");
 
 const ArtType = new GraphQLObjectType({
 	name: "ArtType",
@@ -33,6 +34,14 @@ const ArtType = new GraphQLObjectType({
 				return Category.findById(parentValue.category)
 					.then(category => category)
 					.catch(err => null);
+			}
+		},
+		comments: {
+			type: new GraphQLList(require("./comment_type")),
+			resolve(parentValue) {
+				return Art.findById(parentValue.id)
+					.populate("comments")
+					.then(art => art.comments)
 			}
 		}
 	})
