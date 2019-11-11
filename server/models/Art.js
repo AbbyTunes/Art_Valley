@@ -30,7 +30,11 @@ const ArtSchema = new Schema({
 	likes: {
 		type: Number,
 		default: 0
-	}
+	},
+	comments: [{
+		type: Schema.Types.ObjectId,
+		ref: "comments"
+	}]
 });
 
 module.exports = mongoose.model("arts", ArtSchema);

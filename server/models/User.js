@@ -28,7 +28,11 @@ const UserSchema = new Schema({
   publishedArts: [{
     type: Schema.Types.ObjectId,
     ref: "arts"
-  }]
+  }],
+  publishedComments: [{
+    type: Schema.Types.ObjectId,
+    ref: "comments"
+  }],
   // ,
   // playlist: [{
   //   type: Schema.Types.ObjectId,
