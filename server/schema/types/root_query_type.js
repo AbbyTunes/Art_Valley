@@ -50,8 +50,22 @@ const RootQueryType = new GraphQLObjectType({
 		resolve(_, args) {
 			return Art.findById(args._id);
 		}
-	}
-	
+	},
+	art: {
+		type: ArtType,
+		args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
+		resolve(_, args) {
+			return Art.findById(args._id);
+		}
+	},
+	// findArtByCategory: {
+	// 	type: ArtType,
+	// 	args: { categoryId: { type: new GraphQLNonNull(GraphQLID) } },
+	// 	resolve(_, args) {
+	// 		return Art.find({ category: args.category });
+	// 	}
+	// }
+	// findArtbyUser
 		// artByAuthor: {
 		// 	type: ArtType,
 		// 	args: { authorId: { type: new GraphQLNonNull(GraphQLID) } },
@@ -59,13 +73,7 @@ const RootQueryType = new GraphQLObjectType({
 		// 		return Art.find({ authorId: args.authorId });
 		// 	}
 		// },
-		// artByCategory: {
-		// 	type: ArtType,
-		// 	args: { category: { type: new GraphQLNonNull(GraphQLID) } },
-		// 	resolve(_, args) {
-		// 		return Art.find({ category: args.category });
-		// 	}
-		// }
+		// artByCategory:
   })
 });
 
