@@ -26,10 +26,6 @@ const ArtSchema = new Schema({
 	},
 	description: {
 		type: String
-	},
-	likes: {
-		type: Number,
-		default: 0
 	}
 });
 

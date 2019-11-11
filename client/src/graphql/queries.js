@@ -18,15 +18,14 @@ export default {
 		}
 	`,
 	FETCH_ART: gql`
-		query art($_id: ID!) {
-			art(id: $id) {
+		query artById($_id: ID!) {
+			artById(id: $id) {
 				id
 				authorId
 				videoLink
 				photoLink
 				title
 				description
-				likes
 				likers
 				category
 			}
@@ -44,7 +43,6 @@ export default {
 				photoLink
 				title
 				description
-				likes
 				likers{
 					id
 					name
@@ -68,7 +66,6 @@ export default {
 				photoLink
 				title
 				description
-				likes
 				likers{
 					id
 					name
