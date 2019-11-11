@@ -1,6 +1,6 @@
 .art-form-container {
   width: 780px;
-  height: 500px;
+  min-height: 420px;
   border-radius: 5px;
   background: rgb(240, 239, 239);
   padding-top: 20px;
@@ -20,11 +20,14 @@
 
 .art-form-category {
   height: 40px;
-  width: 100px;
+  width: 150px;
   background-color: rgb(255, 255, 255);
   border: none;
   cursor: pointer;
   float: right;
+  padding-left: 5px;
+  font-size: 16px;
+  color: #5f5f5f;
 }
 
 .art-form-image-preview {
@@ -38,15 +41,22 @@
   margin-right: 30px;
 }
 
+
 .art-form-field-title {
   background: inherit;
   border: none;
-  width: 400px;
+  width: 430px;
   font-size: 36px;
   font-weight: 700;
   border-bottom: 1px solid rgb(110, 110, 110);
   display: inline-block;
   margin-bottom: 20px;
+}
+
+.art-form-field-title:focus {
+  border-bottom: 3px solid rgba(0,132,255,.5);
+  margin-bottom: 18px;
+
 }
 
 
@@ -57,6 +67,25 @@
   background: white;
   border-radius: 50%;
   float: left;
+  position: relative;
+}
+
+/* debug unicode icon */
+.art-form-field-user-icon-pic { 
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  overflow: hidden;
+  border-radius: 50%;
+  cursor: default;
+}
+
+.art-form-field-user-icon-pic:hover {
+  opacity: 0.7;
 }
 
 .art-form-field-name {
@@ -64,21 +93,46 @@
   margin-bottom: 20px;
   height: 40px;
   width: 300px;
-  
+
+}
+
+.art-form-field-user-icon-text {
+  background: inherit;
+  position: relative;
+  color: #333;
+  font-weight: 600;
+  left: 20px;
+  line-height: 2.5;
 }
 
 .art-form-field-description {
   display: inline-block;
   resize: none;
-  width: 400px;
-
+  width: 430px;
+  overflow: hidden;
+  padding-bottom: 5px;
   border: none;
   font-size: 18px;
   background: inherit;
   border-bottom: 1px solid rgb(110, 110, 110);
-  overflow: auto;
+  margin-bottom: 30px;
+}
+
+.art-form-field-description[type=text]{
+  color: #5f5f5f;
 }
 
 .art-form-field-description[contentEditable=true]:empty:not(:focus):before{
     content:attr(data-text)
 }
+
+.art-form-field-description:hover {
+  cursor: text;
+}
+
+.art-form-field-description:focus {
+  border-bottom: 3px solid rgba(0,132,255,.5);
+  margin-bottom: 28px;
+}
+
+.preview-image { display: none; height: auto; width: 200px; }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Mutation, Query } from "react-apollo";
 import "./art.css";
+import "./art.js";
 import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
 const { CREATE_ART } = Mutations;
@@ -116,13 +117,20 @@ class CreateArt extends Component {
                   placeholder="Add your title"
                 />
                 <div className="art-form-field-name">
-                  <div className="art-form-field-user-icon" />{user.name}
+                  <div className="art-form-field-user-icon">
+                    <div className="art-form-field-user-icon-pic">
+                    👤
+                    </div>
+                  </div>
+                  <span className="art-form-field-user-icon-text">{user.name}</span>
+                  
                 </div>
 
                 <div
                   className="art-form-field-description"
                   contentEditable="true"
                   value={this.state.description}
+                  type="text"
                   data-text="Tell everybody what your art is about">
                 </div>
                 
@@ -140,6 +148,8 @@ class CreateArt extends Component {
                   placeholder="Link"
                   type="text"
                 />
+
+
                 <button type="submit">Create Art</button>
               </div>
              
