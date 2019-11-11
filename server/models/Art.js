@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ArtSchema = new Schema({
-	authorId: {
+	author: {
 		type: Schema.Types.ObjectId,
 		ref: "users"
 	},
@@ -26,11 +26,21 @@ const ArtSchema = new Schema({
 	},
 	description: {
 		type: String
-	},
-	likes: {
-		type: Number,
-		default: 0
 	}
+});
+
+ArtSchema.pre("findByIdAndDelete", function() {
+	const Art = mongoose.model("arts");
+	const Category = mongoose.model("categories");
+
+	Art.findById(this.getFilter())
+		.then(art => {
+			Category.findById(art.category)
+				.then(category => {
+					category.arts.pull(art);
+					category.save();
+				});
+		});
 });
 
 module.exports = mongoose.model("arts", ArtSchema);

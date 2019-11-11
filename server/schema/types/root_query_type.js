@@ -24,56 +24,47 @@ const RootQueryType = new GraphQLObjectType({
       resolve(_, args) {
         return User.findById(args._id);
       }
-	},
-	categories: {
-		type: new GraphQLList(CategoryType),
-		resolve() {
-			return Category.find({});
+		},
+		categories: {
+			type: new GraphQLList(CategoryType),
+			resolve() {
+				return Category.find({});
+			}
+		},
+		category: {
+			type: CategoryType,
+			args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
+			resolve(_, args) {
+				return Category.findById(args._id)
+			}
+		},
+		arts: {
+			type: new GraphQLList(ArtType),
+			resolve() {
+				return Art.find({});
+			}
+		},
+		artById: {
+			type: ArtType,
+			args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
+			resolve(_, args) {
+				return Art.findById(args._id);
+			}
+		},
+		artsByCategory: {
+			type: new GraphQLList(ArtType), 
+			args: { categoryId: { type: new GraphQLNonNull(GraphQLID) } },
+			resolve(_, args) {
+				return Art.find({ category: args.categoryId });
+			}
+		},
+		artsByAuthor: {
+			type: new GraphQLList(ArtType),
+			args: { authorId: { type: new GraphQLNonNull(GraphQLID) } },
+			resolve(_, args) {
+				return Art.find({ author: args.authorId });
+			}
 		}
-	},
-	category: {
-		type: CategoryType,
-		args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
-		resolve(_, args) {
-			return Category.findById(args._id)
-		}
-	},
-	arts: {
-		type: new GraphQLList(ArtType),
-		resolve() {
-			return Art.find({});
-		}
-	},
-	artById: {
-		type: ArtType,
-		args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
-		resolve(_, args) {
-			return Art.findById(args._id);
-		}
-	},
-	art: {
-		type: ArtType,
-		args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
-		resolve(_, args) {
-			return Art.findById(args._id);
-		}
-	},
-	// findArtByCategory: {
-	// 	type: ArtType,
-	// 	args: { categoryId: { type: new GraphQLNonNull(GraphQLID) } },
-	// 	resolve(_, args) {
-	// 		return Art.find({ category: args.category });
-	// 	}
-	// }
-	// findArtbyUser
-		// artByAuthor: {
-		// 	type: ArtType,
-		// 	args: { authorId: { type: new GraphQLNonNull(GraphQLID) } },
-		// 	resolve(_, args) {
-		// 		return Art.find({ authorId: args.authorId });
-		// 	}
-		// },
-		// artByCategory:
   })
 });
 
