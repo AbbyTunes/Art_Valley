@@ -6,7 +6,7 @@ const expressGraphQL = require("express-graphql");
 require("./models/index");
 const schema = require("./schema/schema");
 const cors = require("cors");
-import { graphqlUploadExpress } from "graphql-upload";
+// import { graphqlUploadExpress } from "graphql-upload";
 
 const app = express();
 
