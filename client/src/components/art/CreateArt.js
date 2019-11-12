@@ -9,7 +9,7 @@ import axios from "axios";
 const { CREATE_ART } = Mutations;
 const { FETCH_ART, FETCH_USER } = Queries;
 
-const endpoint = "http://localhost:5000/api/document/upload";
+const endpoint = "http://localhost:5000/api/art/upload";
 
 class CreateArt extends Component {
   constructor(props) {
@@ -98,8 +98,11 @@ class CreateArt extends Component {
         category: "5dc603aa4dc3a23d54cbb4fb" // video
       });
     }
-    data.append("file", this.state.photoLink, this.state.title, this.state.author, this.state.category, this.state.category);
-    
+    data.append("file", this.state.photoLink);
+    data.append("title",this.state.title);
+    data.append("category",this.state.category);
+    data.append("author",this.state.author);
+    data.append("description",this.state.description);
     axios.post(endpoint, data)
   }
 
