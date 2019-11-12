@@ -147,5 +147,13 @@ export default {
         }
       }
     }
+  `,
+  FETCH_CATEGORIES: gql`
+    query categories {
+      categories {
+        id
+        name
+      }
+    }
   `
 };
