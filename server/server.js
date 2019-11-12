@@ -7,6 +7,8 @@ require("./models/index");
 const schema = require("./schema/schema");
 const cors = require("cors");
 
+const fileUpload = require("./routes/fileUpload");
+
 const app = express();
 
 if (!db) {
@@ -16,18 +18,19 @@ if (!db) {
 app.use(cors());
 
 app.use(
-	"/graphql",
-	expressGraphQL(req => {
-		return {
-			schema,
-			context: {
-				token: req.headers.authorization
-				// currentUserId: req.headers.currentUserId
-			},
-			graphiql: true
-		}
-	})
+  "/graphql",
+  expressGraphQL(req => {
+    return {
+      schema,
+      context: {
+        token: req.headers.authorization
+      },
+      graphiql: true
+    };
+  })
 );
+
+app.use("/api/art", fileUpload);
 
 mongoose
 	.connect(db, {
