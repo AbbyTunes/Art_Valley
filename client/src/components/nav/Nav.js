@@ -92,7 +92,7 @@ class Nav extends React.Component {
                     if (data.isLoggedIn) {
                       return (
                         <div id="nav-links-2" className="nav-links">
-                          <Link
+                          <Link to="/"
                             onClick={e => {
                               e.preventDefault();
                               localStorage.removeItem("auth-token");
