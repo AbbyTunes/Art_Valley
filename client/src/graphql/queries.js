@@ -5,19 +5,78 @@ export default {
     query IsUserLoggedIn {
 			isLoggedIn @client
     }
-  `,
-	FETCH_ART: gql`
-		query art($_id: ID!) {
-			art(id: $id) {
+	`,
+	FETCH_ARTS: gql`
+		query arts {
+			arts {
 				id
 				authorId
 				videoLink
 				photoLink
 				title
+			}
+		}
+	`,
+	FETCH_ART: gql`
+		query artById($_id: ID!) {
+			artById(id: $id) {
+				id
+				author {
+					id
+					name
+				}
+				videoLink
+				photoLink
+				title
 				description
-				likes
 				likers
 				category
+			}
+		}
+	`,
+	FETCH_ARTS_BY_CATEGORY: gql`
+		query artsByCategory($categoryId: ID!) {
+			artsByCategory(categoryId: $categoryId) {
+				id
+				author{
+					id
+					name
+				}
+				videoLink
+				photoLink
+				title
+				description
+				likers{
+					id
+					name
+				}
+				category {
+					id
+					name
+				}
+			}
+		}
+	`,
+	FETCH_ARTS_BY_AUTHOR: gql`
+		query artsByAuthor($authorId: ID!) {
+			artsByAuthor(authorId: $authorId) {
+				id
+				author{
+					id
+					name
+				}
+				videoLink
+				photoLink
+				title
+				description
+				likers{
+					id
+					name
+				}
+				category {
+					id
+					name
+				}
 			}
 		}
 	`,

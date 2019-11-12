@@ -28,27 +28,18 @@ const mutation = new GraphQLObjectType({
 				return new Category(args).save();
 			}
 		},
-		deleteCategory: {
-			type: CategoryType,
-			args: {
-				_id: { type: GraphQLID }
-			},
-			resolve(_, { _id }) {
-				return Category.findByIdAndRemove(_id);
-			}
-		},
 		newArt: {
 			type: ArtType,
 			args: {
 				category: { type: GraphQLID },
-				authorId: { type: GraphQLID },
+				author: { type: GraphQLID },
 				title: { type: GraphQLString },
 				description: { type: GraphQLString },
 				// videoLink: { type: GraphQLString },
 				photoLink: { type: GraphQLString }
 			},
 			async resolve(_, args, context) {
-				return new Art(args).save()
+ 				return new Art(args).save()
 					.then(art => {
 						if (art.category) {
 
@@ -76,7 +67,7 @@ const mutation = new GraphQLObjectType({
 				_id: { type: new GraphQLNonNull(GraphQLID) }
 			},
 			resolve(_, { _id }) {
-				return Art.findByIdAndDelete(_id)
+				return Art.findByIdAndDelete({_id})
 					.then(art => art)
 					.catch(err => null);
 			}

@@ -11,7 +11,9 @@ const CategoryType = new GraphQLObjectType({
 		arts: {
 			type: new GraphQLList(require("./art_type")),
 			resolve(parentValue) {
-				return Category.getArts(parentValue.id);
+				return Category.findById(parentValue.id)
+					.populate("arts")
+					.then(category => category.arts)
 			}
 		}
 	})
