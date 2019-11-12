@@ -6,6 +6,7 @@
 	position: relative;
 	top: 67px;
 	padding: 40px;
+	min-height: 600px;
 
 	.show-art {
 		display: block;
@@ -68,21 +69,49 @@
 				width: 100%;
 
 				.show-comment {
-						margin: 20px 0;
+
 				}
 			}
 		}
 	}
 
 	.show-artist {
+		display: flex;
+    flex-direction: column;
+		align-items: center;
+		text-align: center;	
+    padding-bottom: 20px;
 
+		.published-header {
+			font-weight: 800;
+			border-top: none;
+		}
+
+		.published-ul {
+			display: grid;
+			grid-template-columns: 100%;
+			grid-row-gap: 20px;
+			width: 300px;
+			padding-bottom: 20px;
+		}
+
+		.published-li {
+			background: none;
+			height: 300px;
+
+			.published-photo-thumbnail{
+				object-fit: cover;
+				max-height: 100%;
+				width: 100%;
+			}
+		}
 	}
+
 
 	.show-category {
 
 	}
 }
-
 
 @media screen and (min-width: 800px) {
 
@@ -99,7 +128,7 @@
 			margin: auto;
 
 			.show-pic {
-				max-height: 300px;
+				max-height: 400px;
 				overflow: hidden;
 
 				.show-image {
@@ -151,8 +180,9 @@
 				}
 
 				.info-3 {
+
 					.show-comment {
-							margin: 20px 0;
+					
 					}
 				}
 				

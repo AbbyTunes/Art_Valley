@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import AuthRoute from "../util/route_util";
 
 import Login from "./user_auth/Login";
@@ -9,27 +9,31 @@ import Profile from "./user/Profile"
 import Settings from "./user/Settings";
 import CreateArt from "./art/CreateArt";
 import ArtIndex from "./art/art_index";
+import VideoIndex from "./art/video_index";
 import ArtShow from "./art/art_show";
 
 import "./App.css";
 
 const App = () => {
 	return (
-		<div>
-			<Nav />
-			<Switch>
+    <div>
+      <Nav />
+      <Switch>
         {/* debug buttons */}
-				<AuthRoute exact path="/login" component={Login} routeType="auth" />
-				<AuthRoute exact path="/register" component={Register} routeType="auth" />
-				<Route exact path="/" component={ArtIndex} />
-				<Route exact path="/arts/:artId" component={ArtShow} />
-			</Switch>
-			<Route exact path="/create" component={CreateArt}/>
+        <AuthRoute exact path="/login" component={Login} routeType="auth" />
+        <AuthRoute exact path="/register" component={Register} routeType="auth" />
+        <Route exact path="/" component={ArtIndex} />
+        <Route exact path="/video" component={VideoIndex} />
+        <Route exact path="/arts/:artId" component={ArtShow} />
+				<Route exact path='/*' render={() => <Redirect to={{ pathname: "/" }} />} />
+      </Switch>
+      <Route exact path="/create" component={CreateArt} />
+
+      <Route exact path="/users/:userId" component={Profile} />
+      <Route exact path="/settings" component={Settings} />
 			
-			<Route exact path="/users/:userId" component={Profile} />
-			<Route exact path="/settings" component={Settings} />
-		</div>
-	);
+    </div>
+  );
 };
 
 export default App;

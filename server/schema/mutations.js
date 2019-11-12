@@ -39,15 +39,17 @@ const mutation = new GraphQLObjectType({
 				author: { type: GraphQLID },
 				title: { type: GraphQLString },
 				description: { type: GraphQLString },
-				// videoLink: { type: GraphQLString },
 				photoLink: { type: GraphQLString }
 			},
 			async resolve(_, args, context) {
- 				return new Art(args).save()
+				 return new Art(args).save()
+					.then(art => {
+						User.addPublishedArt(art.author, art._id );
+						return art;
+					})
 					.then(art => {
 						if (art.category) {
-
-							console.log(art)
+							// console.log(art)
 							return Category.findById(args.category).then(category =>{
 								category.arts.push(art);
 								return category.save()
@@ -57,12 +59,12 @@ const mutation = new GraphQLObjectType({
 							return art
 						}
 				});
-				// const validUser = await AuthService.verifyUser({ token: context.token });
-				// if (validUser.loggedIn) { 
+			// 	const validUser = await AuthService.verifyUser({ token: context.token });
+			// 	if (validUser.loggedIn) { 
 
-				// } else {
-				// 	throw new Error("sorry, you need to log in first");
-				// }
+			// 	} else {
+			// 		throw new Error("sorry, you need to log in first");
+			// 	}
 			}
 		},
 		deleteArt: {

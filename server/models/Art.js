@@ -18,9 +18,6 @@ const ArtSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: "comments"
 	}],
-	videoLink: {
-		type: String
-	},
 	photoLink: {
 		type: String
 	},

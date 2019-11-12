@@ -23,7 +23,7 @@
 }
 
 .art-index-li{
-		border: 1px solid grey;
+		border: none;
     height: 300px;
 }
 
@@ -47,7 +47,7 @@
 				}
 
 		.art-index-li{
-				border: 0px solid grey;
+				border: none;
 				min-width: 300px;
 				max-width: 300px;
 				min-height: 230px;

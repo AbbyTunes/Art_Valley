@@ -10,8 +10,9 @@ export default {
     query arts {
       arts {
         id
-        authorId
-        videoLink
+        author {
+					name
+				}
         photoLink
         title
       }
@@ -24,8 +25,12 @@ export default {
         author {
           id
           name
+          publishedArts {
+						id
+						title
+						photoLink
+					}
         }
-        videoLink
         photoLink
         title
         description
@@ -38,12 +43,40 @@ export default {
           name
         }
         comments {
-          body
+					id
+					author {
+						name
+						id
+					}
+					body
         }
       }
     }
   `,
-  FETCH_CATEGORY_BY_NAME: gql`
+  
+  FETCH_ARTS_BY_CATEGORY: gql`
+    query artsByCategory($categoryId: ID!) {
+      artsByCategory(categoryId: $categoryId) {
+        id
+        author {
+          id
+          name
+        }
+        photoLink
+        title
+        description
+        likers {
+          id
+          name
+        }
+        category {
+          id
+          name
+        }
+      }
+    }
+	`,
+	FETCH_CATEGORY_BY_NAME: gql`
     query categoryByName($name: STRING!) {
       categoryByName(name: $name) {
         id
@@ -54,50 +87,12 @@ export default {
         }
       }
     }
-  `,
-  FETCH_ARTS_BY_CATEGORY: gql`
-    query artsByCategory($categoryId: ID!) {
-      artsByCategory(categoryId: $categoryId) {
+	`,
+	FETCH_CATEGORIES: gql`
+    query categories {
+      categories {
         id
-        author {
-          id
-          name
-        }
-        videoLink
-        photoLink
-        title
-        description
-        likers {
-          id
-          name
-        }
-        category {
-          id
-          name
-        }
-      }
-    }
-  `,
-  FETCH_ARTS_BY_AUTHOR: gql`
-    query artsByAuthor($authorId: ID!) {
-      artsByAuthor(authorId: $authorId) {
-        id
-        author {
-          id
-          name
-        }
-        videoLink
-        photoLink
-        title
-        description
-        likers {
-          id
-          name
-        }
-        category {
-          id
-          name
-        }
+        name
       }
     }
   `,
