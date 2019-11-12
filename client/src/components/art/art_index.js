@@ -7,18 +7,6 @@ const { FETCH_ARTS_BY_CATEGORY } = Queries;
 
 const ArtIndex = (props) => {
 
-	// const categoryName = ( 
-	// 	<Query
-	// 		query={FETCH_CATEGORY_BY_NAME} 
-	// 		variables={{ name: "Photo" }} >
-	// 		{({ loading, error, data }) => {
-	// 			debugger
-	// 				return data.categoryByName
-	// 			}
-	// 		}
-	// 	</Query>
-	// )
-
 	return (
 		<Query 
 			query={FETCH_ARTS_BY_CATEGORY} 
@@ -26,21 +14,21 @@ const ArtIndex = (props) => {
 			{({ loading, error, data }) => {
 				
 				if (loading) return (
-					<div className="art-container">
+					<div className="art-index-container">
 						<p>Loading...</p>
 					</div>
 				);
 				if (error) return (
-					<div className="art-container">
+					<div className="art-index-container">
 						<p>Error</p>
 					</div>
 				);
 
-				let allArtList = data.artsByCategory.map(art => {
+				let allArtList = data.artsByCategory.map((art) => {
 					return (
 						<li key={art.id} className="art-index-li">
 							<Link to={`/arts/${art.id}`}>
-								<img className="art-photo-thumbnail" src={art.photoLink} />
+								<img className="art-photo-thumbnail" src={art.photoLink} alt="" />
 							</Link>
 						</li>
 					)
@@ -53,7 +41,7 @@ const ArtIndex = (props) => {
 				)
 
 				return (
-					<div className="art-container">
+					<div className="art-index-container">
 						<div className="art-header">
 							Photos
 						</div>
