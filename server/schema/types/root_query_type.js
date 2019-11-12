@@ -8,6 +8,8 @@ const ArtType = require("./art_type");
 const Art = mongoose.model("arts");
 const CategoryType = require("./category_type");
 const Category = mongoose.model("categories");
+const CommentType = require("./comment_type");
+const Comment = mongoose.model("comments");
 
 const RootQueryType = new GraphQLObjectType({
   name: "RootQueryType",
@@ -64,7 +66,21 @@ const RootQueryType = new GraphQLObjectType({
 			resolve(_, args) {
 				return Art.find({ author: args.authorId });
 			}
+		},
+	comments: {
+		type: new GraphQLList(CommentType),
+		resolve() {
+			return Comment.find({});
 		}
+	},
+	comment: {
+		type: CommentType,
+		args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
+		resolve(_, args) {
+			return Comment.findById(args._id);
+		}
+	},
+
   })
 });
 

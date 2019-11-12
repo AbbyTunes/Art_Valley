@@ -46,6 +46,10 @@
     display: none;
 }
 
+.user-link{
+    z-index: 102;
+}
+
 .fas:hover{
     cursor: pointer;
 }
