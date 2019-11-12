@@ -27,7 +27,12 @@ const ArtSchema = new Schema({
 	},
 	description: {
 		type: String
-	}
+	},
+	comments: [{
+		type: Schema.Types.ObjectId,
+		ref: "comments"
+	}],
+	s3_key: { type: String }
 });
 
 ArtSchema.pre("findByIdAndDelete", function() {
