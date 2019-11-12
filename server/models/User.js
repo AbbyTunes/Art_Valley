@@ -73,28 +73,6 @@ UserSchema.statics.addPublishedArt = (userId, artId) => {
   });
 };
 
-// UserSchema.statics.addPublishedComment = (userId, artId, commentId) => {
-//   const User = mongoose.model("users");
-//   const Art = mongoose.model("arts");
-//   const Comment = mongoose.model("comments");
-
-//   return User.findById(userId).then(user => {
-//     return Art.findById(artId).then(art => {
-//       return Comment.findById(commentId).then(comment => {
-//         user.publishedComments.push(comment);
-//         art.comments.push(comment);
-//         comment.authorId = userId;
-//         comment.artId = artId;
-        
-//         return Promise.all([user.save(), art.save()]).then(
-//           ([user, art, comment]) => user
-//         );
-//       })
-//     });
-//   });
-// };
-
-
 
 
 module.exports = mongoose.model("users", UserSchema);

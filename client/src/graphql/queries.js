@@ -28,6 +28,9 @@ export default {
 				description
 				likers
 				category
+				comments { 
+					body
+				}
 			}
 		}
 	`,
@@ -92,6 +95,34 @@ export default {
 					id 
 					title
 					photoLink
+				}
+			}
+		}
+	`,
+	FETCH_COMMENT: gql`
+		query comment($_id: ID!) {
+			comment(id: $id) {
+				id
+				body
+				art { 
+					title
+				}
+				author {
+					name
+				}
+			}
+		}
+	`,
+	FETCH_COMMENTS: gql`
+		query comments {
+			comments {
+				id
+				body
+				art {
+					title
+				}
+				author {
+					name
 				}
 			}
 		}
