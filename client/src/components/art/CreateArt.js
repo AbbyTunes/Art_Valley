@@ -5,12 +5,16 @@ import "./art.js";
 import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
 import TextareaAutosize from "react-textarea-autosize";
+import axios from "axios";
 const { CREATE_ART } = Mutations;
 const { FETCH_ART, FETCH_USER, FETCH_CATEGORIES } = Queries;
+
+const endpoint = "http://localhost:5000/api/art/upload";
 
 class CreateArt extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       category: "", // default to debug
       author: localStorage.currentUserId,
@@ -19,6 +23,13 @@ class CreateArt extends Component {
       photoLink: ""
     };
   }
+
+  handleSelectedFile = e => {
+    e.preventDefault();
+    this.setState({
+      photoLink: e.target.files[0]
+    });
+  };
 
   update(field) {
     return e => this.setState({ [field]: e.target.value });
@@ -41,66 +52,41 @@ class CreateArt extends Component {
     }
   }
 
-  handleSubmit(e, newArt, categories) {
+  handleSubmit(e) {
     e.preventDefault();
-
-    newArt({
-      variables: {
-        category: this.state.category,
-        author: this.state.author,
-        title: this.state.title,
-        description: this.state.description,
-        photoLink: this.state.photoLink
-      }
-    });
+    const data = new FormData(e.target);
+    if (this.state.category === "Photo") {
+      this.setState({
+        category: "5dc9a1c883d5a53746a785a2" //debug id for...whatever reason
+      });
+    } else {
+      this.setState({
+        category: "5dc603aa4dc3a23d54cbb4fb" // video
+      });
+    }
+    data.append("file", this.state.photoLink);
+    data.append("title",this.state.title);
+    data.append("category",this.state.category);
+    data.append("author",this.state.author);
+    data.append("description",this.state.description);
+    axios.post(endpoint, data)
   }
 
   render() {
+    console.log(this.state);
 
-    const fetchUser = (
-      <Query query={FETCH_CATEGORIES}>
-        {({ loading, error, data }) => {
-          if (loading) return <p>Loading...</p>;
-          if (error) return <p>Error</p>;
-          const categories = data.categories;
-          return (
-            <div className="profile-container">
-              {createArtForm(categories)}
-            </div>
-          )
-        }}
-      </Query>
-    )
-
-    const createArtForm = categories => (
-      <Mutation
-        mutation={CREATE_ART}
-        onError={err => this.setState({ message: err.message })}
-        update={(cache, data) => this.updateCache(cache, data)}
-        onCompleted={data => {
-          const newArt = data.newArt;
-          this.setState({
-            message: `New art ${newArt.title} created successfully`
-          });
-        }}
-      >
-        {newArt => (
+    return(
+      <div className="profile-container">
           <div className="art-form-container">
-            <form onSubmit={e => this.handleSubmit(e, newArt, categories)}>
+            <form onSubmit={e => this.handleSubmit(e)}>
               <div className="art-form-header-bar">
                 <select
                   className="art-form-category"
                   value={this.state.category}
                   onChange={this.update("category")}
                 >
-                  {categories.map(category => {
-                    return (
-                      <option key={category.id} value={category.id}>
-                        {" "}
-                        {category.name}{" "}
-                      </option>
-                    );
-                  })}
+                  <option value="Photo">Photo</option>
+                  <option value="Video">Video</option>
                 </select>
               </div>
 
@@ -116,15 +102,21 @@ class CreateArt extends Component {
                       📷
                     </span>
                   </div>
-                  <div className="art-form-field-link-container">
+                  {/* <div className="art-form-field-link-container">
                     <input
                       className="art-form-field-link-url"
-                      onChange={this.update("photoLink")}
+                      onChange={this.handleSelectedFile}
                       value={this.state.photoLink}
                       placeholder="Place URL for image/video here"
                       type="text"
-                      required
-                    />
+                    /> */}
+                    <div className="form-group">
+                      <input
+                        type="file"
+                        name=""
+                        id=""
+                        onChange={this.handleSelectedFile}
+                      />
                   </div>
                 </div>
 
@@ -160,7 +152,6 @@ class CreateArt extends Component {
                 type="text"
                 spellCheck="false"
                 placeholder="Tell everybody what your art is"
-                required
               />
 
               <button className="art-form-field-submit" type="submit">
@@ -172,14 +163,7 @@ class CreateArt extends Component {
             </div>
             
           </div>
-        )}
-      </Mutation>
-    );
-
-    return (
-      <div>
-        {fetchUser}
-      </div>
+        </div>
     );
   }
 }
