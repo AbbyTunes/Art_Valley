@@ -101,7 +101,7 @@ export default {
 	`,
 	FETCH_COMMENT: gql`
 		query comment($_id: ID!) {
-			comment(id: $id) {
+			comment(_id: $id) {
 				id
 				body
 				art { 
