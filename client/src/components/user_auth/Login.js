@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { withRouter, } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+
 import { Mutation } from "react-apollo";
 import mutations from "../../graphql/mutations";
 import './session.css';
@@ -42,6 +43,7 @@ class Login extends Component {
 
 					localStorage.setItem("auth-token", token);
           localStorage.setItem("currentUserId", data.login.id);
+          localStorage.setItem("currentUsername", data.login.name);
           console.log("LOCAL STORAGE BELOW");
           console.log(localStorage);
 
