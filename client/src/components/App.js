@@ -7,6 +7,7 @@ import Register from "./user_auth/Register";
 import Nav from "./nav/Nav";
 import Profile from "./user/Profile"
 import Settings from "./user/Settings";
+import CreateArt from "./art/CreateArt";
 import ArtIndex from "./art/art_index";
 import ArtShow from "./art/art_show";
 
@@ -23,6 +24,8 @@ const App = () => {
 				<Route exact path="/arts" component={ArtIndex} />
 				<Route exact path="/arts/:artId" component={ArtShow} />
 			</Switch>
+			<Route exact path="/create" component={CreateArt}/>
+			
 			<Route exact path="/users/:userId" component={Profile} />
 			<Route exact path="/settings" component={Settings} />
 		</div>

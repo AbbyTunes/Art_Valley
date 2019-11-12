@@ -11,7 +11,7 @@ const ArtSchema = new Schema({
 		ref: "users"
 	}],
 	category: {
-		type: Schema.Types.ObjectId,
+		type: String,
 		ref: "categories"
 	},
 	videoLink: {
@@ -26,7 +26,11 @@ const ArtSchema = new Schema({
 	},
 	description: {
 		type: String
-	}
+	},
+	comments: [{
+		type: Schema.Types.ObjectId,
+		ref: "comments"
+	}]
 });
 
 ArtSchema.pre("findByIdAndDelete", function() {
