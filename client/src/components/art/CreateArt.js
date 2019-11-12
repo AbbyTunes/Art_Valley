@@ -11,8 +11,6 @@ const { FETCH_ART, FETCH_USER } = Queries;
 class CreateArt extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
-    console.log(localStorage);
     
     this.state = {
       category: "Photo", // default to debug
@@ -46,10 +44,6 @@ class CreateArt extends Component {
 
   handleSubmit(e, newArt, user) {
     e.preventDefault();
-    console.log("DEBUG INFO FOR HANDLESUBMIT")
-    console.log(this.state)
-    console.log(this.props)
-    console.log(user)
     if (this.state.category === "Photo"){
       this.setState({
         category: "5dc9a1c883d5a53746a785a2"//debug id for...whatever reason
@@ -71,7 +65,6 @@ class CreateArt extends Component {
   }
 
   render() {
-    console.log(this.state)
 
     const fetchUser = (
       <Query query={FETCH_USER} variables={{ _id: localStorage.currentUserId }}>
