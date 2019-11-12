@@ -6,16 +6,13 @@ import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
 import TextareaAutosize from "react-textarea-autosize";
 const { CREATE_ART } = Mutations;
-const { FETCH_ART, FETCH_USER } = Queries;
+const { FETCH_ART, FETCH_USER, FETCH_CATEGORIES } = Queries;
 
 class CreateArt extends Component {
   constructor(props) {
     super(props);
-
-
-    
     this.state = {
-      category: "Photo", // default to debug
+      category: "", // default to debug
       author: localStorage.currentUserId,
       title: "",
       description: "",
@@ -44,17 +41,9 @@ class CreateArt extends Component {
     }
   }
 
-  handleSubmit(e, newArt, user) {
+  handleSubmit(e, newArt, categories) {
     e.preventDefault();
-    if (this.state.category === "Photo"){
-      this.setState({
-        category: "5dc9a1c883d5a53746a785a2"//debug id for...whatever reason
-      })
-    } else {
-      this.setState({
-        category: "5dc603aa4dc3a23d54cbb4fb" // video
-      })
-    }
+
     newArt({
       variables: {
         category: this.state.category,
@@ -68,53 +57,62 @@ class CreateArt extends Component {
 
   render() {
 
-    console.log(this.state)
-
     const fetchUser = (
-      <Query query={FETCH_USER} variables={{ _id: localStorage.currentUserId }}>
+      <Query query={FETCH_CATEGORIES}>
         {({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error</p>;
-          const user = data.user;
-
+          const categories = data.categories;
           return (
             <div className="profile-container">
-              {createArtForm(user)}
+              {createArtForm(categories)}
             </div>
           )
         }}
       </Query>
     )
 
-    const createArtForm = (user) => (
+    const createArtForm = categories => (
       <Mutation
         mutation={CREATE_ART}
         onError={err => this.setState({ message: err.message })}
         update={(cache, data) => this.updateCache(cache, data)}
         onCompleted={data => {
-          const { name } = data.newArt;
+          const newArt = data.newArt;
           this.setState({
-            message: `New art ${name} created successfully`
+            message: `New art ${newArt.title} created successfully`
           });
         }}
       >
-        {(newArt, { data }) => (
+        {newArt => (
           <div className="art-form-container">
-            <form onSubmit={e => this.handleSubmit(e, newArt, user)}>
+            <form onSubmit={e => this.handleSubmit(e, newArt, categories)}>
               <div className="art-form-header-bar">
-                  <select 
-                    className="art-form-category"
-                    value={this.state.category}
-                    onChange={this.update("category")}> 
-                      <option value="Photo">Photo</option>
-                      <option value="Video">Video</option>
-                  </select>
+                <select
+                  className="art-form-category"
+                  value={this.state.category}
+                  onChange={this.update("category")}
+                >
+                  {categories.map(category => {
+                    return (
+                      <option key={category.id} value={category.id}>
+                        {" "}
+                        {category.name}{" "}
+                      </option>
+                    );
+                  })}
+                </select>
               </div>
-              
+
               <div className="art-form-content">
                 <div className="art-form-image-container">
                   <div className="art-form-image-preview">
-                    <span role="img" alt="" aria-label="debug" className="art-form-image-debug-icon">
+                    <span
+                      role="img"
+                      alt=""
+                      aria-label="debug"
+                      className="art-form-image-debug-icon"
+                    >
                       📷
                     </span>
                   </div>
@@ -125,56 +123,58 @@ class CreateArt extends Component {
                       value={this.state.photoLink}
                       placeholder="Place URL for image/video here"
                       type="text"
+                      required
                     />
                   </div>
                 </div>
-                
+
                 <input
                   className="art-form-field-title"
                   onChange={this.update("title")}
                   value={this.state.title}
                   placeholder="Add your title"
                   maxLength="40"
+                  required
                 />
                 <div className="art-form-field-name">
                   <div className="art-form-field-user-icon">
-                    <span role="img" alt="" aria-label="debug" className="art-form-field-user-icon-pic">
-                    👤
+                    <span
+                      role="img"
+                      alt=""
+                      aria-label="debug"
+                      className="art-form-field-user-icon-pic"
+                    >
+                      👤
                     </span>
                   </div>
-                  <span className="art-form-field-user-icon-text">{localStorage.currentUsername}</span>
-                  
+                  <span className="art-form-field-user-icon-text">
+                    {localStorage.currentUsername}
+                  </span>
                 </div>
-
-                {/* <div
-                  className="art-form-field-description"
-                  onChange={this.update("description")}
-                  contentEditable="true"
-                  value={this.state.description}
-                  type="text"
-                  data-text="Tell everybody what your art is about"
-                  spellCheck="false" />
-
-              </div> */}
               </div>
-              <TextareaAutosize 
+              <TextareaAutosize
                 className="art-form-field-description"
                 value={this.state.description}
                 onChange={this.update("description")}
                 data-text="Tell everybody what your art is"
                 type="text"
                 spellCheck="false"
-                placeholder="Tell everybody what your art is"/>
-              
-              
-              <button className="art-form-field-submit" type="submit">Create Art</button>
-             
+                placeholder="Tell everybody what your art is"
+                required
+              />
+
+              <button className="art-form-field-submit" type="submit">
+                Create Art
+              </button>
             </form>
-            <p>{this.state.message}</p>
+            <div >
+             {this.state.message}
+            </div>
+            
           </div>
         )}
       </Mutation>
-    )
+    );
 
     return (
       <div>
