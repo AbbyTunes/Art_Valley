@@ -7,6 +7,7 @@ import Queries from "../../graphql/queries";
 import TextareaAutosize from "react-textarea-autosize";
 const { CREATE_ART } = Mutations;
 const { FETCH_ART, FETCH_USER } = Queries;
+import axios from "axios";
 
 class CreateArt extends Component {
   constructor(props) {
@@ -14,6 +15,15 @@ class CreateArt extends Component {
 
 
     
+    // this.state = {
+    //   category: "Photo", // default to debug
+    //   author: localStorage.currentUserId,
+    //   title: "",
+    //   description: "",
+    //   photoLink: ""
+    // };
+
+    //test
     this.state = {
       category: "Photo", // default to debug
       author: localStorage.currentUserId,
@@ -22,6 +32,15 @@ class CreateArt extends Component {
       photoLink: ""
     };
   }
+
+  handleSelectedFile = e => {
+    e.preventDefault();
+    this.setState({
+      description: e.target.value,
+      title: e.target.value,
+      photoLink: e.target.files[0]
+    });
+  };
 
   update(field) {
     return e => this.setState({ [field]: e.target.value });
