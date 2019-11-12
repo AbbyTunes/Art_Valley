@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const router = express.Router();
-// const DOCUMENT = require("../models/Document"); //not sure what this does then 
+const DOCUMENT = require("../models/Document");=
 const multer = require("multer");
 var AWS = require("aws-sdk");
 
@@ -37,8 +37,7 @@ router.route("/:id").get((req, res, next) => {
   });
 });
 
-// route to upload a pdf document file
-// In upload.single("file") - the name inside the single-quote is the name of the field that is going to be uploaded.
+
 router.post("/upload", upload.single("file"), function(req, res) {
   const file = req.file;
   const s3FileURL = process.env.AWS_Uploaded_File_URL_LINK;
@@ -79,8 +78,7 @@ router.post("/upload", upload.single("file"), function(req, res) {
   });
 });
 
-// Route to edit existing record's description field
-// Here, I am updating only the description in this mongo record. Hence using the "$set" parameter
+
 router.route("/edit/:id").put((req, res, next) => {
   DOCUMENT.findByIdAndUpdate(
     req.params.id,
@@ -95,7 +93,7 @@ router.route("/edit/:id").put((req, res, next) => {
   );
 });
 
-// Router to delete a DOCUMENT file
+
 router.route("/:id").delete((req, res, next) => {
   DOCUMENT.findByIdAndRemove(req.params.id, (err, result) => {
     if (err) {
