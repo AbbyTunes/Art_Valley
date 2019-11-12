@@ -172,7 +172,30 @@ const mutation = new GraphQLObjectType({
 				})
 			}
 		},
+		uploadImage: {
+			type: GraphQLBoolean,
+			args: {
+				file: {
+					type: GraphQLUpload
+				}
+			},
+			async resolve(parent,args) {
+				const file = await args.file
+				const {
+					createReadStream,
+					filename,
+					mimetype
+				} = file
+				const fileStream = createReadStream()
+				const uploadParams = {
+					Bucket: art-valley-dev,
+					Key: filename,
+					Body: fileStream,
+				}
+			}
+		}
 	}
+		
 });
 
 module.exports = mutation;
