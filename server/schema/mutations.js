@@ -51,7 +51,9 @@ const mutation = new GraphQLObjectType({
 				return new Art(args).save()
 					.then(art => {
 						if (art.category) {
-							return Category.findById(args.category).then(category => {
+
+							console.log(art)
+							return Category.findById(args.category).then(category =>{
 								category.arts.push(art);
 								return category.save()
 									.then(category => art)
