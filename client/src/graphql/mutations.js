@@ -28,13 +28,16 @@ export default {
     }
   `,
   CREATE_ART: gql`
-    mutation CreateArt($category: ID!, $authorId: ID!, $title: String!, $description: String!, $photoLink: String!) {
-      newArt(category: $category, authorId: $authorId, title: $title, description: $description, photoLink: $photoLink) {
+    mutation CreateArt($category: ID!, $author: ID!, $title: String!, $description: String!, $photoLink: String!) {
+      newArt(category: $category, author: $author, title: $title, description: $description, photoLink: $photoLink) {
           category {
             id
             name
           }
-          authorId
+          author {
+            id
+            name
+          }
           title
           description
           photoLink

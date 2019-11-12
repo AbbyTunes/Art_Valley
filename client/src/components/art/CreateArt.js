@@ -11,10 +11,12 @@ const { FETCH_ART, FETCH_USER } = Queries;
 class CreateArt extends Component {
   constructor(props) {
     super(props);
+
+
     
     this.state = {
       category: "Photo", // default to debug
-      authorId: localStorage.currentUserId,
+      author: localStorage.currentUserId,
       title: "",
       description: "",
       photoLink: ""
@@ -56,7 +58,7 @@ class CreateArt extends Component {
     newArt({
       variables: {
         category: this.state.category,
-        authorId: this.state.authorId,
+        author: this.state.author,
         title: this.state.title,
         description: this.state.description,
         photoLink: this.state.photoLink
@@ -65,6 +67,8 @@ class CreateArt extends Component {
   }
 
   render() {
+
+    console.log(this.state)
 
     const fetchUser = (
       <Query query={FETCH_USER} variables={{ _id: localStorage.currentUserId }}>
