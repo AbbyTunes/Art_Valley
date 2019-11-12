@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLNonNull } = graphql;
+const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLNonNull, GraphQLString } = graphql;
 
 const UserType = require("./user_type");
 const User = mongoose.model("users");
@@ -55,7 +55,7 @@ const RootQueryType = new GraphQLObjectType({
 			type: new GraphQLList(ArtType), 
 			args: { categoryId: { type: new GraphQLNonNull(GraphQLID) } },
 			resolve(_, args) {
-				return Art.find({ category: args.categoryId });
+				return Art.find({ categoryId: args.category });
 			}
 		},
 		artsByAuthor: {

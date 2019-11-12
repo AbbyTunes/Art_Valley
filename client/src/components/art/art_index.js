@@ -3,12 +3,14 @@ import { Query } from "react-apollo";
 import "./art.css"
 import { Link, withRouter } from "react-router-dom";
 import Queries from "../../graphql/queries";
-const { FETCH_ARTS } = Queries;
+const { FETCH_ARTS_BY_CATEGORY } = Queries;
 
 
 const ArtIndex = (props) => {
 	return (
-		<Query query={FETCH_ARTS} >
+		<Query 
+			query={FETCH_ARTS_BY_CATEGORY} 
+			variables={{ category: this.props.match.params.productId }} >
 			{({ loading, error, data }) => {
 				
 				if (loading) return (
