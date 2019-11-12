@@ -4,6 +4,7 @@ import "./art.css";
 import "./art.js";
 import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
+import TextareaAutosize from "react-textarea-autosize";
 const { CREATE_ART } = Mutations;
 const { FETCH_ART, FETCH_USER } = Queries;
 
@@ -11,16 +12,15 @@ class CreateArt extends Component {
   constructor(props) {
     super(props);
     console.log(this.props);
+    console.log(localStorage);
     
     this.state = {
       category: "Photo", // default to debug
-      authorId: "",
+      authorId: localStorage.currentUserId,
       title: "",
       description: "",
       photoLink: ""
     };
-
-
   }
 
   update(field) {
@@ -46,25 +46,32 @@ class CreateArt extends Component {
 
   handleSubmit(e, newArt, user) {
     e.preventDefault();
+    console.log("DEBUG INFO FOR HANDLESUBMIT")
     console.log(this.state)
+    console.log(this.props)
     console.log(user)
     if (this.state.category === "Photo"){
       this.setState({
-        category: "5dc9a1c883d5a53746a785a2"
+        category: "5dc9a1c883d5a53746a785a2"//debug id for...whatever reason
+      })
+    } else {
+      this.setState({
+        category: "5dc603aa4dc3a23d54cbb4fb" // video
       })
     }
     newArt({
       variables: {
         category: this.state.category,
-        authorId: user.id,
+        authorId: this.state.authorId,
         title: this.state.title,
         description: this.state.description,
         photoLink: this.state.photoLink
       }
     });
   }
-  
+
   render() {
+    console.log(this.state)
 
     const fetchUser = (
       <Query query={FETCH_USER} variables={{ _id: localStorage.currentUserId }}>
@@ -119,14 +126,12 @@ class CreateArt extends Component {
                       className="art-form-field-link-url"
                       onChange={this.update("photoLink")}
                       value={this.state.photoLink}
-                      placeholder="Link"
+                      placeholder="Place URL for image/video here"
                       type="text"
                     />
-
                   </div>
                 </div>
                 
-              
                 <input
                   className="art-form-field-title"
                   onChange={this.update("title")}
@@ -140,11 +145,11 @@ class CreateArt extends Component {
                     👤
                     </span>
                   </div>
-                  <span className="art-form-field-user-icon-text">{user.name}</span>
+                  <span className="art-form-field-user-icon-text">{localStorage.currentUsername}</span>
                   
                 </div>
 
-                <div
+                {/* <div
                   className="art-form-field-description"
                   onChange={this.update("description")}
                   contentEditable="true"
@@ -153,7 +158,16 @@ class CreateArt extends Component {
                   data-text="Tell everybody what your art is about"
                   spellCheck="false" />
 
+              </div> */}
               </div>
+              <TextareaAutosize 
+                className="art-form-field-description"
+                value={this.state.description}
+                onChange={this.update("description")}
+                data-text="Tell everybody what your art is"
+                type="text"
+                spellCheck="false"
+                placeholder="Tell everybody what your art is"/>
               
               
               <button className="art-form-field-submit" type="submit">Create Art</button>
