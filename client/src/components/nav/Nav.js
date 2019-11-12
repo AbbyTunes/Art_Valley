@@ -62,8 +62,7 @@ class Nav extends React.Component {
                   className="fas fa-search"
                   onClick={() => this.extend("search-input", "search-input-2")}
                 ></i>
-                <i className="fas fa-user"></i>
-                  <Link to={`/users/${localStorage.getItem("currentUserId")}`}></Link>
+                <Link className="user-link" to={`/users/${localStorage.getItem("currentUserId")}`}><i className="fas fa-user"></i></Link>
                 <i className="fas fa-indent"></i>
               </div>
               <div className="nav-logo">
