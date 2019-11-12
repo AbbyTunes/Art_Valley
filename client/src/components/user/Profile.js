@@ -87,8 +87,8 @@ const Profile = (props) => {
                   {artPubList}
                 </ul>
               </div>
-              <h1>TEST BELOW</h1>
-              <CreateComment className="comment"></CreateComment>
+              {/* <h1>TEST BELOW</h1>
+              <CreateComment className="comment"></CreateComment> */}
             </div>
           );
         }}
