@@ -32,7 +32,7 @@ export default {
 		}
 	`,
 	FETCH_ARTS_BY_CATEGORY: gql`
-		query artsByCategory($categoryId: ID!) {
+		query artsByCategory($categoryId: STRING!) {
 			artsByCategory(categoryId: $categoryId) {
 				id
 				author{
