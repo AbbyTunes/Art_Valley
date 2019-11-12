@@ -21,6 +21,17 @@ export default {
 		query artById($_id: ID!) {
 			artById(id: $id) {
 				id
+				authorId
+				videoLink
+				photoLink
+				title
+			}
+		}
+	`,
+	FETCH_ART: gql`
+		query artById($_id: ID!) {
+			artById(id: $id) {
+				id
 				author {
 					id
 					name
