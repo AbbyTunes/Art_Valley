@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  frontend:
+    image: gbbg123/art-valley-node
+    build: .
+    ports: 
+      - 5000:5000
+    env_file:
+      - .env
+
