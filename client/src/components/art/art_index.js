@@ -35,7 +35,7 @@ const ArtIndex = (props) => {
 						<p>Error</p>
 					</div>
 				);
-				debugger
+
 				let allArtList = data.artsByCategory.map(art => {
 					return (
 						<li key={art.id} className="art-index-li">
