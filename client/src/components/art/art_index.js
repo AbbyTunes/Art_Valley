@@ -1,16 +1,28 @@
 import React from "react";
 import { Query } from "react-apollo";
-import "./art.css"
+import "./art_index.css"
 import { Link, withRouter } from "react-router-dom";
 import Queries from "../../graphql/queries";
 const { FETCH_ARTS_BY_CATEGORY } = Queries;
 
-
 const ArtIndex = (props) => {
+
+	// const categoryName = ( 
+	// 	<Query
+	// 		query={FETCH_CATEGORY_BY_NAME} 
+	// 		variables={{ name: "Photo" }} >
+	// 		{({ loading, error, data }) => {
+	// 			debugger
+	// 				return data.categoryByName
+	// 			}
+	// 		}
+	// 	</Query>
+	// )
+
 	return (
 		<Query 
 			query={FETCH_ARTS_BY_CATEGORY} 
-			variables={{ category: this.props.match.params.productId }} >
+			variables={{ categoryId: "5dc9a1c883d5a53746a785a2" }} >
 			{({ loading, error, data }) => {
 				
 				if (loading) return (
@@ -23,8 +35,8 @@ const ArtIndex = (props) => {
 						<p>Error</p>
 					</div>
 				);
-
-				let allArtList = data.arts.map(art => {
+				debugger
+				let allArtList = data.artsByCategory.map(art => {
 					return (
 						<li key={art.id} className="art-index-li">
 							<Link to={`/arts/${art.id}`}>
@@ -43,7 +55,7 @@ const ArtIndex = (props) => {
 				return (
 					<div className="art-container">
 						<div className="art-header">
-							Art
+							Photos
 						</div>
 
 						<ul className="art-index-ul">
