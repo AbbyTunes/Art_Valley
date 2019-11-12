@@ -4,7 +4,8 @@ const {
   GraphQLString,
   GraphQLInt,
   GraphQLID,
-	GraphQLNonNull
+  GraphQLNonNull,
+  GraphQLBoolean
 } = graphql;
 const mongoose = require("mongoose");
 const AuthService = require("../services/auth");
