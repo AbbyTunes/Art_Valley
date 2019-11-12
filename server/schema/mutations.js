@@ -15,6 +15,8 @@ const Art = mongoose.model("arts");
 const ArtType = require("./types/art_type");
 const Category = mongoose.model("categories");
 const CategoryType = require("./types/category_type");
+const Comment = mongoose.model("comments");
+const CommentType = require("./types/comment_type");
 
 const mutation = new GraphQLObjectType({
 	name: "Mutation",
@@ -35,14 +37,16 @@ const mutation = new GraphQLObjectType({
 				author: { type: GraphQLID },
 				title: { type: GraphQLString },
 				description: { type: GraphQLString },
-				videoLink: { type: GraphQLString },
+				// videoLink: { type: GraphQLString },
 				photoLink: { type: GraphQLString }
 			},
 			async resolve(_, args, context) {
  				return new Art(args).save()
 					.then(art => {
 						if (art.category) {
-							return Category.findById(args.category).then(category => {
+
+							console.log(art)
+							return Category.findById(args.category).then(category =>{
 								category.arts.push(art);
 								return category.save()
 									.then(category => art)
@@ -140,7 +144,34 @@ const mutation = new GraphQLObjectType({
 			resolve(_, { userId, artId }) {
 				return User.addPublishedArt(userId, artId);
 			}
-		}
+		},
+		newComment: { 
+			type: CommentType,
+			args: {
+				body: { type: GraphQLString },
+				author: { type: GraphQLID },
+				art: { type: GraphQLID }
+			},
+			async resolve(_, args) {
+				return new Comment(args).save()
+					.then(comment => {
+						return User.findById(comment.author).then(user => {
+							user.publishedComments.push(comment);
+							user.save();
+							return comment;
+						})
+					.then(comment => {
+						return Art.findById(comment.art).then(art => {
+							console.log(art);
+							art.comments.push(comment._id);
+							art.save();
+							return comment;
+						})
+					})
+					.catch(err => console.log(err));
+				})
+			}
+		},
 	}
 });
 

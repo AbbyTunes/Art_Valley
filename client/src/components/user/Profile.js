@@ -2,8 +2,12 @@ import React from "react";
 import { Query } from "react-apollo";
 import "./profile.css"
 import { Link } from "react-router-dom";
+//test//
+import CreateComment from "../comments/CreateComment";
+//
 import Queries from "../../graphql/queries";
 const { FETCH_USER } = Queries;
+
 
 
 const Profile = (props) => {
@@ -20,6 +24,15 @@ const Profile = (props) => {
               <p>Error</p>
             </div>
           );
+
+          let settings;
+          if (props.match.params.userId === localStorage.getItem("currentUserId")){
+            settings =
+              <div className="settings-link">
+                <Link to="/settings">+</Link>
+              </div>
+          }
+
 
           let recentlyLiked;
           if (data.user.likedArts.length !== 0) {
@@ -56,9 +69,7 @@ const Profile = (props) => {
             <div className="profile-container">
               <div className="user-info">
                 <h1 className="user-header">{data.user.name}</h1>
-                <div className="settings-link">
-                  <Link to="/settings">+</Link>
-                </div>
+                {settings}
               </div>
               {recentlyLiked}
               {/* <div className="profile-playlist">
@@ -76,6 +87,8 @@ const Profile = (props) => {
                   {artPubList}
                 </ul>
               </div>
+              <h1>TEST BELOW</h1>
+              <CreateComment className="comment"></CreateComment>
             </div>
           );
         }}

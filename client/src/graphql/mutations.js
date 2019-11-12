@@ -15,7 +15,8 @@ export default {
       login(email: $email, password: $password) {
 			  id
         token
-				loggedIn
+        loggedIn
+        name
       }
     }
   `,
@@ -26,6 +27,21 @@ export default {
       }
     }
   `,
+  ADD_COMMENT: gql`
+    mutation NewComment($body: String!, $author: ID!, $art: ID!) {
+      newComment(body: $body, author: $author, art: $art){
+        id
+        body
+        art {
+          title
+        }
+        author {
+          name
+        }
+      }
+    }
+  `,
+
   // CREATE_PRODUCT: gql`
   //   mutation CreateProduct(
   //     $name: String!
@@ -40,4 +56,22 @@ export default {
   //     }
   //   }
   // `
+  CREATE_ART: gql`
+    mutation CreateArt($category: ID!, $author: ID!, $title: String!, $description: String!, $photoLink: String!) {
+      newArt(category: $category, author: $author, title: $title, description: $description, photoLink: $photoLink) {
+          category {
+            id
+            name
+          }
+          author {
+            id
+            name
+          }
+          title
+          description
+          photoLink
+      }
+      
+    }
+  `
 };
