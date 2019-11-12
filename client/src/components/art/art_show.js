@@ -29,7 +29,7 @@ class ArtShow extends Component {
 					);
 
 					console.dir(data)
-					const { author, description, photoLink, title, videoLink, likers, comments } = data.artById; 
+					const { description, photoLink, title, likers } = data.artById; 
 					return (
             <div className="show-container">
               <div className="show-art">
