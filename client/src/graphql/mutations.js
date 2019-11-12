@@ -26,6 +26,21 @@ export default {
       }
     }
   `,
+  ADD_COMMENT: gql`
+    mutation NewComment($body: String!, $author: ID!, $art: ID!) {
+      newComment(body: $body, author: $author, art: $art){
+        id
+        body
+        art {
+          title
+        }
+        author {
+          name
+        }
+      }
+    }
+  `,
+
   // CREATE_PRODUCT: gql`
   //   mutation CreateProduct(
   //     $name: String!
