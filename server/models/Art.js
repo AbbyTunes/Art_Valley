@@ -6,14 +6,18 @@ const ArtSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: "users"
 	},
-	likers: [{
-		type: Schema.Types.ObjectId,
-		ref: "users"
-	}],
 	category: {
 		type: String,
 		ref: "categories"
 	},
+	likers: [{
+		type: Schema.Types.ObjectId,
+		ref: "users"
+	}],
+	comments: [{
+		type: Schema.Types.ObjectId,
+		ref: "comments"
+	}],
 	videoLink: {
 		type: String
 	},
@@ -26,11 +30,7 @@ const ArtSchema = new Schema({
 	},
 	description: {
 		type: String
-	},
-	comments: [{
-		type: Schema.Types.ObjectId,
-		ref: "comments"
-	}]
+	}
 });
 
 ArtSchema.pre("findByIdAndDelete", function() {

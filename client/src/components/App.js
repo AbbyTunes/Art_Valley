@@ -21,7 +21,7 @@ const App = () => {
         {/* debug buttons */}
 				<AuthRoute exact path="/login" component={Login} routeType="auth" />
 				<AuthRoute exact path="/register" component={Register} routeType="auth" />
-				<Route exact path="/arts" component={ArtIndex} />
+				<Route exact path="/" component={ArtIndex} />
 				<Route exact path="/arts/:artId" component={ArtShow} />
 			</Switch>
 			<Route exact path="/create" component={CreateArt}/>
