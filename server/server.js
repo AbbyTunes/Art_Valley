@@ -7,6 +7,8 @@ require("./models/index");
 const schema = require("./schema/schema");
 const cors = require("cors");
 
+const fileUpload = require("./routes/fileUpload");
+
 const app = express();
 
 if (!db) {
@@ -27,6 +29,8 @@ app.use(
     };
   })
 );
+
+app.use("/api/art", fileUpload);
 
 mongoose
 	.connect(db, {
