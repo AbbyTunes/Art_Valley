@@ -6,6 +6,7 @@ const expressGraphQL = require("express-graphql");
 require("./models/index");
 const schema = require("./schema/schema");
 const cors = require("cors");
+import { graphqlUploadExpress } from "graphql-upload";
 
 const app = express();
 
@@ -16,17 +17,18 @@ if (!db) {
 app.use(cors());
 
 app.use(
-	"/graphql",
-	expressGraphQL(req => {
-		return {
-			schema,
-			context: {
-				token: req.headers.authorization
-				// currentUserId: req.headers.currentUserId
-			},
-			graphiql: true
-		}
-	})
+  "/graphql",
+  graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }),
+  expressGraphQL(req => {
+    return {
+      schema,
+      context: {
+        token: req.headers.authorization
+        // currentUserId: req.headers.currentUserId
+      },
+      graphiql: true
+    };
+  })
 );
 
 mongoose
