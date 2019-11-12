@@ -37,14 +37,16 @@ const mutation = new GraphQLObjectType({
 				author: { type: GraphQLID },
 				title: { type: GraphQLString },
 				description: { type: GraphQLString },
-				videoLink: { type: GraphQLString },
+				// videoLink: { type: GraphQLString },
 				photoLink: { type: GraphQLString }
 			},
 			async resolve(_, args, context) {
  				return new Art(args).save()
 					.then(art => {
 						if (art.category) {
-							return Category.findById(args.category).then(category => {
+
+							console.log(art)
+							return Category.findById(args.category).then(category =>{
 								category.arts.push(art);
 								return category.save()
 									.then(category => art)
