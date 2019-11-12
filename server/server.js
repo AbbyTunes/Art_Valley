@@ -1,11 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const db = require("../config/keys").MONGO_URI;
+const db = process.env.MONGO_URI || require("../config/keys").MONGO_URI;
 const expressGraphQL = require("express-graphql");
 require("./models/index");
 const schema = require("./schema/schema");
 const cors = require("cors");
+
+const fileUpload = require("./routes/fileUpload");
 
 const app = express();
 
@@ -16,17 +18,19 @@ if (!db) {
 app.use(cors());
 
 app.use(
-	"/graphql",
-	expressGraphQL(req => {
-		return {
-			schema,
-			context: {
-				token: req.headers.authorization
-			},
-			graphiql: true
-		}
-	})
+  "/graphql",
+  expressGraphQL(req => {
+    return {
+      schema,
+      context: {
+        token: req.headers.authorization
+      },
+      graphiql: true
+    };
+  })
 );
+
+app.use("/api/art", fileUpload);
 
 mongoose
 	.connect(db, {

@@ -27,7 +27,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
+ol, ul, li {
 	list-style: none;
 }
 blockquote, q {
@@ -44,9 +44,13 @@ table {
 }
 a {
     text-decoration: none;
+    color: black;
 }
 
 span {
     background-color: #3f9598;
 }
 
+.art-debug{
+	top: 500px;
+}

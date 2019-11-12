@@ -11,14 +11,24 @@ import { ApolloProvider } from "react-apollo";
 import { onError } from "apollo-link-error";
 import { ApolloLink } from "apollo-link";
 import { HashRouter } from "react-router-dom";
+// const models = require('../models/index');
+// const schema = require('./schema/schema');
 
 import Mutations from "./graphql/mutations";
 const { VERIFY_USER } = Mutations;
 
+let uri;
+if (process.env.NODE_ENV === "production") {
+	uri = `/graphql`;
+} else {
+	uri = "http://localhost:5000/graphql";
+}
+
 const httpLink = createHttpLink({
-	uri: "http://localhost:5000/graphql",
+	uri,
 	headers: {
-		authorization: localStorage.getItem("auth-token")
+		authorization: localStorage.getItem("auth-token") || ""
+		// currentUserId: localStorage.getItem("currentUserId")
 	}
 });
 
@@ -49,6 +59,7 @@ const client = new ApolloClient({
 });
 
 const token = localStorage.getItem("auth-token");
+// const currentUserId = localStorage.getItem("currentUserId");
 
 cache.writeData({
 	data: {

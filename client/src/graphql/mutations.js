@@ -13,30 +13,65 @@ export default {
   LOGIN_USER: gql`
     mutation LoginUser($email: String!, $password: String!) {
       login(email: $email, password: $password) {
+			  id
         token
         loggedIn
+        name
       }
     }
   `,
   VERIFY_USER: gql`
     mutation VerifyUser($token: String!) {
       verifyUser(token: $token) {
-        loggedIn
+				loggedIn
       }
     }
   `,
-  CREATE_PRODUCT: gql`
-    mutation CreateProduct(
-      $name: String!
-      $description: String!
-      $weight: Float!
-    ) {
-      newProduct(name: $name, description: $description, weight: $weight) {
+  ADD_COMMENT: gql`
+    mutation NewComment($body: String!, $author: ID!, $art: ID!) {
+      newComment(body: $body, author: $author, art: $art){
         id
-        name
-        description
-        weight
+        body
+        art {
+          title
+        }
+        author {
+          name
+        }
       }
+    }
+  `,
+
+  // CREATE_PRODUCT: gql`
+  //   mutation CreateProduct(
+  //     $name: String!
+  //     $description: String!
+  //     $weight: Float!
+  //   ) {
+  //     newProduct(name: $name, description: $description, weight: $weight) {
+  //       id
+  //       name
+  //       description
+  //       weight
+  //     }
+  //   }
+  // `
+  CREATE_ART: gql`
+    mutation CreateArt($category: ID!, $author: ID!, $title: String!, $description: String!, $photoLink: String!) {
+      newArt(category: $category, author: $author, title: $title, description: $description, photoLink: $photoLink) {
+          category {
+            id
+            name
+          }
+          author {
+            id
+            name
+          }
+          title
+          description
+          photoLink
+      }
+      
     }
   `
 };

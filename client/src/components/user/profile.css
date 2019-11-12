@@ -1,0 +1,142 @@
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 90px;
+}
+
+.user-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.settings-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background: #3f9598;
+}
+
+.settings-link > a {
+    color: white;
+    font-weight: 400;
+}
+
+.settings-link:hover{
+    background: #225d5f;
+    cursor: pointer;
+}
+
+.profile-header, .user-header{
+    display: inline-block;
+    min-width: 200px;
+    padding: 0px 10px;
+    font-size: 24px;
+    border-top: 2px solid #3f9598;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.profile-published{
+    text-align: center;
+}
+
+.user-header{
+    font-weight: 800;
+    border-top: none;
+}
+
+.recently-liked, .profile-playlist{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.liked-list, .published-list{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-row-gap: 20px;
+    width: 300px;
+    padding-bottom: 20px;
+} 
+
+.liked-list > li, .published-list > li{
+    background: green;
+    height: 300px;
+}
+
+.profile-photo-thumbnail{
+    object-fit: cover;
+    max-height: 100%;
+    width: 100%;
+}
+
+@media screen and (min-width: 1000px){
+   .published-list{
+       grid-template-columns: 33% 33% 33%;
+       column-gap: 20px;
+       width: 940px;
+   }
+
+   .profile-header, .user-header{
+        width: 80%;
+   }
+
+    .see-more-button{
+       display: none;
+   }
+
+   .liked-list {
+       display: flex;
+       justify-content: space-between;
+       overflow-x: scroll;
+       width: 960px;
+   }
+
+   .liked-list > li, .published-list > li{
+       min-width: 300px;
+       width: 300px;
+       height: 300px;
+       margin-right: 20px;
+   }
+
+   ::-webkit-scrollbar{
+        display: block;
+        width: 5px;
+        background-color: #F5F5F5;
+    }
+
+    ::-webkit-scrollbar-track{
+        background-color: #F5F5F5;
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background-color: #3f9598;
+    }
+
+}
+
+
+
+
+
+
+/* @media screen and (min-width: 768px){
+   
+} */
+
+
+.comment{
+    display: block;
+    width: 400px;
+    height: 200px;
+    background: red;
+}

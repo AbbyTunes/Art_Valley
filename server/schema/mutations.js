@@ -4,72 +4,77 @@ const {
   GraphQLString,
   GraphQLInt,
   GraphQLID,
-	GraphQLFloat,
-	GraphQLBoolean
+  GraphQLNonNull,
+  GraphQLBoolean
 } = graphql;
 const mongoose = require("mongoose");
 const AuthService = require("../services/auth");
+
+const User = mongoose.model("users");
 const UserType = require("./types/user_type");
-// const CategoryType = require("./types/category_type");
-// const ProductType = require("./types/product_type");
+const Art = mongoose.model("arts");
+const ArtType = require("./types/art_type");
+const Category = mongoose.model("categories");
+const CategoryType = require("./types/category_type");
+const Comment = mongoose.model("comments");
+const CommentType = require("./types/comment_type");
 
 const mutation = new GraphQLObjectType({
 	name: "Mutation",
 	fields: {
-		// newCategory: {
-		// 	type: CategoryType,
-		// 	args: {
-		// 		name: { type: new GraphQLNonNull(GraphQLString) }
-		// 	},
-		// 	resolve(_, { name }) {
-		// 		return new Category({ name }).save();
-		// 	}
-		// },
-		// deleteCategory: {
-		// 	type: CategoryType,
-		// 	args: {
-		// 		_id: { type: new GraphQLNonNull(GraphQLID) }
-		// 	},
-		// 	resolve(_, { _id }) {
-		// 		return Category.findByIdAndDelete(_id)
-		// 			.then(category => category)
-		// 			.catch(err => null);
-		// 	}
-		// },
-		// newProduct: {
-		// 	type: ProductType,
-		// 	args: {
-		// 		name: { type: new GraphQLNonNull(GraphQLString) },
-		// 		description: { type: new GraphQLNonNull(GraphQLString) },
-		// 		weight: { type: new GraphQLNonNull(GraphQLFloat) },
-		// 		cost: { type: GraphQLInt }
-		// 	},
-		// 	async resolve(_, { name, description, weight }, context) {
-		// 		const validUser = await AuthService.verifyUser({ token: context.token });
+		newCategory: {
+			type: CategoryType,
+			args: {
+				name: { type: GraphQLString }
+			},
+			resolve(_, args) {
+				return new Category(args).save();
+			}
+		},
+		newArt: {
+			type: ArtType,
+			args: {
+				category: { type: GraphQLID },
+				author: { type: GraphQLID },
+				title: { type: GraphQLString },
+				description: { type: GraphQLString },
+				// videoLink: { type: GraphQLString },
+				photoLink: { type: GraphQLString }
+			},
+			async resolve(_, args, context) {
+ 				return new Art(args).save()
+					.then(art => {
+						if (art.category) {
 
-		// 		if (validUser.loggedIn) {
-		// 			const cost = function getRandomInt(max) {
-		// 				return Math.floor(Math.random() * Math.floor(max));
-		// 			}(100);
+							console.log(art)
+							return Category.findById(args.category).then(category =>{
+								category.arts.push(art);
+								return category.save()
+									.then(category => art)
+							})
+						} else {
+							return art
+						}
+				});
+				// const validUser = await AuthService.verifyUser({ token: context.token });
+				// if (validUser.loggedIn) { 
 
-		// 			new Product({ name, description, weight, cost }).save();
-		// 		} else {
-		// 			throw new Error("sorry, you need to log in first");
-		// 		}
-
-		// 	}
-		// },
-		// deleteProduct: {
-		// 	type: ProductType,
-		// 	args: {
-		// 		_id: { type: new GraphQLNonNull(GraphQLID) }
-		// 	},
-		// 	resolve(_, { _id }) {
-		// 		return Product.findByIdAndDelete(_id)
-		// 			.then(product => product)
-		// 			.catch(err => null);
-		// 	}
-		// },
+				// } else {
+				// 	throw new Error("sorry, you need to log in first");
+				// }
+			}
+		},
+		deleteArt: {
+			type: ArtType,
+			args: {
+				_id: { type: new GraphQLNonNull(GraphQLID) }
+			},
+			resolve(_, { _id }) {
+				return Art.findByIdAndDelete({_id})
+					.then(art => art)
+					.catch(err => null);
+			}
+		},
 		// updateProductCategory: {
 		// 	type: ProductType,
 		// 	args: {
@@ -120,8 +125,78 @@ const mutation = new GraphQLObjectType({
 			resolve(_, args) {
 				return AuthService.verifyUser(args);
 			}
-		}
+		},
+		addUserLikedArt: {
+			type: UserType,
+			args: { 
+				userId: { type: GraphQLID },
+				artId: { type: GraphQLID }
+			},
+			resolve(_, { userId, artId }) {
+				return User.addLikedArt(userId, artId);
+			}
+		},
+		addUserPublishedArt: {
+			type: UserType,
+			args: {
+				userId: { type: GraphQLID },
+				artId: { type: GraphQLID }
+			},
+			resolve(_, { userId, artId }) {
+				return User.addPublishedArt(userId, artId);
+			}
+		},
+		newComment: { 
+			type: CommentType,
+			args: {
+				body: { type: GraphQLString },
+				author: { type: GraphQLID },
+				art: { type: GraphQLID }
+			},
+			async resolve(_, args) {
+				return new Comment(args).save()
+					.then(comment => {
+						return User.findById(comment.author).then(user => {
+							user.publishedComments.push(comment);
+							user.save();
+							return comment;
+						})
+					.then(comment => {
+						return Art.findById(comment.art).then(art => {
+							console.log(art);
+							art.comments.push(comment._id);
+							art.save();
+							return comment;
+						})
+					})
+					.catch(err => console.log(err));
+				})
+			}
+		},
+		// uploadImage: {
+		// 	type: GraphQLBoolean,
+		// 	args: {
+		// 		file: {
+		// 			type: GraphQLUpload
+		// 		}
+		// 	},
+		// 	async resolve(parent,args) {
+		// 		const file = await args.file
+		// 		const {
+		// 			createReadStream,
+		// 			filename,
+		// 			mimetype
+		// 		} = file
+		// 		const fileStream = createReadStream()
+		// 		const uploadParams = {
+		// 			Bucket: art-valley-dev,
+		// 			Key: filename,
+		// 			Body: fileStream,
+		// 		}
+		// 	}
+		// }
 	}
+		
 });
 
 module.exports = mutation;

@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-const keys = require("../../config/keys");
+const keys = process.env.secretOrKey || require("../../config/keys").secretOrKey;
 
 const validateRegisterInput = require("../validation/register");
 const validateLoginInput = require("../validation/login");
@@ -36,7 +36,7 @@ const register = async data => {
     );
 
     user.save();
-    const token = jwt.sign({ id: user._id }, keys.secretOrKey);
+    const token = jwt.sign({ id: user._id }, keys);
 
     console.log(token)
     // console.log(loggedIn)
@@ -75,8 +75,9 @@ const login = async data => {
     }
 
     if (bcrypt.compareSync(password, user.password)) {
-      const token = jwt.sign({ id: user._id }, keys.secretOrKey);
-      return { token, loggedIn: true, ...user._doc, password: null };
+      const token = jwt.sign({ id: user._id }, keys);
+			return { token, id: user._id, loggedIn: true,...user._doc, password: null };
+			
     } else {
       throw new Error("Username/Password is wrong");
     }
@@ -91,16 +92,15 @@ const verifyUser = async data => {
     const { token } = data;
     // we decode the token using our secret password to get the
     // user's id
-    const decoded = jwt.verify(token, keys.secretOrKey);
+    const decoded = jwt.verify(token, keys);
     const { id } = decoded;
 
     // then we try to use the User with the id we just decoded
     // making sure we await the response
     const loggedIn = await User.findById(id).then(user => {
       return user ? true : false;
-    });
-
-    return { loggedIn };
+		});
+    return { loggedIn, id };
   } catch (err) {
     return { loggedIn: false };
   }
