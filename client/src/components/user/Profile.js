@@ -2,8 +2,12 @@ import React from "react";
 import { Query } from "react-apollo";
 import "./profile.css"
 import { Link } from "react-router-dom";
+//test//
+import CreateComment from "../comments/CreateComment";
+//
 import Queries from "../../graphql/queries";
 const { FETCH_USER } = Queries;
+
 
 
 const Profile = (props) => {
@@ -83,6 +87,8 @@ const Profile = (props) => {
                   {artPubList}
                 </ul>
               </div>
+              <h1>TEST BELOW</h1>
+              <CreateComment className="comment"></CreateComment>
             </div>
           );
         }}
