@@ -51,6 +51,7 @@
   border-radius: 10px;
   float: left;
   margin-right: 30px;
+  margin-bottom: 10px;
 }
 
 .art-form-image-preview:hover{
@@ -66,6 +67,7 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   font-size: 90px;
+  background: inherit;
   overflow: hidden;
   border-radius: 50%;
 }
@@ -109,6 +111,7 @@
   font-size: 40px;
   overflow: hidden;
   border-radius: 50%;
+  background: inherit;
   cursor: default;
 }
 

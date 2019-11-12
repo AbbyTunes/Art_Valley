@@ -15,7 +15,8 @@ export default {
       login(email: $email, password: $password) {
 			  id
         token
-				loggedIn
+        loggedIn
+        name
       }
     }
   `,
@@ -27,7 +28,7 @@ export default {
     }
   `,
   CREATE_ART: gql`
-    mutation CreateArt($category: String!, $authorId: ID!, $title: String!, $description: String!, $photoLink: String!) {
+    mutation CreateArt($category: ID!, $authorId: ID!, $title: String!, $description: String!, $photoLink: String!) {
       newArt(category: $category, authorId: $authorId, title: $title, description: $description, photoLink: $photoLink) {
           category {
             id
