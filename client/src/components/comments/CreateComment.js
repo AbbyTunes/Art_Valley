@@ -21,7 +21,9 @@ class CreateComment extends React.Component {
             variables: {
                 body: body,
                 author: localStorage.getItem("currentUserId"),
-                art: this.props.match.params.artId
+                // art: this.props.match.params.artId
+                //test below//
+                art: "5dc8623a1c9d44000003a6af"
             }
         })
             .then(data => {
