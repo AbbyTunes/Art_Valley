@@ -18,8 +18,8 @@ export default {
     }
   `,
   FETCH_ART: gql`
-    query artById($_id: ID!) {
-      artById(id: $id) {
+    query artById($artId: ID!) {
+      artById(_id: $artId) {
         id
         author {
           id
@@ -28,35 +28,21 @@ export default {
         videoLink
         photoLink
         title
+        description
+        likers {
+          id
+          name
+        }
+        category {
+          id
+          name
+        }
+        comments {
+          body
+        }
       }
     }
   `,
-  FETCH_ART: gql`
-		query artById($_id: ID!) {
-			artById(id: $id) {
-				id
-				author {
-					id
-					name
-				}
-				videoLink
-				photoLink
-				title
-				description
-				likers {
-					id
-					name
-				}
-				category {
-					id
-					name
-				}
-				comments { 
-					body
-				}
-			}
-		}
-	`,
   FETCH_CATEGORY_BY_NAME: gql`
     query categoryByName($name: STRING!) {
       categoryByName(name: $name) {
