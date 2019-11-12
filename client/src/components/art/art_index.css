@@ -15,15 +15,17 @@
 }
 
 .art-index-ul{
-		display: grid;
+		/* display: grid;
     grid-template-columns: 100%;
-    grid-row-gap: 20px;
+		grid-row-gap: 20px; */
+		display: flex;
+				flex-wrap: wrap;
     width: 300px;
     padding-bottom: 20px;
 }
 
 .art-index-li{
-		background: green;
+		border: 1px solid gray;
     height: 300px;
 }
     
@@ -49,7 +51,7 @@
 				}
 
 		.art-index-li{
-				background: green;
+				border: 1px solid gray;
 				min-width: 300px;
 				max-width: 300px;
 				min-height: 230px;

@@ -38,6 +38,13 @@ const RootQueryType = new GraphQLObjectType({
 				return Category.findById(args._id)
 			}
 		},
+		categoryByName: {
+			type: CategoryType,
+			args: { name: { type: new GraphQLNonNull(GraphQLString) } },
+			resolve(_, args) {
+				return Category.find({ name: args.name })
+			}
+		},
 		arts: {
 			type: new GraphQLList(ArtType),
 			resolve() {
