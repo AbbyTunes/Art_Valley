@@ -11,7 +11,7 @@ const ArtSchema = new Schema({
 		ref: "users"
 	}],
 	category: {
-		type: Schema.Types.ObjectId,
+		type: String,
 		ref: "categories"
 	},
 	videoLink: {
