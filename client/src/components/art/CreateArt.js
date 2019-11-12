@@ -7,7 +7,7 @@ import Queries from "../../graphql/queries";
 import TextareaAutosize from "react-textarea-autosize";
 import axios from "axios";
 const { CREATE_ART } = Mutations;
-const { FETCH_ART, FETCH_USER } = Queries;
+const { FETCH_ART, FETCH_USER, FETCH_CATEGORIES } = Queries;
 
 const endpoint = "http://localhost:5000/api/art/upload";
 
@@ -15,17 +15,8 @@ class CreateArt extends Component {
   constructor(props) {
     super(props);
 
-    // this.state = {
-    //   category: "Photo", // default to debug
-    //   author: localStorage.currentUserId,
-    //   title: "",
-    //   description: "",
-    //   photoLink: ""
-    // };
-
-    //test
     this.state = {
-      category: "Photo", // default to debug
+      category: "", // default to debug
       author: localStorage.currentUserId,
       title: "",
       description: "",
@@ -36,8 +27,6 @@ class CreateArt extends Component {
   handleSelectedFile = e => {
     e.preventDefault();
     this.setState({
-      // description: e.target.value,
-      // title: e.target.value,
       photoLink: e.target.files[0]
     });
   };
@@ -63,29 +52,6 @@ class CreateArt extends Component {
     }
   }
 
-  // handleSubmit(e, newArt, user) {
-  //   e.preventDefault();
-  //   if (this.state.category === "Photo"){
-  //     this.setState({
-  //       category: "5dc9a1c883d5a53746a785a2"//debug id for...whatever reason
-  //     })
-  //   } else {
-  //     this.setState({
-  //       category: "5dc603aa4dc3a23d54cbb4fb" // video
-  //     })
-  //   }
-  //   newArt({
-  //     variables: {
-  //       category: this.state.category,
-  //       author: this.state.author,
-  //       title: this.state.title,
-  //       description: this.state.description,
-  //       photoLink: this.state.photoLink
-  //     }
-  //   });
-  // }
-
-  //s3 test
   handleSubmit(e) {
     e.preventDefault();
     const data = new FormData(e.target);
@@ -160,6 +126,7 @@ class CreateArt extends Component {
                   value={this.state.title}
                   placeholder="Add your title"
                   maxLength="40"
+                  required
                 />
                 <div className="art-form-field-name">
                   <div className="art-form-field-user-icon">
@@ -191,7 +158,10 @@ class CreateArt extends Component {
                 Create Art
               </button>
             </form>
-            <p>{this.state.message}</p>
+            <div >
+             {this.state.message}
+            </div>
+            
           </div>
         </div>
     );
