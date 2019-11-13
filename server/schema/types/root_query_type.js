@@ -10,6 +10,8 @@ const CategoryType = require("./category_type");
 const Category = mongoose.model("categories");
 const CommentType = require("./comment_type");
 const Comment = mongoose.model("comments");
+const ArticleType = require("./article_type");
+const Article = mongoose.model("articles");
 
 const RootQueryType = new GraphQLObjectType({
   name: "RootQueryType",
@@ -87,7 +89,19 @@ const RootQueryType = new GraphQLObjectType({
 			return Comment.findById(args._id);
 		}
 	},
-
+	articles: {
+		type: new GraphQLList(ArticleType),
+		resolve() {
+			return Article.find({});
+		}
+	},
+	article: {
+		type: ArticleType, 
+		args: { _id: { type: new GraphQLNonNull(GraphQLID)}},
+		resolve (_, args) {
+			return Article.findById(args._id);
+		}
+	}
   })
 });
 
