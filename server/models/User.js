@@ -24,6 +24,10 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "arts" 
   }],
+  likedArticles: [{
+    type: Schema.Types.ObjectId,
+    ref: "articles"
+  }],
   publishedArts: [{
     type: Schema.Types.ObjectId,
     ref: "arts"
