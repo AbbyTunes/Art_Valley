@@ -7,7 +7,7 @@ import Queries from "../../graphql/queries";
 import TextareaAutosize from "react-textarea-autosize";
 import axios from "axios";
 const { CREATE_ART } = Mutations;
-const { FETCH_ART, FETCH_USER, FETCH_CATEGORIES } = Queries;
+const { FETCH_ART, FETCH_CATEGORIES } = Queries;
 
 const endpoint = "http://localhost:5000/api/art/upload";
 

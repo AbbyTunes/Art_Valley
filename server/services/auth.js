@@ -100,10 +100,6 @@ const verifyUser = async data => {
     const loggedIn = await User.findById(id).then(user => {
       return user ? true : false;
 		});
-<<<<<<< HEAD
-		debugger;
-=======
->>>>>>> 5ed009f3943be788dede5875a7eb030411dfdb4e
     return { loggedIn, id };
   } catch (err) {
     return { loggedIn: false };
