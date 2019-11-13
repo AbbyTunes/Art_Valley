@@ -65,6 +65,22 @@ UserSchema.statics.addLikedArt = (userId, artId ) => {
   });
 };
 
+UserSchema.statics.addLikedArticle = (userId, articleId) => {
+  const User = mongoose.model("users");
+  const Article = mongoose.model("article");
+
+  return User.findById(userId).then(user => {
+    return Article.findById(articleId).then(article => {
+      user.likedArticles.push(article);
+      article.likers.push(user);
+
+      return Promise.all([user.save(), article.save()]).then(
+        ([user, article]) => article
+      );
+    });
+  });
+};
+
 UserSchema.statics.addPublishedArt = (userId, artId) => {
   const User = mongoose.model("users");
   const Art = mongoose.model("arts");

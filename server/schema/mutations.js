@@ -138,6 +138,16 @@ const mutation = new GraphQLObjectType({
 				return User.addLikedArt(userId, artId);
 			}
 		},
+		addUserLikedArticle: {
+			type: UserType,
+			args: {
+				userId: { type: GraphQLID },
+				articleId: { type: GraphQLID }
+			},
+			resolve(_, { userId, articleId }) {
+				return User.addLikedArticle(userId, articleId);
+			}
+		},
 		addUserPublishedArt: {
 			type: UserType,
 			args: {
