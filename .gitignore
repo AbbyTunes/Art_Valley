@@ -3,3 +3,4 @@ node_modules/
 /client/node_modules/
 .env
 seeds.rb
+client/package-lock.json
