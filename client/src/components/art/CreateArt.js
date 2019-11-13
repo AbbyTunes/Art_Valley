@@ -90,14 +90,13 @@ class CreateArt extends Component {
 
   render() {
     console.log(this.state);
-    let preview = this.state.previewUrl ? <img className="art-form-image-previewed" src={this.state.previewUrl} /> : <span
-      role="img"
-      alt=""
-      aria-label="debug"
-      className="art-form-image-debug-icon"
-    >
-      📷
-                    </span>;
+    let preview = this.state.previewUrl ? 
+      <img className="art-form-image-previewed" src={this.state.previewUrl} /> 
+          : <span
+              role="img"
+              alt=""
+              aria-label="debug"
+              className="art-form-image-debug-icon">📷</span>;
     return(
       <div className="profile-container">
           <div className="art-form-container">
