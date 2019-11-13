@@ -4,6 +4,9 @@ import "./article-index-item.css";
 const ArticleIndexItem = (props) => {
     return (
         <div className="article-index-item-container">
+            <div className="picture-placeholder">
+
+            </div>
             <div className="article-index-item-author">
                 {props.article.author.name}
             </div>
@@ -15,10 +18,10 @@ const ArticleIndexItem = (props) => {
             </div>
             <div className="article-index-item-sub">
                 <div>
-                    {props.article.comments.length}
+                    {props.article.likers.length} likes
                 </div>
                 <div>
-                    {props.article.likers.length}
+                    {props.article.comments.length} comments
                 </div>
             </div>
         </div>

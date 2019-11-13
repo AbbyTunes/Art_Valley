@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Query } from "react-apollo";
-// import "./article_show.scss";
+import "./article_show.scss";
 // import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Queries from "../../graphql/queries";
 const { FETCH_ARTICLE } = Queries;
 
@@ -31,37 +32,41 @@ class ArticleShow extends Component {
 
                     let photo = data.article.photoLink ? 
                         <div className="article-show-photo">
-                            <img className="show-image" src={photoLink}></img>
+                            <img className="article-show-image" src={photoLink}></img>
                         </div> : 
                         <div></div>
 
-                    const { body, photoLink, title, likers, comments } = data.article;
+                    const { body, photoLink, title, likers, comments, header } = data.article;
 
                     return (
                         <div className="article-show-container">
                             <div className="article-show-photo-container">
                                 {photo}
-                                <div className="show-info">
+                                <div className="article-show-info">
 
-                                    <div className="info-main">
-                                        <div className="info-1">
-                                            <div className="show-title">{title}</div>
-                                            <div className="show-description">{body}</div>
+                                    <div className="article-info-main">
+                                        <div className="article-info-1">
+                                            <div className="article-show-title">{title}</div>
+                                            <div className="article-show-header">{header}</div>
+                                            <div className="article-show-body">{body}</div>
                                         </div>
 
-                                        <div className="info-2">
-                                            <div className="show-likes">Likes {likers.length}</div>
+                                        <div className="article-info-2">
+                                            <div className="article-show-likes">Likes {likers.length}</div>
                                         </div>
                                     </div>
 
-                                    <div className="info-3">
-                                        <div className="show-comment">Comment</div>
+                                    <div className="article-info-3">
+                                        <div className="article-show-comment">Comment</div>
                                     </div>
                                 </div>
 
-                                <div className="show-artist">Add something</div>
+                                <div className="article-show-artist">Add something</div>
 
-                                <div className="show-category"></div>
+                                <div className="article-show-category"></div>
+                            </div>
+                            <div>
+                                <Link to="/community">Back to index</Link>
                             </div>
                         </div>
                     );
