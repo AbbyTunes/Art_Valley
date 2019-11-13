@@ -34,12 +34,20 @@
 }
 
 .video-modal{
+		position: relative;
+		top: 0;
+		left: 0;
+		max-height: 100%;
+    width: 100%;
 		background: grey;
 		opacity: 0.8;
 		z-index: 100;
 }
 
 .art-photo-thumbnail{
+		position: relative;
+		top: 0;
+		left: 0;
     object-fit: cover;
     max-height: 100%;
     width: 100%;
@@ -83,6 +91,9 @@
 		}
 
 		.video-modal{
+				position: relative;
+				top: 0;
+				left: 0;
 				background: grey;
 				opacity: 0.8;
 				z-index: 100;
