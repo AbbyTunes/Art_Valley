@@ -10,6 +10,7 @@ import Settings from "./user/Settings";
 import CreateArt from "./art/CreateArt";
 import ArtIndex from "./art/art_index";
 import ArtShow from "./art/art_show";
+import ArticleCreate from './articles/ArticleCreate';
 
 import "./App.css";
 
@@ -23,6 +24,9 @@ const App = () => {
 				<AuthRoute exact path="/register" component={Register} routeType="auth" />
 				<Route exact path="/arts" component={ArtIndex} />
 				<Route exact path="/arts/:artId" component={ArtShow} />
+				{/* <Route exact path="/community" component={CommunityIndex} />*/}
+				{/* TEST BELOW */}
+				<Route exact path="/community" component={ArticleCreate} />
 			</Switch>
 			<Route exact path="/create" component={CreateArt}/>
 			

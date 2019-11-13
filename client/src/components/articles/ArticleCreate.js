@@ -1,5 +1,6 @@
 import React from "react";
 import { Mutation } from "react-apollo";
+import "./article_create.css";
 import Mutations from "../../graphql/mutations";
 const { CREATE_ARTICLE } = Mutations;
 
@@ -16,12 +17,11 @@ class ArticleCreate extends React.Component {
 
     handleSubmit(e, newArticle) {
         e.preventDefault();
-        ({ title, body, photoLink }) = this.state
         newArticle({
             variables: {
-                title: title,
-                body: body,
-                photoLink: photoLink,
+                title: this.state.title,
+                body: this.state.body,
+                photoLink: this.state.photoLink,
                 author: localStorage.getItem("currentUserId")
             }
         })
@@ -36,7 +36,7 @@ class ArticleCreate extends React.Component {
         return (
             <Mutation mutation={CREATE_ARTICLE}>
                 {(newArticle, { data }) => (
-                    <form onSubmit={(e) => this.handleSubmit(e, newArticle)}>
+                    <form className="article-create-form" onSubmit={(e) => this.handleSubmit(e, newArticle)}>
                         <input value={this.state.title} onChange={this.update("title")} />
                         <textarea value={this.state.body} onChange={this.update("body")} />
                         {/* image here */}
