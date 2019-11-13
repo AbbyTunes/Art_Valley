@@ -4,6 +4,7 @@ const { GraphQLObjectType, GraphQLString, GraphQLID} = graphql;
 
 const User = mongoose.model("users");
 const Art = mongoose.model("arts");
+const Article = mongoose.model("articles");
 
 const CommentType = new GraphQLObjectType({
     name: "CommentType",

@@ -177,6 +177,7 @@ const mutation = new GraphQLObjectType({
 					.then(comment => {
 						let model = comment.article ? Article : Art ;
 						let id_ref = comment.article ? article : art;
+						debugger;
 						// let model_ref = comment.article ? article : art;
 						return model.findById(id_ref).then(response => {
 							console.log(response);
