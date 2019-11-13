@@ -74,6 +74,17 @@ const mutation = new GraphQLObjectType({
 					.catch(err => null);
 			}
 		},
+		deleteComment: {
+			type: CommentType,
+			args: {
+				_id: { type: new GraphQLNonNull(GraphQLID) }
+			},
+			resolve(_, { _id }) {
+				return Comment.findByIdAndDelete({ _id })
+					.then(comment => comment)
+					.catch(err => null);
+			}
+		},
 		register: {
 			type: UserType,
 			args: {
