@@ -84,11 +84,20 @@ class CreateArt extends Component {
     data.append("author",this.state.author);
     data.append("description",this.state.description);
     axios.post(endpoint, data)
+    console.log(data)
+    console.log(endpoint)
   }
 
   render() {
     console.log(this.state);
-    let preview = this.state.previewUrl ? <img src={this.state.previewUrl}/> : <div></div>;
+    let preview = this.state.previewUrl ? <img className="art-form-image-previewed" src={this.state.previewUrl} /> : <span
+      role="img"
+      alt=""
+      aria-label="debug"
+      className="art-form-image-debug-icon"
+    >
+      📷
+                    </span>;
     return(
       <div className="profile-container">
           <div className="art-form-container">
@@ -108,14 +117,7 @@ class CreateArt extends Component {
                 <div className="art-form-image-container">
                   <div className="art-form-image-preview">
                     {preview}
-                    <span
-                      role="img"
-                      alt=""
-                      aria-label="debug"
-                      className="art-form-image-debug-icon"
-                    >
-                      📷
-                    </span>
+                    
                   </div>
                   {/* <div className="art-form-field-link-container">
                     <input
