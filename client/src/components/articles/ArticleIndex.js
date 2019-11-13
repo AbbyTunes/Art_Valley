@@ -31,11 +31,11 @@ const ArticleIndex = (props) => {
             })
 
             //prob should make an onclick event for below that fetches more articles
-            let seeMoreButton = (
-                <div className="see-more-button">
-                    <Link to="#">See More</Link>
-                </div>
-            )
+            // let seeMoreButton = (
+            //     <div className="see-more-button">
+            //         <Link to="#">See More</Link>
+            //     </div>
+            // )
 
             return (
                 <div className="article-index-container">
@@ -43,9 +43,9 @@ const ArticleIndex = (props) => {
                     <div className="article-index-list">
                         {allArticleList}
                     </div>
-                    <div className="article-see-more-button">
+                    {/* <div className="article-see-more-button">
                         {seeMoreButton}
-                    </div>
+                    </div> */}
                 </div>
             );
         }}

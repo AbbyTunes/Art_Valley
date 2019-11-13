@@ -13,6 +13,14 @@ const ArticleIndexItem = (props) => {
             <div className="article-index-item-header">
                 {props.article.header}
             </div>
+            <div className="article-index-item-sub">
+                <div>
+                    {props.article.comments.length}
+                </div>
+                <div>
+                    {props.article.likers.length}
+                </div>
+            </div>
         </div>
     );
 }

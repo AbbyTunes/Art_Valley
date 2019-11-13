@@ -2,25 +2,38 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
+    width: 280px;
+    margin: 0 auto;
+    height: auto;
 }
 
 .article-index-item-author{
     display: block;
     color: #717172;
     font-size: 18px;
+    padding-bottom: 10px;
 }
 
 .article-index-item-title{
     display: block;
     color: black;
     font-size: 32px;
-    text-align: center;
+    font-weight: 800px;
+    text-align: left;
+    padding-bottom: 20px;
 }
 
 .article-index-item-header{
     display: block;
     color: gray;
-    font-size: rgba(0, 0, 0, 0.54)
+    font-size: rgba(0, 0, 0, 0.54);
+    padding-bottom: 10px;
 }
 
+.article-index-item-sub{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}

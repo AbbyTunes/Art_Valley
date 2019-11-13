@@ -12,10 +12,11 @@ class ArticleShow extends Component {
     }
 
     render() {
+        
         return (
             <Query
                 query={FETCH_ARTICLE}
-                variables={{ articleId: this.props.match.params.articleId }} >
+                variables={{ _id: this.props.match.params.articleId }} >
                 {({ loading, error, data }) => {
                     if (loading) return (
                         <div>
@@ -35,7 +36,7 @@ class ArticleShow extends Component {
                         <div></div>
 
                     const { body, photoLink, title, likers, comments } = data.article;
-                    
+
                     return (
                         <div className="article-show-container">
                             <div className="article-show-photo-container">

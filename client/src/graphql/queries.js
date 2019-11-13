@@ -196,7 +196,7 @@ export default {
   `,
   FETCH_ARTICLE: gql`
     query article($_id: ID!) {
-      article(_id: $id) {
+      article(_id: $_id) {
         id
         title
         body
@@ -217,6 +217,9 @@ export default {
         likers {
           id
           name
+        }
+        comments {
+          id
         }
       }
     }
