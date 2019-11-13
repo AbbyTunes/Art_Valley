@@ -144,7 +144,7 @@ class Nav extends React.Component {
           <div className="nav-categories-container">
             <ul className="nav-categories-list">
               <li><Link to="/arts">Photos</Link></li>
-              <li><Link to="#">Videos</Link></li>
+              <li><Link to="/videos">Videos</Link></li>
               <li><Link to="#">Community</Link></li>
             </ul>
           </div>
