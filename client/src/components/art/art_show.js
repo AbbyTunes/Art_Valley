@@ -55,7 +55,7 @@ class ArtShow extends Component {
                   </div>
                 </div>
 
-                <div className="show-artist"></div>
+                <div className="show-artist">Add something</div>
 
                 <div className="show-category"></div>
               </div>
