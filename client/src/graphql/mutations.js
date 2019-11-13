@@ -41,6 +41,13 @@ export default {
       }
     }
   `,
+  DELETE_COMMENT: gql`
+    mutation DeleteComment($id: ID!) {
+      deleteComment(_id: $id) {
+        id
+      }
+    }
+  `,
 
   // CREATE_PRODUCT: gql`
   //   mutation CreateProduct(

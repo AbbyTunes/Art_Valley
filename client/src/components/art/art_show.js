@@ -3,6 +3,7 @@ import { Query } from "react-apollo";
 import "./art_show.scss";
 import { withRouter } from "react-router-dom";
 import Queries from "../../graphql/queries";
+import CreateComment from "../comments/CreateComment";
 const { FETCH_ART } = Queries;
 
 class ArtShow extends Component {
@@ -49,6 +50,9 @@ class ArtShow extends Component {
 									<div className="info-3">
 										<div className="show-comment">Comment</div>
                   </div>
+
+									<CreateComment artId={data.artById.id} comments={data.artById.comments} />
+
                 </div>
 
                 <div className="show-artist">Add something</div>
