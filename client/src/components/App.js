@@ -10,7 +10,9 @@ import Settings from "./user/Settings";
 import CreateArt from "./art/CreateArt";
 import ArtIndex from "./art/art_index";
 import ArtShow from "./art/art_show";
-import ArticleCreate from './articles/ArticleCreate';
+// import ArticleCreate from './articles/ArticleCreate';
+import ArticleIndex from './articles/ArticleIndex';
+import ArticleShow from './articles/ArticleShow';
 
 import "./App.css";
 
@@ -19,14 +21,13 @@ const App = () => {
 		<div>
 			<Nav />
 			<Switch>
-        {/* debug buttons */}
 				<AuthRoute exact path="/login" component={Login} routeType="auth" />
 				<AuthRoute exact path="/register" component={Register} routeType="auth" />
 				<Route exact path="/arts" component={ArtIndex} />
 				<Route exact path="/arts/:artId" component={ArtShow} />
-				{/* <Route exact path="/community" component={CommunityIndex} />*/}
-				{/* TEST BELOW */}
-				<Route exact path="/community" component={ArticleCreate} />
+
+				<Route exact path="/community" component={ArticleIndex} />
+				<Route exact path="/community/:articleId" component={ArticleShow} />
 			</Switch>
 			<Route exact path="/create" component={CreateArt}/>
 			
