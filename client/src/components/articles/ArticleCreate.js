@@ -22,26 +22,25 @@ class ArticleCreate extends React.Component {
                 title: title,
                 body: body,
                 photoLink: photoLink,
-                author: localStorage.getItem("currentUserId"),
-                // art: this.props.match.params.artId
-                //test below//
-                art: "5dc8623a1c9d44000003a6af"
+                author: localStorage.getItem("currentUserId")
             }
         })
             .then(data => {
                 this.setState({
-                    body: ""
+                    title: "", body: "", photoLink: ""
                 });
             })
     }
 
     render() {
         return (
-            <Mutation mutation={ADD_COMMENT}>
-                {(newComment, { data }) => (
-                    <form onSubmit={(e) => this.handleSubmit(e, newComment)}>
-                        <textarea value={this.state.body} onChange={this.update()} />
-                        <input type="submit" value="Add Comment" />
+            <Mutation mutation={CREATE_ARTICLE}>
+                {(newArticle, { data }) => (
+                    <form onSubmit={(e) => this.handleSubmit(e, newArticle)}>
+                        <input value={this.state.title} onChange={this.update("title")} />
+                        <textarea value={this.state.body} onChange={this.update("body")} />
+                        {/* image here */}
+                        <input type="submit" value="Save Article" />
                     </form>
                 )}
             </Mutation>
