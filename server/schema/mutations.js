@@ -153,7 +153,8 @@ const mutation = new GraphQLObjectType({
 			args: {
 				body: { type: GraphQLString },
 				author: { type: GraphQLID },
-				art: { type: GraphQLID }
+				art: { type: GraphQLID },
+				article: { type: GraphQLID},
 			},
 			async resolve(_, args) {
 				return new Comment(args).save()
@@ -164,10 +165,13 @@ const mutation = new GraphQLObjectType({
 							return comment;
 						})
 					.then(comment => {
-						return Art.findById(comment.art).then(art => {
-							console.log(art);
-							art.comments.push(comment._id);
-							art.save();
+						let model = comment.article ? Article : Art ;
+						let id_ref = comment.article ? article : art;
+						// let model_ref = comment.article ? article : art;
+						return model.findById(id_ref).then(response => {
+							console.log(response);
+							response.comments.push(comment._id);
+							response.save();
 							return comment;
 						})
 					})
