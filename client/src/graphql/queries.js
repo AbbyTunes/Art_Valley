@@ -155,5 +155,57 @@ export default {
         name
       }
     }
-  `
+  `,
+  FETCH_ARTICLES: gql`
+    query articles {
+      articles {
+        id
+        title
+        body
+        author { 
+          id 
+          name
+        }
+        photoLink
+        comments { 
+          id 
+          body
+          author {
+            id
+            name
+          }
+        }
+        likers {
+          id
+          name
+        }
+      }
+    }
+  `,
+  FETCH_ARTICLEe: gql`
+    query article($_id: ID!) {
+      article(_id: $id) {
+        id
+        title
+        body
+        author { 
+          id 
+          name
+        }
+        photoLink
+        comments { 
+          id 
+          body
+          author {
+            id
+            name
+          }
+        }
+        likers {
+          id
+          name
+        }
+      }
+    }
+  `,
 };
