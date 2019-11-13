@@ -6,7 +6,7 @@ import Queries from "../../graphql/queries";
 const { FETCH_ARTS_BY_CATEGORY } = Queries;
 
 const ArtIndex = (props) => {
-
+//comment
 	return (
 		<Query 
 			query={FETCH_ARTS_BY_CATEGORY} 

@@ -33,7 +33,7 @@ const ArtSchema = new Schema({
 	}],
 	s3_key: { type: String }
 });
-
+//more commment 
 ArtSchema.pre("findByIdAndDelete", function() {
 	const Art = mongoose.model("arts");
 	const Category = mongoose.model("categories");
