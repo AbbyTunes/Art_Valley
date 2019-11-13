@@ -1,10 +1,12 @@
 import React from "react";
 import { Query } from "react-apollo";
 import ArticleIndexItem from "./ArticleIndexItem";
+import { Link } from "react-router-dom";
 import Queries from "../../graphql/queries";
 const { FETCH_ARTICLES } = Queries;
 
 const ArticleIndex = (props) => {
+    return (
     <Query query={FETCH_ARTICLES}>
         {({ error, loading, data }) => {
             if (error) return (
@@ -39,16 +41,18 @@ const ArticleIndex = (props) => {
                         Articles
 					</div>
                     <div>
+                        list of stuff
                         {allArticleList}
                     </div>
                     <div className="see-more-button">
+                        Button
                         {seeMoreButton}
                     </div>
-
                 </div>
             );
         }}
     </Query>
+    );
 }
 
 export default ArticleIndex;

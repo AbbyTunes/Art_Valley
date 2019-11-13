@@ -41,7 +41,7 @@ class ArticleShow extends Component {
                                     <div className="info-main">
                                         <div className="info-1">
                                             <div className="show-title">{title}</div>
-                                            <div className="show-description">{description}</div>
+                                            <div className="show-description">{body}</div>
                                         </div>
 
                                         <div className="info-2">
