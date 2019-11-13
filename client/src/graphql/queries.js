@@ -25,7 +25,6 @@ export default {
           id
           name
         }
-        videoLink
         photoLink
         title
         description

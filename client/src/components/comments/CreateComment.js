@@ -34,9 +34,9 @@ class CreateComment extends React.Component {
           artId: this.state.art
         }
       });
-
+      console.log(artwork.artById);
       artwork.artById.comments.push(data.data.newComment);
-      cache.writeQuery({ query: FETCH_ART, data:  [artwork.artById] })
+      cache.writeQuery({ query: FETCH_ART, data: [artwork.artById] })
 
     }
 
