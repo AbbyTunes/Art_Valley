@@ -18,11 +18,19 @@
 }
 
 .article-index-li{
-    
+
 }
 
 
 @media screen and (min-width: 1000px){
+    .article-index-list{
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        column-gap: 20px;
+        width: 940px;
+        margin: 0 auto;
+    }
+
     .article-index-header{
         font-size: 40px;
     }
