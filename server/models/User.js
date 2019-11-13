@@ -19,8 +19,7 @@ const UserSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
-  ,
+  },
   likedArts: [{
     type: Schema.Types.ObjectId,
     ref: "arts" 
@@ -32,6 +31,10 @@ const UserSchema = new Schema({
   publishedComments: [{
     type: Schema.Types.ObjectId,
     ref: "comments"
+  }],
+  publishedArticles: [{
+    type: Schema.Types.ObjectId,
+    ref: "articles"
   }],
   // ,
   // playlist: [{
