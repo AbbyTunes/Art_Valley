@@ -40,6 +40,11 @@ export default {
         comments {
 					id
           body
+          author {
+            name
+            id
+          }
+          id
         }
       }
     }
