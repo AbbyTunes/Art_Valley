@@ -70,8 +70,20 @@ export default {
           title
           description
           photoLink
-      }
-      
+      } 
+    }
+  `,
+  CREATE_ARTICLE: gql`
+    mutation CreateArticle($author: ID!, $title: String!, $body: String!, $photoLink: String!) {
+      newArticle(author: $author, title: $title, body: $body, photoLink: $photoLink) {
+          author {
+            id
+            name
+          }
+          title
+          body
+          photoLink
+      } 
     }
   `
 };
