@@ -24,7 +24,17 @@ export default {
         id
         author {
           id
-          name
+					name
+					publishedArts {
+						id
+						title
+						photoLink
+					}
+					likedArts {
+						id
+						title
+						photoLink
+					}
         }
         photoLink
         title

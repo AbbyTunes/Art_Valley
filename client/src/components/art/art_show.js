@@ -24,8 +24,31 @@ class ArtShow extends Component {
 						</div>
 					);
 
-					console.dir(data)
-					const { description, photoLink, title, likers } = data.artById; 
+					const { id, description, photoLink, title, likers, author } = data.artById;
+
+					debugger
+					let showArtist;
+					if (author && author.publishedArts 
+						// && author.publishedArts.length !==1 
+						) {
+						let artPublishedLimit = author.publishedArts.filter(pubArt => pubArt.id !== id ).slice(0, 6);
+						let artPubList = artPublishedLimit.map(artPub => {
+							return (
+								<li className="published-li" key={artPub.id}>
+									<img className="published-photo-thumbnail" src={artPub.photoLink} />
+								</li>
+							);
+						});
+						showArtist = (
+							<div className="show-artist">
+								<h1 className="published-header">Art of the Author</h1>
+								<ul className="published-ul">{artPubList}</ul>
+							</div>
+						);
+					} else {
+						showArtist = (null)
+					}
+
 					return (
             <div className="show-container">
               <div className="show-art">
@@ -51,7 +74,7 @@ class ArtShow extends Component {
                   </div>
                 </div>
 
-                <div className="show-artist">Add something</div>
+								{showArtist}
 
                 <div className="show-category"></div>
               </div>

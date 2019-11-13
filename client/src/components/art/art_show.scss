@@ -157,13 +157,37 @@
 			}
 		}
 
+
 		.show-artist {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;	
+			padding-bottom: 20px;
 
-		}
+			.published-header {
+				font-weight: 800;
+				border-top: none;
+			}
 
-		.show-category {
+			.published-ul {
+				display: grid;
+				grid-template-columns: 100%;
+				grid-row-gap: 20px;
+				width: 300px;
+				padding-bottom: 20px;
 
-		}
+				.published-li {
+					background: rgb(230, 230, 230);
+					height: 300px;
+
+					.published-photo-thumbnail{
+						object-fit: cover;
+						max-height: 100%;
+						width: 100%;
+					}
+				}
+			}
+		}		
 	}
-
 }

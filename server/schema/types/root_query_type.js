@@ -67,13 +67,6 @@ const RootQueryType = new GraphQLObjectType({
 				return Art.find({ category: args.categoryId });
 			}
 		},
-		// artsByAuthor: {
-		// 	type: new GraphQLList(ArtType),
-		// 	args: { authorId: { type: new GraphQLNonNull(GraphQLID) } },
-		// 	resolve(_, args) {
-		// 		return Art.find({ author: args.authorId });
-		// 	}
-		// },
 		comments: {
 			type: new GraphQLList(CommentType),
 			resolve() {
