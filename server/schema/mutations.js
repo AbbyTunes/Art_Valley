@@ -18,6 +18,8 @@ const Category = mongoose.model("categories");
 const CategoryType = require("./types/category_type");
 const Comment = mongoose.model("comments");
 const CommentType = require("./types/comment_type");
+const Article = mongoose.model("articles");
+const ArticleType = require("./types/article_type");
 
 const mutation = new GraphQLObjectType({
 	name: "Mutation",
@@ -169,6 +171,26 @@ const mutation = new GraphQLObjectType({
 							return comment;
 						})
 					})
+					.catch(err => console.log(err));
+				})
+			}
+		},
+		newArticle: {
+			type: ArticleType,
+			args: {
+				title: { type: GraphQLString},
+				body: { type: GraphQLString },
+				author: { type: GraphQLID },
+				photoLink: { type: GraphQLString }
+			},
+			async resolve(_, args) {
+				return new Article(args).save()
+					.then(article => {
+						return User.findById(article.author).then(user => {
+							user.publishedArticles.push(article);
+							user.save();
+							return article;
+						})
 					.catch(err => console.log(err));
 				})
 			}
