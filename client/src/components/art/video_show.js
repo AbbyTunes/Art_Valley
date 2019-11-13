@@ -56,7 +56,7 @@ class VideoShow extends Component {
 							<div className="show-art">
 								<div className="show-pic">
 									
-									<iframe width="420" height="315"
+									<iframe className="show-pic">
 										src={photoLink}>
 									</iframe>
 								</div>
