@@ -10,6 +10,7 @@ const ArticleType = new GraphQLObjectType({
     fields: () => ({
         id: { type: GraphQLID },
         title: { type: GraphQLString },
+        header: { type: GraphQLString },
         body: { type: GraphQLString },
         author: { 
             type: require("./user_type"),

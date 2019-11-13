@@ -3,6 +3,7 @@ import { Query } from "react-apollo";
 import ArticleIndexItem from "./ArticleIndexItem";
 import { Link } from "react-router-dom";
 import Queries from "../../graphql/queries";
+import "./article_index.css"
 const { FETCH_ARTICLES } = Queries;
 
 const ArticleIndex = (props) => {
@@ -21,7 +22,7 @@ const ArticleIndex = (props) => {
             );
             let allArticleList = data.articles.map((article) => {
                 return (
-                    <li key={article.id} className="art-index-li">
+                    <li key={article.id} className="article-index-li">
                         <Link to={`/community/${article.id}`}>
                             <ArticleIndexItem article={article}></ArticleIndexItem>
                         </Link>
@@ -29,6 +30,7 @@ const ArticleIndex = (props) => {
                 )
             })
 
+            //prob should make an onclick event for below that fetches more articles
             let seeMoreButton = (
                 <div className="see-more-button">
                     <Link to="#">See More</Link>
@@ -37,15 +39,11 @@ const ArticleIndex = (props) => {
 
             return (
                 <div className="article-index-container">
-                    <div className="article-header">
-                        Articles
-					</div>
+                    <h1 className="article-index-header">Trending</h1>
                     <div>
-                        list of stuff
                         {allArticleList}
                     </div>
-                    <div className="see-more-button">
-                        Button
+                    <div className="article-see-more-button">
                         {seeMoreButton}
                     </div>
                 </div>

@@ -1,0 +1,25 @@
+.article-index-item-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.article-index-item-author{
+    display: block;
+    color: #717172;
+    font-size: 18px;
+}
+
+.article-index-item-title{
+    display: block;
+    color: black;
+    font-size: 32px;
+    text-align: center;
+}
+
+.article-index-item-header{
+    display: block;
+    color: gray;
+    font-size: rgba(0, 0, 0, 0.54)
+}

@@ -173,6 +173,7 @@ export default {
         id
         title
         body
+        header
         author { 
           id 
           name
@@ -193,12 +194,13 @@ export default {
       }
     }
   `,
-  FETCH_ARTICLEe: gql`
+  FETCH_ARTICLE: gql`
     query article($_id: ID!) {
       article(_id: $id) {
         id
         title
         body
+        header
         author { 
           id 
           name

@@ -81,12 +81,13 @@ export default {
     }
   `,
   CREATE_ARTICLE: gql`
-    mutation CreateArticle($author: ID!, $title: String!, $body: String!, $photoLink: String!) {
-      newArticle(author: $author, title: $title, body: $body, photoLink: $photoLink) {
+    mutation CreateArticle($author: ID!, $title: String!, $body: String!, $photoLink: String, $header: String!) {
+      newArticle(author: $author, title: $title, body: $body, photoLink: $photoLink, header: $header) {
           author {
             id
             name
           }
+          header
           title
           body
           photoLink

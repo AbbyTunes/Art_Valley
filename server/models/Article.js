@@ -10,6 +10,10 @@ const ArticleSchema = new Schema({
         type: String,
         required: true
     },
+    header: {
+        type: String,
+        required: true
+    },
     author: {
         type: Schema.Types.ObjectId,
         ref: "users",

@@ -193,6 +193,7 @@ const mutation = new GraphQLObjectType({
 			args: {
 				title: { type: GraphQLString},
 				body: { type: GraphQLString },
+				header: { type: GraphQLString },
 				author: { type: GraphQLID },
 				photoLink: { type: GraphQLString }
 			},

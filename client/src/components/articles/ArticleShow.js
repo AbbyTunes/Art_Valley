@@ -28,14 +28,18 @@ class ArticleShow extends Component {
                         </div>
                     );
 
-                    const { body, photoLink, title, likers, comments } = data.article;
-                    return (
-                        <div className="show-container">
-                            <div className="show-art">
-                                <div className="show-pic">
-                                    <img className="show-image" src={photoLink}></img>
-                                </div>
+                    let photo = data.article.photoLink ? 
+                        <div className="article-show-photo">
+                            <img className="show-image" src={photoLink}></img>
+                        </div> : 
+                        <div></div>
 
+                    const { body, photoLink, title, likers, comments } = data.article;
+                    
+                    return (
+                        <div className="article-show-container">
+                            <div className="article-show-photo-container">
+                                {photo}
                                 <div className="show-info">
 
                                     <div className="info-main">
