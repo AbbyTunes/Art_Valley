@@ -117,6 +117,12 @@ export default {
           title
           photoLink
         }
+        publishedArticles {
+          id
+          title
+          body
+          photoLink
+        }
       }
     }
   `,

@@ -67,7 +67,7 @@ UserSchema.statics.addLikedArt = (userId, artId ) => {
 
 UserSchema.statics.addLikedArticle = (userId, articleId) => {
   const User = mongoose.model("users");
-  const Article = mongoose.model("article");
+  const Article = mongoose.model("articles");
 
   return User.findById(userId).then(user => {
     return Article.findById(articleId).then(article => {

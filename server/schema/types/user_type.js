@@ -11,6 +11,7 @@ const {
 const User = mongoose.model("users");
 const Art = mongoose.model("arts");
 const ArtType = require("./art_type");
+const ArticleType = require("./article_type");
 
 const UserType = new GraphQLObjectType({
   name: "UserType",
@@ -40,6 +41,14 @@ const UserType = new GraphQLObjectType({
         return User.findById(parentValue.id)
           .populate("publishedComments")
           .then(user => user.publishedComments);
+      }
+    },
+    publishedArticles: {
+      type: new GraphQLList(ArticleType),
+      resolve(parentValue) {
+        return User.findById(parentValue.id)
+          .populate("publishedArticles")
+          .then(user => user.publishedArticles);
       }
     },
     token: { type: GraphQLString },
