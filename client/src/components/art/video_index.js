@@ -5,14 +5,14 @@ import { Link, withRouter } from "react-router-dom";
 import Queries from "../../graphql/queries";
 const { FETCH_ARTS_BY_CATEGORY } = Queries;
 
-const ArtIndex = (props) => {
-//comment
+const VideoIndex = (props) => {
+
 	return (
-		<Query 
-			query={FETCH_ARTS_BY_CATEGORY} 
-			variables={{ categoryId: "5dc9a1c883d5a53746a785a2" }} >
+		<Query
+			query={FETCH_ARTS_BY_CATEGORY}
+			variables={{ categoryId: "5dcc556324cdd659e23e1e5a" }} >
 			{({ loading, error, data }) => {
-				
+
 				if (loading) return (
 					<div className="art-index-container">
 						<p>Loading...</p>
@@ -27,13 +27,13 @@ const ArtIndex = (props) => {
 				let allArtList = data.artsByCategory.map((art) => {
 					return (
 						<li key={art.id} className="art-index-li">
-							<Link to={`/arts/${art.id}`}>
-								<img className="art-photo-thumbnail" src={art.photoLink} alt="" />
+							<Link to={`/videos/${art.id}`}>
+								<div>thumbnail</div>
 							</Link>
 						</li>
 					)
 				})
-				
+
 				let seeMoreButton = (
 					<div className="see-more-button">
 						<Link to="#">See More</Link>
@@ -43,13 +43,13 @@ const ArtIndex = (props) => {
 				return (
 					<div className="art-index-container">
 						<div className="art-header">
-							Photos
+							Videos
 						</div>
 
 						<ul className="art-index-ul">
 							{allArtList}
 						</ul>
-						
+
 						<div className="see-more-button">
 							{seeMoreButton}
 						</div>
@@ -61,4 +61,4 @@ const ArtIndex = (props) => {
 	);
 }
 
-export default withRouter(ArtIndex);
+export default withRouter(VideoIndex);

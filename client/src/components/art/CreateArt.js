@@ -16,7 +16,6 @@ if (process.env.NODE_ENV === "production") {
 } else {
   endpoint = "http://localhost:5000/api/art/upload";
 }
-// const endpoint = "http://localhost:5000/api/art/upload";
 
 class CreateArt extends Component {
   constructor(props) {
@@ -27,16 +26,24 @@ class CreateArt extends Component {
       author: localStorage.currentUserId,
       title: "",
       description: "",
-      photoLink: ""
+      photoLink: "",
+      previewUrl: ""
     };
   }
 
+
   handleSelectedFile = e => {
     e.preventDefault();
-    this.setState({
-      photoLink: e.target.files[0]
-    });
+    let file = e.target.files[0];
+    let fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({photoLink: file, previewUrl: fileReader.result});
+    };
+    if(file){
+      fileReader.readAsDataURL(file);
+    }
   };
+
 
   update(field) {
     return e => this.setState({ [field]: e.target.value });
@@ -76,13 +83,12 @@ class CreateArt extends Component {
     data.append("category",this.state.category);
     data.append("author",this.state.author);
     data.append("description",this.state.description);
-    // axios.post(endpoint, data);
     axios.post(endpoint, data)
   }
 
   render() {
     console.log(this.state);
-
+    let preview = this.state.previewUrl ? <img src={this.state.previewUrl}/> : <div></div>;
     return(
       <div className="profile-container">
           <div className="art-form-container">
@@ -101,6 +107,7 @@ class CreateArt extends Component {
               <div className="art-form-content">
                 <div className="art-form-image-container">
                   <div className="art-form-image-preview">
+                    {preview}
                     <span
                       role="img"
                       alt=""

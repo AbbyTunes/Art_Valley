@@ -6,12 +6,13 @@ export default {
       isLoggedIn @client
     }
   `,
-  FETCH_ARTS: gql`
+	FETCH_ARTS: gql`
     query arts {
       arts {
         id
-        authorId
-        videoLink
+        author {
+					name
+				}
         photoLink
         title
       }
@@ -25,7 +26,6 @@ export default {
           id
           name
         }
-        videoLink
         photoLink
         title
         description
@@ -38,6 +38,7 @@ export default {
           name
         }
         comments {
+					id
           body
         }
       }
@@ -55,7 +56,7 @@ export default {
       }
     }
   `,
-  FETCH_ARTS_BY_CATEGORY: gql`
+	FETCH_ARTS_BY_CATEGORY: gql`
     query artsByCategory($categoryId: ID!) {
       artsByCategory(categoryId: $categoryId) {
         id
@@ -63,7 +64,6 @@ export default {
           id
           name
         }
-        videoLink
         photoLink
         title
         description
@@ -74,33 +74,33 @@ export default {
         category {
           id
           name
-        }
+				}
       }
     }
   `,
-  FETCH_ARTS_BY_AUTHOR: gql`
-    query artsByAuthor($authorId: ID!) {
-      artsByAuthor(authorId: $authorId) {
-        id
-        author {
-          id
-          name
-        }
-        videoLink
-        photoLink
-        title
-        description
-        likers {
-          id
-          name
-        }
-        category {
-          id
-          name
-        }
-      }
-    }
-  `,
+  // FETCH_ARTS_BY_AUTHOR: gql`
+  //   query artsByAuthor($authorId: ID!) {
+  //     artsByAuthor(authorId: $authorId) {
+  //       id
+  //       author {
+  //         id
+  //         name
+  //       }
+  //       videoLink
+  //       photoLink
+  //       title
+  //       description
+  //       likers {
+  //         id
+  //         name
+  //       }
+  //       category {
+  //         id
+  //         name
+  //       }
+  //     }
+  //   }
+  // `,
   FETCH_USER: gql`
     query user($_id: ID!) {
       user(_id: $_id) {
