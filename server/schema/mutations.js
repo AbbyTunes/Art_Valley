@@ -40,7 +40,6 @@ const mutation = new GraphQLObjectType({
 				author: { type: GraphQLID },
 				title: { type: GraphQLString },
 				description: { type: GraphQLString },
-				// videoLink: { type: GraphQLString },
 				photoLink: { type: GraphQLString }
 			},
 			async resolve(_, args, context) {
@@ -77,18 +76,6 @@ const mutation = new GraphQLObjectType({
 					.catch(err => null);
 			}
 		},
-		// updateProductCategory: {
-		// 	type: ProductType,
-		// 	args: {
-		// 		productId: { type: new GraphQLNonNull(GraphQLID) },
-		// 		categoryId: { type: new GraphQLNonNull(GraphQLID) }
-		// 	},
-		// 	resolve(_, { productId, categoryId }) {
-		// 		return Product.updateProductCategory(productId, categoryId)
-		// 			.then(product => product)
-		// 			.catch(err => err);
-		// 	}
-		// },
 		register: {
 			type: UserType,
 			args: {

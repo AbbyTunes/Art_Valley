@@ -1,3 +1,5 @@
+
+
 import React, { Component } from "react";
 import { Query } from "react-apollo";
 import "./art_show.scss";
@@ -5,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import Queries from "../../graphql/queries";
 const { FETCH_ART } = Queries;
 
-class ArtShow extends Component {
+class VideoShow extends Component {
 
 	render() {
 		return (
@@ -25,15 +27,18 @@ class ArtShow extends Component {
 					);
 
 					console.dir(data)
-					const { description, photoLink, title, likers } = data.artById; 
+					const { description, photoLink, title, likers } = data.artById;
 					return (
-            <div className="show-container">
-              <div className="show-art">
+						<div className="show-container">
+							<div className="show-art">
 								<div className="show-pic">
-									<img className="show-image" src={photoLink}></img>
+									
+									<iframe width="420" height="315"
+										src={photoLink}>
+									</iframe>
 								</div>
-                
-                <div className="show-info">
+
+								<div className="show-info">
 
 									<div className="info-main">
 										<div className="info-1">
@@ -45,23 +50,23 @@ class ArtShow extends Component {
 											<div className="show-likes">Likes {likers.length}</div>
 										</div>
 									</div>
-                 
+
 									<div className="info-3">
 										<div className="show-comment">Comment</div>
-                  </div>
-                </div>
+									</div>
+								</div>
 
-                <div className="show-artist">Add something</div>
+								<div className="show-artist">Add something</div>
 
-                <div className="show-category"></div>
-              </div>
-            </div>
-          );
+								<div className="show-category"></div>
+							</div>
+						</div>
+					);
 				}}
 			</Query>
-		
+
 		)
 	}
 }
 
-export default withRouter(ArtShow);
+export default withRouter(VideoShow);

@@ -13,6 +13,8 @@ import ArtShow from "./art/art_show";
 // import ArticleCreate from './articles/ArticleCreate';
 import ArticleIndex from './articles/ArticleIndex';
 import ArticleShow from './articles/ArticleShow';
+import VideoIndex from "./art/video_index";
+import VideoShow from "./art/video_show";
 
 import "./App.css";
 
@@ -28,6 +30,8 @@ const App = () => {
 
 				<Route exact path="/community" component={ArticleIndex} />
 				<Route exact path="/community/:articleId" component={ArticleShow} />
+				<Route exact path="/videos" component={VideoIndex} />
+				<Route exact path="/videos/:artId" component={VideoShow} />
 			</Switch>
 			<Route exact path="/create" component={CreateArt}/>
 			
