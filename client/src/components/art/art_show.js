@@ -26,12 +26,13 @@ class ArtShow extends Component {
 
 					const { id, description, photoLink, title, likers, author } = data.artById;
 
-					debugger
+					console.dir(data)
+					
 					let showArtist;
 					if (author && author.publishedArts 
 						// && author.publishedArts.length !==1 
 						) {
-						let artPublishedLimit = author.publishedArts.filter(pubArt => pubArt.id !== id ).slice(0, 6);
+						let artPublishedLimit = author.publishedArts.filter(pubArt => pubArt.id !== id).slice(0, 6);
 						let artPubList = artPublishedLimit.map(artPub => {
 							return (
 								<li className="published-li" key={artPub.id}>

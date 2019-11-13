@@ -29,6 +29,9 @@ export default {
 						id
 						title
 						photoLink
+						author {
+							id
+						}
 					}
 					likedArts {
 						id
