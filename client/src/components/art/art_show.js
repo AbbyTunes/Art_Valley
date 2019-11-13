@@ -48,7 +48,7 @@ class ArtShow extends Component {
 									</div>
                  
 									<div className="info-3">
-										<div className="show-comment">Comment</div>
+										<div className="show-comment">Comments</div>
                   </div>
 
 									<CreateComment artId={data.artById.id} comments={data.artById.comments} />

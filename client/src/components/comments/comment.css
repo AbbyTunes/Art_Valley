@@ -122,9 +122,10 @@
   border-radius: 50%;
   background: inherit;
   cursor: default;
+  user-select: none;
 }
 
-.comment-author-icon-pic:hover {
+.comment-author-icon:hover {
   opacity: 0.7;
 }
 

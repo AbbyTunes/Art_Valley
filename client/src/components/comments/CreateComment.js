@@ -13,7 +13,6 @@ const { ADD_COMMENT, VERIFY_USER } = Mutations;
 
 class CreateComment extends React.Component {
     constructor(props) {
-        console.log(localStorage)
         super(props);
         this.state = {
             body: "",
@@ -78,6 +77,25 @@ class CreateComment extends React.Component {
             </Query>
         );
 
+        const queryComments = (
+            <Query query={FETCH_ART} variables={{ artId: this.state.art }}>
+                {({ loading, error, data }) => {
+                    if (loading) return <p>Loading...</p>;
+                    if (error) return <p>Error</p>;
+                    const commentData = data.artById.comments;
+                    return (
+                        <div>
+                            {commentData.map((comment, idx) => {
+                                return (
+                                    <CommentDetail key={idx + 10001} comment={comment} />
+                                );
+                            })}
+                        </div>
+                    );
+                }}
+            </Query>
+        );
+
         const queryMutation = commentData => {
             return (
                 <Mutation
@@ -115,11 +133,20 @@ class CreateComment extends React.Component {
             );
         };
 
-        return (
-            <div>
-                {queryArt}
-            </div>
-        );
+        
+        if (!localStorage.length) {
+            return (
+                <div>
+                    {queryComments}
+                </div>
+            )
+        } else {
+            return ( 
+                <div>
+                    {queryArt}
+                </div>
+            )
+        }
     }
 }
 
