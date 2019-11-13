@@ -1,10 +1,15 @@
 require("dotenv").config();
 const express = require("express");
 const router = express.Router();
+// const DOCUMENT = require("../models/Document");
 const Art = require("../models/Art");
 const multer = require("multer");
 var AWS = require("aws-sdk");
 
+// Multer ships with storage engines DiskStorage and MemoryStorage
+// And Multer adds a body object and a file or files object to the request object. 
+//The body object contains the values of the text fields of the form, 
+//the file or files object contains the files uploaded via the form.
 var storage = multer.memoryStorage();
 var upload = multer({ storage: storage });
 
@@ -49,5 +54,38 @@ router.post("/upload", upload.single("file"), function(req, res) {
     }
   });
 });
+
+
+// router.route("/:id").delete((req, res, next) => {
+//   DOCUMENT.findByIdAndRemove(req.params.id, (err, result) => {
+//     if (err) {
+//       return next(err);
+//     }
+//     //Now Delete the file from AWS-S3
+//     // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObject-property
+//     let s3bucket = new AWS.S3({
+//       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+//       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+//       region: process.env.AWS_REGION
+//     });
+
+//     let params = {
+//       Bucket: process.env.AWS_BUCKET_NAME,
+//       Key: result.s3_key
+//     };
+
+//     s3bucket.deleteObject(params, (err, data) => {
+//       if (err) {
+//         console.log(err);
+//       } else {
+//         res.send({
+//           status: "200",
+//           responseType: "string",
+//           response: "success"
+//         });
+//       }
+//     });
+//   });
+// });
 
 module.exports = router;
