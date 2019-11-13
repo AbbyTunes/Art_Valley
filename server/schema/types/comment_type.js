@@ -25,6 +25,14 @@ const CommentType = new GraphQLObjectType({
                     .then(art => art)
                     .catch(err => null);
             }
+        },
+        article: {
+            type: require("./article_type"),
+            resolve(parentValue) {
+                return Article.findById(parentValue.article)
+                    .then(art => article)
+                    .catch(err => null);
+            }
         }
     })
 });
