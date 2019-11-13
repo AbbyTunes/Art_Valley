@@ -38,6 +38,7 @@
     "mongoose-sequence": "^5.2.2",
     "multer": "^1.4.2",
     "node-sass": "^4.13.0",
+    "react": "^16.11.0",
     "validator": "^12.0.0"
   },
   "devDependencies": {

@@ -9,7 +9,14 @@ import axios from "axios";
 const { CREATE_ART } = Mutations;
 const { FETCH_ART, FETCH_USER, FETCH_CATEGORIES } = Queries;
 
-const endpoint = "http://localhost:5000/api/art/upload";
+
+let endpoint;
+if (process.env.NODE_ENV === "production") {
+  endpoint = `/api/art/upload`;
+} else {
+  endpoint = "http://localhost:5000/api/art/upload";
+}
+// const endpoint = "http://localhost:5000/api/art/upload";
 
 class CreateArt extends Component {
   constructor(props) {
@@ -69,6 +76,7 @@ class CreateArt extends Component {
     data.append("category",this.state.category);
     data.append("author",this.state.author);
     data.append("description",this.state.description);
+    // axios.post(endpoint, data);
     axios.post(endpoint, data)
   }
 

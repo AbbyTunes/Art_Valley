@@ -5,6 +5,6 @@ WORKDIR /app
 ENV NODE_ENV=production
 
 RUN npm run client-install  && npm run build --prefix client \ 
-   && npm install
+   && npm rebuild node-sass && npm install
 
 CMD ["npm", "start"]
