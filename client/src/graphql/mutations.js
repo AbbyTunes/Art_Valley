@@ -96,6 +96,21 @@ export default {
         }
       }
     }
+  `,
+  ADD_ARTICLE_UNLIKE: gql`
+    mutation AddArticleLike($userId: ID!, $articleId: ID!){
+      addUserLikedArticle(userId: $userId, articleId: $articleId) {
+        id
+        name
+        likedArticles {
+          id 
+          title
+          likers {
+            id
+          }
+        }
+      }
+    }
 	`,
 	USER_LIKE_ART: gql`
     mutation addUserLikedArt($userId: ID!, $artId: ID!){
