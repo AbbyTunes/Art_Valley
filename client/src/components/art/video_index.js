@@ -26,10 +26,16 @@ const VideoIndex = (props) => {
 
 				let allArtList = data.artsByCategory.map((art) => {
 					return (
-						<li key={art.id} className="art-index-li">
+						<li key={art.id} className="video-index-li">
+							
 							<Link to={`/videos/${art.id}`}>
-								<div>thumbnail</div>
-							</Link>
+								<div className="video-modal"></div>
+							</Link>	
+
+							<iframe width="300" height="200"
+								src={art.photoLink}>
+							</iframe>
+							
 						</li>
 					)
 				})
