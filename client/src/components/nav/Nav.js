@@ -89,9 +89,66 @@ class Nav extends React.Component {
                       return <p>loading...</p>;
                     }
                     if (error) return `Error! ${error.message}`;
+
+                    let navLinks = 
+                    <div className="side-menu-nav-links">
+                      <Link
+                        onClick={() => this.closeModal(this.state.elements)}
+                        to="/arts"
+                      >
+                        Photos
+                          </Link>
+
+                      <Link
+                        onClick={() => this.closeModal(this.state.elements)}
+                        to="/community"
+                      >
+                        Community
+                          </Link>
+
+                      <Link
+                        onClick={() => this.closeModal(this.state.elements)}
+                        to="/videos"
+                      >
+                        Videos
+                      </Link>
+                    </div>;
+
                     if (data.isLoggedIn) {
                       return (
                         <div id="nav-links-2" className="nav-links">
+
+                          {/* {navLinks}
+                        */}
+
+                          <Link
+                            onClick={() => this.closeModal(this.state.elements)}
+                            to="/arts"
+                          >
+                            Photos
+                          </Link>
+
+                          <Link
+                            onClick={() => this.closeModal(this.state.elements)}
+                            to="/community"
+                          >
+                            Community
+                          </Link>
+
+                          <Link
+                            onClick={() => this.closeModal(this.state.elements)}
+                            to="/videos"
+                          >
+                            Videos
+                      </Link>
+
+                          <Link to="/" onClick={() => this.closeModal(this.state.elements)}>Home</Link>
+                          <Link 
+                            to={`/users/${localStorage.getItem("currentUserId")}`} 
+                            onClick={() => this.closeModal(this.state.elements)}
+                          >
+                            Profile
+                          </Link>
                           <Link to="/"
                             onClick={e => {
                               e.preventDefault();
@@ -103,13 +160,7 @@ class Nav extends React.Component {
                           >
                             Logout
                           </Link>
-                          <Link to="/" onClick={() => this.closeModal(this.state.elements)}>Home</Link>
-                          <Link 
-                            to={`/users/${localStorage.getItem("currentUserId")}`} 
-                            onClick={() => this.closeModal(this.state.elements)}
-                          >
-                            Profile
-                          </Link>
+
                         </div>
                       );
                     } else {
@@ -121,6 +172,7 @@ class Nav extends React.Component {
                           >
                             Home
                           </Link>
+                          {/* {navLinks} */}
                           <Link
                             onClick={() => this.closeModal(this.state.elements)}
                             to="/login"
@@ -133,6 +185,27 @@ class Nav extends React.Component {
                           >
                             Register
                           </Link>
+
+                          <Link
+                            onClick={() => this.closeModal(this.state.elements)}
+                            to="/arts"
+                          >
+                            Photos
+                          </Link>
+
+                          <Link
+                            onClick={() => this.closeModal(this.state.elements)}
+                            to="/community"
+                          >
+                            Community
+                          </Link>
+
+                          <Link
+                            onClick={() => this.closeModal(this.state.elements)}
+                            to="/videos"
+                          >
+                            Videos
+                      </Link>
                         </div>
                       );
                     }
