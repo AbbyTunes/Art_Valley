@@ -8,6 +8,7 @@ const schema = require("./schema/schema");
 const cors = require("cors");
 
 const fileUpload = require("./routes/fileUpload");
+const articleUpload = require("./routes/articleUpload");
 
 const app = express();
 
@@ -31,6 +32,8 @@ app.use(
 );
 
 app.use("/api/art", fileUpload);
+
+app.use("/api/article", articleUpload);
 
 mongoose
 	.connect(db, {

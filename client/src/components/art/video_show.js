@@ -16,15 +16,15 @@ class VideoShow extends Component {
 				variables={{ artId: this.props.match.params.artId }} >
 				{({ loading, error, data }) => {
 					if (loading) return (
-						<div>
-							<p>Loading...</p>
-						</div>
-					);
+                         <div className="temp">
+                           <p>Loading...</p>
+                         </div>
+                       );
 					if (error) return (
-						<div>
-							<p>Error</p>
-						</div>
-					);
+                       <div className="temp">
+                         <p>Error</p>
+                       </div>
+                     );
 
 					const { id, description, photoLink, title, likers, author } = data.artById;
 					console.dir(data)

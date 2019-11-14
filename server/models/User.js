@@ -75,7 +75,7 @@ UserSchema.statics.addLikedArticle = (userId, articleId) => {
       article.likers.push(user);
 
       return Promise.all([user.save(), article.save()]).then(
-        ([user, article]) => article
+        ([user, article]) => user
       );
     });
   });
