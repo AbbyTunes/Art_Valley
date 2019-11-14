@@ -103,7 +103,7 @@ class ArticleShow extends Component {
                         <div>
                           <ArticleComments
                             articleId={this.props.match.params.articleId} 
-                            // comments={data.artById.comments} 
+                            commentData={data.article.comments} 
                           />
                         </div>
                       </div>

@@ -9,7 +9,7 @@ const { FETCH_ARTICLE } = Queries;
 
 class ArticleCommentDetail extends React.Component {
     constructor(props) {
-        console.log(props)
+        // console.log(props)
         super(props);
         this.state = {
             body: "",
@@ -19,31 +19,33 @@ class ArticleCommentDetail extends React.Component {
 
     updateCache(cache, data) { // update cache instead of setState
 
-        const artwork = cache.readQuery({
+        const article = cache.readQuery({
             query: FETCH_ARTICLE,
             variables: {
                 _id: this.props.articleId
 
             }
         });
-        let newArtwork = merge({}, artwork.artById);
+        let newArticle = merge({}, article);
+        // console.log(article.article.comments);
+        // console.log(newArticle.article.comments);
 
-        // console.log(newArtwork);
         // console.log(artwork.artById.comments);
-        newArtwork.comments = artwork.artById.comments.filter((comment) => {
+        newArticle.article.comments = newArticle.article.comments.filter((comment) => {
             return comment.id !== data.data.deleteComment.id
         })
 
+        // console.log(newArticle.comments);
+        console.log(newArticle);
         // console.log(artwork.artById.comments);
         // console.log("WRITE QUERY STUFF BELOW VVVV")
         // console.log(newArtwork)
 
         // console.log(artwork.artById)
         cache.writeQuery({
-            query: FETCH_ARTICLE, data: { article: article },
+            query: FETCH_ARTICLE, data: newArticle,
             variables: {
                 _id: this.props.articleId
-
             }
         })
 
@@ -74,7 +76,7 @@ class ArticleCommentDetail extends React.Component {
                             }}
                         >
                             Delete
-            </a>
+                        </a>
                     )}
 
                 </Mutation >

@@ -209,11 +209,19 @@ const mutation = new GraphQLObjectType({
               user.save();
               return comment;
             })
+            // .then(comment => {
+            //   return Art.findById(comment.art).then(art => {
+            //     console.log(art);
+            //     art.comments.push(comment._id);
+            //     art.save();
+            //     return comment;
+            //   });
+            // })
             .then(comment => {
-              return Art.findById(comment.art).then(art => {
-                console.log(art);
-                art.comments.push(comment._id);
-                art.save();
+              return Article.findById(comment.article).then(article => {
+                console.log(article);
+                article.comments.push(comment._id);
+                article.save();
                 return comment;
               });
             })

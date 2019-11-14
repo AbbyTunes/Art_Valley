@@ -4,7 +4,8 @@ import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
 import TextareaAutosize from "react-textarea-autosize";
 import { ApolloCache } from "apollo-cache";
-import ArticleCommentDetail from "./ArticleComments";
+import ArticleCommentDetail from "./ArticleCommentDetail";
+import { merge } from 'lodash'
 import "./comment.css"
 import { InMemoryCache } from "apollo-cache-inmemory";
 const { FETCH_ARTICLE } = Queries;
@@ -26,7 +27,6 @@ class ArticleComments extends React.Component {
             comments: [],
             forceRender: false
         };
-        debugger;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updateCache = this.updateCache.bind(this);
     }
@@ -42,9 +42,12 @@ class ArticleComments extends React.Component {
                 _id: this.state.article
             }
         });
-        // console.log(artwork.artById);
-        article.article.comments.push(data.data.newComment);
-        cache.writeQuery({ query: FETCH_ARTICLE, data: [article.article] })
+        let newArticle = merge({}, article);
+        newArticle.article.comments.push(data.data.newComment);
+        cache.writeQuery({
+            query: FETCH_ARTICLE, data: newArticle, variables: {
+                _id: this.state.article
+            } })
 
     }
 
@@ -68,43 +71,63 @@ class ArticleComments extends React.Component {
     }
 
     render() {
-        const queryArt = (
-            <Query query={FETCH_ARTICLE} variables={{ _id: this.state.article }}>
-                {({ loading, error, data }) => {
-                    if (loading) return <p>Loading...</p>;
-                    if (error) return <p>Error</p>;
-                    const commentData = data.article.comments;
-                    return (
-                        <div>
-                            {queryMutation(commentData)}
-                        </div>
-                    );
-                }}
-            </Query>
-        );
+        // const queryArticle = (
+        //     <Query query={FETCH_ARTICLE} variables={{ _id: this.state.article }}>
+        //         {({ loading, error, data }) => {
+        //             if (loading) return <p>Loading...</p>;
+        //             if (error) return <p>Error</p>;
+        //             const commentData = data.article.comments;
+        //             return (
+        //                 <div>
+        //                     {queryMutation(commentData)}
+        //                 </div>
+        //             );
+        //         }}
+        //     </Query>
+        // );
 
-        const queryComments = (
-            // let queryType;
-            // if (artId) ? queryType = "FETCH_ART" : "FETCH_ARTICLE";
-            <Query query={FETCH_ARTICLE} variables={{ _id: this.state.article }}>
-                {({ loading, error, data }) => {
-                    if (loading) return <p>Loading...</p>;
-                    if (error) return <p>Error</p>;
-                    const commentData = data.article.comments;
-                    return (
-                        <div>
-                            {commentData.map((comment, idx) => {
-                                return (
-                                    <ArticleCommentDetail key={idx + 10001} comment={comment} />
-                                );
-                            })}
-                        </div>
-                    );
-                }}
-            </Query>
-        );
+        // const queryComments = (
+        //     // let queryType;
+        //     // if (artId) ? queryType = "FETCH_ART" : "FETCH_ARTICLE";
+        //     <Query query={FETCH_ARTICLE} variables={{ _id: this.state.article }}>
+        //         {({ loading, error, data }) => {
+        //             if (loading) return <p>Loading...</p>;
+        //             if (error) return <p>Error</p>;
+        //             const commentData = data.article.comments;
+        //             return (
+        //                 <div>
+        //                     {commentData.map((comment, idx) => {
+        //                         return (
+        //                             <ArticleCommentDetail key={idx + 10001} comment={comment} />
+        //                         );
+        //                     })}
+        //                 </div>
+        //             );
+        //         }}
+        //     </Query>
+        // );
 
-        const queryMutation = commentData => {
+
+
+
+
+            let commentsList; 
+
+        commentsList = this.props.commentData ? this.props.commentData.map((comment, idx) => {
+            return (
+                <li key={idx + 10001}>
+                    <ArticleCommentDetail comment={comment} articleId={this.props.articleId} />
+                </li>
+            );
+        }) : <div></div>
+            // let commentsList = this.props.commentData.map((comment, idx) => {
+            
+            //     return (
+            //         <li>
+            //             <ArticleCommentDetail key={idx + 10001} comment={comment} articleId={this.props.articleId} />
+            //         </li>
+            //     );
+            // });
             return (
                 <Mutation
                     mutation={ADD_COMMENT}
@@ -129,32 +152,28 @@ class ArticleComments extends React.Component {
                                 <div className="comment-line" />
                             </div>
                             <ul>
-                                {commentData.map((comment, idx) => {
-                                    return (
-                                        <ArticleCommentDetail key={idx + 10001} comment={comment} articleId={this.props.articleId} />
-                                    );
-                                })}
+                                {commentsList}
                             </ul>
                         </form>
                     )}
                 </Mutation>
             );
-        };
+        // };
 
 
-        if (!localStorage.length) {
-            return (
-                <div>
-                    {queryComments}
-                </div>
-            )
-        } else {
-            return (
-                <div>
-                    {queryArt}
-                </div>
-            )
-        }
+        // if (!localStorage.length) {
+        //     return (
+        //         <div>
+        //             {/* {queryComments} */}
+        //         </div>
+        //     )
+        // } else {
+        //     return (
+        //         <div>
+        //             {queryArticle}
+        //         </div>
+        //     )
+        // }
     }
 }
 

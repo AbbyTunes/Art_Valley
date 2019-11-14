@@ -28,8 +28,8 @@ export default {
     }
   `,
   ADD_COMMENT: gql`
-    mutation NewComment($body: String!, $author: ID!, $art: ID!) {
-      newComment(body: $body, author: $author, art: $art){
+    mutation NewComment($body: String!, $author: ID!, $art: ID, $article: ID) {
+      newComment(body: $body, author: $author, art: $art, article: $article){
         id
         body
         art {
