@@ -4,7 +4,9 @@ import React, { Component } from "react";
 import { Query } from "react-apollo";
 import "./art_show.scss";
 import { withRouter } from "react-router-dom";
+import ArtLike from "./art_like";
 import Queries from "../../graphql/queries";
+
 const { FETCH_ART } = Queries;
 
 class VideoShow extends Component {
@@ -71,7 +73,7 @@ class VideoShow extends Component {
 										</div>
 
 										<div className="info-2">
-											<div className="show-likes">Likes {likers.length}</div>
+											<ArtLike likers={likers} />
 										</div>
 									</div>
 

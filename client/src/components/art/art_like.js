@@ -1,16 +1,21 @@
 import React, { Component } from "react";
-import { Mutation } from "react-apollo";
+import { Query, Mutation } from "react-apollo";
+import { merge } from "lodash";
 import "./art_show.scss";
 import { withRouter } from "react-router-dom";
+
+import Queries from "../../graphql/queries";
 import Mutations from "../../graphql/mutations";
+
+const { FETCH_ART } = Queries;
 const { USER_LIKE_ART, USER_UNLIKE_ART } = Mutations;
+
 
 class ArtLike extends Component {
 
 	constructor(props) {
 		super(props)
 		this.state = { 
-			likeNum: this.props.likers.length,
 			userId: localStorage.getItem("currentUserId"),
 			artId: this.props.match.params.artId,
 			message: ""
@@ -21,23 +26,44 @@ class ArtLike extends Component {
 		this.setState({ likeNum: this.props.likers.length });
 	}
 
-	// updateCache(cache, { data }) {
-	// 	let art;
-	// 	try {
-	// 		art = cache.readQuery({ query: FETCH_ART });
-	// 	} catch (err) {
-	// 		return;
-	// 	}
-	// 	if (art) {
-	// 		let likeArray = art.likers;
-	// 		debugger
-	// 		// let newLike = data.newProduct;
-	// 		cache.writeQuery({
-	// 			query: FETCH_PRODUCTS,
-	// 			data: { likes: likeArray.concat(newLike) }
-	// 		});
-	// 	}
-	// }
+	updateLikeCache(cache, data) { 
+		const artWork = cache.readQuery({
+			query: FETCH_ART,
+			variables: {
+				artId: this.props.match.params.artId
+			}
+		});
+
+		let newArtWork = merge({}, artWork);
+		newArtWork.artById.likers.push(data.data.addUserLikedArt)
+
+		cache.writeQuery({
+			query: FETCH_ART, data: newArtWork,
+			variables: {
+				artId: this.props.match.params.artId
+			}
+		})
+	}
+
+	updateUnlikeCache(cache, data) {
+		const artWork = cache.readQuery({
+			query: FETCH_ART,
+			variables: {
+				artId: this.props.match.params.artId
+			}
+		});
+
+		let newArtWork = merge({}, artWork);
+		newArtWork.artById.likers.pop(data.data.userUnlikeArt)
+
+		cache.writeQuery({
+			query: FETCH_ART, data: newArtWork,
+			variables: {
+				artId: this.props.match.params.artId
+			}
+		})
+	}
+
 
 	like(addUserLikedArt) {
 		addUserLikedArt({
@@ -58,13 +84,12 @@ class ArtLike extends Component {
 	}
 	
 	render() {
-
 		const likersIdArr = this.props.likers.map(liker => liker.id)
 		if (likersIdArr.includes(this.state.userId)) {
 			return (
 				<Mutation mutation={USER_UNLIKE_ART}
 					onError={err => this.setState({ message: err.message })}
-					// update={(cache, data) => this.updateCache(cache, data)}
+					update={(cache, data) => this.updateUnlikeCache(cache, data)}
 				>
 					{(userUnlikeArt) => (
 						<div className="show-likes"
@@ -74,7 +99,7 @@ class ArtLike extends Component {
 								this.update();
 							}}
 						>
-							Unlike {this.state.likeNum}
+							Unlike {this.props.likers.length}
 						</div>
 					)}
 				</Mutation>
@@ -83,13 +108,13 @@ class ArtLike extends Component {
 			return (
 				<Mutation
 					mutation={USER_LIKE_ART}
-					// update={(cache, data) => this.updateCache(cache, data)}
+					update={(cache, data) => this.updateLikeCache(cache, data)}
 					onError={err => this.setState({ message: err.message })}
 				>
 					{ addUserLikedArt => (
 						<div className="show-likes"
 							onClick={() => this.like(addUserLikedArt)} >
-							Like {this.state.likeNum}
+							Like {this.props.likers.length}
 						</div>
 					)}
 				</Mutation>
