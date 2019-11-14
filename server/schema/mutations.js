@@ -58,6 +58,10 @@ const mutation = new GraphQLObjectType({
 								return category.save()
 									.then(category => art)
 							})
+							.then(art => {
+								User.addPublishedArt(art.author , art.id)
+								return (art => art)
+							})
 						} else {
 							return art
 						}
@@ -161,38 +165,38 @@ const mutation = new GraphQLObjectType({
 				return User.addPublishedArt(userId, artId);
 			}
 		},
-		newComment: { 
-			type: CommentType,
-			args: {
-				body: { type: GraphQLString },
-				author: { type: GraphQLID },
-				art: { type: GraphQLID },
-				article: { type: GraphQLID},
-			},
-			async resolve(_, args) {
-				return new Comment(args).save()
-					.then(comment => {
-						return User.findById(comment.author).then(user => {
-							user.publishedComments.push(comment);
-							user.save();
-							return comment;
-						})
-					.then(comment => {
-						let model = comment.article ? Article : Art ;
-						let id_ref = comment.article ? article : art;
-						debugger;
-						// let model_ref = comment.article ? article : art;
-						return model.findById(id_ref).then(response => {
-							console.log(response);
-							response.comments.push(comment._id);
-							response.save();
-							return comment;
-						})
-					})
-					.catch(err => console.log(err));
-				})
-			}
-		},
+		// newComment: { 
+		// 	type: CommentType,
+		// 	args: {
+		// 		body: { type: GraphQLString },
+		// 		author: { type: GraphQLID },
+		// 		art: { type: GraphQLID },
+		// 		article: { type: GraphQLID},
+		// 	},
+		// 	async resolve(_, args) {
+		// 		return new Comment(args).save()
+		// 			.then(comment => {
+		// 				return User.findById(comment.author).then(user => {
+		// 					user.publishedComments.push(comment);
+		// 					user.save();
+		// 					return comment;
+		// 				})
+		// 			.then(comment => {
+		// 				let model = comment.article ? Article : Art ;
+		// 				let id_ref = comment.article ? article : art;
+		// 				debugger;
+		// 				// let model_ref = comment.article ? article : art;
+		// 				return model.findById(id_ref).then(response => {
+		// 					console.log(response);
+		// 					response.comments.push(comment._id);
+		// 					response.save();
+		// 					return comment;
+		// 				})
+		// 			})
+		// 			.catch(err => console.log(err));
+		// 		})
+		// 	}
+		// },
 		newArticle: {
 			type: ArticleType,
 			args: {
