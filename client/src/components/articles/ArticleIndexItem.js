@@ -5,7 +5,7 @@ const ArticleIndexItem = (props) => {
     return (
         <div className="article-index-item-container">
             <div className="picture-placeholder">
-
+                <img src={props.article.photoLink}/>
             </div>
             <div className="article-index-item-author">
                 {props.article.author.name}
