@@ -27,8 +27,11 @@ class CreateArt extends Component {
       title: "",
       description: "",
       photoLink: "",
-      previewUrl: ""
+      previewUrl: "",
+      message: ""
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
 
@@ -83,21 +86,32 @@ class CreateArt extends Component {
     data.append("category",this.state.category);
     data.append("author",this.state.author);
     data.append("description",this.state.description);
-    axios.post(endpoint, data)
-    console.log(data)
-    console.log(endpoint)
+    axios.post(endpoint, data).then( (response) => {
+      console.log(endpoint)
+      console.log(data)
+
+      console.log(response);
+      if (response.data && response.status === 200) { 
+        this.setState({ message: "Art successfully uploaded!" })
+        console.log(data)
+      } else {
+        this.setState({ message: "Art upload was not successful" })
+
+      }
+    })
+    
+
   }
 
   render() {
     console.log(this.state);
-    let preview = this.state.previewUrl ? <img className="art-form-image-previewed" src={this.state.previewUrl} /> : <span
-      role="img"
-      alt=""
-      aria-label="debug"
-      className="art-form-image-debug-icon"
-    >
-      📷
-                    </span>;
+    let preview = this.state.previewUrl ? 
+      <img className="art-form-image-previewed" src={this.state.previewUrl} /> 
+          : <span
+              role="img"
+              alt=""
+              aria-label="debug"
+              className="art-form-image-debug-icon">📷</span>;
     return(
       <div className="profile-container">
           <div className="art-form-container">

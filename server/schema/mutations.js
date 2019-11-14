@@ -40,6 +40,11 @@ const mutation = new GraphQLObjectType({
 				description: { type: GraphQLString },
 				photoLink: { type: GraphQLString }
 			},
+			errors: [{
+				state: {
+					title: ['There is already an art piece with this title']
+				}
+			}],
 			async resolve(_, args, context) {
  				return new Art(args).save()
 					.then(art => {

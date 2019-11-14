@@ -9,11 +9,13 @@ const { LOGIN_USER } = mutations;
 class Login extends Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
       email: "",
-      password: ""
-		};
+      password: "",
+      message: ""
+    };
+    
 		this.updateCache = this.updateCache.bind(this);
   }
 
@@ -29,6 +31,7 @@ class Login extends Component {
   }
 
   update(field) {
+    console.log(this.state)
     return e => this.setState({ [field]: e.target.value });
   }
 
@@ -36,17 +39,12 @@ class Login extends Component {
     return (
       <Mutation
         mutation={LOGIN_USER}
+        onError={err => this.setState({ message: err.message })}
         onCompleted={data => {
           const { token } = data.login;
-          console.log("MUTATION DEBUG BELOW");
-          console.log(data);
-
 					localStorage.setItem("auth-token", token);
           localStorage.setItem("currentUserId", data.login.id);
           localStorage.setItem("currentUsername", data.login.name);
-          console.log("LOCAL STORAGE BELOW");
-          console.log(localStorage);
-
           this.props.history.push("/");
         }}
         update={(client, data) => this.updateCache(client, data)}
@@ -65,6 +63,10 @@ class Login extends Component {
                 });
               }}
             >
+              <span className="session-errors">
+                {this.state.message}
+              </span>
+              
               <h3 className="session-input-title">Email Address</h3>
               <input
                 className="session-input-box"
