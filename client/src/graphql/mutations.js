@@ -98,8 +98,8 @@ export default {
     }
   `,
   ADD_ARTICLE_UNLIKE: gql`
-    mutation AddArticleLike($userId: ID!, $articleId: ID!){
-      addUserLikedArticle(userId: $userId, articleId: $articleId) {
+    mutation userUnlikeArticle($userId: ID!, $articleId: ID!){
+      userUnlikeArticle(userId: $userId, articleId: $articleId) {
         id
         name
         likedArticles {

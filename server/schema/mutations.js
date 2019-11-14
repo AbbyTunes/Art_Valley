@@ -176,6 +176,16 @@ const mutation = new GraphQLObjectType({
         return User.addLikedArticle(userId, articleId);
       }
     },
+    userUnlikeArticle: {
+      type: UserType,
+      args: {
+        userId: { type: GraphQLID },
+        articleId: { type: GraphQLID }
+      },
+      resolve(_, { userId, articleId }) {
+        return User.unlikeArticle(userId, articleId);
+      }
+    },
     addUserPublishedArt: {
       type: UserType,
       args: {
@@ -186,75 +196,6 @@ const mutation = new GraphQLObjectType({
         return User.addPublishedArt(userId, artId);
       }
     },
-    // newComment: {
-    //   type: CommentType,
-    //   args: {
-    //     body: { type: GraphQLString },
-    //     author: { type: GraphQLID },
-    //     art: { type: GraphQLID },
-    //     article: { type: GraphQLID }
-    //   },
-    //   async resolve(_, args) {
-    //     return new Comment(args).save().then(comment => {
-    //       return User.findById(comment.author)
-    //         .then(user => {
-    //           user.publishedComments.push(comment);
-    //           user.save();
-    //           return comment;
-    //         })
-    //         .then(comment => {
-    //           let model = comment.article ? Article : Art;
-    //           let id_ref = comment.article ? article : art;
-    //           debugger;
-    //           // let model_ref = comment.article ? article : art;
-    //           return model.findById(id_ref).then(response => {
-    //             console.log(response);
-    //             response.comments.push(comment._id);
-    //             response.save();
-    //             return comment;
-    //           });
-    //         })
-    //         .catch(err => console.log(err));
-    //     });
-    //   }
-    // },
-    ///THIS ONEEEEE
-    // newComment: {
-    //   type: CommentType,
-    //   args: {
-    //     body: { type: GraphQLString },
-    //     author: { type: GraphQLID },
-    //     art: { type: GraphQLID },
-    //     article: { type: GraphQLID }
-    //   },
-    //   async resolve(_, args) {
-    //     return new Comment(args).save().then(comment => {
-    //       return User.findById(comment.author)
-    //         .then(user => {
-    //           user.publishedComments.push(comment);
-    //           user.save();
-    //           return comment;
-    //         })
-    //         // .then(comment => {
-    //         //   return Art.findById(comment.art).then(art => {
-    //         //     console.log(art);
-    //         //     art.comments.push(comment._id);
-    //         //     art.save();
-    //         //     return comment;
-    //         //   });
-    //         // })
-    //         .then(comment => {
-    //           return Article.findById(comment.article).then(article => {
-    //             console.log(article);
-    //             article.comments.push(comment._id);
-    //             article.save();
-    //             return comment;
-    //           });
-    //         })
-    //         .catch(err => console.log(err));
-    //     });
-    //   }
-    // },
     newComment: {
       type: CommentType,
       args: {
@@ -271,14 +212,6 @@ const mutation = new GraphQLObjectType({
               user.save();
               return comment;
             })
-            // .then(comment => {
-            //   return Art.findById(comment.art).then(art => {
-            //     console.log(art);
-            //     art.comments.push(comment._id);
-            //     art.save();
-            //     return comment;
-            //   });
-            // })
             .then(comment => {
               if (comment.article) {
                 return Article.findById(comment.article).then(article => {

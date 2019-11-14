@@ -5,6 +5,7 @@ import "./article_show.css";
 import { Link } from "react-router-dom";
 import Queries from "../../graphql/queries";
 import Mutations from "../../graphql/mutations";
+import ArticleLike from "./ArticleLike";
 import ArticleComments from "../comments/ArticleComments";
 const { FETCH_ARTICLE } = Queries;
 const { ADD_ARTICLE_LIKE } = Mutations;
@@ -72,7 +73,7 @@ class ArticleShow extends Component {
                               <div className="article-show-body">{body}</div>
                             </div>
                             <div className="article-info-2">
-                              <Mutation
+                              {/* <Mutation
                                 mutation={ADD_ARTICLE_LIKE}
                                 // update={(cache, data) => this.updateCache(cahce, data)}
                               >
@@ -86,7 +87,8 @@ class ArticleShow extends Component {
                                     Likes {likers.length}
                                   </div>
                                 )}
-                              </Mutation>
+                              </Mutation> */}
+                              <ArticleLike likers={likers} />
                             </div>
                           </div>
 
