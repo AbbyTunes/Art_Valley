@@ -12,7 +12,8 @@ class Register extends Component {
     this.state = {
       name: "",
       email: "",
-      password: ""
+      password: "",
+      message: ""
 		};
     this.updateCache = this.updateCache.bind(this);
     this.updateLoginCache = this.updateLoginCache.bind(this);
@@ -70,6 +71,7 @@ class Register extends Component {
     return (
       <Mutation
         mutation={REGISTER_USER}
+        onError={err => this.setState({ message: err.message })}
         onCompleted={data => {
           // console.log(data);
           const { token } = data.register;
@@ -81,6 +83,10 @@ class Register extends Component {
         {registerUser => (
           <div className="session-form">
             <h1 className="session-header">Register</h1>
+
+            <span className="session-errors">
+              {this.state.message}
+            </span>
             <form
               onSubmit={e => {
                 e.preventDefault();

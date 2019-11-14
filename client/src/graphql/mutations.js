@@ -37,6 +37,7 @@ export default {
         }
         author {
           name
+          id
         }
       }
     }
@@ -45,6 +46,8 @@ export default {
     mutation DeleteComment($id: ID!) {
       deleteComment(_id: $id) {
         id
+        body
+        
       }
     }
   `,
@@ -62,6 +65,7 @@ export default {
           title
           description
           photoLink
+          id
       }
       
     }

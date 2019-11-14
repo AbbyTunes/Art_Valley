@@ -2,41 +2,74 @@ import React from "react";
 import "./comment.css";
 import { Mutation, Query } from "react-apollo";
 import Mutations from "../../graphql/mutations";
-import Queries from "../../graphql/mutations";
+import Queries from "../../graphql/queries";
+import { merge } from 'lodash'
 const { DELETE_COMMENT } = Mutations;
-const { FETCH_COMMENT} = Queries;
+const { FETCH_ART} = Queries;
 
 class CommentDetail extends React.Component {
   constructor(props) {
-    console.log(localStorage)
+    console.log(props)
     super(props);
     this.state = {
-      
+      body: "",
+      author: ""
     };
   }
+
+  updateCache(cache, data) { // update cache instead of setState
+
+    const artwork = cache.readQuery({
+      query: FETCH_ART,
+      variables: {
+        artId: this.props.artId
+
+      }
+    });
+    let newArtwork = merge({}, artwork.artById);
+
+    // console.log(newArtwork);
+    // console.log(artwork.artById.comments);
+    newArtwork.comments = artwork.artById.comments.filter( (comment) => {
+      return comment.id !== data.data.deleteComment.id
+    })
+
+    // console.log(artwork.artById.comments);
+    // console.log("WRITE QUERY STUFF BELOW VVVV")
+    // console.log(newArtwork)
+    
+    // console.log(artwork.artById)
+    cache.writeQuery({
+      query: FETCH_ART, data: { artById: newArtwork} , 
+      variables: {
+        artId: this.props.artId
+
+      } })
+
+  }
+
 
   deleteComment() {
     if (localStorage.currentUserId === this.props.comment.author.id) {
       return (
         <Mutation
           mutation={DELETE_COMMENT}
-          refetchQueries={() => {
-            return [
-              {
-                // query: FETCH_COMMENT({ id: this.props.comment.id })
-              }
-            ];
-          }}
+          update={(cache, data) => this.updateCache(cache, data)}
+          // refetchQueries={() => {
+          //   return [
+          //     {
+          //       // query: FETCH_COMMENT({ id: this.props.comment.id })
+          //     }
+          //   ];
+          
 
         >
-          {(deleteComment, { data }) => (
+          {(deleteComment) => (
             <a
               className="comment-body-delete"
               onClick={e => {
                 e.preventDefault();
                 deleteComment({ variables: { id: this.props.comment.id } });
-                console.log(this.props.comment.id);
-                console.log(data)
               }}
             >
              Delete
