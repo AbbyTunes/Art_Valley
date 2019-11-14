@@ -7,7 +7,7 @@ const { CREATE_ARTICLE } = Mutations;
 class ArticleCreate extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { title: "", body: "", photoLink: ""};
+        this.state = { title: "", body: "", photoLink: "", header: "" };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -22,12 +22,13 @@ class ArticleCreate extends React.Component {
                 title: this.state.title,
                 body: this.state.body,
                 photoLink: this.state.photoLink,
+                header: this.state.header,
                 author: localStorage.getItem("currentUserId")
             }
         })
             .then(data => {
                 this.setState({
-                    title: "", body: "", photoLink: ""
+                    title: "", body: "", photoLink: "", header: ""
                 });
             })
     }
@@ -38,6 +39,7 @@ class ArticleCreate extends React.Component {
                 {(newArticle, { data }) => (
                     <form className="article-create-form" onSubmit={(e) => this.handleSubmit(e, newArticle)}>
                         <input value={this.state.title} onChange={this.update("title")} />
+                        <textarea value={this.state.header} onChange={this.update("header")} />
                         <textarea value={this.state.body} onChange={this.update("body")} />
                         {/* image here */}
                         <input type="submit" value="Save Article" />
