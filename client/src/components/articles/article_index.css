@@ -13,13 +13,19 @@
     font-size: 40px;
     text-align: center;
     padding-top: 40px;
-    padding-bottom: 80px;
+    padding-bottom: 40px;
     font-weight: 800;
 }
 
 .article-index-li{
     margin-bottom: 60px;
 }
+
+.article-index-container > a {
+        align-self: center;
+        padding-bottom: 80px;
+    }
+
 
 
 @media screen and (min-width: 1000px){
@@ -37,5 +43,9 @@
 
     .see-more-button{
         display: none;
+    }
+
+    .article-index-container > a {
+        padding-bottom: 80px;
     }
 }

@@ -10,7 +10,7 @@ import Settings from "./user/Settings";
 import CreateArt from "./art/CreateArt";
 import ArtIndex from "./art/art_index";
 import ArtShow from "./art/art_show";
-// import ArticleCreate from './articles/ArticleCreate';
+import ArticleCreate from './articles/ArticleCreate';
 import ArticleIndex from './articles/ArticleIndex';
 import ArticleShow from './articles/ArticleShow';
 import VideoIndex from "./art/video_index";
@@ -30,6 +30,7 @@ const App = () => {
 
 				<Route exact path="/community" component={ArticleIndex} />
 				<Route exact path="/community/:articleId" component={ArticleShow} />
+				<Route exact path="/community/create" component={ArticleCreate} />
 				<Route exact path="/videos" component={VideoIndex} />
 				<Route exact path="/videos/:artId" component={VideoShow} />
 			</Switch>

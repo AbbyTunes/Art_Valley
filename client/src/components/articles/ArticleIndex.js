@@ -40,6 +40,7 @@ const ArticleIndex = (props) => {
             return (
                 <div className="article-index-container">
                     <h1 className="article-index-header">Trending</h1>
+                    <Link to="/community/create">Add Thoughts</Link>
                     <div className="article-index-list">
                         {allArticleList}
                     </div>
