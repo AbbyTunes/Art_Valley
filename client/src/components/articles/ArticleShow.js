@@ -30,18 +30,20 @@ class ArticleShow extends Component {
                         </div>
                     );
 
-                    let photo = data.article.photoLink ? 
-                        <div className="article-show-photo">
-                            <img className="article-show-image" src={photoLink}></img>
-                        </div> : 
-                        <div></div>
+                    // let photo = data.article.photoLink ? 
+                    //     <div className="article-show-photo">
+                    //         <img className="article-show-image" src={photoLink}></img>
+                    //     </div> : 
+                    //     <div></div>
 
                     const { body, photoLink, title, likers, comments, header } = data.article;
 
                     return (
                         <div className="article-show-container">
                             <div className="article-show-photo-container">
-                                {photo}
+                                <div className="article-show-photo">
+                                    <img className="article-show-image" src={photoLink}></img>
+                                </div>
                                 <div className="article-show-info">
 
                                     <div className="article-info-main">

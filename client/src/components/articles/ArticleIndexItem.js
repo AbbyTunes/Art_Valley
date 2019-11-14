@@ -4,7 +4,7 @@ import "./article-index-item.css";
 const ArticleIndexItem = (props) => {
     return (
         <div className="article-index-item-container">
-            <div className="picture-placeholder">
+            <div className="article-index-item-thumbnail-container">
                 <img src={props.article.photoLink}/>
             </div>
             <div className="article-index-item-author">
