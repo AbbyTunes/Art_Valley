@@ -16,7 +16,6 @@ class ArticleShow extends Component {
     }
 
     like(addUserLikedArticle) {
-      debugger;
         addUserLikedArticle({
             variables: {
                 userId: localStorage.getItem("currentUserId"),

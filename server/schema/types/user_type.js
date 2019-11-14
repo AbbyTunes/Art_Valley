@@ -28,8 +28,9 @@ const UserType = new GraphQLObjectType({
       }
     },
     likedArticles: {
-      type: new GraphQLList(ArtType),
+      type: new GraphQLList(require("./art_type")),
       resolve(parentValue) {
+        debugger;
         return User.findById(parentValue.id)
           .populate("likedArticles")
           .then(user => user.likedArticles);

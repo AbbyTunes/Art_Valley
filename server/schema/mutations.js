@@ -147,6 +147,7 @@ const mutation = new GraphQLObjectType({
         articleId: { type: GraphQLID }
       },
       resolve(_, { userId, articleId }) {
+        debugger;
         return User.addLikedArticle(userId, articleId);
       }
     },
