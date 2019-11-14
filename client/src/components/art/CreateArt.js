@@ -87,13 +87,11 @@ class CreateArt extends Component {
     data.append("author",this.state.author);
     data.append("description",this.state.description);
     axios.post(endpoint, data).then( (response) => {
-      console.log(endpoint)
-      console.log(data)
 
-      console.log(response);
       if (response.data && response.status === 200) { 
         this.setState({ message: "Art successfully uploaded!" })
-        console.log(data)
+        const redirectId = response.data.data._id;
+        this.props.history.push(`/arts/${redirectId}`);
       } else {
         this.setState({ message: "Art upload was not successful" })
 
