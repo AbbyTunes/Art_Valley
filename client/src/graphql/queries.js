@@ -112,6 +112,12 @@ export default {
           title
           photoLink
         }
+        publishedArticles {
+          id
+          title
+          body
+          photoLink
+        }
       }
     }
   `,
@@ -150,5 +156,62 @@ export default {
         name
       }
     }
-  `
+  `,
+  FETCH_ARTICLES: gql`
+    query articles {
+      articles {
+        id
+        title
+        body
+        header
+        author { 
+          id 
+          name
+        }
+        photoLink
+        comments { 
+          id 
+          body
+          author {
+            id
+            name
+          }
+        }
+        likers {
+          id
+          name
+        }
+      }
+    }
+  `,
+  FETCH_ARTICLE: gql`
+    query article($_id: ID!) {
+      article(_id: $_id) {
+        id
+        title
+        body
+        header
+        author { 
+          id 
+          name
+        }
+        photoLink
+        comments { 
+          id 
+          body
+          author {
+            id
+            name
+          }
+        }
+        likers {
+          id
+          name
+        }
+        comments {
+          id
+        }
+      }
+    }
+  `,
 };

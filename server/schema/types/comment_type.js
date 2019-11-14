@@ -4,6 +4,7 @@ const { GraphQLObjectType, GraphQLString, GraphQLID} = graphql;
 
 const User = mongoose.model("users");
 const Art = mongoose.model("arts");
+const Article = mongoose.model("articles");
 
 const CommentType = new GraphQLObjectType({
     name: "CommentType",
@@ -23,6 +24,14 @@ const CommentType = new GraphQLObjectType({
             resolve(parentValue) {
                 return Art.findById(parentValue.art)
                     .then(art => art)
+                    .catch(err => null);
+            }
+        },
+        article: {
+            type: require("./article_type"),
+            resolve(parentValue) {
+                return Article.findById(parentValue.article)
+                    .then(art => article)
                     .catch(err => null);
             }
         }

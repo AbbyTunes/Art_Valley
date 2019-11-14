@@ -18,6 +18,8 @@ const Category = mongoose.model("categories");
 const CategoryType = require("./types/category_type");
 const Comment = mongoose.model("comments");
 const CommentType = require("./types/comment_type");
+const Article = mongoose.model("articles");
+const ArticleType = require("./types/article_type");
 
 const mutation = new GraphQLObjectType({
 	name: "Mutation",
@@ -139,6 +141,16 @@ const mutation = new GraphQLObjectType({
 				return User.addLikedArt(userId, artId);
 			}
 		},
+		addUserLikedArticle: {
+			type: UserType,
+			args: {
+				userId: { type: GraphQLID },
+				articleId: { type: GraphQLID }
+			},
+			resolve(_, { userId, articleId }) {
+				return User.addLikedArticle(userId, articleId);
+			}
+		},
 		addUserPublishedArt: {
 			type: UserType,
 			args: {
@@ -154,7 +166,8 @@ const mutation = new GraphQLObjectType({
 			args: {
 				body: { type: GraphQLString },
 				author: { type: GraphQLID },
-				art: { type: GraphQLID }
+				art: { type: GraphQLID },
+				article: { type: GraphQLID},
 			},
 			async resolve(_, args) {
 				return new Comment(args).save()
@@ -165,13 +178,38 @@ const mutation = new GraphQLObjectType({
 							return comment;
 						})
 					.then(comment => {
-						return Art.findById(comment.art).then(art => {
-							console.log(art);
-							art.comments.push(comment._id);
-							art.save();
+						let model = comment.article ? Article : Art ;
+						let id_ref = comment.article ? article : art;
+						debugger;
+						// let model_ref = comment.article ? article : art;
+						return model.findById(id_ref).then(response => {
+							console.log(response);
+							response.comments.push(comment._id);
+							response.save();
 							return comment;
 						})
 					})
+					.catch(err => console.log(err));
+				})
+			}
+		},
+		newArticle: {
+			type: ArticleType,
+			args: {
+				title: { type: GraphQLString},
+				body: { type: GraphQLString },
+				header: { type: GraphQLString },
+				author: { type: GraphQLID },
+				photoLink: { type: GraphQLString }
+			},
+			async resolve(_, args) {
+				return new Article(args).save()
+					.then(article => {
+						return User.findById(article.author).then(user => {
+							user.publishedArticles.push(article);
+							user.save();
+							return article;
+						})
 					.catch(err => console.log(err));
 				})
 			}
