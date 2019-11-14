@@ -96,7 +96,6 @@
 .article-show-likes{
     position: relative;
     top: 0;
-    left: 30px;
     width: 90px;
     height: 25px;
     text-align: center;
@@ -132,6 +131,8 @@
 
     .article-info-2 {
         width: 30%;
+        display: flex;
+        justify-content: flex-end;
     }
 
     .article-show-likes {
