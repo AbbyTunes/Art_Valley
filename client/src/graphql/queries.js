@@ -208,9 +208,6 @@ export default {
           id
           name
         }
-        comments {
-          id
-        }
       }
     }
   `,
