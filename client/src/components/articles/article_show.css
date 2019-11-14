@@ -1,8 +1,15 @@
+.temp {
+    position: relative;
+    top: 90px;
+    text-align: center;
+}
+
 .article-show-container {
 	display: block;
 	position: relative;
 	top: 70px;
     padding: 40px;
+    
 }
 
 .article-show-art {
@@ -28,6 +35,7 @@
     position: relative;
     top: 10px;
     display: block;
+    margin-bottom: 20px;
 }
 
 .article-info-main {
@@ -44,17 +52,12 @@
     margin: 20px 0;
 }
 
-.article-show-header{
-    
-}
-
-
-
 .article-show-body {
     display: block;
-    font-size: .8rem;
+    font-size: 18px;
     font-weight: 400;
     line-height: 1.5;
+   
     
     -webkit-box-flex: 1;
     margin-block-start: 1em;
@@ -71,7 +74,6 @@
 .article-show-likes {
     margin: 20px 0;
 }
-
 	
 
 .article-info-3 {
@@ -81,45 +83,25 @@
 .article-show-comment {
         margin: 20px 0;
 }
-			
+
+.back-to-community{
+    font-size: 15px;
+    text-align: center;
+}
+
+.back-to-community:hover{
+    color: #3f9598;
+}
 
 
 @media screen and (min-width: 800px) {
 
 	.article-show-container {
-		display: block;
-		position: relative;
-		top: 70px;
         padding: 40px 60px;
         max-width: 1230px;
         margin: 0 auto;
     }
-
-    .article-show-art {
-        display: block;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
-    }
-
-    .article-show-pic {
-        max-height: 300px;
-        overflow: hidden;
-    }
-
-    .article-show-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
 		
-
-    .article-show-info {
-        position: relative;
-        top: 10px;
-        display: block;
-    }
-				
     .article-info-main {
         width: 100%;
         display: flex;
@@ -135,24 +117,6 @@
         margin: 20px 0;
     }
 
-    .article-show-header{
-
-    }
-
-    .article-show-body {
-        display: block;
-        font-size: .8rem;
-        font-weight: 400;
-        line-height: 1.5;
-    
-        
-        -webkit-box-flex: 1;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-    }
-
     .article-info-2 {
         width: 30%;
     }
@@ -161,6 +125,13 @@
         margin: 20px 0;
         margin-left: 30px;
         text-align: right;
+    }
+
+    .article-show-info {
+        position: relative;
+        top: 10px;
+        display: block;
+        margin-bottom: 100px;
     }
 
 }
