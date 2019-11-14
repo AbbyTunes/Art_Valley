@@ -19,7 +19,7 @@ const UserType = new GraphQLObjectType({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
     email: { type: GraphQLString },
-    likedArts: { 
+    likedArts: {
       type: new GraphQLList(ArtType),
       resolve(parentValue) {
         return User.findById(parentValue.id)
@@ -27,12 +27,20 @@ const UserType = new GraphQLObjectType({
           .then(user => user.likedArts);
       }
     },
+    likedArticles: {
+      type: new GraphQLList(ArtType),
+      resolve(parentValue) {
+        return User.findById(parentValue.id)
+          .populate("likedArticles")
+          .then(user => user.likedArticles);
+      }
+    },
     publishedArts: {
       type: new GraphQLList(ArtType),
       resolve(parentValue) {
         return User.findById(parentValue.id)
-        .populate("publishedArts")
-        .then(user => user.publishedArts);
+          .populate("publishedArts")
+          .then(user => user.publishedArts);
       }
     },
     publishedComments: {

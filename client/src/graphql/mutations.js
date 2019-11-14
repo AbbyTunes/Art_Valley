@@ -81,5 +81,19 @@ export default {
           photoLink
       } 
     }
+  `,
+  ADD_ARTICLE_LIKE: gql`
+    mutation AddArticleLike($userId: ID!, $articleId: ID!){
+      addUserLikedArticle(userId: $userId, articleId: $articleId)
+        id
+        name
+        likedArticles {
+          id 
+          title
+          likers {
+            id
+          }
+        }
+    }
   `
 };
