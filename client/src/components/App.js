@@ -27,9 +27,10 @@ const App = () => {
 				<Route exact path="/arts/:artId" component={ArtShow} />
 				<Route exact path="/videos" component={VideoIndex} />
 				<Route exact path="/videos/:artId" component={VideoShow} />
+
+
 			</Switch>
 			<Route exact path="/create" component={CreateArt}/>
-			
 			<Route exact path="/users/:userId" component={Profile} />
 			<Route exact path="/settings" component={Settings} />
 		</div>
