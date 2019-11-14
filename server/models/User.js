@@ -48,7 +48,7 @@ const UserSchema = new Schema({
 });
 
 
-UserSchema.statics.addLikedArt = (userId, artId ) => {
+UserSchema.statics.addLikedArt = (userId, artId) => {
   const User = mongoose.model("users");
   const Art = mongoose.model("arts");
 
@@ -56,14 +56,31 @@ UserSchema.statics.addLikedArt = (userId, artId ) => {
     return Art.findById(artId).then(art => {
       user.likedArts.push(art);
       art.likers.push(user);
-      art.likes += 1;
 
       return Promise.all([user.save(), art.save()]).then(
-        ([user, art]) => art
+        ([user, art]) => user
       );
     });
   });
 };
+
+UserSchema.statics.unlikeArt = (userId, artId) => {
+	const User = mongoose.model("users");
+	const Art = mongoose.model("arts");
+
+	return User.findById(userId).then(user => {
+		if (user.likedArts) {
+			Art.findById(artId).then(art => {
+				user.likedArts.pull(art);
+				art.likers.pull(user);
+
+				return Promise.all([user.save(), art.save()]).then(
+					([user, art]) => user
+				)
+			})
+		}
+	})
+}
 
 UserSchema.statics.addLikedArticle = (userId, articleId) => {
   const User = mongoose.model("users");

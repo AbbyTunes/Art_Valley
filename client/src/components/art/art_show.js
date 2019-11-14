@@ -1,12 +1,19 @@
 import React, { Component } from "react";
-import { Query } from "react-apollo";
+import { Query, Mutation } from "react-apollo";
 import "./art_show.scss";
 import { withRouter } from "react-router-dom";
-import Queries from "../../graphql/queries";
 import CreateComment from "../comments/CreateComment";
+import ArtLike from "./art_like";
+import Queries from "../../graphql/queries";
 const { FETCH_ART } = Queries;
 
+
 class ArtShow extends Component {
+
+	constructor(props) {
+		super(props)
+		// this.state
+	}
 
 	render() {
 		return (
@@ -15,15 +22,15 @@ class ArtShow extends Component {
 				variables={{ artId: this.props.match.params.artId }} >
 				{({ loading, error, data }) => {
 					if (loading) return (
-                         <div className="temp">
-                           <p>Loading...</p>
-                         </div>
-                       );
+						<div className="temp">
+							<p>Loading...</p>
+						</div>
+					);
 					if (error) return (
-                       <div className="temp">
-                         <p>Error</p>
-                       </div>
-                     );
+						<div className="temp">
+							<p>Error</p>
+						</div>
+					);
 
 					const { id, description, photoLink, title, likers, author } = data.artById;
 
@@ -67,7 +74,7 @@ class ArtShow extends Component {
 										</div>
 
 										<div className="info-2">
-											<div className="show-likes">Likes {likers.length}</div>
+											<ArtLike likers={likers} />
 										</div>
 									</div>
                  

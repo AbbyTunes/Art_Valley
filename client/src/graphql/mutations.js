@@ -85,7 +85,6 @@ export default {
   ADD_ARTICLE_LIKE: gql`
     mutation AddArticleLike($userId: ID!, $articleId: ID!){
       addUserLikedArticle(userId: $userId, articleId: $articleId) {
-
         id
         name
         likedArticles {
@@ -97,5 +96,37 @@ export default {
         }
       }
     }
-  `
+	`,
+	USER_LIKE_ART: gql`
+    mutation addUserLikedArt($userId: ID!, $artId: ID!){
+      addUserLikedArt(userId: $userId, artId: $artId) {
+        id
+        name
+        likedArts {
+          id 
+          title
+          likers {
+						id
+						name
+          }
+        }
+      }
+    }
+	`,
+	USER_UNLIKE_ART: gql`
+    mutation userUnlikeArt($userId: ID!, $artId: ID!){
+      userUnlikeArt(userId: $userId, artId: $artId) {
+        id
+        name
+        likedArts {
+          id
+          title
+          likers {
+						id
+						name
+          }
+        }
+      }
+    }
+	`
 };
