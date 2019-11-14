@@ -14,18 +14,8 @@ class ArticleShow extends Component {
 
     constructor(props) {
         super(props);
-        // this.like = this.like.bind(this);
     }
-
-    like(addUserLikedArticle) {
-        addUserLikedArticle({
-            variables: {
-                userId: localStorage.getItem("currentUserId"),
-                articleId: this.props.match.params.articleId
-            }
-        })
-    }
-
+    
     render() {
         
         return (
@@ -43,12 +33,6 @@ class ArticleShow extends Component {
                             <p>Error</p>
                         </div>
                     );
-
-                    // let photo = data.article.photoLink ? 
-                    //     <div className="article-show-photo">
-                    //         <img className="article-show-image" src={photoLink}></img>
-                    //     </div> : 
-                    //     <div></div>
 
                     const { body, photoLink, title, likers, comments, header } = data.article;
 
@@ -73,28 +57,9 @@ class ArticleShow extends Component {
                               <div className="article-show-body">{body}</div>
                             </div>
                             <div className="article-info-2">
-                              {/* <Mutation
-                                mutation={ADD_ARTICLE_LIKE}
-                                // update={(cache, data) => this.updateCache(cahce, data)}
-                              >
-                                {addUserLikedArticle => (
-                                  <div
-                                    className="article-show-likes"
-                                    onClick={() =>
-                                      this.like(addUserLikedArticle)
-                                    }
-                                  >
-                                    Likes {likers.length}
-                                  </div>
-                                )}
-                              </Mutation> */}
                               <ArticleLike likers={likers} />
                             </div>
                           </div>
-
-                          {/* <div className="article-info-3">
-                                        <div className="article-show-comment">Comment</div>
-                                </div> */}
                         </div>
 
                         <div>
