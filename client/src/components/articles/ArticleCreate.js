@@ -5,7 +5,7 @@ import Mutations from "../../graphql/mutations";
 import TextareaAutosize from "react-textarea-autosize";
 import axios from "axios";
 const { CREATE_ARTICLE } = Mutations;
-
+ 
 let endpoint;
 if (process.env.NODE_ENV === "production") {
   endpoint = `/api/article/upload`;
@@ -110,27 +110,27 @@ class ArticleCreate extends React.Component {
     //   </Mutation>
     // );
     let preview = this.state.previewUrl ? (
-      <img className="art-form-image-previewed" src={this.state.previewUrl} />
+      <img className="article-form-image-previewed" src={this.state.previewUrl} />
     ) : (
       <span
         role="img"
         alt=""
         aria-label="debug"
-        className="art-form-image-debug-icon"
+        className="article-form-image-debug-icon"
       >
         📷
       </span>
     );
     return (
       <form className="article-create-form" onSubmit={this.handleSubmit}>
-        <input value={this.state.title} onChange={this.update("title")} />
-        <textarea value={this.state.header} onChange={this.update("header")} />
-        <textarea value={this.state.body} onChange={this.update("body")} />
-        {/* image here */}
-        <div className="art-form-image-preview">{preview}</div>
+        <div className="article-form-image-preview">{preview}</div>
         <div className="form-group">
           <input type="file" name="" id="" onChange={this.handleSelectedFile} />
         </div>
+        <input className="article-title-input" value={this.state.title} onChange={this.update("title")} placeholder="Title"/>
+        <textarea className="article-title-header" value={this.state.header} onChange={this.update("header")} placeholder="Header"/>
+        <textarea className="article-title-body" value={this.state.body} onChange={this.update("body")} placeholder="Body"/>
+        {/* image here */}
         <input type="submit" value="Save Article" />
         <div>{this.state.message}</div>
       </form>
