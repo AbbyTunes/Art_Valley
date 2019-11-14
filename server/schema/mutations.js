@@ -218,6 +218,43 @@ const mutation = new GraphQLObjectType({
     //     });
     //   }
     // },
+    ///THIS ONEEEEE
+    // newComment: {
+    //   type: CommentType,
+    //   args: {
+    //     body: { type: GraphQLString },
+    //     author: { type: GraphQLID },
+    //     art: { type: GraphQLID },
+    //     article: { type: GraphQLID }
+    //   },
+    //   async resolve(_, args) {
+    //     return new Comment(args).save().then(comment => {
+    //       return User.findById(comment.author)
+    //         .then(user => {
+    //           user.publishedComments.push(comment);
+    //           user.save();
+    //           return comment;
+    //         })
+    //         // .then(comment => {
+    //         //   return Art.findById(comment.art).then(art => {
+    //         //     console.log(art);
+    //         //     art.comments.push(comment._id);
+    //         //     art.save();
+    //         //     return comment;
+    //         //   });
+    //         // })
+    //         .then(comment => {
+    //           return Article.findById(comment.article).then(article => {
+    //             console.log(article);
+    //             article.comments.push(comment._id);
+    //             article.save();
+    //             return comment;
+    //           });
+    //         })
+    //         .catch(err => console.log(err));
+    //     });
+    //   }
+    // },
     newComment: {
       type: CommentType,
       args: {
@@ -234,13 +271,30 @@ const mutation = new GraphQLObjectType({
               user.save();
               return comment;
             })
+            // .then(comment => {
+            //   return Art.findById(comment.art).then(art => {
+            //     console.log(art);
+            //     art.comments.push(comment._id);
+            //     art.save();
+            //     return comment;
+            //   });
+            // })
             .then(comment => {
-              return Art.findById(comment.art).then(art => {
+              if (comment.article) {
+                return Article.findById(comment.article).then(article => {
+                  console.log(article);
+                  article.comments.push(comment._id);
+                  article.save();
+                  return comment;
+                });
+              } else {
+                return Art.findById(comment.art).then(art => {
                 console.log(art);
                 art.comments.push(comment._id);
                 art.save();
                 return comment;
               });
+              }
             })
             .catch(err => console.log(err));
         });

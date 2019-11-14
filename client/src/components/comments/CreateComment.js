@@ -21,6 +21,7 @@ class CreateComment extends React.Component {
             body: "",
             author: localStorage.currentUserId,
             // art: this.props.articleId || this.props.artId,
+            // base: this.props.baseId,
             art: this.props.artId,
             comments: [],
             forceRender: false
@@ -82,6 +83,8 @@ class CreateComment extends React.Component {
         );
 
         const queryComments = (
+            // let queryType;
+            // if (artId) ? queryType = "FETCH_ART" : "FETCH_ARTICLE";
             <Query query={FETCH_ART} variables={{ artId: this.state.art }}>
                 {({ loading, error, data }) => {
                     if (loading) return <p>Loading...</p>;
