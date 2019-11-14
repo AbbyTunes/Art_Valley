@@ -121,6 +121,14 @@ class Nav extends React.Component {
                           {/* {navLinks}
                         */}
 
+                          <Link to="/" onClick={() => this.closeModal(this.state.elements)}>Home</Link>
+                          <Link
+                            to={`/users/${localStorage.getItem("currentUserId")}`}
+                            onClick={() => this.closeModal(this.state.elements)}
+                          >
+                            Profile
+                          </Link>
+                          
                           <Link
                             onClick={() => this.closeModal(this.state.elements)}
                             to="/arts"
@@ -142,13 +150,7 @@ class Nav extends React.Component {
                             Videos
                       </Link>
 
-                          <Link to="/" onClick={() => this.closeModal(this.state.elements)}>Home</Link>
-                          <Link 
-                            to={`/users/${localStorage.getItem("currentUserId")}`} 
-                            onClick={() => this.closeModal(this.state.elements)}
-                          >
-                            Profile
-                          </Link>
+                          
                           <Link to="/"
                             onClick={e => {
                               e.preventDefault();
