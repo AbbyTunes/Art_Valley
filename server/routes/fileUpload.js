@@ -39,18 +39,20 @@ router.post("/upload", upload.single("file"), function(req, res) {
     if (err) {
       res.status(500).json({ error: true, Message: err });
     } else {
-      res.send({ data });
+      
       var newFileUploaded = {
         description: req.body.description,
         fileLink: s3FileURL + file.originalname,
         s3_key: params.Key
       };
       var art = new Art({photoLink: newFileUploaded.fileLink, title: req.body.title, description: req.body.description, author: req.body.author, category: req.body.category});
-      art.save(function(error, newFile) {
-        if (error) {
-          throw error;
-        }
-      });
+
+      art.save()
+      .then((data) => {
+        console.log(res)
+        console.log(data)
+        res.send({ data });
+      }).catch(err => console.log(err))
     }
   });
 });

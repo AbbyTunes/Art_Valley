@@ -104,3 +104,14 @@ input[type=password]{
 /* temp add - tell chris */
   }
 }
+
+.session-errors {
+  position: relative;
+  text-align: center;
+  color: red;
+  font-size: 10px;
+  background: inherit;
+  margin-bottom: 20px;
+  font-weight: 700;
+  display: block;
+}

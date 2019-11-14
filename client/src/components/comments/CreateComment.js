@@ -12,7 +12,10 @@ const { ADD_COMMENT, VERIFY_USER } = Mutations;
 
 
 class CreateComment extends React.Component {
+    
     constructor(props) {
+        // console.log("COMMENTINDEXPROPS")
+        // console.log(props);
         super(props);
         this.state = {
             body: "",
@@ -36,7 +39,7 @@ class CreateComment extends React.Component {
                 artId: this.state.art
             }
         });
-        console.log(artwork.artById);
+        // console.log(artwork.artById);
         artwork.artById.comments.push(data.data.newComment);
         cache.writeQuery({ query: FETCH_ART, data: [artwork.artById] })
 
@@ -123,7 +126,7 @@ class CreateComment extends React.Component {
                             <ul>
                                 {commentData.map((comment, idx) => {
                                     return (
-                                        <CommentDetail key={idx + 10001} comment={comment} />
+                                        <CommentDetail key={idx + 10001} comment={comment} artId={this.props.artId} />
                                     );
                                 })}
                             </ul>
