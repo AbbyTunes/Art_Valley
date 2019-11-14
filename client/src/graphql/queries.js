@@ -44,7 +44,7 @@ export default {
         description
         likers {
           id
-          name
+					name
         }
         category {
           id

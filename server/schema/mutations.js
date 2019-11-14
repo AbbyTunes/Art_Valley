@@ -144,7 +144,28 @@ const mutation = new GraphQLObjectType({
       resolve(_, { userId, artId }) {
         return User.addLikedArt(userId, artId);
       }
-    },
+		},
+		userUnlikeArt: {
+			type: UserType,
+			args: {
+				userId: { type: GraphQLID },
+				artId: { type: GraphQLID }
+			},
+			resolve(_, { userId, artId }) {
+				return User.unlikeArt(userId, artId);
+			}
+		},
+		deleteArt: {
+			type: ArtType,
+			args: {
+				_id: { type: new GraphQLNonNull(GraphQLID) }
+			},
+			resolve(_, { _id }) {
+				return Art.findByIdAndDelete({ _id })
+					.then(art => art)
+					.catch(err => null);
+			}
+		},
     addUserLikedArticle: {
       type: UserType,
       args: {
@@ -152,7 +173,6 @@ const mutation = new GraphQLObjectType({
         articleId: { type: GraphQLID }
       },
       resolve(_, { userId, articleId }) {
-        debugger;
         return User.addLikedArticle(userId, articleId);
       }
     },

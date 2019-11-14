@@ -143,8 +143,16 @@
 						width: 30%;
 
 						.show-likes {
-							margin: 20px 0;
-							margin-left: 30px;
+							position: relative;
+							top: 0;
+							left: 30px;
+							width: 90px;
+							height: 25px;
+							text-align: center;
+							padding-top: 8px;
+							color: white;
+							border-radius: 8px;
+							background: rgb(93, 93, 201);
 						}
 					}
 				}

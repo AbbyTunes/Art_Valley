@@ -33,7 +33,9 @@ const ArtSchema = new Schema({
 	}],
 	s3_key: { type: String }
 });
+
 //more commment 
+
 ArtSchema.pre("findByIdAndDelete", function() {
 	const Art = mongoose.model("arts");
 	const Category = mongoose.model("categories");
@@ -45,7 +47,8 @@ ArtSchema.pre("findByIdAndDelete", function() {
 					category.arts.pull(art);
 					category.save();
 				});
-		});
+		})
+	// need to pull the art from User's likedArt and publishedArt array
 });
 
 module.exports = mongoose.model("arts", ArtSchema);
