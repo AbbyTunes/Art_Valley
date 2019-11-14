@@ -13,6 +13,10 @@ const CommentSchema = new Schema({
     art: {
         type: Schema.Types.ObjectId,
         ref: "arts"
+    },
+    article: {
+        type: Schema.Types.ObjectId,
+        ref: "articles"
     }
 });
 

@@ -10,6 +10,9 @@ import Settings from "./user/Settings";
 import CreateArt from "./art/CreateArt";
 import ArtIndex from "./art/art_index";
 import ArtShow from "./art/art_show";
+import ArticleCreate from './articles/ArticleCreate';
+import ArticleIndex from './articles/ArticleIndex';
+import ArticleShow from './articles/ArticleShow';
 import VideoIndex from "./art/video_index";
 import VideoShow from "./art/video_show";
 
@@ -20,11 +23,14 @@ const App = () => {
 		<div>
 			<Nav />
 			<Switch>
-        {/* debug buttons */}
 				<AuthRoute exact path="/login" component={Login} routeType="auth" />
 				<AuthRoute exact path="/register" component={Register} routeType="auth" />
 				<Route exact path="/arts" component={ArtIndex} />
 				<Route exact path="/arts/:artId" component={ArtShow} />
+
+				<Route exact path="/community/create" component={ArticleCreate} />
+				<Route exact path="/community/:articleId" component={ArticleShow} />
+				<Route exact path="/community" component={ArticleIndex} />
 				<Route exact path="/videos" component={VideoIndex} />
 				<Route exact path="/videos/:artId" component={VideoShow} />
 

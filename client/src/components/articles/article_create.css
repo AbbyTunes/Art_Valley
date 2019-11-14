@@ -1,0 +1,15 @@
+.article-create-form{
+    display: block;
+    width: 400px;
+    height: 400px;
+    background: green;
+    margin: 0 auto;
+    position: relative;
+    top: 90px;
+}
+
+.text {
+    display: block;
+    position: relative;
+    top: 90px;
+}

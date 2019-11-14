@@ -19,11 +19,14 @@ const UserSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
-  ,
+  },
   likedArts: [{
     type: Schema.Types.ObjectId,
     ref: "arts" 
+  }],
+  likedArticles: [{
+    type: Schema.Types.ObjectId,
+    ref: "articles"
   }],
   publishedArts: [{
     type: Schema.Types.ObjectId,
@@ -32,6 +35,10 @@ const UserSchema = new Schema({
   publishedComments: [{
     type: Schema.Types.ObjectId,
     ref: "comments"
+  }],
+  publishedArticles: [{
+    type: Schema.Types.ObjectId,
+    ref: "articles"
   }],
   // ,
   // playlist: [{
@@ -53,6 +60,22 @@ UserSchema.statics.addLikedArt = (userId, artId ) => {
 
       return Promise.all([user.save(), art.save()]).then(
         ([user, art]) => art
+      );
+    });
+  });
+};
+
+UserSchema.statics.addLikedArticle = (userId, articleId) => {
+  const User = mongoose.model("users");
+  const Article = mongoose.model("articles");
+
+  return User.findById(userId).then(user => {
+    return Article.findById(articleId).then(article => {
+      user.likedArticles.push(article);
+      article.likers.push(user);
+
+      return Promise.all([user.save(), article.save()]).then(
+        ([user, article]) => article
       );
     });
   });
