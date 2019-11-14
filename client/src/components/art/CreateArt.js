@@ -9,7 +9,7 @@ import axios from "axios";
 const { CREATE_ART } = Mutations;
 const { FETCH_ART, FETCH_USER, FETCH_CATEGORIES } = Queries;
 
-
+ 
 let endpoint;
 if (process.env.NODE_ENV === "production") {
   endpoint = `/api/art/upload`;

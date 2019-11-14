@@ -22,10 +22,28 @@
 }
 
 .article-index-container > a {
-        align-self: center;
-        padding-bottom: 80px;
-    }
+    align-self: center;
+    margin-bottom: 80px;
+}
 
+
+.article-create-link {
+  width: 120px;
+  background: #dadada;
+  color: white;
+  text-shadow:1px  black;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.article-create-link:hover {
+  background: #3f9598;
+  transition: 0.5s;
+  cursor: pointer; 
+}
 
 
 @media screen and (min-width: 1000px){
@@ -46,6 +64,6 @@
     }
 
     .article-index-container > a {
-        padding-bottom: 80px;
+        margin-bottom: 80px;
     }
 }

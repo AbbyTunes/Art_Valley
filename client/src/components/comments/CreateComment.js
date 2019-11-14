@@ -20,6 +20,7 @@ class CreateComment extends React.Component {
         this.state = {
             body: "",
             author: localStorage.currentUserId,
+            // art: this.props.articleId || this.props.artId,
             art: this.props.artId,
             comments: [],
             forceRender: false

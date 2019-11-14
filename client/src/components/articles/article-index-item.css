@@ -8,14 +8,30 @@
     height: auto;
 }
 
+.article-index-item-thumbnail-container{
+    display: flex;
+    align-items: center;
+    width: 276px;
+    height: 172px;
+    border: 1px solid rgba(0,0,0,.15);
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
 
-.picture-placeholder{
+.article-index-item-thumbnail {
+    width: 100%;
+    height: auto;
+}
+
+
+/* .picture-placeholder{
     background: green;
     width: 276px;
     height: 172px;
     border: 1px solid rgba(0,0,0,.15);
     padding-bottom: 20px;
-}
+} */
 
 .article-index-item-author{
     display: block;

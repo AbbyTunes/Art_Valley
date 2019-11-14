@@ -19,10 +19,6 @@ const ArticleSchema = new Schema({
         ref: "users",
         required: true
     },
-    // art: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "arts"
-    // },
     photoLink: {
         type: String
     },
@@ -34,6 +30,7 @@ const ArticleSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "users"
     }],
+    s3_key: { type: String }
 });
 
 
