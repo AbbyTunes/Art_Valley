@@ -48,21 +48,6 @@ export default {
       }
     }
   `,
-
-  // CREATE_PRODUCT: gql`
-  //   mutation CreateProduct(
-  //     $name: String!
-  //     $description: String!
-  //     $weight: Float!
-  //   ) {
-  //     newProduct(name: $name, description: $description, weight: $weight) {
-  //       id
-  //       name
-  //       description
-  //       weight
-  //     }
-  //   }
-  // `
   CREATE_ART: gql`
     mutation CreateArt($category: ID!, $author: ID!, $title: String!, $description: String!, $photoLink: String!) {
       newArt(category: $category, author: $author, title: $title, description: $description, photoLink: $photoLink) {

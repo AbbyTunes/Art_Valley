@@ -24,7 +24,20 @@ export default {
         id
         author {
           id
-          name
+					name
+					publishedArts {
+						id
+						title
+						photoLink
+						author {
+							id
+						}
+					}
+					likedArts {
+						id
+						title
+						photoLink
+					}
         }
         photoLink
         title
@@ -83,29 +96,6 @@ export default {
       }
     }
   `,
-  // FETCH_ARTS_BY_AUTHOR: gql`
-  //   query artsByAuthor($authorId: ID!) {
-  //     artsByAuthor(authorId: $authorId) {
-  //       id
-  //       author {
-  //         id
-  //         name
-  //       }
-  //       videoLink
-  //       photoLink
-  //       title
-  //       description
-  //       likers {
-  //         id
-  //         name
-  //       }
-  //       category {
-  //         id
-  //         name
-  //       }
-  //     }
-  //   }
-  // `,
   FETCH_USER: gql`
     query user($_id: ID!) {
       user(_id: $_id) {
