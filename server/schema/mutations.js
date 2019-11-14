@@ -55,12 +55,17 @@ const mutation = new GraphQLObjectType({
             console.log(art);
             return Category.findById(args.category).then(category => {
               category.arts.push(art);
-              return category.save().then(category => art);
-            });
+							return category.save()
+							.then(category => art);
+						})
+						.then(art => {
+							User.addPublishedArt(art.author, art.id)
+							return (art => art)
+						})
           } else {
             return art;
           }
-        });
+				})
         // const validUser = await AuthService.verifyUser({ token: context.token });
         // if (validUser.loggedIn) {
 
@@ -139,7 +144,28 @@ const mutation = new GraphQLObjectType({
       resolve(_, { userId, artId }) {
         return User.addLikedArt(userId, artId);
       }
-    },
+		},
+		userUnlikeArt: {
+			type: UserType,
+			args: {
+				userId: { type: GraphQLID },
+				artId: { type: GraphQLID }
+			},
+			resolve(_, { userId, artId }) {
+				return User.unlikeArt(userId, artId);
+			}
+		},
+		deleteArt: {
+			type: ArtType,
+			args: {
+				_id: { type: new GraphQLNonNull(GraphQLID) }
+			},
+			resolve(_, { _id }) {
+				return Art.findByIdAndDelete({ _id })
+					.then(art => art)
+					.catch(err => null);
+			}
+		},
     addUserLikedArticle: {
       type: UserType,
       args: {
@@ -147,7 +173,6 @@ const mutation = new GraphQLObjectType({
         articleId: { type: GraphQLID }
       },
       resolve(_, { userId, articleId }) {
-        debugger;
         return User.addLikedArticle(userId, articleId);
       }
     },
