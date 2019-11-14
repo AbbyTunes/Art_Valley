@@ -90,29 +90,29 @@ class Nav extends React.Component {
                     }
                     if (error) return `Error! ${error.message}`;
 
-                    let navLinks = 
-                    <div className="side-menu-nav-links">
-                      <Link
-                        onClick={() => this.closeModal(this.state.elements)}
-                        to="/arts"
-                      >
-                        Photos
-                          </Link>
+                    // let navLinks = 
+                    // <div className="side-menu-nav-links">
+                    //   <Link
+                    //     onClick={() => this.closeModal(this.state.elements)}
+                    //     to="/arts"
+                    //   >
+                    //     Photos
+                    //       </Link>
 
-                      <Link
-                        onClick={() => this.closeModal(this.state.elements)}
-                        to="/community"
-                      >
-                        Community
-                          </Link>
+                    //   <Link
+                    //     onClick={() => this.closeModal(this.state.elements)}
+                    //     to="/community"
+                    //   >
+                    //     Community
+                    //       </Link>
 
-                      <Link
-                        onClick={() => this.closeModal(this.state.elements)}
-                        to="/videos"
-                      >
-                        Videos
-                      </Link>
-                    </div>;
+                    //   <Link
+                    //     onClick={() => this.closeModal(this.state.elements)}
+                    //     to="/videos"
+                    //   >
+                    //     Videos
+                    //   </Link>
+                    // </div>;
 
                     if (data.isLoggedIn) {
                       return (
@@ -128,7 +128,7 @@ class Nav extends React.Component {
                           >
                             Profile
                           </Link>
-                          
+
                           <Link
                             onClick={() => this.closeModal(this.state.elements)}
                             to="/arts"

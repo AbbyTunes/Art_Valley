@@ -28,9 +28,9 @@ const App = () => {
 				<Route exact path="/arts" component={ArtIndex} />
 				<Route exact path="/arts/:artId" component={ArtShow} />
 
-				<Route exact path="/community" component={ArticleIndex} />
-				<Route exact path="/community/:articleId" component={ArticleShow} />
 				<Route exact path="/community/create" component={ArticleCreate} />
+				<Route exact path="/community/:articleId" component={ArticleShow} />
+				<Route exact path="/community" component={ArticleIndex} />
 				<Route exact path="/videos" component={VideoIndex} />
 				<Route exact path="/videos/:artId" component={VideoShow} />
 			</Switch>
