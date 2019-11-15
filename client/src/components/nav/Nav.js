@@ -158,7 +158,7 @@ class Nav extends React.Component {
                               localStorage.removeItem("auth-token");
                               localStorage.removeItem("currentUserId");
                               localStorage.removeItem("currentUsername");
-                              client.writeData({ data: { isLoggedIn: false } });
+                              client.writeData({ data: { isLoggedIn: false, isCurrentUser: null } });
                               this.props.history.push("/");
                               this.closeModal(this.state.elements);
                             }}

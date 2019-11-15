@@ -3,9 +3,39 @@ import { Query } from "react-apollo";
 import "./art_index.css"
 import { Link, withRouter } from "react-router-dom";
 import Queries from "../../graphql/queries";
-const { FETCH_ARTS_BY_CATEGORY } = Queries;
+
+const { FETCH_ARTS_BY_CATEGORY, FETCH_USER, IS_CURRENT_USER } = Queries;
+
 
 const ArtIndex = (props) => {
+
+		let createArt = (
+					<Query query={IS_CURRENT_USER} >
+						{({ loading, error, data }) => {
+				
+							if (loading) return (
+								<div >
+									<p>Loading...</p>
+								</div>
+							);
+							if (error) return (
+								<div >
+									<p>Error</p>
+								</div>
+							);
+
+							if ( data.isCurrentUser ) {
+								return (
+									<Link to="/create" className="article-create-link">
+										Add Art
+									</Link>
+								)
+							} else {
+								return <div></div>
+							}
+						}}
+				</Query>
+				)
 
 	return (
 		<Query 
@@ -41,13 +71,11 @@ const ArtIndex = (props) => {
 						<Link to="#">See More</Link>
 					</div>
 				)
-
+				
 				return (
           <div className="art-index-container">
             <div className="art-header">Photos</div>
-            <Link to="/create" className="article-create-link">
-              Add Art
-            </Link>
+						{createArt}
             <ul className="art-index-ul">{allArtList}</ul>
 
             <div className="see-more-button">{seeMoreButton}</div>

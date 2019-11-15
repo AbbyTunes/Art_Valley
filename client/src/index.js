@@ -63,7 +63,8 @@ const token = localStorage.getItem("auth-token");
 
 cache.writeData({
 	data: {
-		isLoggedIn: Boolean(token)
+		isLoggedIn: Boolean(token),
+		isCurrentUser: Boolean(localStorage.getItem("currentUserId"))
 	}
 });
 
@@ -71,17 +72,20 @@ if (token) {
 	client
 		.mutate({ mutation: VERIFY_USER, variables: { token } })
 		.then(({ data }) => {
+			console.log(data)
+			debugger
 			cache.writeData({
 				data: {
-					isLoggedIn: data.verifyUser.loggedIn
+					isLoggedIn: data.verifyUser.loggedIn,
+					isCurrentUser: data.verifyUser.isCurrentUser
 				}
 			});
 		});
 } else {
 	cache.writeData({
 		data: {
-			isLoggedIn: false
-			// cart: []
+			isLoggedIn: false,
+			isCurrentUser: null
 		}
 	});
 }
