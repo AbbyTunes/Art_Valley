@@ -15,7 +15,14 @@ const UserSchema = new Schema({
     required: true,
     min: 6,
     max: 32
-	},
+  },
+  location: {
+    type: String
+
+  },
+  bio: {
+    type: String
+  },
   date: {
     type: Date,
     default: Date.now
