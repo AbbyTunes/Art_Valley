@@ -276,8 +276,8 @@ export default {
     }
   `,
 	ADD_ART_TO_CATEGORY: gql`
-		mutation addCategory($userId: ID!, $artId: ID!){
-      addCategory(userId: $userId, artId: $artId) {
+		mutation addCategory($categoryId: ID!, $artId: ID!){
+      addCategory(categoryId: $categoryId, artId: $artId) {
 				id
         author {
           id

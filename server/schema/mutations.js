@@ -97,7 +97,7 @@ const mutation = new GraphQLObjectType({
 
 					return new Art(args).save()
 						.then(art => {
-							Art.addCategory(art.author, art.id)
+							Art.addCategory(art.category, art.id)
 						})
 						.then(art => {
 							User.addPublishedArt(art.author, art.id)
