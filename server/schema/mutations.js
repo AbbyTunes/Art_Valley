@@ -96,6 +96,17 @@ const mutation = new GraphQLObjectType({
           .catch(err => null);
       }
     },
+    deleteArticle: {
+      type: ArticleType,
+      args: {
+        _id: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(_, { _id }) {
+        return Article.findByIdAndDelete({ _id })
+          .then(article => article)
+          .catch(err => null);
+      }
+    },
     register: {
       type: UserType,
       args: {
