@@ -227,7 +227,7 @@ const mutation = new GraphQLObjectType({
 				if (bio) updateObj.bio = bio;
 				console.log(updateObj)
         return User.findOneAndUpdate(
-          { _id: id },
+          { id: id },
           { $set: updateObj },
           { new: true },
           (err, user) => {
@@ -237,75 +237,30 @@ const mutation = new GraphQLObjectType({
         );
       }
     },
-    // newComment: {
-    //   type: CommentType,
-    //   args: {
-    //     body: { type: GraphQLString },
-    //     author: { type: GraphQLID },
-    //     art: { type: GraphQLID },
-    //     article: { type: GraphQLID }
-    //   },
-    //   async resolve(_, args) {
-    //     return new Comment(args).save().then(comment => {
-    //       return User.findById(comment.author)
-    //         .then(user => {
-    //           user.publishedComments.push(comment);
-    //           user.save();
-    //           return comment;
-    //         })
-    //         .then(comment => {
-    //           let model = comment.article ? Article : Art;
-    //           let id_ref = comment.article ? article : art;
-    //           debugger;
-    //           // let model_ref = comment.article ? article : art;
-    //           return model.findById(id_ref).then(response => {
-    //             console.log(response);
-    //             response.comments.push(comment._id);
-    //             response.save();
-    //             return comment;
-    //           });
-    //         })
-    //         .catch(err => console.log(err));
-    //     });
-    //   }
-    // },
-    ///THIS ONEEEEE
-    // newComment: {
-    //   type: CommentType,
-    //   args: {
-    //     body: { type: GraphQLString },
-    //     author: { type: GraphQLID },
-    //     art: { type: GraphQLID },
-    //     article: { type: GraphQLID }
-    //   },
-    //   async resolve(_, args) {
-    //     return new Comment(args).save().then(comment => {
-    //       return User.findById(comment.author)
-    //         .then(user => {
-    //           user.publishedComments.push(comment);
-    //           user.save();
-    //           return comment;
-    //         })
-    //         // .then(comment => {
-    //         //   return Art.findById(comment.art).then(art => {
-    //         //     console.log(art);
-    //         //     art.comments.push(comment._id);
-    //         //     art.save();
-    //         //     return comment;
-    //         //   });
-    //         // })
-    //         .then(comment => {
-    //           return Article.findById(comment.article).then(article => {
-    //             console.log(article);
-    //             article.comments.push(comment._id);
-    //             article.save();
-    //             return comment;
-    //           });
-    //         })
-    //         .catch(err => console.log(err));
-    //     });
-    //   }
-    // },
+    updateArticle: {
+      type: ArticleType,
+      args: {
+        id: { type: GraphQLID },
+        title: { type: GraphQLString },
+        header: { type: GraphQLString },
+        body: { type: GraphQLString }
+      },
+      resolve(parentValue, { id, title, header, body }) {
+        const updateObj = {};
+        if (title) updateObj.title = title;
+        if (header) updateObj.header = header;
+        if (body) updateObj.body = body;
+
+        return Article.findOneAndUpdate(
+          { _id: id },
+          { $set: updateObj },
+          { new: true },
+          (err, article) => {
+            return article;
+          }
+        )
+      }
+     },
     newComment: {
       type: CommentType,
       args: {

@@ -7,6 +7,9 @@ import Queries from "../../graphql/queries";
 import Mutations from "../../graphql/mutations";
 import ArticleLike from "./ArticleLike";
 import ArticleComments from "../comments/ArticleComments";
+import ArticleTitleDetail from "./ArticleTitleDetail.js";
+import ArticleBodyDetail from "./ArticleBodyDetail";
+import ArticleHeaderDetail from "./ArticleHeaderDetail";
 const { FETCH_ARTICLE } = Queries;
 const { ADD_ARTICLE_LIKE, DELETE_ARTICLE } = Mutations;
 
@@ -61,11 +64,23 @@ class ArticleShow extends Component {
                         <div className="article-show-info">
                           <div className="article-info-main">
                             <div className="article-info-1">
-                              <div className="article-show-title">{title}</div>
-                              <div className="article-show-header">
-                                {header}
+                              <div className="article-show-title">
+                                <div>
+                                  <ArticleTitleDetail
+                                    article={data.article}
+                                  ></ArticleTitleDetail>
+                                </div>
                               </div>
-                              <div className="article-show-body">{body}</div>
+                              <div className="article-show-header">
+                                <ArticleHeaderDetail
+                                  article={data.article}
+                                ></ArticleHeaderDetail>
+                              </div>
+                              <div className="article-show-body">
+                                <ArticleBodyDetail
+                                  article={data.article}
+                                ></ArticleBodyDetail>
+                              </div>
                             </div>
                             <div className="article-info-2">
                               <ArticleLike likers={likers} />
@@ -80,27 +95,27 @@ class ArticleShow extends Component {
                         </div>
                         <div>
                           <ArticleComments
-                            articleId={this.props.match.params.articleId} 
-                            commentData={data.article.comments} 
+                            articleId={this.props.match.params.articleId}
+                            commentData={data.article.comments}
                           />
                         </div>
                         <Mutation
                           mutation={DELETE_ARTICLE}
                           // update={(cache, data) => this.updateCache(cache, data)}
                         >
-                          {(deleteArticle) => (
+                          {deleteArticle => (
                             <a
                               className="comment-body-delete"
                               onClick={e => {
-                                this.delete(deleteArticle)
+                                this.delete(deleteArticle);
                                 // e.preventDefault();
                                 // deleteArticle({ variables: { _id: this.props.match.params.articleId } });
                               }}
                             >
                               Delete
-                          </a>
+                            </a>
                           )}
-                        </Mutation >
+                        </Mutation>
                       </div>
                     );
                 }}

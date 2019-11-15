@@ -68,6 +68,31 @@ debugger;
   });
 });
 
+router.route("/:id").get((req, res, next) => {
+  Article.findById(req.params.id, (err, go) => {
+    if (err) {
+      return next(err);
+    }
+    res.json(go);
+  });
+});
+
+router.route("/edit/:id").put((req, res, next) => {
+  debugger;
+  Article.findByIdAndUpdate(
+    req.params.id,
+    { $set: { article: Object.keys(req.body)[0] } },
+    { new: true },
+    (err, updateDoc) => {
+      if (err) {
+        return next(err);
+      }
+      res.status(200).send(updateDoc);
+    }
+  );
+});
+
+
 // router.route("/:id").delete((req, res, next) => {
 //   DOCUMENT.findByIdAndRemove(req.params.id, (err, result) => {
 //     if (err) {
