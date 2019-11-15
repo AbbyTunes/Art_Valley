@@ -164,10 +164,10 @@ class Profile extends React.Component {
                 <h1 className="profile-header">Playlist</h1> */}
               {/* <ul className="liked-list">
                   {artList}
-                </ul> */}
-              {/* <div className="see-more-button">
-                  <Link to="#">See More</Link> */}
-              {/* </div> */}
+                </ul>
+              <div className="see-more-button">
+                  <Link to="#">See More</Link>
+              </div> */}
               {/* </div> */}
               <div className="profile-published">
                 <h1 className="profile-header">Recently Published</h1>

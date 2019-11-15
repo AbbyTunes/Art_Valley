@@ -15,6 +15,7 @@ import ArticleIndex from './articles/ArticleIndex';
 import ArticleShow from './articles/ArticleShow';
 import VideoIndex from "./art/video_index";
 import VideoShow from "./art/video_show";
+import Home from "./home/Home";
 
 import "./App.css";
 
@@ -36,6 +37,7 @@ const App = () => {
 
 
 			</Switch>
+			<Route exact path="/" component={Home}/>
 			<Route exact path="/create" component={CreateArt}/>
 			<Route exact path="/users/:userId" component={Profile} />
 			<Route exact path="/settings/:userId" component={Settings} />
