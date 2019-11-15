@@ -92,6 +92,7 @@ export default {
           title
           likers {
             id
+            name
           }
         }
       }
@@ -107,6 +108,7 @@ export default {
           title
           likers {
             id
+            name
           }
         }
       }

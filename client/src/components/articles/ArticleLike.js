@@ -17,7 +17,7 @@ class ArticleLike extends Component {
 		super(props)
 		this.state = { 
 			userId: localStorage.getItem("currentUserId"),
-			artId: this.props.match.params.artId,
+			articleId: this.props.match.params.articleId,
 			message: ""
 		}
 	}
@@ -33,10 +33,9 @@ class ArticleLike extends Component {
 				_id: this.props.match.params.articleId
 			}
 		});
-
 		let newArticle = merge({}, article);
-		newArticle.article.likers.push(data.data.addUserLikedArticle)
 
+		newArticle.article.likers.push(data.data.addUserLikedArticle)
 		cache.writeQuery({
 			query: FETCH_ARTICLE, data: newArticle,
 			variables: {
@@ -56,6 +55,7 @@ class ArticleLike extends Component {
 		let newArticle = merge({}, article);
 		newArticle.article.likers.pop(data.data.userUnlikeArticle)
 
+		
 		cache.writeQuery({
 			query: FETCH_ARTICLE, data: newArticle,
 			variables: {
@@ -84,6 +84,11 @@ class ArticleLike extends Component {
 	}
 	
 	render() {
+		if (!this.props.likers) {
+			return null
+		} else {
+
+		
 		const likersIdArr = this.props.likers.map(liker => liker.id)
 		if (likersIdArr.includes(this.state.userId)) {
 			return (
@@ -111,16 +116,17 @@ class ArticleLike extends Component {
 					update={(cache, data) => this.updateLikeCache(cache, data)}
 					onError={err => this.setState({ message: err.message })}
 				>
-					{ addUserLikedArt => (
+					{ addUserLikedArticle => (
 						<div className="article-show-likes"
-							onClick={() => this.like(addUserLikedArt)} >
+							onClick={() => this.like(addUserLikedArticle)} >
 							Like {this.props.likers.length}
 						</div>
 					)}
 				</Mutation>
 			)
 		}	
-	}
+	
+		}}
 }
 
 export default withRouter(ArticleLike);
