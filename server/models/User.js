@@ -146,7 +146,7 @@ UserSchema.statics.addPublishedArticle = (userId, articlesId) => {
     return Article.findById(articlesId).then(articles => {
       user.publishedArticles.push(articles);
 
-      return Promise.all([user.save(), articles.save()]).then(([user, articles]) => art);
+      return Promise.all([user.save(), articles.save()]).then(([user, articles]) => articles);
     });
   });
 };

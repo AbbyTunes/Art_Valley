@@ -140,14 +140,15 @@ const mutation = new GraphQLObjectType({
 				author: { type: new GraphQLNonNull(GraphQLID) }
       },
       resolve(_, args) {
-				console.log(args)
-        return Article.findByIdAndDelete(args._id)
+				console.log(args._id)
+				console.log(args.author)
+				return User.deleteArticle(args.author, args._id)
+          .then(user => user)
+          .catch(err => null)
+				.then(() => { 
+					return Article.findByIdAndDelete(args._id)
           .then(article => article)
 					.catch(err => null)
-				.then(() => { 
-					return User.deleteArticle( args.author, args._id )
-						.then(user => user)
-						.catch(err => null)
 				})
 
       }
