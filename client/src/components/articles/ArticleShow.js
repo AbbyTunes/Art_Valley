@@ -8,14 +8,25 @@ import Mutations from "../../graphql/mutations";
 import ArticleLike from "./ArticleLike";
 import ArticleComments from "../comments/ArticleComments";
 const { FETCH_ARTICLE } = Queries;
-const { ADD_ARTICLE_LIKE } = Mutations;
+const { ADD_ARTICLE_LIKE, DELETE_ARTICLE } = Mutations;
 
 class ArticleShow extends Component {
 
     constructor(props) {
         super(props);
+
+        this.delete = this.delete.bind(this);
     }
-    
+
+    delete(deleteArticle) {
+    //   if (localStorage.currentUserId === this.props.article.author.id) {
+    //     return (
+      deleteArticle({ variables: { _id: this.props.match.params.articleId } })
+        .then(this.props.history.push("/community"))
+    //     )
+    //   }
+    }
+
     render() {
         
         return (
@@ -73,6 +84,23 @@ class ArticleShow extends Component {
                             commentData={data.article.comments} 
                           />
                         </div>
+                        <Mutation
+                          mutation={DELETE_ARTICLE}
+                          // update={(cache, data) => this.updateCache(cache, data)}
+                        >
+                          {(deleteArticle) => (
+                            <a
+                              className="comment-body-delete"
+                              onClick={e => {
+                                this.delete(deleteArticle)
+                                // e.preventDefault();
+                                // deleteArticle({ variables: { _id: this.props.match.params.articleId } });
+                              }}
+                            >
+                              Delete
+                          </a>
+                          )}
+                        </Mutation >
                       </div>
                     );
                 }}

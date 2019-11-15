@@ -51,6 +51,15 @@ export default {
       }
     }
   `,
+  DELETE_ARTICLE: gql`
+    mutation DeleteArticle($_id: ID!) {
+      deleteArticle(_id: $_id) {
+        id
+        title
+        body
+      }
+    }
+  `,
   CREATE_ART: gql`
     mutation CreateArt($category: ID!, $author: ID!, $title: String!, $description: String!, $photoLink: String!) {
       newArt(category: $category, author: $author, title: $title, description: $description, photoLink: $photoLink) {
