@@ -32,7 +32,6 @@ const ArticleType = new GraphQLObjectType({
         likers: {
             type: new GraphQLList(require("./user_type")),
             resolve(parentValue) {
-                debugger;
                 return Article.findById(parentValue.id)
                     .populate("likers")
                     .then(article => article.likers)

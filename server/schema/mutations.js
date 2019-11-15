@@ -96,6 +96,17 @@ const mutation = new GraphQLObjectType({
           .catch(err => null);
       }
     },
+    deleteArticle: {
+      type: ArticleType,
+      args: {
+        _id: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(_, { _id }) {
+        return Article.findByIdAndDelete({ _id })
+          .then(article => article)
+          .catch(err => null);
+      }
+    },
     register: {
       type: UserType,
       args: {
@@ -174,6 +185,16 @@ const mutation = new GraphQLObjectType({
       },
       resolve(_, { userId, articleId }) {
         return User.addLikedArticle(userId, articleId);
+      }
+    },
+    userUnlikeArticle: {
+      type: UserType,
+      args: {
+        userId: { type: GraphQLID },
+        articleId: { type: GraphQLID }
+      },
+      resolve(_, { userId, articleId }) {
+        return User.unlikeArticle(userId, articleId);
       }
     },
     addUserPublishedArt: {
@@ -301,14 +322,6 @@ const mutation = new GraphQLObjectType({
               user.save();
               return comment;
             })
-            // .then(comment => {
-            //   return Art.findById(comment.art).then(art => {
-            //     console.log(art);
-            //     art.comments.push(comment._id);
-            //     art.save();
-            //     return comment;
-            //   });
-            // })
             .then(comment => {
               if (comment.article) {
                 return Article.findById(comment.article).then(article => {

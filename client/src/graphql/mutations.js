@@ -62,6 +62,15 @@ export default {
       }
     }
   `,
+  DELETE_ARTICLE: gql`
+    mutation DeleteArticle($_id: ID!) {
+      deleteArticle(_id: $_id) {
+        id
+        title
+        body
+      }
+    }
+  `,
   CREATE_ART: gql`
     mutation CreateArt(
       $category: ID!
@@ -127,6 +136,23 @@ export default {
           title
           likers {
             id
+            name
+          }
+        }
+      }
+    }
+  `,
+  ADD_ARTICLE_UNLIKE: gql`
+    mutation userUnlikeArticle($userId: ID!, $articleId: ID!){
+      userUnlikeArticle(userId: $userId, articleId: $articleId) {
+        id
+        name
+        likedArticles {
+          id 
+          title
+          likers {
+            id
+            name
           }
         }
       }
