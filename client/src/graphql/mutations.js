@@ -82,6 +82,14 @@ export default {
       }
     }
   `,
+  DELETE_ART: gql`
+    mutation DeleteArt($_id: ID!) {
+      deleteArt(_id: $_id) {
+        id
+        title
+      }
+    }
+  `,
   CREATE_ART: gql`
     mutation CreateArt(
       $category: ID!
@@ -218,11 +226,27 @@ export default {
     }
   `,
   UPDATE_ARTICLE_HEADER: gql`
-    mutation updateArticleHeader($id: ID!, $header: String!){
-      updateArticle(id: $id, header: $header){
+    mutation updateArticleHeader($id: ID!, $header: String!) {
+      updateArticle(id: $id, header: $header) {
         id
-        header 
+        header
       }
     }
   `,
+  UPDATE_ART_TITLE: gql`
+    mutation updateArtTitle($id: ID!, $title: String!) {
+      updateArt(id: $id, title: $title) {
+        id
+        title
+      }
+    }
+  `,
+  UPDATE_ART_DESCRIPTION: gql`
+    mutation updateArtBody($id: ID!, $description: String!) {
+      updateArt(id: $id, description: $description) {
+        id
+        description
+      }
+    }
+  `
 };

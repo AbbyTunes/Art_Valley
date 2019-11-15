@@ -12,7 +12,7 @@ import ArticleBodyDetail from "./ArticleBodyDetail";
 import ArticleHeaderDetail from "./ArticleHeaderDetail";
 import ArticleDelete from "./ArticleDelete";
 const { FETCH_ARTICLE } = Queries;
-const { ADD_ARTICLE_LIKE, DELETE_ARTICLE } = Mutations;
+const { ADD_ARTICLE_LIKE, DELETE_ARTICLE } = Mutations; 
 
 class ArticleShow extends Component {
 

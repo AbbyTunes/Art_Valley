@@ -53,19 +53,19 @@ const mutation = new GraphQLObjectType({
         return new Art(args).save().then(art => {
           if (art.category) {
             console.log(art);
-            return Category.findById(args.category).then(category => {
-              category.arts.push(art);
-							return category.save()
-							.then(category => art);
-						})
-						.then(art => {
-							User.addPublishedArt(art.author, art.id)
-							return (art => art)
-						})
+            return Category.findById(args.category)
+              .then(category => {
+                category.arts.push(art);
+                return category.save().then(category => art);
+              })
+              .then(art => {
+                User.addPublishedArt(art.author, art.id);
+                return art => art;
+              });
           } else {
             return art;
           }
-				})
+        });
         // const validUser = await AuthService.verifyUser({ token: context.token });
         // if (validUser.loggedIn) {
 
@@ -155,28 +155,28 @@ const mutation = new GraphQLObjectType({
       resolve(_, { userId, artId }) {
         return User.addLikedArt(userId, artId);
       }
-		},
-		userUnlikeArt: {
-			type: UserType,
-			args: {
-				userId: { type: GraphQLID },
-				artId: { type: GraphQLID }
-			},
-			resolve(_, { userId, artId }) {
-				return User.unlikeArt(userId, artId);
-			}
-		},
-		deleteArt: {
-			type: ArtType,
-			args: {
-				_id: { type: new GraphQLNonNull(GraphQLID) }
-			},
-			resolve(_, { _id }) {
-				return Art.findByIdAndDelete({ _id })
-					.then(art => art)
-					.catch(err => null);
-			}
-		},
+    },
+    userUnlikeArt: {
+      type: UserType,
+      args: {
+        userId: { type: GraphQLID },
+        artId: { type: GraphQLID }
+      },
+      resolve(_, { userId, artId }) {
+        return User.unlikeArt(userId, artId);
+      }
+    },
+    deleteArt: {
+      type: ArtType,
+      args: {
+        _id: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(_, { _id }) {
+        return Art.findByIdAndDelete({ _id })
+          .then(art => art)
+          .catch(err => null);
+      }
+    },
     addUserLikedArticle: {
       type: UserType,
       args: {
@@ -210,28 +210,27 @@ const mutation = new GraphQLObjectType({
     editSettings: {
       type: UserType,
       args: {
-				id: { type: GraphQLID },
+        id: { type: GraphQLID },
         name: { type: GraphQLString },
-				email: { type: GraphQLString },
-				location: {type: GraphQLString },
-				bio: { type: GraphQLString },
-				
+        email: { type: GraphQLString },
+        location: { type: GraphQLString },
+        bio: { type: GraphQLString }
       },
-      resolve(parentValue, { id, name, email, location, bio}) {
+      resolve(parentValue, { id, name, email, location, bio }) {
         const updateObj = {};
 
         if (id) updateObj.id = id;
         if (name) updateObj.name = name;
         if (email) updateObj.email = email;
-				if (location) updateObj.location = location;
-				if (bio) updateObj.bio = bio;
-				console.log(updateObj)
+        if (location) updateObj.location = location;
+        if (bio) updateObj.bio = bio;
+        console.log(updateObj);
         return User.findOneAndUpdate(
           { id: id },
           { $set: updateObj },
           { new: true },
           (err, user) => {
-						console.log(user)
+            console.log(user);
             return user;
           }
         );
@@ -258,9 +257,31 @@ const mutation = new GraphQLObjectType({
           (err, article) => {
             return article;
           }
-        )
+        );
       }
-     },
+    },
+    updateArt: {
+      type: ArtType,
+      args: {
+        id: { type: GraphQLID },
+        title: { type: GraphQLString },
+        description: { type: GraphQLString },
+      },
+      resolve(parentValue, { id, title, description }) {
+        const updateObj = {};
+        if (title) updateObj.title = title;
+        if (description) updateObj.description = description;
+
+        return Art.findOneAndUpdate(
+          { _id: id },
+          { $set: updateObj },
+          { new: true },
+          (err, art) => {
+            return art;
+          }
+        );
+      }
+    },
     newComment: {
       type: CommentType,
       args: {
@@ -287,11 +308,11 @@ const mutation = new GraphQLObjectType({
                 });
               } else {
                 return Art.findById(comment.art).then(art => {
-                console.log(art);
-                art.comments.push(comment._id);
-                art.save();
-                return comment;
-              });
+                  console.log(art);
+                  art.comments.push(comment._id);
+                  art.save();
+                  return comment;
+                });
               }
             })
             .catch(err => console.log(err));

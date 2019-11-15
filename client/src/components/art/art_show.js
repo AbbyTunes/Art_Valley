@@ -4,6 +4,9 @@ import "./art_show.scss";
 import { withRouter } from "react-router-dom";
 import CreateComment from "../comments/CreateComment";
 import ArtLike from "./art_like";
+import ArtTitleDetail from "./ArtTitleDetail";
+import ArtDescriptionDetail from "./ArtDescriptionDetail";
+import ArtDelete from "./ArtDelete";
 import Queries from "../../graphql/queries";
 const { FETCH_ART } = Queries;
 
@@ -35,6 +38,17 @@ class ArtShow extends Component {
 					const { id, description, photoLink, title, likers, author } = data.artById;
 					console.log(localStorage)
 					console.dir(data)
+
+					let deleteArtButton; 
+					deleteArtButton = author.id === localStorage.currentUserId ?
+					<ArtDelete></ArtDelete> : <div></div>
+					let titleOption; 
+					titleOption = author.id === localStorage.currentUserId ?
+					<ArtTitleDetail art={data.artById}></ArtTitleDetail> : <div>{title}</div>
+					let descriptionOption; 
+					descriptionOption = author.id === localStorage.currentUserId ?
+					<ArtDescriptionDetail art={data.artById}></ArtDescriptionDetail> : <div>{description}</div>
+
 					
 					let showArtist;
 					if (author && author.publishedArts 
@@ -59,18 +73,22 @@ class ArtShow extends Component {
 					}
 
 					return (
-            <div className="show-container">
-              <div className="show-art">
+            			<div className="show-container">
+              				<div className="show-art">
 								<div className="show-pic">
 									<img className="show-image" src={photoLink}></img>
 								</div>
                 
-                <div className="show-info">
+                				<div className="show-info">
 
 									<div className="info-main">
 										<div className="info-1">
-											<div className="show-title">{title}</div>
-											<div className="show-description">{description}</div>
+											<div className="show-title">
+												{titleOption}
+											</div>
+											<div className="show-description">
+												{descriptionOption}
+											</div>
 										</div>
 
 										<div className="info-2">
@@ -80,18 +98,19 @@ class ArtShow extends Component {
                  
 									<div className="info-3">
 										<div className="show-comment">Comments</div>
-                  </div>
+                  					</div>
 
 									<CreateComment artId={data.artById.id} comments={data.artById.comments} />
 
-                </div>
+                				</div>
 
 								{showArtist}
 
-                <div className="show-category"></div>
-              </div>
-            </div>
-          );
+                			<div className="show-category"></div>
+              				</div>
+							{deleteArtButton}
+            			</div>
+          			);
 				}}
 			</Query>
 		
