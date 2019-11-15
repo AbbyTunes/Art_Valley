@@ -38,7 +38,7 @@ const App = () => {
 			</Switch>
 			<Route exact path="/create" component={CreateArt}/>
 			<Route exact path="/users/:userId" component={Profile} />
-			<Route exact path="/settings" component={Settings} />
+			<Route exact path="/settings/:userId" component={Settings} />
 		</div>
 	);
 };

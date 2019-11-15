@@ -6,13 +6,13 @@ export default {
       isLoggedIn @client
     }
   `,
-	FETCH_ARTS: gql`
+  FETCH_ARTS: gql`
     query arts {
       arts {
         id
         author {
-					name
-				}
+          name
+        }
         photoLink
         title
       }
@@ -24,20 +24,20 @@ export default {
         id
         author {
           id
-					name
-					publishedArts {
-						id
-						title
-						photoLink
-						author {
-							id
-						}
-					}
-					likedArts {
-						id
-						title
-						photoLink
-					}
+          name
+          publishedArts {
+            id
+            title
+            photoLink
+            author {
+              id
+            }
+          }
+          likedArts {
+            id
+            title
+            photoLink
+          }
         }
         photoLink
         title
@@ -51,7 +51,6 @@ export default {
           name
         }
         comments {
-					id
           body
           author {
             name
@@ -74,7 +73,7 @@ export default {
       }
     }
   `,
-	FETCH_ARTS_BY_CATEGORY: gql`
+  FETCH_ARTS_BY_CATEGORY: gql`
     query artsByCategory($categoryId: ID!) {
       artsByCategory(categoryId: $categoryId) {
         id
@@ -92,7 +91,7 @@ export default {
         category {
           id
           name
-				}
+        }
       }
     }
   `,
@@ -118,6 +117,8 @@ export default {
           body
           photoLink
         }
+        location
+        bio
       }
     }
   `,
@@ -164,13 +165,13 @@ export default {
         title
         body
         header
-        author { 
-          id 
+        author {
+          id
           name
         }
         photoLink
-        comments { 
-          id 
+        comments {
+          id
           body
           author {
             id
@@ -191,13 +192,13 @@ export default {
         title
         body
         header
-        author { 
-          id 
+        author {
+          id
           name
         }
         photoLink
-        comments { 
-          id 
+        comments {
+          id
           body
           author {
             id
@@ -210,5 +211,5 @@ export default {
         }
       }
     }
-  `,
+  `
 };

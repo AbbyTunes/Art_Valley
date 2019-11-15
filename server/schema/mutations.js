@@ -186,6 +186,36 @@ const mutation = new GraphQLObjectType({
         return User.addPublishedArt(userId, artId);
       }
     },
+    editSettings: {
+      type: UserType,
+      args: {
+				id: { type: GraphQLID },
+        name: { type: GraphQLString },
+				email: { type: GraphQLString },
+				location: {type: GraphQLString },
+				bio: { type: GraphQLString },
+				
+      },
+      resolve(parentValue, { id, name, email, location, bio}) {
+        const updateObj = {};
+
+        if (id) updateObj.id = id;
+        if (name) updateObj.name = name;
+        if (email) updateObj.email = email;
+				if (location) updateObj.location = location;
+				if (bio) updateObj.bio = bio;
+				console.log(updateObj)
+        return User.findOneAndUpdate(
+          { _id: id },
+          { $set: updateObj },
+          { new: true },
+          (err, user) => {
+						console.log(user)
+            return user;
+          }
+        );
+      }
+    },
     // newComment: {
     //   type: CommentType,
     //   args: {

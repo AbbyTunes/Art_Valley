@@ -55,7 +55,10 @@ const logout = async ({ id }) => {
   }
 
   const token = "";
-  return { token, loggedIn: false, ...user._doc, password: null };
+  const userId = "";
+  const userName = "";
+
+  return { token, userId, userName, loggedIn: false, ...user._doc, password: null };
 };
 
 const login = async data => {
