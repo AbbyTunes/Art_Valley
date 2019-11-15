@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const Article = require("../models/Article");
 const Art = require("../models/Art");
+const User = require("../models/User");
 const multer = require("multer");
 var AWS = require("aws-sdk");
 
@@ -32,7 +33,7 @@ router.post("/upload", upload.single("file"), function(req, res) {
   };
 
   s3bucket.upload(params, function(err, data) {
-    debugger;
+    // debugger;
     if (err) {
       res.status(500).json({ error: true, Message: err });
     } else {
@@ -46,7 +47,10 @@ router.post("/upload", upload.single("file"), function(req, res) {
 
       art.save()
       .then((data) => {
-        console.log(res)
+        // console.log(res)
+        Art.addCategory(data.cateogry, data._id)
+        User.addPublishedArt(data.author, data._id)
+        console.log("DATA RESPONSE FROM FILEUPLOAD")
         console.log(data)
         res.send({ data });
       }).catch(err => console.log(err))
