@@ -11,7 +11,6 @@ const ArtType = new GraphQLObjectType({
 	name: "ArtType",
 	fields: () => ({
 		id: { type: GraphQLID },
-		videoLink: { type: GraphQLString },
 		photoLink: { type: GraphQLString },
 		title: { type: GraphQLString },
 		description: { type: GraphQLString },

@@ -74,11 +74,11 @@ class CreateArt extends Component {
     const data = new FormData(e.target);
     if (this.state.category === "Photo") {
       this.setState({
-        category: "5dc9a1c883d5a53746a785a2" //debug id for...whatever reason
+        category: "5dc603aa4dc3a23d54cbb4fb" //debug id for...whatever reason
       });
     } else {
       this.setState({
-        category: "5dc603aa4dc3a23d54cbb4fb" // video
+        category: "5dcc556324cdd659e23e1e5a" // video
       });
     }
     data.append("file", this.state.photoLink);

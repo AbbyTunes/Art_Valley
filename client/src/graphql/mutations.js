@@ -86,17 +86,43 @@ export default {
         description: $description
         photoLink: $photoLink
       ) {
+				id
+        author {
+          id
+          name
+          publishedArts {
+            id
+            title
+            photoLink
+            author {
+              id
+            }
+          }
+          likedArts {
+            id
+            title
+            photoLink
+          }
+        }
+        photoLink
+        title
+        description
+        likers {
+          id
+					name
+        }
         category {
           id
           name
         }
-        author {
+        comments {
+          body
+          author {
+            name
+            id
+          }
           id
-          name
         }
-        title
-        description
-        photoLink
       }
     }
   `,
@@ -189,5 +215,106 @@ export default {
         }
       }
     }
-	`
+	`,
+	USER_UNLIKE_ART: gql`
+    mutation userUnlikeArt($userId: ID!, $artId: ID!){
+      userUnlikeArt(userId: $userId, artId: $artId) {
+        id
+        name
+        likedArts {
+          id
+          title
+          likers {
+						id
+						name
+          }
+        }
+      }
+    }
+	`,
+	USER_PUBLISH_ART: gql`
+		mutation addPublishedArt($userId: ID!, $artId: ID!){
+      addPublishedArt(userId: $userId, artId: $artId) {
+				id
+        author {
+          id
+          name
+          publishedArts {
+            id
+            title
+            photoLink
+            author {
+              id
+            }
+          }
+          likedArts {
+            id
+            title
+            photoLink
+          }
+        }
+        photoLink
+        title
+        description
+        likers {
+          id
+					name
+        }
+        category {
+          id
+          name
+        }
+        comments {
+          body
+          author {
+            name
+            id
+          }
+          id
+        }
+      }
+    }
+  `,
+	ADD_ART_TO_CATEGORY: gql`
+		mutation addCategory($userId: ID!, $artId: ID!){
+      addCategory(userId: $userId, artId: $artId) {
+				id
+        author {
+          id
+          name
+          publishedArts {
+            id
+            title
+            photoLink
+            author {
+              id
+            }
+          }
+        }
+        photoLink
+        title
+        description
+        likers {
+          id
+					name
+        }
+        category {
+          id
+          name
+					arts {
+						id
+						title
+					}
+        }
+        comments {
+          body
+          author {
+            name
+            id
+          }
+          id
+        }
+      }
+    }
+  `
 };

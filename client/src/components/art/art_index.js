@@ -6,11 +6,11 @@ import Queries from "../../graphql/queries";
 const { FETCH_ARTS_BY_CATEGORY } = Queries;
 
 const ArtIndex = (props) => {
-//comment
+
 	return (
 		<Query 
 			query={FETCH_ARTS_BY_CATEGORY} 
-			variables={{ categoryId: "5dc9a1c883d5a53746a785a2" }} >
+			variables={{ categoryId: "5dc603aa4dc3a23d54cbb4fb" }} >
 			{({ loading, error, data }) => {
 				
 				if (loading) return (
