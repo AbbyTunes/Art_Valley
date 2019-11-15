@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const Article = require("../models/Article");
 const Art = require("../models/Art");
+const User = require("../models/User");
 const multer = require("multer");
 var AWS = require("aws-sdk");
 
@@ -12,7 +13,7 @@ var upload = multer({ storage: storage });
 
 
 router.post("/upload", upload.single("file"), function(req, res) {
-  console.log(req);
+  // console.log(req);
   const file = req.file;
   const s3FileURL = process.env.AWS_UPLOADED_FILE_URL_LINK;
 
@@ -46,7 +47,10 @@ router.post("/upload", upload.single("file"), function(req, res) {
 
       art.save()
       .then((data) => {
-        console.log(res)
+        // console.log(res)
+        Art.addCategory(data.cateogry, data._id)
+        User.addPublishedArt(data.author, data._id)
+        console.log("DATA RESPONSE FROM FILEUPLOAD")
         console.log(data)
         res.send({ data });
       }).catch(err => console.log(err))

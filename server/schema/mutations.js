@@ -91,6 +91,9 @@ const mutation = new GraphQLObjectType({
         }
       ],
       async resolve(_, args, context) {
+				console.log(args)
+				console.log(context)
+				console.log("ARGSCONTEXT ABOVE")
 
 				const validUser = await AuthService.verifyUser({ token: context.token });
 				if (validUser.loggedIn) {
