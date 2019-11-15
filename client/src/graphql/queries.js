@@ -6,18 +6,11 @@ export default {
       isLoggedIn @client
     }
   `,
-  // FETCH_ARTS: gql`
-  //   query arts {
-  //     arts {
-  //       id
-  //       author {
-  //         name
-  //       }
-  //       photoLink
-  //       title
-  //     }
-  //   }
-  // `,
+	IS_CURRENT_USER: gql`
+		query isCurrentUser {
+			isCurrentUser @client
+		}
+	`,
   FETCH_ART: gql`
     query artById($artId: ID!) {
       artById(_id: $artId) {
