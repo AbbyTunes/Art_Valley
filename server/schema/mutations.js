@@ -91,6 +91,9 @@ const mutation = new GraphQLObjectType({
         }
       ],
       async resolve(_, args, context) {
+				console.log(args)
+				console.log(context)
+				console.log("ARGSCONTEXT ABOVE")
 
 				const validUser = await AuthService.verifyUser({ token: context.token });
 				if (validUser.loggedIn) {
@@ -127,12 +130,21 @@ const mutation = new GraphQLObjectType({
     deleteArticle: {
       type: ArticleType,
       args: {
-        _id: { type: new GraphQLNonNull(GraphQLID) }
+				_id: { type: new GraphQLNonNull(GraphQLID) },
+				author: { type: new GraphQLNonNull(GraphQLID) }
       },
-      resolve(_, { _id }) {
-        return Article.findByIdAndDelete({ _id })
+      resolve(_, args) {
+				console.log(args._id)
+				console.log(args.author)
+				return User.deleteArticle(args.author, args._id)
+          .then(user => user)
+          .catch(err => null)
+				.then(() => { 
+					return Article.findByIdAndDelete(args._id)
           .then(article => article)
-          .catch(err => null);
+					.catch(err => null)
+				})
+
       }
     },
     register: {

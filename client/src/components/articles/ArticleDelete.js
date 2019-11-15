@@ -9,10 +9,15 @@ class ArticleDelete extends React.Component {
     constructor(props) {
         super(props);
         this.delete = this.delete.bind(this);
+
+        
     }
 
     delete(deleteArticle) {
-      deleteArticle({ variables: { _id: this.props.match.params.articleId } })
+        // debugger
+    // console.log(this.props.article.author.id);
+      deleteArticle({ variables: { _id: this.props.article.id,
+        author: this.props.article.author.id } })
         .then(this.props.history.push("/community"))
     }
 
