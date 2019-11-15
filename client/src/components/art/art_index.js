@@ -43,21 +43,16 @@ const ArtIndex = (props) => {
 				)
 
 				return (
-					<div className="art-index-container">
-						<div className="art-header">
-							Photos
-						</div>
+          <div className="art-index-container">
+            <div className="art-header">Photos</div>
+            <Link to="/create" className="article-create-link">
+              Add Art
+            </Link>
+            <ul className="art-index-ul">{allArtList}</ul>
 
-						<ul className="art-index-ul">
-							{allArtList}
-						</ul>
-						
-						<div className="see-more-button">
-							{seeMoreButton}
-						</div>
-
-					</div>
-				);
+            <div className="see-more-button">{seeMoreButton}</div>
+          </div>
+        );
 			}}
 		</Query>
 	);

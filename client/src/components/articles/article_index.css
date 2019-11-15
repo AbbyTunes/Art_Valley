@@ -37,6 +37,7 @@
   border-radius: 2px;
   margin-bottom: 20px;
   padding: 10px;
+  text-align: center;
 }
 
 .article-create-link:hover {

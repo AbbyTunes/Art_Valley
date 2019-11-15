@@ -22,7 +22,7 @@ class CreateArt extends Component {
     super(props);
 
     this.state = {
-      category: "", // default to debug
+      category: "Photo", // default to debug
       author: localStorage.currentUserId,
       title: "",
       description: "",
@@ -73,28 +73,38 @@ class CreateArt extends Component {
     e.preventDefault();
     const data = new FormData(e.target);
     if (this.state.category === "Photo") {
+
+      console.log("PHOTO ASYNC DATA BELOW");
       this.setState({
         category: "5dc603aa4dc3a23d54cbb4fb" //debug id for...whatever reason
-      });
+      }, () => console.log(this.state.category));
+
     } else {
+
+      console.log("ELSE");
       this.setState({
         category: "5dcc556324cdd659e23e1e5a" // video
       });
+
     }
+    
+    
+    
     data.append("file", this.state.photoLink);
     data.append("title",this.state.title);
     data.append("category",this.state.category);
     data.append("author",this.state.author);
     data.append("description",this.state.description);
+    console.log(data)
     axios.post(endpoint, data).then( (response) => {
 
       if (response.data && response.status === 200) { 
         this.setState({ message: "Art successfully uploaded!" })
+        console.log(response.data)
         const redirectId = response.data.data._id;
         this.props.history.push(`/arts/${redirectId}`);
       } else {
         this.setState({ message: "Art upload was not successful" })
-
       }
     })
     
