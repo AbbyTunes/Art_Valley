@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { Query, Mutation } from "react-apollo";
-import "./home.scss";
+import { Query } from "react-apollo";
 import { withRouter, Link } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import ArticleIndexItem from "../articles/ArticleIndexItem";
 import Queries from "../../graphql/queries";
+import "./home.scss";
 
 const { FETCH_ARTS_BY_CATEGORY, FETCH_ARTICLES } = Queries;
 const divLine = (<div className="home-div-line" />);
@@ -127,8 +126,6 @@ class Home extends Component {
           transitionTime="1000"
           swipeScrollTolerance="20"
         >
-          {/*  carousel component
-           */}
           <div className="home-splash-image">
             <img src="https://cdn.theculturetrip.com/wp-content/uploads/2016/01/Golden-Dawn-Bridge-watercolor-%C2%A9-Nicolas-RaymondFlickr.jpg" />
             <p className="home-splash-carousel-legend">Legend 1</p>
