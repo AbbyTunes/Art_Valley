@@ -6,6 +6,7 @@ import "./art_show.scss";
 import { withRouter } from "react-router-dom";
 import ArtLike from "./art_like";
 import Queries from "../../graphql/queries";
+import CreateComment from "../comments/CreateComment";
 
 const { FETCH_ART } = Queries;
 
@@ -18,15 +19,15 @@ class VideoShow extends Component {
 				variables={{ artId: this.props.match.params.artId }} >
 				{({ loading, error, data }) => {
 					if (loading) return (
-                         <div className="temp">
-                           <p>Loading...</p>
-                         </div>
-                       );
+						<div className="temp">
+							<p>Loading...</p>
+						</div>
+					);
 					if (error) return (
-                       <div className="temp">
-                         <p>Error</p>
-                       </div>
-                     );
+						<div className="temp">
+							<p>Error</p>
+						</div>
+					);
 
 					const { id, description, photoLink, title, likers, author } = data.artById;
 					console.dir(data)
@@ -80,6 +81,8 @@ class VideoShow extends Component {
 									<div className="info-3">
 										<div className="show-comment">Comment</div>
 									</div>
+
+									<CreateComment artId={data.artById.id} comments={data.artById.comments} />
 								</div>
 
 								{showArtist}
