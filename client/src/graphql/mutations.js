@@ -47,6 +47,7 @@ export default {
     mutation VerifyUser($token: String!) {
       verifyUser(token: $token) {
         loggedIn
+				isCurrentUser
       }
     }
   `,
@@ -291,89 +292,89 @@ export default {
       }
     }
 	`,
-	USER_PUBLISH_ART: gql`
-		mutation addPublishedArt($userId: ID!, $artId: ID!){
-      addPublishedArt(userId: $userId, artId: $artId) {
-				id
-        author {
-          id
-          name
-          publishedArts {
-            id
-            title
-            photoLink
-            author {
-              id
-            }
-          }
-          likedArts {
-            id
-            title
-            photoLink
-          }
-        }
-        photoLink
-        title
-        description
-        likers {
-          id
-					name
-        }
-        category {
-          id
-          name
-        }
-        comments {
-          body
-          author {
-            name
-            id
-          }
-          id
-        }
-      }
-    }
-  `,
-	ADD_ART_TO_CATEGORY: gql`
-		mutation addCategory($categoryId: ID!, $artId: ID!){
-      addCategory(categoryId: $categoryId, artId: $artId) {
-				id
-        author {
-          id
-          name
-          publishedArts {
-            id
-            title
-            photoLink
-            author {
-              id
-            }
-          }
-        }
-        photoLink
-        title
-        description
-        likers {
-          id
-					name
-        }
-        category {
-          id
-          name
-					arts {
-						id
-						title
-					}
-        }
-        comments {
-          body
-          author {
-            name
-            id
-          }
-          id
-        }
-      }
-    }
-  `
+	// USER_PUBLISH_ART: gql`
+	// 	mutation addPublishedArt($userId: ID!, $artId: ID!){
+  //     addPublishedArt(userId: $userId, artId: $artId) {
+	// 			id
+  //       author {
+  //         id
+  //         name
+  //         publishedArts {
+  //           id
+  //           title
+  //           photoLink
+  //           author {
+  //             id
+  //           }
+  //         }
+  //         likedArts {
+  //           id
+  //           title
+  //           photoLink
+  //         }
+  //       }
+  //       photoLink
+  //       title
+  //       description
+  //       likers {
+  //         id
+	// 				name
+  //       }
+  //       category {
+  //         id
+  //         name
+  //       }
+  //       comments {
+  //         body
+  //         author {
+  //           name
+  //           id
+  //         }
+  //         id
+  //       }
+  //     }
+  //   }
+  // `,
+	// ADD_ART_TO_CATEGORY: gql`
+	// 	mutation addCategory($categoryId: ID!, $artId: ID!){
+  //     addCategory(categoryId: $categoryId, artId: $artId) {
+	// 			id
+  //       author {
+  //         id
+  //         name
+  //         publishedArts {
+  //           id
+  //           title
+  //           photoLink
+  //           author {
+  //             id
+  //           }
+  //         }
+  //       }
+  //       photoLink
+  //       title
+  //       description
+  //       likers {
+  //         id
+	// 				name
+  //       }
+  //       category {
+  //         id
+  //         name
+	// 				arts {
+	// 					id
+	// 					title
+	// 				}
+  //       }
+  //       comments {
+  //         body
+  //         author {
+  //           name
+  //           id
+  //         }
+  //         id
+  //       }
+  //     }
+  //   }
+  // `
 };

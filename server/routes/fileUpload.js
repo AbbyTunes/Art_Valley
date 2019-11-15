@@ -33,7 +33,7 @@ router.post("/upload", upload.single("file"), function(req, res) {
   };
 
   s3bucket.upload(params, function(err, data) {
-    debugger;
+    // debugger;
     if (err) {
       res.status(500).json({ error: true, Message: err });
     } else {

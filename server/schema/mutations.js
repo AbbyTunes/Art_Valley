@@ -98,14 +98,7 @@ const mutation = new GraphQLObjectType({
 				const validUser = await AuthService.verifyUser({ token: context.token });
 				if (validUser.loggedIn) {
 
-					return new Art(args).save()
-						.then(art => {
-							Art.addCategory(art.category, art.id)
-						})
-						.then(art => {
-							User.addPublishedArt(art.author, art.id)
-						})
-						.then(art => art)
+					return null
 					} else {
 					throw new Error("sorry, you need to log in first");
 				}
@@ -128,6 +121,7 @@ const mutation = new GraphQLObjectType({
         _id: { type: new GraphQLNonNull(GraphQLID) }
       },
       resolve(_, { _id }) {
+				
         return Comment.findByIdAndDelete({ _id })
           .then(comment => comment)
           .catch(err => null);
