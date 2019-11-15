@@ -8,6 +8,7 @@ import ArticleIndexItem from "../articles/ArticleIndexItem";
 import Queries from "../../graphql/queries";
 
 const { FETCH_ARTS_BY_CATEGORY, FETCH_ARTICLES } = Queries;
+const divLine = (<div className="home-div-line" />);
 
 class Home extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class Home extends Component {
     return (
       <Query
         query={FETCH_ARTS_BY_CATEGORY}
-        variables={{ categoryId: "5dc9a1c883d5a53746a785a2" }}
+        variables={{ categoryId: "5dc603aa4dc3a23d54cbb4fb" }}
       >
         {({ loading, error, data }) => {
           if (loading)
@@ -27,7 +28,10 @@ class Home extends Component {
               <div className="art-index-container"><p>Loading...</p></div>
             );
           if (error)
-            return (<div className="art-index-container"><p>Error</p></div>
+            return (
+              <div className="home-article-index-container">
+                <p>Error</p>
+              </div>
             );
 
           let allArtList = data.artsByCategory.slice(0, 6).map(art => {
@@ -46,6 +50,8 @@ class Home extends Component {
 
           return (
             <div className="home-article-index-container">
+              {divLine}
+              <h2 className="home-header-text">Featured Art</h2>
               {allArtList}
             </div>
           );
@@ -66,7 +72,7 @@ class Home extends Component {
             );
           if (loading)
             return (
-              <div className="art-index-container">
+              <div className="home-article-index-container">
                 <p>Loading...</p>
               </div>
             );
@@ -86,6 +92,8 @@ class Home extends Component {
 
           return (
             <div className="home-article-index-container">
+              {divLine}
+              <h2 className="home-header-text">Featured Articles</h2>
               {allArticleList}
             </div>
           );
@@ -94,7 +102,18 @@ class Home extends Component {
     );
   }
 
+  developerInformation() {
+    return (
+      <div className="home-article-index-container">
+        {divLine}
+        <h2 className="home-header-text">Connect with us</h2>
+        DATA SET 1 DATA SET 2 DATA SET 3 GIT HUBS BLAH BLAH
+      </div>
+    );
+  }
+
   render() {
+    
     return (
       <div>
         <Carousel
@@ -124,21 +143,12 @@ class Home extends Component {
           </div>
         </Carousel>
         <div className="home-container">
-          <div className="home-div-line" />
-          <h2 className="home-header-text">Featured Art</h2>
+
+          
           {this.artHomeExamples()}
-
-          <div className="home-div-line" />
-          <h2 className="home-header-text">Featured Articles</h2>
           {this.articleHomeExamples()}
+          {this.developerInformation()}
 
-          <div className="home-div-line" />
-          <h2 className="home-header-text">Connect with us</h2>
-          DATA SET 1
-          DATA SET 2
-          DATA SET 3
-          GIT HUBS
-          BLAH BLAH 
         </div>
       </div>
     );
