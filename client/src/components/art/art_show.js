@@ -26,7 +26,7 @@ class ArtShow extends Component {
                      );
 
 					const { id, description, photoLink, title, likers, author } = data.artById;
-
+					console.log(localStorage)
 					console.dir(data)
 					
 					let showArtist;

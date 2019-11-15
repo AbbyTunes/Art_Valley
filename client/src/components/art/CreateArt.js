@@ -110,6 +110,9 @@ class CreateArt extends Component {
               alt=""
               aria-label="debug"
               className="art-form-image-debug-icon">📷</span>;
+    if (!localStorage.length) {
+      return <div className="profile-container">Please Log in!</div>
+    } else {
     return(
       <div className="profile-container">
           <div className="art-form-container">
@@ -193,7 +196,7 @@ class CreateArt extends Component {
             
           </div>
         </div>
-    );
+    );}
   }
 }
 

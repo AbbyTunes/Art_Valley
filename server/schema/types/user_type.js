@@ -19,6 +19,8 @@ const UserType = new GraphQLObjectType({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
     email: { type: GraphQLString },
+    location: { type: GraphQLString },
+    bio: { type: GraphQLString },
     likedArts: {
       type: new GraphQLList(ArtType),
       resolve(parentValue) {

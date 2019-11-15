@@ -13,23 +13,35 @@ export default {
   LOGIN_USER: gql`
     mutation LoginUser($email: String!, $password: String!) {
       login(email: $email, password: $password) {
-			  id
+        id
         token
         loggedIn
         name
       }
     }
   `,
+  EDIT_USER_SETTINGS: gql`
+    mutation EditSettings($id: ID!, $email: String!, $name: String!, $location: String!, $bio: String!) {
+      editSettings(id: $id, email: $email, name: $name, location: $location, bio: $bio) {
+        id
+        email
+        name
+        location
+        bio
+
+      }
+    }
+  `,
   VERIFY_USER: gql`
     mutation VerifyUser($token: String!) {
       verifyUser(token: $token) {
-				loggedIn
+        loggedIn
       }
     }
   `,
   ADD_COMMENT: gql`
     mutation NewComment($body: String!, $author: ID!, $art: ID!) {
-      newComment(body: $body, author: $author, art: $art){
+      newComment(body: $body, author: $author, art: $art) {
         id
         body
         art {
@@ -47,49 +59,71 @@ export default {
       deleteComment(_id: $id) {
         id
         body
-        
       }
     }
   `,
   CREATE_ART: gql`
-    mutation CreateArt($category: ID!, $author: ID!, $title: String!, $description: String!, $photoLink: String!) {
-      newArt(category: $category, author: $author, title: $title, description: $description, photoLink: $photoLink) {
-          category {
-            id
-            name
-          }
-          author {
-            id
-            name
-          }
-          title
-          description
-          photoLink
-      } 
+    mutation CreateArt(
+      $category: ID!
+      $author: ID!
+      $title: String!
+      $description: String!
+      $photoLink: String!
+    ) {
+      newArt(
+        category: $category
+        author: $author
+        title: $title
+        description: $description
+        photoLink: $photoLink
+      ) {
+        category {
+          id
+          name
+        }
+        author {
+          id
+          name
+        }
+        title
+        description
+        photoLink
+      }
     }
   `,
   CREATE_ARTICLE: gql`
-    mutation CreateArticle($author: ID!, $title: String!, $body: String!, $photoLink: String, $header: String!) {
-      newArticle(author: $author, title: $title, body: $body, photoLink: $photoLink, header: $header) {
-          author {
-            id
-            name
-          }
-          header
-          title
-          body
-          photoLink
-      } 
+    mutation CreateArticle(
+      $author: ID!
+      $title: String!
+      $body: String!
+      $photoLink: String
+      $header: String!
+    ) {
+      newArticle(
+        author: $author
+        title: $title
+        body: $body
+        photoLink: $photoLink
+        header: $header
+      ) {
+        author {
+          id
+          name
+        }
+        header
+        title
+        body
+        photoLink
+      }
     }
   `,
   ADD_ARTICLE_LIKE: gql`
-    mutation AddArticleLike($userId: ID!, $articleId: ID!){
+    mutation AddArticleLike($userId: ID!, $articleId: ID!) {
       addUserLikedArticle(userId: $userId, articleId: $articleId) {
-
         id
         name
         likedArticles {
-          id 
+          id
           title
           likers {
             id
