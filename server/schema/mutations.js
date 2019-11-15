@@ -92,13 +92,13 @@ const mutation = new GraphQLObjectType({
       ],
       async resolve(_, args, context) {
 
-				const validUser = await AuthService.verifyUser({ token: context.token });
-				if (validUser.loggedIn) {
+				// const validUser = await AuthService.verifyUser({ token: context.token });
+				// if (validUser.loggedIn) {
 
-					return null
-					} else {
-					throw new Error("sorry, you need to log in first");
-				}
+				// 	return null
+				// 	} else {
+				// 	throw new Error("sorry, you need to log in first");
+				// }
 			}
     },
     deleteArt: {

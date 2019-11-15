@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { Query } from "react-apollo";
 import "./art_show.scss";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import ArtLike from "./art_like";
 import Queries from "../../graphql/queries";
 import CreateComment from "../comments/CreateComment";
@@ -33,14 +33,18 @@ class VideoShow extends Component {
 					console.dir(data)
 
 					let showArtist;
-					if (author && author.publishedArts
-						// && author.publishedArts.length !==1 
-					) {
-						let artPublishedLimit = author.publishedArts.filter(pubArt => pubArt.id !== id).slice(0, 6);
+					if (author && author.publishedArts && author.publishedArts.length !==1 ) {
+						let artPublishedLimit = author.publishedArts
+							.filter(pubArt => pubArt.id !== id)
+							.filter(pubArt => pubArt.category === "5dcc556324cdd659e23e1e5a")
+							.slice(0, 6);
+
 						let artPubList = artPublishedLimit.map(artPub => {
 							return (
 								<li className="published-li" key={artPub.id}>
-									<img className="published-photo-thumbnail" src={artPub.photoLink} />
+									<Link to={`${artPub.id}`}>
+										<img className="published-photo-thumbnail" src={artPub.photoLink} />
+									</Link>
 								</li>
 							);
 						});
