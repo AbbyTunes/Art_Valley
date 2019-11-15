@@ -38,13 +38,40 @@ class ArticleShow extends Component {
                         </div>
                     );
 
+                    const { body, photoLink, title, likers, comments, header } = data.article;
+
                     let deleteArticleButton;
                     deleteArticleButton = data.article.author.id === localStorage.currentUserId ? 
                     // <div>Hi delete me</div> : <div>Poo poo no delete for you :( </div>
                     <ArticleDelete></ArticleDelete> : <div></div>
 
-
-                    const { body, photoLink, title, likers, comments, header } = data.article;
+                    let titleOption;
+                    titleOption =
+                      data.article.author.id === localStorage.currentUserId ? (
+                        <ArticleTitleDetail
+                          article={data.article}
+                        ></ArticleTitleDetail>
+                      ) : (
+                        <div>{title}</div>
+                      );
+                    let headerOption;
+                    headerOption =
+                      data.article.author.id === localStorage.currentUserId ? (
+                        <ArticleHeaderDetail
+                          article={data.article}
+                        ></ArticleHeaderDetail>
+                      ) : (
+                        <div>{header}</div>
+                      );
+                    let bodyOption;
+                    bodyOption =
+                      data.article.author.id === localStorage.currentUserId ? (
+                        <ArticleBodyDetail
+                          article={data.article}
+                        ></ArticleBodyDetail>
+                      ) : (
+                        <div>{body}</div>
+                      );
 
                     return (
                       <div className="article-show-container">
@@ -61,21 +88,13 @@ class ArticleShow extends Component {
                           <div className="article-info-main">
                             <div className="article-info-1">
                               <div className="article-show-title">
-                                <div>
-                                  <ArticleTitleDetail
-                                    article={data.article}
-                                  ></ArticleTitleDetail>
-                                </div>
+                                  {titleOption}
                               </div>
                               <div className="article-show-header">
-                                <ArticleHeaderDetail
-                                  article={data.article}
-                                ></ArticleHeaderDetail>
+                                {headerOption}
                               </div>
                               <div className="article-show-body">
-                                <ArticleBodyDetail
-                                  article={data.article}
-                                ></ArticleBodyDetail>
+                                {bodyOption}
                               </div>
                             </div>
                             <div className="article-info-2">
@@ -101,7 +120,6 @@ class ArticleShow extends Component {
                     );
                 }}
             </Query>
-
         )
     }
 }
