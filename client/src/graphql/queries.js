@@ -6,18 +6,18 @@ export default {
       isLoggedIn @client
     }
   `,
-  FETCH_ARTS: gql`
-    query arts {
-      arts {
-        id
-        author {
-          name
-        }
-        photoLink
-        title
-      }
-    }
-  `,
+  // FETCH_ARTS: gql`
+  //   query arts {
+  //     arts {
+  //       id
+  //       author {
+  //         name
+  //       }
+  //       photoLink
+  //       title
+  //     }
+  //   }
+  // `,
   FETCH_ART: gql`
     query artById($artId: ID!) {
       artById(_id: $artId) {
@@ -65,10 +65,41 @@ export default {
     query categoryByName($name: STRING!) {
       categoryByName(name: $name) {
         id
-        name
-        arts {
+        author {
           id
-          title
+          name
+          publishedArts {
+            id
+            title
+            photoLink
+            author {
+              id
+            }
+          }
+          likedArts {
+            id
+            title
+            photoLink
+          }
+        }
+        photoLink
+        title
+        description
+        likers {
+          id
+					name
+        }
+        category {
+          id
+          name
+        }
+        comments {
+          body
+          author {
+            name
+            id
+          }
+          id
         }
       }
     }
@@ -80,17 +111,38 @@ export default {
         author {
           id
           name
+          publishedArts {
+            id
+            title
+            photoLink
+            author {
+              id
+            }
+          }
+          likedArts {
+            id
+            title
+            photoLink
+          }
         }
         photoLink
         title
         description
         likers {
           id
-          name
+					name
         }
         category {
           id
           name
+        }
+        comments {
+          body
+          author {
+            name
+            id
+          }
+          id
         }
       }
     }
@@ -155,6 +207,10 @@ export default {
       categories {
         id
         name
+				arts {
+					id
+					title
+				}
       }
     }
   `,
