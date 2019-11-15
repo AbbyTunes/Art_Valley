@@ -272,6 +272,8 @@ export default {
       updateArt(id: $id, description: $description) {
         id
         description
+      }
+    }
 	`,
 	USER_UNLIKE_ART: gql`
     mutation userUnlikeArt($userId: ID!, $artId: ID!){
