@@ -9,7 +9,6 @@ const { FETCH_ARTICLE } = Queries;
 
 class ArticleCommentDetail extends React.Component {
     constructor(props) {
-        // console.log(props)
         super(props);
         this.state = {
             body: "",
@@ -17,7 +16,7 @@ class ArticleCommentDetail extends React.Component {
         };
     }
 
-    updateCache(cache, data) { // update cache instead of setState
+    updateCache(cache, data) {
 
         const article = cache.readQuery({
             query: FETCH_ARTICLE,
@@ -27,21 +26,11 @@ class ArticleCommentDetail extends React.Component {
             }
         });
         let newArticle = merge({}, article);
-        // console.log(article.article.comments);
-        // console.log(newArticle.article.comments);
-
-        // console.log(artwork.artById.comments);
         newArticle.article.comments = newArticle.article.comments.filter((comment) => {
             return comment.id !== data.data.deleteComment.id
         })
 
-        // console.log(newArticle.comments);
         console.log(newArticle);
-        // console.log(artwork.artById.comments);
-        // console.log("WRITE QUERY STUFF BELOW VVVV")
-        // console.log(newArtwork)
-
-        // console.log(artwork.artById)
         cache.writeQuery({
             query: FETCH_ARTICLE, data: newArticle,
             variables: {
@@ -58,14 +47,6 @@ class ArticleCommentDetail extends React.Component {
                 <Mutation
                     mutation={DELETE_COMMENT}
                     update={(cache, data) => this.updateCache(cache, data)}
-                // refetchQueries={() => {
-                //   return [
-                //     {
-                //       // query: FETCH_COMMENT({ id: this.props.comment.id })
-                //     }
-                //   ];
-
-
                 >
                     {(deleteComment) => (
                         <a
@@ -105,9 +86,6 @@ class ArticleCommentDetail extends React.Component {
 
                     <div className="comment-body">{this.props.comment.body}</div>
                     {this.deleteComment()}
-
-
-
                 </div>
             </div>
         );

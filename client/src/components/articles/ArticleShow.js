@@ -10,6 +10,7 @@ import ArticleComments from "../comments/ArticleComments";
 import ArticleTitleDetail from "./ArticleTitleDetail.js";
 import ArticleBodyDetail from "./ArticleBodyDetail";
 import ArticleHeaderDetail from "./ArticleHeaderDetail";
+import ArticleDelete from "./ArticleDelete";
 const { FETCH_ARTICLE } = Queries;
 const { ADD_ARTICLE_LIKE, DELETE_ARTICLE } = Mutations;
 
@@ -17,21 +18,10 @@ class ArticleShow extends Component {
 
     constructor(props) {
         super(props);
-
-        this.delete = this.delete.bind(this);
     }
 
-    delete(deleteArticle) {
-    //   if (localStorage.currentUserId === this.props.article.author.id) {
-    //     return (
-      deleteArticle({ variables: { _id: this.props.match.params.articleId } })
-        .then(this.props.history.push("/community"))
-    //     )
-    //   }
-    }
-
+   
     render() {
-        
         return (
             <Query
                 query={FETCH_ARTICLE}
@@ -47,6 +37,12 @@ class ArticleShow extends Component {
                             <p>Error</p>
                         </div>
                     );
+
+                    let deleteArticleButton;
+                    deleteArticleButton = data.article.author.id === localStorage.currentUserId ? 
+                    // <div>Hi delete me</div> : <div>Poo poo no delete for you :( </div>
+                    <ArticleDelete></ArticleDelete> : <div></div>
+
 
                     const { body, photoLink, title, likers, comments, header } = data.article;
 
@@ -99,23 +95,8 @@ class ArticleShow extends Component {
                             commentData={data.article.comments}
                           />
                         </div>
-                        <Mutation
-                          mutation={DELETE_ARTICLE}
-                          // update={(cache, data) => this.updateCache(cache, data)}
-                        >
-                          {deleteArticle => (
-                            <a
-                              className="comment-body-delete"
-                              onClick={e => {
-                                this.delete(deleteArticle);
-                                // e.preventDefault();
-                                // deleteArticle({ variables: { _id: this.props.match.params.articleId } });
-                              }}
-                            >
-                              Delete
-                            </a>
-                          )}
-                        </Mutation>
+                        {deleteArticleButton}
+                        
                       </div>
                     );
                 }}
