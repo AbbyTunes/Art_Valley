@@ -141,8 +141,16 @@
 }
 
 .home-article-example-thumb {
+  border-radius: 5px;
   width: 100%;
   height: 100%;
+}
+
+.home-article-example-thumb:hover {
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  box-shadow: 5px 5px 10px 0 rgba(0,0,0,.3);
 }
 
 .home-article-index-container{
