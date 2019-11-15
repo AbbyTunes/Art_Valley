@@ -88,7 +88,6 @@ class CreateArt extends Component {
     
     data.append("file", this.state.photoLink);
     data.append("title",this.state.title);
-    // data.append("category", this.state.category);
     data.append("author",this.state.author);
     data.append("description",this.state.description);
     // debugger

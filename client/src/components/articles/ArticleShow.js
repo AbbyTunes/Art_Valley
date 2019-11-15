@@ -18,6 +18,7 @@ class ArticleShow extends Component {
 
     constructor(props) {
         super(props);
+        
     }
 
    
@@ -38,12 +39,14 @@ class ArticleShow extends Component {
                         </div>
                     );
 
+
+
                     const { body, photoLink, title, likers, comments, header } = data.article;
 
                     let deleteArticleButton;
                     deleteArticleButton = data.article.author.id === localStorage.currentUserId ? 
                     // <div>Hi delete me</div> : <div>Poo poo no delete for you :( </div>
-                    <ArticleDelete></ArticleDelete> : <div></div>
+                    <ArticleDelete article={data.article}></ArticleDelete> : <div></div>
 
                     let titleOption;
                     titleOption =
