@@ -140,7 +140,7 @@ class Settings extends React.Component {
       );
     };
 
-    if (this.state.clicked) {
+    if (this.state.clicked ) {
         return <div className="settings-container">{queryUser}</div>;
     } else {
         return (

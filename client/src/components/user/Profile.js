@@ -90,6 +90,27 @@ class Profile extends React.Component {
           //   );
           // }
 
+          let settings;
+          if (localStorage.currentUserId === data.user.id) {
+            settings = (
+              <div>
+                <button className="settings-button" onClick={this.handleClick}>
+                  Edit
+                </button>
+                {this.state.clicked ? <Settings user={data} clicked={true}/> : null}
+                {this.state.clicked ?  null : <Settings user={data} clicked={false}/>}
+              </div>
+            )
+          } else {
+            settings = (
+              <div>
+                <Settings user={data} clicked={false} />
+              </div>
+            )
+          }
+
+          
+
           let recentlyLiked;
           if (data.user.likedArts.length !== 0) {
             let artListLimit = data.user.likedArts.slice(0, 6);
@@ -131,11 +152,13 @@ class Profile extends React.Component {
                 <h1 className="user-header">{data.user.name}</h1>
                 {/* {settings} */}
               </div>
-              <button className="settings-button" onClick={this.handleClick}>
+              
+              {/* <button className="settings-button" onClick={this.handleClick}>
                 Edit
               </button>
               {this.state.clicked ? <Settings user={data} clicked={true}/> : null}
-              {this.state.clicked ?  null : <Settings user={data} clicked={false}/>}
+              {this.state.clicked ?  null : <Settings user={data} clicked={false}/>} */}
+              {settings}
             
               {/* <div className="profile-playlist">
                 <h1 className="profile-header">Playlist</h1> */}
