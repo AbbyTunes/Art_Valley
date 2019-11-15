@@ -6,6 +6,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import { ApolloCache } from "apollo-cache";
 import CommentDetail from "./CommentDetail";
 import "./comment.css"
+import { merge } from "lodash";
 import { InMemoryCache } from "apollo-cache-inmemory";
 const { FETCH_ART } = Queries;
 const { ADD_COMMENT, VERIFY_USER } = Mutations;
@@ -43,8 +44,16 @@ class CreateComment extends React.Component {
         });
         // console.log(artwork.artById);
         artwork.artById.comments.push(data.data.newComment);
-        cache.writeQuery({ query: FETCH_ART, data: [artwork.artById] })
+        // cache.writeQuery({ query: FETCH_ART, data: [artwork.artById] })
+        let newArtwork = merge({}, artwork.artById);
 
+        cache.writeQuery({
+            query: FETCH_ART,
+            data: { artById: newArtwork },
+            variables: {
+            artId: this.props.artId
+            }
+        });
     }
 
     handleSubmit(e, newComment) {

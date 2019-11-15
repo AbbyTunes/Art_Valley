@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 90px;
+    margin-bottom: 20px;
 }
 
 .settings-header{
@@ -15,4 +15,67 @@
     text-align: center;
     padding-top: 40px;
     padding-bottom: 40px;
+}
+
+
+.settings-form {
+  /* temp add - tell chris */
+  width: 600px;
+  padding: 40px;
+  position: relative;
+/* temp add - tell chris */
+display: block;
+  box-sizing: border-box;
+  margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 20px 0px;
+    border-radius: 32px;
+}
+.settings-form-display {
+  /* temp add - tell chris */
+  width: 600px;
+  padding: 40px;
+  position: relative;
+/* temp add - tell chris */
+display: block;
+  box-sizing: border-box;
+
+
+    border-radius: 32px;
+}
+
+.settings-spacer {
+    height: 15px;
+}
+
+.settings-button {
+  width: 120px;
+  height: 40px;
+  background: black;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+.settings-button:hover {
+  background: #3f9598;
+  transition: 0.5s;
+  cursor: pointer; 
+}
+
+.settings-input-info {
+  border: none;
+  padding-top: 20px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 50px;
+}
+
+.settings-input-info-text {
+  padding: 7px;
+  padding-top: 20px;
+  font-size: 16px;
+  background: inherit;
+  font-family: system-ui
 }
