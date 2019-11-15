@@ -5,6 +5,7 @@ import "./article_show.css";
 import { Link } from "react-router-dom";
 import Queries from "../../graphql/queries";
 import Mutations from "../../graphql/mutations";
+import ArticleComments from "../comments/ArticleComments";
 const { FETCH_ARTICLE } = Queries;
 const { ADD_ARTICLE_LIKE } = Mutations;
 
@@ -98,6 +99,12 @@ class ArticleShow extends Component {
                           <Link to="/community" className="back-to-community">
                             Back to Community
                           </Link>
+                        </div>
+                        <div>
+                          <ArticleComments
+                            articleId={this.props.match.params.articleId} 
+                            commentData={data.article.comments} 
+                          />
                         </div>
                       </div>
                     );

@@ -4,7 +4,9 @@ import React, { Component } from "react";
 import { Query } from "react-apollo";
 import "./art_show.scss";
 import { withRouter } from "react-router-dom";
+import ArtLike from "./art_like";
 import Queries from "../../graphql/queries";
+
 const { FETCH_ART } = Queries;
 
 class VideoShow extends Component {
@@ -56,7 +58,7 @@ class VideoShow extends Component {
 							<div className="show-art">
 								<div className="show-pic">
 
-									<iframe width="800" height="650"
+									<iframe width="400" height="300"
 										src={photoLink}>
 									</iframe>
 									
@@ -71,7 +73,7 @@ class VideoShow extends Component {
 										</div>
 
 										<div className="info-2">
-											<div className="show-likes">Likes {likers.length}</div>
+											<ArtLike likers={likers} />
 										</div>
 									</div>
 
@@ -80,7 +82,6 @@ class VideoShow extends Component {
 									</div>
 								</div>
 
-								{/* <div className="show-artist">Add something</div> */}
 								{showArtist}
 
 								<div className="show-category"></div>

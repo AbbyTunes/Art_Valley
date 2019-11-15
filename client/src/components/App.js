@@ -33,9 +33,10 @@ const App = () => {
 				<Route exact path="/community" component={ArticleIndex} />
 				<Route exact path="/videos" component={VideoIndex} />
 				<Route exact path="/videos/:artId" component={VideoShow} />
+
+
 			</Switch>
 			<Route exact path="/create" component={CreateArt}/>
-			
 			<Route exact path="/users/:userId" component={Profile} />
 			<Route exact path="/settings/:userId" component={Settings} />
 		</div>

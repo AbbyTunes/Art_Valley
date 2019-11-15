@@ -40,8 +40,8 @@ export default {
     }
   `,
   ADD_COMMENT: gql`
-    mutation NewComment($body: String!, $author: ID!, $art: ID!) {
-      newComment(body: $body, author: $author, art: $art) {
+    mutation NewComment($body: String!, $author: ID!, $art: ID, $article: ID) {
+      newComment(body: $body, author: $author, art: $art, article: $article){
         id
         body
         art {
@@ -131,5 +131,37 @@ export default {
         }
       }
     }
-  `
+	`,
+	USER_LIKE_ART: gql`
+    mutation addUserLikedArt($userId: ID!, $artId: ID!){
+      addUserLikedArt(userId: $userId, artId: $artId) {
+        id
+        name
+        likedArts {
+          id 
+          title
+          likers {
+						id
+						name
+          }
+        }
+      }
+    }
+	`,
+	USER_UNLIKE_ART: gql`
+    mutation userUnlikeArt($userId: ID!, $artId: ID!){
+      userUnlikeArt(userId: $userId, artId: $artId) {
+        id
+        name
+        likedArts {
+          id
+          title
+          likers {
+						id
+						name
+          }
+        }
+      }
+    }
+	`
 };

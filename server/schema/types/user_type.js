@@ -22,7 +22,7 @@ const UserType = new GraphQLObjectType({
     location: { type: GraphQLString },
     bio: { type: GraphQLString },
     likedArts: {
-      type: new GraphQLList(ArtType),
+			type: new GraphQLList(require("./art_type")),
       resolve(parentValue) {
         return User.findById(parentValue.id)
           .populate("likedArts")
@@ -32,14 +32,13 @@ const UserType = new GraphQLObjectType({
     likedArticles: {
       type: new GraphQLList(require("./art_type")),
       resolve(parentValue) {
-        debugger;
         return User.findById(parentValue.id)
           .populate("likedArticles")
           .then(user => user.likedArticles);
       }
     },
     publishedArts: {
-      type: new GraphQLList(ArtType),
+			type: new GraphQLList(require("./art_type")),
       resolve(parentValue) {
         return User.findById(parentValue.id)
           .populate("publishedArts")
