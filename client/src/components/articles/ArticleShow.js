@@ -7,28 +7,21 @@ import Queries from "../../graphql/queries";
 import Mutations from "../../graphql/mutations";
 import ArticleLike from "./ArticleLike";
 import ArticleComments from "../comments/ArticleComments";
+import ArticleTitleDetail from "./ArticleTitleDetail.js";
+import ArticleBodyDetail from "./ArticleBodyDetail";
+import ArticleHeaderDetail from "./ArticleHeaderDetail";
+import ArticleDelete from "./ArticleDelete";
 const { FETCH_ARTICLE } = Queries;
-const { ADD_ARTICLE_LIKE, DELETE_ARTICLE } = Mutations;
+const { ADD_ARTICLE_LIKE, DELETE_ARTICLE } = Mutations; 
 
 class ArticleShow extends Component {
 
     constructor(props) {
         super(props);
-
-        this.delete = this.delete.bind(this);
     }
 
-    delete(deleteArticle) {
-    //   if (localStorage.currentUserId === this.props.article.author.id) {
-    //     return (
-      deleteArticle({ variables: { _id: this.props.match.params.articleId } })
-        .then(this.props.history.push("/community"))
-    //     )
-    //   }
-    }
-
+   
     render() {
-        
         return (
             <Query
                 query={FETCH_ARTICLE}
@@ -47,6 +40,39 @@ class ArticleShow extends Component {
 
                     const { body, photoLink, title, likers, comments, header } = data.article;
 
+                    let deleteArticleButton;
+                    deleteArticleButton = data.article.author.id === localStorage.currentUserId ? 
+                    // <div>Hi delete me</div> : <div>Poo poo no delete for you :( </div>
+                    <ArticleDelete></ArticleDelete> : <div></div>
+
+                    let titleOption;
+                    titleOption =
+                      data.article.author.id === localStorage.currentUserId ? (
+                        <ArticleTitleDetail
+                          article={data.article}
+                        ></ArticleTitleDetail>
+                      ) : (
+                        <div>{title}</div>
+                      );
+                    let headerOption;
+                    headerOption =
+                      data.article.author.id === localStorage.currentUserId ? (
+                        <ArticleHeaderDetail
+                          article={data.article}
+                        ></ArticleHeaderDetail>
+                      ) : (
+                        <div>{header}</div>
+                      );
+                    let bodyOption;
+                    bodyOption =
+                      data.article.author.id === localStorage.currentUserId ? (
+                        <ArticleBodyDetail
+                          article={data.article}
+                        ></ArticleBodyDetail>
+                      ) : (
+                        <div>{body}</div>
+                      );
+
                     return (
                       <div className="article-show-container">
                         <div className="article-show-photo-container">
@@ -61,11 +87,15 @@ class ArticleShow extends Component {
                         <div className="article-show-info">
                           <div className="article-info-main">
                             <div className="article-info-1">
-                              <div className="article-show-title">{title}</div>
-                              <div className="article-show-header">
-                                {header}
+                              <div className="article-show-title">
+                                  {titleOption}
                               </div>
-                              <div className="article-show-body">{body}</div>
+                              <div className="article-show-header">
+                                {headerOption}
+                              </div>
+                              <div className="article-show-body">
+                                {bodyOption}
+                              </div>
                             </div>
                             <div className="article-info-2">
                               <ArticleLike likers={likers} />
@@ -80,32 +110,16 @@ class ArticleShow extends Component {
                         </div>
                         <div>
                           <ArticleComments
-                            articleId={this.props.match.params.articleId} 
-                            commentData={data.article.comments} 
+                            articleId={this.props.match.params.articleId}
+                            commentData={data.article.comments}
                           />
                         </div>
-                        <Mutation
-                          mutation={DELETE_ARTICLE}
-                          // update={(cache, data) => this.updateCache(cache, data)}
-                        >
-                          {(deleteArticle) => (
-                            <a
-                              className="comment-body-delete"
-                              onClick={e => {
-                                this.delete(deleteArticle)
-                                // e.preventDefault();
-                                // deleteArticle({ variables: { _id: this.props.match.params.articleId } });
-                              }}
-                            >
-                              Delete
-                          </a>
-                          )}
-                        </Mutation >
+                        {deleteArticleButton}
+                        
                       </div>
                     );
                 }}
             </Query>
-
         )
     }
 }

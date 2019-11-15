@@ -21,14 +21,25 @@ export default {
     }
   `,
   EDIT_USER_SETTINGS: gql`
-    mutation EditSettings($id: ID!, $email: String!, $name: String!, $location: String!, $bio: String!) {
-      editSettings(id: $id, email: $email, name: $name, location: $location, bio: $bio) {
+    mutation EditSettings(
+      $id: ID!
+      $email: String!
+      $name: String!
+      $location: String!
+      $bio: String!
+    ) {
+      editSettings(
+        id: $id
+        email: $email
+        name: $name
+        location: $location
+        bio: $bio
+      ) {
         id
         email
         name
         location
         bio
-
       }
     }
   `,
@@ -41,7 +52,7 @@ export default {
   `,
   ADD_COMMENT: gql`
     mutation NewComment($body: String!, $author: ID!, $art: ID, $article: ID) {
-      newComment(body: $body, author: $author, art: $art, article: $article){
+      newComment(body: $body, author: $author, art: $art, article: $article) {
         id
         body
         art {
@@ -68,6 +79,14 @@ export default {
         id
         title
         body
+      }
+    }
+  `,
+  DELETE_ART: gql`
+    mutation DeleteArt($_id: ID!) {
+      deleteArt(_id: $_id) {
+        id
+        title
       }
     }
   `,
@@ -169,12 +188,12 @@ export default {
     }
   `,
   ADD_ARTICLE_UNLIKE: gql`
-    mutation userUnlikeArticle($userId: ID!, $articleId: ID!){
+    mutation userUnlikeArticle($userId: ID!, $articleId: ID!) {
       userUnlikeArticle(userId: $userId, articleId: $articleId) {
         id
         name
         likedArticles {
-          id 
+          id
           title
           likers {
             id
@@ -183,25 +202,25 @@ export default {
         }
       }
     }
-	`,
-	USER_LIKE_ART: gql`
-    mutation addUserLikedArt($userId: ID!, $artId: ID!){
+  `,
+  USER_LIKE_ART: gql`
+    mutation addUserLikedArt($userId: ID!, $artId: ID!) {
       addUserLikedArt(userId: $userId, artId: $artId) {
         id
         name
         likedArts {
-          id 
+          id
           title
           likers {
-						id
-						name
+            id
+            name
           }
         }
       }
     }
-	`,
-	USER_UNLIKE_ART: gql`
-    mutation userUnlikeArt($userId: ID!, $artId: ID!){
+  `,
+  USER_UNLIKE_ART: gql`
+    mutation userUnlikeArt($userId: ID!, $artId: ID!) {
       userUnlikeArt(userId: $userId, artId: $artId) {
         id
         name
@@ -209,10 +228,50 @@ export default {
           id
           title
           likers {
-						id
-						name
+            id
+            name
           }
         }
+      }
+    }
+  `,
+  UPDATE_ARTICLE_TITLE: gql`
+    mutation updateArticleTitle($id: ID!, $title: String!) {
+      updateArticle(id: $id, title: $title) {
+        id
+        title
+      }
+    }
+  `,
+  UPDATE_ARTICLE_BODY: gql`
+    mutation updateArticleBody($id: ID!, $body: String!) {
+      updateArticle(id: $id, body: $body) {
+        id
+        body
+      }
+    }
+  `,
+  UPDATE_ARTICLE_HEADER: gql`
+    mutation updateArticleHeader($id: ID!, $header: String!) {
+      updateArticle(id: $id, header: $header) {
+        id
+        header
+      }
+    }
+  `,
+  UPDATE_ART_TITLE: gql`
+    mutation updateArtTitle($id: ID!, $title: String!) {
+      updateArt(id: $id, title: $title) {
+        id
+        title
+      }
+    }
+  `,
+  UPDATE_ART_DESCRIPTION: gql`
+    mutation updateArtBody($id: ID!, $description: String!) {
+      updateArt(id: $id, description: $description) {
+        id
+        description
       }
     }
 	`,
