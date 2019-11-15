@@ -51,4 +51,19 @@ ArtSchema.pre("findByIdAndDelete", function() {
 	// need to pull the art from User's likedArt and publishedArt array
 });
 
+ArtSchema.statics.addCategory = (categoryId, artId) => {
+  const Category = mongoose.model("categories");
+  const Art = mongoose.model("arts");
+
+  return Category.findById(categoryId).then(category => {
+    return Art.findById(artId).then(art => {
+      category.arts.push(art);
+
+      return Promise.all([category.save(), art.save()]).then(
+        ([category, art]) => art
+      );
+    });
+  });
+};
+
 module.exports = mongoose.model("arts", ArtSchema);

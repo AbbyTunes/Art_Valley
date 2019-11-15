@@ -141,4 +141,5 @@ UserSchema.statics.addPublishedArt = (userId, artId) => {
 
 
 
+
 module.exports = mongoose.model("users", UserSchema);

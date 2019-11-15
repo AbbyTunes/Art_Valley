@@ -24,7 +24,9 @@ const VideoIndex = (props) => {
 					</div>
 				);
 
-				let allArtList = data.artsByCategory.map((art) => {
+				let sortedVideobyLike = data.artsByCategory.sort((a, b) => (a.likers.length > b.likers.length) ? -1 : 1)
+
+				let allArtList = sortedVideobyLike.map((art) => {
 					return (
 						<li key={art.id} className="video-index-li">
 							
