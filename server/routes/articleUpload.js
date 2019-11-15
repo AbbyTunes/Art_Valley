@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const Article = require("../models/Article");
+const User = require("../models/User");
 const multer = require("multer");
 var AWS = require("aws-sdk");
 
@@ -59,8 +60,8 @@ router.post("/upload", upload.single("file"), function(req, res) {
       article
         .save()
         .then(data => {
-          console.log(res);
-          console.log(data);
+          console.log(data)
+          User.addPublishedArticle(data.author, data._id);
           res.send({ data });
         })
         .catch(err => console.log(err));

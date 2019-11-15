@@ -146,20 +146,29 @@ class Profile extends React.Component {
             );
           });
 
+          let articlePublishedLimit = data.user.publishedArticles.slice(0, 6);
+          let articlePubList = articlePublishedLimit.map(article => {
+            return (
+              <li key={article.id}>
+                <img className="profile-photo-thumbnail" src={article.photoLink} />
+              </li>
+            );
+          });
+
           return (
             <div className="profile-container">
               <div className="user-info">
                 <h1 className="user-header">{data.user.name}</h1>
                 {/* {settings} */}
               </div>
-              
+
               {/* <button className="settings-button" onClick={this.handleClick}>
                 Edit
               </button>
               {this.state.clicked ? <Settings user={data} clicked={true}/> : null}
               {this.state.clicked ?  null : <Settings user={data} clicked={false}/>} */}
               {settings}
-            
+
               {/* <div className="profile-playlist">
                 <h1 className="profile-header">Playlist</h1> */}
               {/* <ul className="liked-list">
@@ -170,8 +179,12 @@ class Profile extends React.Component {
               </div> */}
               {/* </div> */}
               <div className="profile-published">
-                <h1 className="profile-header">Recently Published</h1>
+                <h1 className="profile-header">Recently Published Art</h1>
                 <ul className="published-list">{artPubList}</ul>
+              </div>
+              <div className="profile-published">
+                <h1 className="profile-header">Recently Published Articles</h1>
+                <ul className="published-list">{articlePubList}</ul>
               </div>
               <h1>TEST BELOW</h1>
               <CreateComment className="comment"></CreateComment>

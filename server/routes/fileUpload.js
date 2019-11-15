@@ -13,7 +13,7 @@ var upload = multer({ storage: storage });
 
 
 router.post("/upload", upload.single("file"), function(req, res) {
-  console.log(req);
+  // console.log(req);
   const file = req.file;
   const s3FileURL = process.env.AWS_UPLOADED_FILE_URL_LINK;
 

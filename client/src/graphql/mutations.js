@@ -75,8 +75,8 @@ export default {
     }
   `,
   DELETE_ARTICLE: gql`
-    mutation DeleteArticle($_id: ID!) {
-      deleteArticle(_id: $_id) {
+    mutation DeleteArticle($_id: ID!, $author: ID!) {
+      deleteArticle(_id: $_id, author: $author) {
         id
         title
         body
