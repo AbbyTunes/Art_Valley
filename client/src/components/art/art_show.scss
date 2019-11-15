@@ -11,8 +11,13 @@
 		margin: auto;
 
 		.show-pic {
-			max-height: 300px;
+			display: block;
 			overflow: hidden;
+			min-width: 400px;
+			max-width: 700px;
+			min-height: 300px;
+			max-height: 450px;
+			margin: auto;
 
 			.show-image {
 				width: 100%;
@@ -56,7 +61,17 @@
 					width: 100%;
 
 					.show-likes {
-						margin: 20px 0;
+						position: relative;
+						top: 0;
+						left: 0;
+						width: 70px;
+						height: 20px;
+						text-align: center;
+						padding-top: 8px;
+						color: white;
+						font-size: 13px;
+						border-radius: 8px;
+						background: rgb(93, 93, 201);
 					}
 				}
 			}
@@ -72,11 +87,40 @@
 	}
 
 	.show-artist {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;	
+		padding-bottom: 20px;
 
-	}
+		.published-header {
+			display: block;
+			margin-top: 40px;
+			font-weight: 800;
+			width: 60%;
+			font-size: 24px;
+			border-top: 2px solid #3f9598;
+			padding: 40px 0;
+		}
 
-	.show-category {
+		.published-ul {
+			display: grid;
+			grid-template-columns: 100%;
+			grid-row-gap: 20px;
+			width: 200px;
+			padding-bottom: 20px;
 
+			.published-li {
+				background: rgb(230, 230, 230);
+				height: 200px;
+
+				.published-photo-thumbnail{
+					object-fit: cover;
+					max-height: 100%;
+					width: 100%;
+				}
+			}
+		}
 	}
 }
 
@@ -99,6 +143,9 @@
 				display: block;
 				height: auto;
 				overflow: hidden;
+				width: 700px;
+				height: 450px;
+				margin: auto;
 
 				.show-image {
 					width: 100%;
@@ -120,20 +167,21 @@
 						width: 70%;
 
 						.show-title {
-							font-weight: 900;
-							font-size: 1.2rem;
-							margin: 20px 0;
+							line-height: 30px;
+							font-weight: 700;
+							font-size: 30px;
 						}
 
 						.show-description {
-							display: block;
-							font-size: .8rem;
+
+							font-size: 20px;
 							font-weight: 400;
-							line-height: 1.5;
-							
-							-webkit-box-flex: 1;
-							margin-block-start: 1em;
-							margin-block-end: 1em;
+							margin-bottom: .5rem;
+							line-height: 1.1;
+
+							display: block;
+							margin-block-start: 1.33em;
+							margin-block-end: 1.33em;
 							margin-inline-start: 0px;
 							margin-inline-end: 0px;
 						}
@@ -143,14 +191,16 @@
 						width: 30%;
 
 						.show-likes {
+							margin: 15px 0;
 							position: relative;
 							top: 0;
 							left: 30px;
 							width: 90px;
-							height: 25px;
+							height: 23px;
 							text-align: center;
-							padding-top: 8px;
+							padding-top: 10px;
 							color: white;
+							font-size: 14px;
 							border-radius: 8px;
 							background: rgb(93, 93, 201);
 						}
@@ -166,7 +216,6 @@
 			}
 		}
 
-
 		.show-artist {
 			display: flex;
 			flex-direction: column;
@@ -176,7 +225,13 @@
 
 			.published-header {
 				font-weight: 800;
-				border-top: none;
+				margin-top: 80px;
+				width: 60%;
+				min-width: 400px;
+				padding: 0px 10px;
+				font-size: 24px;
+				border-top: 2px solid #3f9598;
+				padding: 40px 0;
 			}
 
 			.published-ul {
