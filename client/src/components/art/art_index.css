@@ -20,7 +20,8 @@
     grid-template-columns: 100%;
     grid-row-gap: 20px;
     width: 300px;
-    padding-bottom: 20px;
+		padding-bottom: 20px;
+		margin: auto;
 }
 
 .art-index-li{
