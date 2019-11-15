@@ -63,7 +63,7 @@ class Nav extends React.Component {
                   onClick={() => this.extend("search-input", "search-input-2")}
                 ></i>
                 <Link className="user-link" to={`/users/${localStorage.getItem("currentUserId")}`}><i className="fas fa-user"></i></Link>
-                <i className="fas fa-indent"></i>
+                {/* <i className="fas fa-indent"></i> */}
                 
               </div>
               <div className="nav-logo">

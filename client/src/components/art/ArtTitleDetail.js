@@ -1,6 +1,5 @@
 import React from "react";
 import { Mutation } from "react-apollo";
-// we added the "react-icons" library to have access to a pencil icon for editting
 import { IconContext } from "react-icons";
 import { FaPencilAlt } from "react-icons/fa";
 import Mutations from "../../graphql/mutations";
@@ -20,7 +19,6 @@ class ArtTitleDetail extends React.Component {
     this.handleEdit = this.handleEdit.bind(this);
   }
 
-  // this is the function that will trigger "editing" mode
   handleEdit(e) {
     e.preventDefault();
     this.setState({ editing: true });
@@ -31,7 +29,6 @@ class ArtTitleDetail extends React.Component {
   }
 
   updateCache(cache, data) {
-    // update cache instead of setState
     const art = cache.readQuery({
       query: FETCH_ART,
       variables: {
@@ -50,7 +47,6 @@ class ArtTitleDetail extends React.Component {
   }
 
   render() {
-    // if we are editing we'll return a Mutation component
     if (this.state.editing) {
       return (
         <Mutation

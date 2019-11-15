@@ -159,22 +159,11 @@ class Profile extends React.Component {
               {this.state.clicked ? <Settings user={data} clicked={true}/> : null}
               {this.state.clicked ?  null : <Settings user={data} clicked={false}/>} */}
               {settings}
-            
-              {/* <div className="profile-playlist">
-                <h1 className="profile-header">Playlist</h1> */}
-              {/* <ul className="liked-list">
-                  {artList}
-                </ul>
-              <div className="see-more-button">
-                  <Link to="#">See More</Link>
-              </div> */}
-              {/* </div> */}
+              {recentlyLiked}
               <div className="profile-published">
                 <h1 className="profile-header">Recently Published</h1>
                 <ul className="published-list">{artPubList}</ul>
               </div>
-              <h1>TEST BELOW</h1>
-              <CreateComment className="comment"></CreateComment>
             </div>
           );
         }}
