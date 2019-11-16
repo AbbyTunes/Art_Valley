@@ -29,21 +29,22 @@ class VideoShow extends Component {
 						</div>
 					);
 
-					const { id, description, photoLink, title, likers, author } = data.artById;
+					const { id, description, videoLink, title, likers, author } = data.artById;
 					console.dir(data)
 
 					let showArtist;
-					if (author && author.publishedArts && author.publishedArts.length !==1 ) {
+					if (author.publishedArts.length !== 1 ) {
+						// console.log(author.publishedArts)
 						let artPublishedLimit = author.publishedArts
 							.filter(pubArt => pubArt.id !== id)
-							.filter(pubArt => pubArt.category === "5dcc556324cdd659e23e1e5a")
-							.slice(0, 6);
-
+							.filter(pubArt => pubArt.videoLink.length !== 0)
+							.slice(0, 3);
+						console.log(artPublishedLimit)
 						let artPubList = artPublishedLimit.map(artPub => {
 							return (
 								<li className="published-li" key={artPub.id}>
 									<Link to={`${artPub.id}`}>
-										<img className="published-photo-thumbnail" src={artPub.photoLink} />
+										<img className="published-photo-thumbnail" src={artPub.videoLink} />
 									</Link>
 								</li>
 							);
@@ -64,7 +65,7 @@ class VideoShow extends Component {
 								<div className="show-pic">
 
 									<iframe width="700" height="450"
-										src={photoLink}>
+										src={videoLink}>
 									</iframe>
 									
 								</div>

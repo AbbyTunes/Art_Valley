@@ -42,16 +42,35 @@ const mutation = new GraphQLObjectType({
         description: { type: GraphQLString },
         videoLink: { type: GraphQLString }
       },
-			resolve(_, args) {
-				return new Art(args).save()
-					.then(art => {
-						Art.addCategory(art.category, art.id)
-					})
-					.then(art => {
-						User.addPublishedArt(art.author, art.id)
-					})
-					.then(art => art)
-			}
+			async resolve(_, args) {
+        return new Art(args).save().then(art => {
+          return User.findById(art.author)
+            .then(user => {
+              user.publishedArts.push(art);
+              user.save();
+							return art;
+            })
+            .catch(err => null);
+        }).then(art => {
+          return Category.findById(art.category)
+            .then(category => {
+              category.arts.push(art);
+              category.save();
+              return art;
+            })
+            .catch(err => null);
+        });
+      }
+			// async resolve(_, args) {
+			// 	return new Art(args).save()
+			// 		.then(art => {
+			// 			return Art.addCategory(art.category, art.id)
+			// 		})
+			// 		.then(art => {
+			// 			return User.addPublishedArt(art.author, art.id)
+			// 		})
+			// 		.then(art => art)
+			// }
 		},
     newArt: {
       type: ArtType,
@@ -108,7 +127,7 @@ const mutation = new GraphQLObjectType({
 				return User.deleteArticle(args.author, args._id)
           .then(user => user)
           .catch(err => null)
-				.then(() => { 
+				  .then(() => { 
 					return Article.findByIdAndDelete(args._id)
           .then(article => article)
 					.catch(err => null)

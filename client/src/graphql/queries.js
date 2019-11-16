@@ -6,11 +6,6 @@ export default {
       isLoggedIn @client
     }
   `,
-	// IS_CURRENT_USER: gql`
-	// 	query isCurrentUser {
-	// 		isCurrentUser @client
-	// 	}
-	// `,
   FETCH_ART: gql`
     query artById($artId: ID!) {
       artById(_id: $artId) {
@@ -22,17 +17,25 @@ export default {
             id
             title
             photoLink
+						videoLink
             author {
               id
+							name
+							publishedArts {
+								id
+								title
+							}
             }
           }
           likedArts {
             id
             title
             photoLink
+						videoLink
           }
         }
         photoLink
+				videoLink
         title
         description
         likers {
@@ -42,6 +45,10 @@ export default {
         category {
           id
           name
+					arts {
+						id
+						title
+					}
         }
         comments {
           body
@@ -108,6 +115,7 @@ export default {
             id
             title
             photoLink
+						videoLink
             author {
               id
             }
@@ -116,9 +124,11 @@ export default {
             id
             title
             photoLink
+						videoLink
           }
         }
         photoLink
+				videoLink
         title
         description
         likers {

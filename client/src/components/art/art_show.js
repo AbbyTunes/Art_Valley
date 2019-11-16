@@ -47,11 +47,12 @@ class ArtShow extends Component {
 
 					
 					let showArtist;
-					if (author && author.publishedArts && author.publishedArts.length !==1 ) {
+						
+						if (author.publishedArts.length !== 1 ) {
 						let artPublishedLimit = author.publishedArts
 							.filter(pubArt => pubArt.id !== id)
-							.filter(pubArt => pubArt.category === "5dc603aa4dc3a23d54cbb4fb" )
-							.slice(0, 6);
+							.filter(pubArt => pubArt.photoLink.length !== 0)
+							.slice(0, 3);
 
 						let artPubList = artPublishedLimit.map(artPub => {
 							return (
