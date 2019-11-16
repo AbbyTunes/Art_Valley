@@ -4,13 +4,13 @@ import "./art_index.css"
 import { Link, withRouter } from "react-router-dom";
 import Queries from "../../graphql/queries";
 
-const { FETCH_ARTS_BY_CATEGORY, FETCH_USER, IS_CURRENT_USER } = Queries;
+const { FETCH_ARTS_BY_CATEGORY, FETCH_USER, IS_LOGGED_IN } = Queries;
 
 
 const ArtIndex = (props) => {
 
 		let createArt = (
-					<Query query={IS_CURRENT_USER} >
+					<Query query={IS_LOGGED_IN} >
 						{({ loading, error, data }) => {
 				
 							if (loading) return (
@@ -19,12 +19,9 @@ const ArtIndex = (props) => {
 								</div>
 							);
 							if (error) return (
-								<div >
-									<p>Error</p>
-								</div>
+								console.log(error)
 							);
-
-							if ( data.isCurrentUser ) {
+							if ( data.isLoggedIn ) {
 								return (
 									<Link to="/create" className="article-create-link">
 										Add Art

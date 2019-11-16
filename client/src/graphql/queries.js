@@ -6,11 +6,11 @@ export default {
       isLoggedIn @client
     }
   `,
-	IS_CURRENT_USER: gql`
-		query isCurrentUser {
-			isCurrentUser @client
-		}
-	`,
+	// IS_CURRENT_USER: gql`
+	// 	query isCurrentUser {
+	// 		isCurrentUser @client
+	// 	}
+	// `,
   FETCH_ART: gql`
     query artById($artId: ID!) {
       artById(_id: $artId) {
