@@ -266,7 +266,7 @@ const mutation = new GraphQLObjectType({
         if (bio) updateObj.bio = bio;
         console.log(updateObj);
         return User.findOneAndUpdate(
-          { id: id },
+          { _id: id },
           { $set: updateObj },
           { new: true },
           (err, user) => {
