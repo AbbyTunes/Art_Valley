@@ -2,6 +2,7 @@ import React from "react";
 import { Mutation } from "react-apollo";
 import { IconContext } from "react-icons";
 import { FaPencilAlt } from "react-icons/fa";
+import { withRouter } from "react-router-dom";
 import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
 import { merge } from "lodash";
@@ -29,19 +30,28 @@ class ArtTitleDetail extends React.Component {
   }
 
   updateCache(cache, data) {
+    //   console.log("HELLO");
+
+    //   console.log(this.props.art.id)
+    //   debugger;
+    //   console.log(this.props.art.id === this.props.match.params.artId)
     const art = cache.readQuery({
       query: FETCH_ART,
       variables: {
-        _id: this.props.art.id
+        artId: this.props.art.id
       }
     });
+    console.log(art)
+    console.log("art here ^^^^^^^")
     let newArt = merge({}, art);
-    newArt.art.title = this.state.title;
+    newArt.artById.title = this.state.title;
+    console.log(newArt);
+    console.log("newArt here ^^^^^^^");
     cache.writeQuery({
       query: FETCH_ART,
       data: newArt,
       variables: {
-        _id: this.props.art.id
+        artId: this.props.art.id
       }
     });
   }
@@ -92,4 +102,4 @@ class ArtTitleDetail extends React.Component {
   }
 }
 
-export default ArtTitleDetail;
+export default withRouter(ArtTitleDetail);
