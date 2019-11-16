@@ -61,35 +61,6 @@ class Profile extends React.Component {
               </div>
             );
 
-          console.log(data);
-          // let settings;
-          // if (
-          //   this.props.match.params.userId ===
-          //   localStorage.getItem("currentUserId")
-          // ) {
-          //   settings = (
-          //     // <div className="settings-link">
-          //     //   {/* <Link
-  
-          //     //     to={`/settings/${localStorage.currentUserId}`}
-          //     //   >
-          //     //     +
-          //     //   </Link> */}
-
-          //     //   {/* <Link
-          //     //     to={{
-          //     //       pathname: `/settings/${localStorage.currentUserId}`,
-          //     //       state: { data }
-          //     //     }}
-          //     //   >
-          //     //     +
-          //     //   </Link> */}
-               
-          //     // </div>
-              
-          //   );
-          // }
-
           let settings;
           if (localStorage.currentUserId === data.user.id) {
             settings = (
@@ -156,6 +127,28 @@ class Profile extends React.Component {
             );
           });
 
+          let pubArt;
+            pubArt = data.user.publishedArt ? 
+              <div className="profile-published">
+                <h1 className="profile-header">Recently Published Art</h1>
+                <ul className="published-list">{artPubList}</ul>
+              </div> :
+              // <div className="profile-published">
+              //   <h1 className="profile-header">Recently Published Art</h1>
+              //     <Link to="/create" className="profile-art-create-link">
+              //       Publish Work
+							//     </Link>
+              //   </div>
+              <div></div>
+
+          let pubArticleSection;
+            pubArticleSection = data.user.publishedArticles ?
+            <div className="profile-published">
+              <h1 className="profile-header">Recently Published Articles</h1>
+              <ul className="published-list">{articlePubList}</ul>
+            </div> : <div></div>
+
+
           return (
             <div className="profile-container">
               <div className="user-info">
@@ -163,16 +156,8 @@ class Profile extends React.Component {
               </div>
               {settings}
               {recentlyLiked}
-              <div className="profile-published">
-                <h1 className="profile-header">Recently Published Art</h1>
-                <ul className="published-list">{artPubList}</ul>
-              </div>
-              <div className="profile-published">
-                <h1 className="profile-header">Recently Published Articles</h1>
-                <ul className="published-list">{articlePubList}</ul>
-              </div>
-              <h1>TEST BELOW</h1>
-              <CreateComment className="comment"></CreateComment>
+              {pubArt}
+              {pubArticleSection}
             </div>
           );
         }}

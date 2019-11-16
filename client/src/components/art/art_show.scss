@@ -147,15 +147,16 @@
 			margin: auto;
 
 			.show-pic {
-				display: block;
+				display: flex;
+    			justify-content: center;
 				height: auto;
 				overflow: hidden;
 				width: 700px;
-				height: 450px;
+				max-height: 700px;
 				margin: auto;
 
 				.show-image {
-					width: 100%;
+					width: auto;
 					height: 100%;
 					object-fit: cover;
 				}
