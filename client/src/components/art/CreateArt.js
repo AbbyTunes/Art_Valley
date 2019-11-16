@@ -20,6 +20,7 @@ if (process.env.NODE_ENV === "production") {
 class CreateArt extends Component {
   constructor(props) {
     super(props);
+    console.log(props)
 
     this.state = {
       category: "Photo", // default to debug
@@ -73,7 +74,6 @@ class CreateArt extends Component {
     e.preventDefault();
     const data = new FormData(e.target);
     if (this.state.category === "Photo") {
-
       console.log("PHOTO ASYNC DATA BELOW");
       this.setState({
         category: "5dc603aa4dc3a23d54cbb4fb" //debug id for...whatever reason
@@ -87,6 +87,7 @@ class CreateArt extends Component {
     }
     
     data.append("file", this.state.photoLink);
+    data.append("video", this.state.videoLink);
     data.append("title",this.state.title);
     data.append("author",this.state.author);
     data.append("description",this.state.description);
@@ -142,11 +143,12 @@ class CreateArt extends Component {
                   {/* <div className="art-form-field-link-container">
                     <input
                       className="art-form-field-link-url"
-                      onChange={this.handleSelectedFile}
-                      value={this.state.photoLink}
+                      onChange={this.update("videoLink")}
+                      value={this.state.videoLink}
                       placeholder="Place URL for image/video here"
                       type="text"
-                    /> */}
+                    />
+                    </div> */}
                     <div className="form-group">
                       <input
                         type="file"
