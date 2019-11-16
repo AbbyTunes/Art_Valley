@@ -121,9 +121,11 @@ class Profile extends React.Component {
           let articlePublishedLimit = data.user.publishedArticles.slice(0, 6);
           let articlePubList = articlePublishedLimit.map(article => {
             return (
-              <li key={article.id}>
-                <img className="profile-photo-thumbnail" src={article.photoLink} />
-              </li>
+              <Link to={`/community/${article.id}`}>
+                <li key={article.id}>
+                  <img className="profile-photo-thumbnail" src={article.photoLink} />
+                </li>
+              </Link>
             );
           });
 
@@ -166,4 +168,4 @@ class Profile extends React.Component {
   }
 }
  
-export default Profile;
+export default Profile; 
