@@ -82,7 +82,9 @@ class CreateArt extends Component {
     } else {
       this.setState({
         category: "5dcc556324cdd659e23e1e5a" // video
-      });
+      }
+			//, () => data.append("category", this.state.category))
+			);
 
     }
     

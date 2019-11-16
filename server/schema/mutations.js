@@ -33,47 +33,45 @@ const mutation = new GraphQLObjectType({
         return new Category(args).save();
       }
     },
-		// newArt: {
-    //   type: ArtType,
-    //   args: {
-    //     category: { type: GraphQLID },
-    //     author: { type: GraphQLID },
-    //     title: { type: GraphQLString },
-    //     description: { type: GraphQLString },
-    //     photoLink: { type: GraphQLString }
-    //   },
-    //   errors: [
-    //     {
-    //       state: {
-    //         title: ["There is already an art piece with this title"]
-    //       }
-    //     }
-    //   ],
-    //   async resolve(_, args, context) {
-    //     return new Art(args).save().then(art => {
-    //       if (art.category) {
-    //         console.log(art);
-    //         return Category.findById(args.category).then(category => {
-    //           category.arts.push(art);
-		// 					return category.save()
-		// 					.then(category => art);
-		// 				})
-		// 				.then(art => {
-		// 					User.addPublishedArt(art.author, art.id)
-		// 					return (art => art)
-		// 				})
-    //       } else {
-    //         return art;
-    //       }
-		// 		})
-    //     // const validUser = await AuthService.verifyUser({ token: context.token });
-    //     // if (validUser.loggedIn) {
-
-    //     // } else {
-    //     // 	throw new Error("sorry, you need to log in first");
-    //     // }
-    //   }
-    // },
+		newVideo: {
+      type: ArtType,
+      args: {
+        category: { type: GraphQLID },
+        author: { type: GraphQLID },
+        title: { type: GraphQLString },
+        description: { type: GraphQLString },
+        videoLink: { type: GraphQLString }
+      },
+			async resolve(_, args) {
+        return new Art(args).save().then(art => {
+          return User.findById(art.author)
+            .then(user => {
+              user.publishedArts.push(art);
+              user.save();
+							return art;
+            })
+            .catch(err => null);
+        }).then(art => {
+          return Category.findById(art.category)
+            .then(category => {
+              category.arts.push(art);
+              category.save();
+              return art;
+            })
+            .catch(err => null);
+        });
+      }
+			// async resolve(_, args) {
+			// 	return new Art(args).save()
+			// 		.then(art => {
+			// 			return Art.addCategory(art.category, art.id)
+			// 		})
+			// 		.then(art => {
+			// 			return User.addPublishedArt(art.author, art.id)
+			// 		})
+			// 		.then(art => art)
+			// }
+		},
     newArt: {
       type: ArtType,
       args: {
@@ -90,18 +88,8 @@ const mutation = new GraphQLObjectType({
           }
         }
       ],
-      async resolve(_, args, context) {
-				console.log(args)
-				console.log(context)
-				console.log("ARGSCONTEXT ABOVE")
-
-				const validUser = await AuthService.verifyUser({ token: context.token });
-				if (validUser.loggedIn) {
-
-					return null
-					} else {
-					throw new Error("sorry, you need to log in first");
-				}
+      resolve(_, args) {
+				return new Art(_, args).save();
 			}
     },
     deleteArt: {
@@ -139,7 +127,7 @@ const mutation = new GraphQLObjectType({
 				return User.deleteArticle(args.author, args._id)
           .then(user => user)
           .catch(err => null)
-				.then(() => { 
+				  .then(() => { 
 					return Article.findByIdAndDelete(args._id)
           .then(article => article)
 					.catch(err => null)
