@@ -77,25 +77,20 @@ class CreateArt extends Component {
       console.log("PHOTO ASYNC DATA BELOW");
       this.setState({
         category: "5dc603aa4dc3a23d54cbb4fb" //debug id for...whatever reason
-      }, () => console.log(this.state.category));
+      }, () => data.append("category", this.state.category))
 
     } else {
-
-      console.log("ELSE");
       this.setState({
         category: "5dcc556324cdd659e23e1e5a" // video
       });
 
     }
     
-    
-    
     data.append("file", this.state.photoLink);
     data.append("title",this.state.title);
-    data.append("category", "5dc603aa4dc3a23d54cbb4fb");
     data.append("author",this.state.author);
     data.append("description",this.state.description);
-    console.log(data)
+    // debugger
     axios.post(endpoint, data).then( (response) => {
 
       if (response.data && response.status === 200) { 
