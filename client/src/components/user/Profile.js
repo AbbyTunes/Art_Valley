@@ -118,11 +118,12 @@ class Profile extends React.Component {
             let artList = data.user.likedArts.map(art => {
               return (
                 <li key={art.id}>
-                  {/* {art.title} */}
+                  <Link to={`/arts/${art.id}`}>
                   <img
                     className="profile-photo-thumbnail"
                     src={art.photoLink}
-                  />
+                    />
+                  </Link>
                 </li>
               );
             });
@@ -159,26 +160,9 @@ class Profile extends React.Component {
             <div className="profile-container">
               <div className="user-info">
                 <h1 className="user-header">{data.user.name}</h1>
-                {/* {settings} */}
               </div>
-
-              {/* <button className="settings-button" onClick={this.handleClick}>
-                Edit
-              </button>
-              {this.state.clicked ? <Settings user={data} clicked={true}/> : null}
-              {this.state.clicked ?  null : <Settings user={data} clicked={false}/>} */}
               {settings}
               {recentlyLiked}
-
-              {/* <div className="profile-playlist">
-                <h1 className="profile-header">Playlist</h1> */}
-              {/* <ul className="liked-list">
-                  {artList}
-                </ul>
-              <div className="see-more-button">
-                  <Link to="#">See More</Link>
-              </div> */}
-              {/* </div> */}
               <div className="profile-published">
                 <h1 className="profile-header">Recently Published Art</h1>
                 <ul className="published-list">{artPubList}</ul>

@@ -64,7 +64,7 @@ class ArtShow extends Component {
 						});
 						showArtist = (
 							<div className="show-artist">
-								<h1 className="published-header">Art of the Author</h1>
+								<h1 className="published-header">Art by the Author</h1>
 								<ul className="published-ul">{artPubList}</ul>
 							</div>
 						);
@@ -85,6 +85,9 @@ class ArtShow extends Component {
 										<div className="info-1">
 											<div className="show-title">
 												{titleOption}
+											</div>
+											<div className="author-name">
+												{author.name}
 											</div>
 											<div className="show-description">
 												{descriptionOption}

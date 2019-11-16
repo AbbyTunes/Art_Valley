@@ -4,6 +4,7 @@ import { Mutation, Query } from "react-apollo";
 import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
 import { merge } from 'lodash'
+import { Link } from "react-router-dom";
 const { DELETE_COMMENT } = Mutations;
 const { FETCH_ART} = Queries;
 
@@ -99,7 +100,7 @@ class CommentDetail extends React.Component {
           </div>
         </div>
         <div className="comment-body-container">
-          <div className="comment-author">{this.props.comment.author.name}</div>
+          <Link to={`/users/${this.props.comment.author.id}`}><div className="comment-author">{this.props.comment.author.name}</div></Link>
           
           <div className="comment-body">{this.props.comment.body}</div>
           {this.deleteComment()}
