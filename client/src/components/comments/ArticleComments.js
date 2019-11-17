@@ -1,13 +1,13 @@
 import React from "react";
-import { Mutation, Query } from "react-apollo";
+import { Mutation } from "react-apollo";
 import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
 import TextareaAutosize from "react-textarea-autosize";
-import { ApolloCache } from "apollo-cache";
+// import { ApolloCache } from "apollo-cache";
 import ArticleCommentDetail from "./ArticleCommentDetail";
 import { merge } from 'lodash'
 import "./comment.css"
-import { InMemoryCache } from "apollo-cache-inmemory";
+// import { InMemoryCache } from "apollo-cache-inmemory";
 const { FETCH_ARTICLE } = Queries;
 const { ADD_COMMENT, VERIFY_USER } = Mutations;
 

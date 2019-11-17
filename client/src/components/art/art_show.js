@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Query, Mutation } from "react-apollo";
+import { Query} from "react-apollo";
 import "./art_show.scss";
 import { withRouter, Link } from "react-router-dom";
 import CreateComment from "../comments/CreateComment";
@@ -56,7 +56,7 @@ class ArtShow extends Component {
 							return (
 								<li className="published-li" key={artPub.id}>
 									<Link to={`${artPub.id}`}>
-										<img className="published-photo-thumbnail" src={artPub.photoLink} />
+										<img className="published-photo-thumbnail" alt="" src={artPub.photoLink} />
 									</Link>
 								</li>
 							);
@@ -72,48 +72,44 @@ class ArtShow extends Component {
 					}
 
 					return (
+            <div className="show-container">
+              <div className="show-art">
+                <div className="show-pic">
+                  <img className="show-image" alt="" src={photoLink}></img>
+                </div>
 
-						<div className="show-container">
-							<div className="show-art">
-								<div className="show-pic">
-									<img className="show-image" src={photoLink}></img>
-								</div>
+                <div className="show-info">
+                  <div className="info-main">
+                    <div className="info-1">
+                      <div className="show-title">{titleOption}</div>
+                      <div className="author-name">{author.name}</div>
+                      <div className="show-description">
+                        {descriptionOption}
+                      </div>
+                    </div>
 
-								<div className="show-info">
+                    <div className="info-2">
+                      <ArtLike likers={likers} />
+                    </div>
+                  </div>
 
-									<div className="info-main">
-										<div className="info-1">
-											<div className="show-title">
-												{titleOption}
-											</div>
-											<div className="author-name">
-												{author.name}
-											</div>
-											<div className="show-description">
-												{descriptionOption}
-											</div>
-										</div>
+                  <div className="info-3">
+                    <div className="show-comment">Comments</div>
+                  </div>
 
-										<div className="info-2">
-											<ArtLike likers={likers} />
-										</div>
-									</div>
+                  <CreateComment
+                    artId={data.artById.id}
+                    comments={data.artById.comments}
+                  />
+                </div>
 
-									<div className="info-3">
-										<div className="show-comment">Comments</div>
-									</div>
+                {showArtist}
 
-									<CreateComment artId={data.artById.id} comments={data.artById.comments} />
-
-								</div>
-
-								{showArtist}
-
-								<div className="show-category"></div>
-							</div>
-							{deleteArtButton}
-						</div>
-					);
+                <div className="show-category"></div>
+              </div>
+              {deleteArtButton}
+            </div>
+          );
 				}}
 			</Query>
 		)

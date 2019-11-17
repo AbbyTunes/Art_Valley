@@ -1,6 +1,6 @@
 import React from "react";
 import "./comment.css";
-import { Mutation, Query } from "react-apollo";
+import { Mutation } from "react-apollo";
 import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
 import { merge } from 'lodash'

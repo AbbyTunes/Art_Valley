@@ -1,7 +1,6 @@
 import React from "react";
 import { Query } from "react-apollo";
 import "./profile.css"
-import { Link } from "react-router-dom";
 import Settings from "./Settings";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -16,11 +15,20 @@ class Profile extends React.Component {
     super(props);
     this.state = {
       clicked: false
-    }
+    };
 
     this.debugEdit = this.debugEdit.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
+
+  // itemStyle() {
+  //   return ({
+  //     border: "1px solid red",
+  //     height: "100%",
+  //     width: "100%",
+
+  //   })
+  // }
 
   debugEdit(userData) {
     return (
@@ -40,7 +48,7 @@ class Profile extends React.Component {
         clicked: true
       });
     }
-    console.log(this.state.clicked)
+    console.log(this.state.clicked);
   }
 
   render() {
@@ -85,7 +93,7 @@ class Profile extends React.Component {
               <div>
                 <Settings user={data} clicked={false} />
               </div>
-            )
+            );
           }
 
           const recentlyLiked = data.user.likedArts.reverse().slice(0, 6);
@@ -103,7 +111,9 @@ class Profile extends React.Component {
             };
           });
 
-          const artPublishedLimit = data.user.publishedArts.reverse().slice(0, 6);
+          const artPublishedLimit = data.user.publishedArts
+            .reverse()
+            .slice(0, 6);
           const artPubList = artPublishedLimit.map(art => {
             return {
               src: art.photoLink,
@@ -117,9 +127,10 @@ class Profile extends React.Component {
               )
             };
           });
-        
 
-          const articlePublishedLimit = data.user.publishedArticles.reverse().slice(0, 6);
+          const articlePublishedLimit = data.user.publishedArticles
+            .reverse()
+            .slice(0, 6);
           const articlePubList = articlePublishedLimit.map(article => {
             return {
               src: article.photoLink,
@@ -136,19 +147,21 @@ class Profile extends React.Component {
 
           const publishedArt = (
             <div className="profile-published">
-                <Gallery
-                  images={artPubList}
-                  enableLightbox={true}
-                  enableImageSelection={false}
-                  backdropClosesModal
-                  margin={5}
-                />
-              </div>
-          )
+              <Gallery
+                images={artPubList}
+                enableLightbox={true}
+                enableImageSelection={false}
+                backdropClosesModal
+                thumbnailStyle={this.itemStyle}
+                margin={5}
+              />
+
+              
+            </div>
+          );
 
           const publishedArticles = (
             <div className="profile-published">
-            
               <Gallery
                 images={articlePubList}
                 enableLightbox={true}
@@ -156,12 +169,12 @@ class Profile extends React.Component {
                 backdropClosesModal
                 margin={5}
               />
+
             </div>
           );
 
           const recentlyLikedTab = (
             <div className="profile-published">
-            
               <Gallery
                 images={artLikedList}
                 enableLightbox={true}
@@ -177,12 +190,10 @@ class Profile extends React.Component {
               <div className="user-info"></div>
               {settings}
 
-              
-
-              
-
-              <Tabs className="profile-tabs"
-              selectedTabClassName="profile-tab-single-selected">
+              <Tabs
+                className="profile-tabs"
+                selectedTabClassName="profile-tab-single-selected"
+              >
                 <TabList>
                   <Tab className="profile-tab-single">Recent Art</Tab>
                   <Tab className="profile-tab-single">Recent Articles</Tab>
