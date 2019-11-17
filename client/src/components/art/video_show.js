@@ -1,5 +1,3 @@
-
-
 import React, { Component } from "react";
 import { Query } from "react-apollo";
 import "./art_show.scss";
@@ -75,6 +73,7 @@ class VideoShow extends Component {
 										src={videoLink}>
 									</iframe>
 									
+
 								</div>
 
 								<div className="show-info">

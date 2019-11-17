@@ -47,7 +47,7 @@ class ArtShow extends Component {
 					if (author.publishedArts.length !== 1 ) {
 						let artPublishedLimit = author.publishedArts
 							.filter(pubArt => pubArt.id !== id)
-							.filter(pubArt => pubArt.photoLink.length !== 0)
+							.filter(pubArt => pubArt.photoLink)
 							.slice(0, 3);
 						let artPubList = artPublishedLimit.map(artPub => {
 							return (
