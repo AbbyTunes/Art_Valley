@@ -74,7 +74,7 @@ class ArtDescriptionDetail extends React.Component {
                   value={this.state.description}
                   onChange={this.fieldUpdate("description")}
                 />
-                <button type="submit">Update Description</button>
+                <button className="edit-info-button"type="submit">Update Description</button>
               </form>
             </div>
           )}

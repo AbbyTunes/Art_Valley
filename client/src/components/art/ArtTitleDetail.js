@@ -80,7 +80,7 @@ class ArtTitleDetail extends React.Component {
                   value={this.state.title}
                   onChange={this.fieldUpdate("title")}
                 />
-                <button type="submit">Update Title</button>
+                <button className="edit-info-button"type="submit">Update Title</button>
               </form>
             </div>
           )}
