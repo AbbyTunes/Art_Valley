@@ -72,15 +72,13 @@ class ArtShow extends Component {
 					}
 
 					return (
-						<div className="show-container">
-						
 
+						<div className="show-container">
 							<div className="show-art">
-								
 								<div className="show-pic">
 									<img className="show-image" src={photoLink}></img>
 								</div>
-					
+
 								<div className="show-info">
 
 									<div className="info-main">
@@ -95,33 +93,35 @@ class ArtShow extends Component {
 												{descriptionOption}
 											</div>
 										</div>
+
 										<div className="info-2">
 											<ArtLike likers={likers} />
-										</div>						
-										<div className="info-3">
-											<div className="show-comment">Comments</div>
 										</div>
-										<div>
-											<CreateComment artId={data.artById.id} comments={data.artById.comments} />
-										</div>
-
-										{showArtist}	
-
-									<div className="show-category">
-
 									</div>
+
+									<div className="info-3">
+										<div className="show-comment">Comments</div>
+									</div>
+
+									<CreateComment artId={data.artById.id} comments={data.artById.comments} />
+
 								</div>
 
+								{showArtist}
 
-								{deleteArtButton}
+								<div className="show-category"></div>
 							</div>
+							{deleteArtButton}
 						</div>
-						</div>
-					)
-					}}
+					);
+				}}
 			</Query>
 		)
 	}
 }
 
 export default withRouter(ArtShow);
+
+
+
+
