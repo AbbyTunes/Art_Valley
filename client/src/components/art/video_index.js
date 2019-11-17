@@ -3,9 +3,34 @@ import { Query } from "react-apollo";
 import "./art_index.css"
 import { Link, withRouter } from "react-router-dom";
 import Queries from "../../graphql/queries";
-const { FETCH_ARTS_BY_CATEGORY } = Queries;
+const { FETCH_ARTS_BY_CATEGORY, IS_LOGGED_IN } = Queries;
 
 const VideoIndex = (props) => {
+
+	let createVideo = (
+					<Query query={IS_LOGGED_IN} >
+						{({ loading, error, data }) => {
+				
+							if (loading) return (
+								<div >
+									<p>Loading...</p>
+								</div>
+							);
+							if (error) return (
+								console.log(error)
+							);
+							if ( data.isLoggedIn ) {
+								return (
+									<Link to="/create-video" className="article-create-link">
+										Add Video
+									</Link>
+								)
+							} else {
+								return <div></div>
+							}
+						}}
+				</Query>
+				)
 
 	return (
 		<Query
@@ -53,6 +78,8 @@ const VideoIndex = (props) => {
 						<div className="art-header">
 							Videos
 						</div>
+
+						{createVideo}
 
 						<ul className="art-index-ul">
 							{allArtList}

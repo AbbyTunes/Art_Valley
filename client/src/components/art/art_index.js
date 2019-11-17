@@ -4,7 +4,7 @@ import "./art_index.css"
 import { Link, withRouter } from "react-router-dom";
 import Queries from "../../graphql/queries";
 
-const { FETCH_ARTS_BY_CATEGORY, FETCH_USER, IS_LOGGED_IN } = Queries;
+const { FETCH_ARTS_BY_CATEGORY, IS_LOGGED_IN } = Queries;
 
 
 const ArtIndex = (props) => {
