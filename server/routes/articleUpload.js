@@ -20,10 +20,10 @@ router.post("/upload", upload.single("file"), function(req, res) {
     region: process.env.AWS_REGION
   });
 debugger;
-  let key = file ? file.originalname : "cool.jpeg";
+  let key = file ? file.originalname : "art-san.jpeg";
   let body = file ? file.buffer : "";
   let ContentType = file ? file.mimetype : "";
-  let fileLink = file ? s3FileURL + file.originalname : "https://art-valley-dev.s3.amazonaws.com/cool.jpeg";
+  let fileLink = file ? s3FileURL + file.originalname : "https://art-valley-dev.s3.amazonaws.com/art-san.jpeg";
   
   var params = {
     Bucket: process.env.AWS_BUCKET_NAME,
@@ -36,7 +36,7 @@ debugger;
     ACL: "public-read"
   };
 
-  let s3_key = file ? params.Key : "cool.jpeg";
+  let s3_key = file ? params.Key : "art-san.jpeg";
 
   s3bucket.upload(params, function(err, data) {
     debugger;

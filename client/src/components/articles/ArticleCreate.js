@@ -44,31 +44,9 @@ class ArticleCreate extends React.Component {
     }
   };
 
-  //   handleSubmit(e, newArticle) {
-  //     e.preventDefault();
-  //     newArticle({
-  //       variables: {
-  //         title: this.state.title,
-  //         body: this.state.body,
-  //         photoLink: this.state.photoLink,
-  //         header: this.state.header,
-  //         author: localStorage.getItem("currentUserId")
-  //       }
-  //     }).then(data => {
-  //       this.setState({
-  //         title: "",
-  //         body: "",
-  //         photoLink: "",
-  //         header: ""
-  //       });
-  //     });
-  //   }
-
   handleSubmit(e) {
     e.preventDefault();
-    // if (this.state.previewUrl){
-        
-    // }
+  
     const data = new FormData(e.target);
     data.append("file", this.state.photoLink);
     data.append("title", this.state.title);
@@ -81,10 +59,11 @@ class ArticleCreate extends React.Component {
 
       console.log(response);
       if (response.data && response.status === 200) {
-        this.setState({ message: "Art successfully uploaded!" });
-        console.log(data);
+        this.setState({ message: "Article successfully uploaded!" });
+        const redirectId = response.data.data._id;
+        this.props.history.push(`/community/${redirectId}`);
       } else {
-        this.setState({ message: "Art upload was not successful" });
+        this.setState({ message: "Article upload was not successful" });
       }
     });
   }
@@ -132,7 +111,7 @@ class ArticleCreate extends React.Component {
         <textarea className="article-title-body" value={this.state.body} onChange={this.update("body")} placeholder="Body"/>
         {/* image here */}
         <input type="submit" value="Save Article" />
-        <div>{this.state.message}</div>
+        <div className="article-message">{this.state.message}</div>
       </form>
     );
   }
