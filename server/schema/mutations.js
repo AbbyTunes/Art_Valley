@@ -33,8 +33,6 @@ const mutation = new GraphQLObjectType({
         return new Category(args).save();
       }
     },
-<<<<<<< HEAD
-=======
 		newVideo: {
       type: ArtType,
       args: {
@@ -74,7 +72,6 @@ const mutation = new GraphQLObjectType({
 			// 		.then(art => art)
 			// }
 		},
->>>>>>> master
     newArt: {
       type: ArtType,
       args: {

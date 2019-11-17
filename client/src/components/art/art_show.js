@@ -32,8 +32,6 @@ class ArtShow extends Component {
 						);
 
 					const { id, description, photoLink, title, likers, author } = data.artById;
-					// console.log(localStorage)
-					// console.dir(data)
 
 					let deleteArtButton; 
 					deleteArtButton = author.id === localStorage.currentUserId ?
@@ -75,12 +73,16 @@ class ArtShow extends Component {
 
 					return (
 						<div className="show-container">
-								<div className="show-art">
-					<div className="show-pic">
-						<img className="show-image" src={photoLink}></img>
-					</div>
+							
+
+
+							<div className="show-art">
+								
+								<div className="show-pic">
+									<img className="show-image" src={photoLink}></img>
+								</div>
 					
-									<div className="show-info">
+								<div className="show-info">
 
 									<div className="info-main">
 										<div className="info-1">
@@ -92,29 +94,32 @@ class ArtShow extends Component {
 											</div>
 											<div className="show-description">
 												{descriptionOption}
-							<div className="info-2">
-								<ArtLike likers={likers} />
-							</div>
-						</div>
-						
-						<div className="info-3">
-							<div className="show-comment">Comments</div>
 											</div>
+										</div>
+										<div className="info-2">
+											<ArtLike likers={likers} />
+										</div>						
+										<div className="info-3">
+											<div className="show-comment">Comments</div>
+										</div>
+										<div>
+											<CreateComment artId={data.artById.id} comments={data.artById.comments} />
+										</div>
 
-						<CreateComment artId={data.artById.id} comments={data.artById.comments} />
+										{showArtist}	
+
+									<div className="show-category">
 
 									</div>
-
-					{showArtist}
-
-								<div className="show-category"></div>
 								</div>
-				{deleteArtButton}
+
+
+								{deleteArtButton}
+							</div>
 						</div>
-					);
-				}}
+	
+					
 			</Query>
-		
 		)
 	}
 }
