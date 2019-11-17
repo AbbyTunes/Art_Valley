@@ -1,0 +1,171 @@
+
+.video-form-container {
+  width: 500px;
+  min-height: 460px;
+  border-radius: 5px;
+  background: rgb(255, 255, 255);
+	margin-top: 20px;
+  padding-top: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border: 2px solid #3f9598
+}
+
+.video-form-field-title {
+  background: inherit;
+  border: none;
+  width: 430px;
+  font-size: 36px;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(142, 142, 142, 0.5);
+  display: inline-block;
+  margin-bottom: 40px;
+  color: rgb(104, 104, 104);
+}
+
+.video-form-field-title::placeholder{
+  color: #969696;
+}
+
+
+
+.video-form-field-title:focus {
+  border-bottom: 3px solid rgba(0,132,255,.5);
+  margin-bottom: 38px;
+}
+
+.video-form-field-user-icon {
+  width: 44px;
+  height: 44px;
+  background: white;
+  border-radius: 50%;
+  float: left;
+  position: relative;
+}
+
+/* debug unicode icon */
+.video-form-field-user-icon-pic { 
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: inherit;
+  cursor: default;
+}
+
+.video-form-field-user-icon-pic:hover {
+  opacity: 0.7;
+}
+
+.video-form-field-name {
+  display: inline-block;
+  margin-bottom: 20px;
+  height: 40px;
+  width: 300px;
+
+}
+
+.video-form-field-user-icon-text {
+  background: inherit;
+  position: relative;
+  color: #333;
+  font-weight: 600;
+  left: 20px;
+  line-height: 2.5;
+}
+
+.video-form-field-description {
+  display: inline-block;
+  resize: none;
+  width: 430px;
+  overflow: hidden;
+  padding-bottom: 5px;
+  border: none;
+  font-size: 18px;
+  background: inherit;
+  border-bottom: 1px solid rgba(142, 142, 142, 0.5);
+  margin-bottom: 30px;
+}
+
+.video-form-field-description::placeholder{
+  color: #b9b9b9;
+}
+
+.video-form-field-description[type=text]{
+  color: #5f5f5f;
+}
+
+
+.video-form-field-description[contentEditable=true]:empty:not(:focus):before{
+  content:attr(data-text)
+}
+
+.video-form-field-description:hover {
+  cursor: text;
+}
+
+.video-form-field-description:focus {
+  border-bottom: 3px solid rgba(0,132,255,.5);
+  margin-bottom: 28px;
+}
+
+.video-form-field-link {
+
+}
+
+.video-form-field-link-container{
+  width: 100%;
+  margin-top: 70px;
+  height: 40px;
+  display: block;
+
+}
+
+.video-form-field-link {
+  background: inherit;
+  border: none;
+  width: 285px;
+  font-size: 36px;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(142, 142, 142, 0.5);
+  display: inline-block;
+  margin-bottom: 20px;
+  float: left;
+  color: rgb(104, 104, 104);
+}
+
+.video-form-field-link::placeholder{
+  color: #b9b9b9;
+}
+
+.video-form-field-link:focus {
+  border-bottom: 3px solid rgba(0,132,255,.5);
+  margin-bottom: 18px;
+}
+
+.video-form-field-submit {
+  width: 140px;
+  height: 40px;
+  background: black;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  margin-top: 85px;
+  float: right;
+  position: relative;
+  bottom: 10px;
+}
+
+.video-form-field-submit:hover {
+  background: #3f9598;
+  transition: 0.5s;
+  cursor: pointer; 
+}
+  

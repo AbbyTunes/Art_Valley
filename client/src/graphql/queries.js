@@ -6,6 +6,11 @@ export default {
       isLoggedIn @client
     }
   `,
+  // IS_CURRENT_USER: gql`
+  //   query isCurrentUser {
+  //     isCurrentUser @client
+  //   }
+  // `,
   FETCH_ART: gql`
     query artById($artId: ID!) {
       artById(_id: $artId) {
@@ -87,7 +92,7 @@ export default {
         description
         likers {
           id
-					name
+          name
         }
         category {
           id
@@ -133,7 +138,7 @@ export default {
         description
         likers {
           id
-					name
+          name
         }
         category {
           id
@@ -210,10 +215,10 @@ export default {
       categories {
         id
         name
-				arts {
-					id
-					title
-				}
+        arts {
+          id
+          title
+        }
       }
     }
   `,

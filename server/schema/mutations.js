@@ -194,17 +194,7 @@ const mutation = new GraphQLObjectType({
         return User.unlikeArt(userId, artId);
       }
     },
-    deleteArt: {
-      type: ArtType,
-      args: {
-        _id: { type: new GraphQLNonNull(GraphQLID) }
-      },
-      resolve(_, { _id }) {
-        return Art.findByIdAndDelete({ _id })
-          .then(art => art)
-          .catch(err => null);
-      }
-    },
+    
     addUserLikedArticle: {
       type: UserType,
       args: {
@@ -346,49 +336,27 @@ const mutation = new GraphQLObjectType({
             .catch(err => console.log(err));
         });
       }
-    },
-    newArticle: {
-      type: ArticleType,
-      args: {
-        title: { type: GraphQLString },
-        body: { type: GraphQLString },
-        header: { type: GraphQLString },
-        author: { type: GraphQLID },
-        photoLink: { type: GraphQLString }
-      },
-      async resolve(_, args) {
-        return new Article(args).save().then(article => {
-          return User.findById(article.author)
-            .then(user => {
-              user.publishedArticles.push(article);
-              user.save();
-              return article;
-            })
-            .catch(err => console.log(err));
-        });
-      }
     }
-    // uploadImage: {
-    // 	type: GraphQLBoolean,
-    // 	args: {
-    // 		file: {
-    // 			type: GraphQLUpload
-    // 		}
-    // 	},
-    // 	async resolve(parent,args) {
-    // 		const file = await args.file
-    // 		const {
-    // 			createReadStream,
-    // 			filename,
-    // 			mimetype
-    // 		} = file
-    // 		const fileStream = createReadStream()
-    // 		const uploadParams = {
-    // 			Bucket: art-valley-dev,
-    // 			Key: filename,
-    // 			Body: fileStream,
-    // 		}
-    // 	}
+    // newArticle: {
+    //   type: ArticleType,
+    //   args: {
+    //     title: { type: GraphQLString },
+    //     body: { type: GraphQLString },
+    //     header: { type: GraphQLString },
+    //     author: { type: GraphQLID },
+    //     photoLink: { type: GraphQLString }
+    //   },
+    //   async resolve(_, args) {
+    //     return new Article(args).save().then(article => {
+    //       return User.findById(article.author)
+    //         .then(user => {
+    //           user.publishedArticles.push(article);
+    //           user.save();
+    //           return article;
+    //         })
+    //         .catch(err => console.log(err));
+    //     });
+    //   }
     // }
   }
 });

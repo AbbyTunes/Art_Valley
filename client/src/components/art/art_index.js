@@ -4,7 +4,7 @@ import "./art_index.css"
 import { Link, withRouter } from "react-router-dom";
 import Queries from "../../graphql/queries";
 
-const { FETCH_ARTS_BY_CATEGORY, FETCH_USER, IS_LOGGED_IN } = Queries;
+const { FETCH_ARTS_BY_CATEGORY, IS_LOGGED_IN } = Queries;
 
 
 const ArtIndex = (props) => {
@@ -58,6 +58,7 @@ const ArtIndex = (props) => {
 						<li key={art.id} className="art-index-li">
 							<Link to={`/arts/${art.id}`}>
 								<img className="art-photo-thumbnail" src={art.photoLink} alt="" />
+								<div className="art-photo-thumbnail-text">{art.title}</div>
 							</Link>
 						</li>
 					)

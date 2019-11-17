@@ -32,8 +32,6 @@ class ArtShow extends Component {
 						);
 
 					const { id, description, photoLink, title, likers, author } = data.artById;
-					console.log(localStorage)
-					console.dir(data)
 
 					let deleteArtButton; 
 					deleteArtButton = author.id === localStorage.currentUserId ?
@@ -65,7 +63,7 @@ class ArtShow extends Component {
 						});
 						showArtist = (
 							<div className="show-artist">
-								<h1 className="published-header">Art of the Author</h1>
+								<h1 className="published-header">Art by the Author</h1>
 								<ul className="published-ul">{artPubList}</ul>
 							</div>
 						);
@@ -74,49 +72,56 @@ class ArtShow extends Component {
 					}
 
 					return (
+
 						<div className="show-container">
-								<div className="show-art">
-					<div className="show-pic">
-						<img className="show-image" src={photoLink}></img>
-					</div>
-					
-									<div className="show-info">
-
-						<div className="info-main">
-							<div className="info-1">
-								<div className="show-title">
-									{titleOption}
+							<div className="show-art">
+								<div className="show-pic">
+									<img className="show-image" src={photoLink}></img>
 								</div>
-								<div className="show-description">
-									{descriptionOption}
-								</div>
-							</div>
 
-							<div className="info-2">
-								<ArtLike likers={likers} />
-							</div>
-						</div>
-						
-						<div className="info-3">
-							<div className="show-comment">Comments</div>
+								<div className="show-info">
+
+									<div className="info-main">
+										<div className="info-1">
+											<div className="show-title">
+												{titleOption}
 											</div>
+											<div className="author-name">
+												{author.name}
+											</div>
+											<div className="show-description">
+												{descriptionOption}
+											</div>
+										</div>
 
-						<CreateComment artId={data.artById.id} comments={data.artById.comments} />
-
+										<div className="info-2">
+											<ArtLike likers={likers} />
+										</div>
 									</div>
 
-					{showArtist}
+									<div className="info-3">
+										<div className="show-comment">Comments</div>
+									</div>
+
+									<CreateComment artId={data.artById.id} comments={data.artById.comments} />
+
+								</div>
+
+								{showArtist}
 
 								<div className="show-category"></div>
-								</div>
-				{deleteArtButton}
+							</div>
+							{deleteArtButton}
 						</div>
 					);
 				}}
 			</Query>
-		
 		)
 	}
 }
 
 export default withRouter(ArtShow);
+
+
+
+
