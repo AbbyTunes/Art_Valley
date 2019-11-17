@@ -1,5 +1,5 @@
 
-.art-form-container {
+.video-form-container {
   width: 500px;
   min-height: 460px;
   border-radius: 5px;
@@ -11,7 +11,7 @@
   border: 2px solid #3f9598
 }
 
-.art-form-field-title {
+.video-form-field-title {
   background: inherit;
   border: none;
   width: 430px;
@@ -23,18 +23,18 @@
   color: rgb(104, 104, 104);
 }
 
-.art-form-field-title::placeholder{
+.video-form-field-title::placeholder{
   color: #969696;
 }
 
 
 
-.art-form-field-title:focus {
+.video-form-field-title:focus {
   border-bottom: 3px solid rgba(0,132,255,.5);
   margin-bottom: 38px;
 }
 
-.art-form-field-user-icon {
+.video-form-field-user-icon {
   width: 44px;
   height: 44px;
   background: white;
@@ -44,7 +44,7 @@
 }
 
 /* debug unicode icon */
-.art-form-field-user-icon-pic { 
+.video-form-field-user-icon-pic { 
   margin: 0;
   position: absolute;
   top: 50%;
@@ -58,11 +58,11 @@
   cursor: default;
 }
 
-.art-form-field-user-icon-pic:hover {
+.video-form-field-user-icon-pic:hover {
   opacity: 0.7;
 }
 
-.art-form-field-name {
+.video-form-field-name {
   display: inline-block;
   margin-bottom: 20px;
   height: 40px;
@@ -70,7 +70,7 @@
 
 }
 
-.art-form-field-user-icon-text {
+.video-form-field-user-icon-text {
   background: inherit;
   position: relative;
   color: #333;
@@ -79,7 +79,7 @@
   line-height: 2.5;
 }
 
-.art-form-field-description {
+.video-form-field-description {
   display: inline-block;
   resize: none;
   width: 430px;
@@ -92,33 +92,33 @@
   margin-bottom: 30px;
 }
 
-.art-form-field-description::placeholder{
+.video-form-field-description::placeholder{
   color: #b9b9b9;
 }
 
-.art-form-field-description[type=text]{
+.video-form-field-description[type=text]{
   color: #5f5f5f;
 }
 
 
-.art-form-field-description[contentEditable=true]:empty:not(:focus):before{
+.video-form-field-description[contentEditable=true]:empty:not(:focus):before{
   content:attr(data-text)
 }
 
-.art-form-field-description:hover {
+.video-form-field-description:hover {
   cursor: text;
 }
 
-.art-form-field-description:focus {
+.video-form-field-description:focus {
   border-bottom: 3px solid rgba(0,132,255,.5);
   margin-bottom: 28px;
 }
 
-.art-form-field-link {
+.video-form-field-link {
 
 }
 
-.art-form-field-link-container{
+.video-form-field-link-container{
   width: 100%;
   margin-top: 70px;
   height: 40px;
@@ -126,7 +126,7 @@
 
 }
 
-.art-form-field-link {
+.video-form-field-link {
   background: inherit;
   border: none;
   width: 285px;
@@ -139,16 +139,16 @@
   color: rgb(104, 104, 104);
 }
 
-.art-form-field-link::placeholder{
+.video-form-field-link::placeholder{
   color: #b9b9b9;
 }
 
-.art-form-field-link:focus {
+.video-form-field-link:focus {
   border-bottom: 3px solid rgba(0,132,255,.5);
   margin-bottom: 18px;
 }
 
-.art-form-field-submit {
+.video-form-field-submit {
   width: 140px;
   height: 40px;
   background: black;
@@ -163,7 +163,7 @@
   bottom: 10px;
 }
 
-.art-form-field-submit:hover {
+.video-form-field-submit:hover {
   background: #3f9598;
   transition: 0.5s;
   cursor: pointer; 

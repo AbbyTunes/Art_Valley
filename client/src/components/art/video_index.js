@@ -8,29 +8,29 @@ const { FETCH_ARTS_BY_CATEGORY, IS_LOGGED_IN } = Queries;
 const VideoIndex = (props) => {
 
 	let createVideo = (
-					<Query query={IS_LOGGED_IN} >
-						{({ loading, error, data }) => {
-				
-							if (loading) return (
-								<div >
-									<p>Loading...</p>
-								</div>
-							);
-							if (error) return (
-								console.log(error)
-							);
-							if ( data.isLoggedIn ) {
-								return (
-									<Link to="/create-video" className="article-create-link">
-										Add Video
-									</Link>
-								)
-							} else {
-								return <div></div>
-							}
-						}}
-				</Query>
-				)
+		<Query query={IS_LOGGED_IN} >
+			{({ loading, error, data }) => {
+	
+				if (loading) return (
+					<div >
+						<p>Loading...</p>
+					</div>
+				);
+				if (error) return (
+					console.log(error)
+				);
+				if ( data.isLoggedIn ) {
+					return (
+						<Link to="/create-video" className="article-create-link">
+							Add Video
+						</Link>
+					)
+				} else {
+					return <div></div>
+				}
+			}}
+	</Query>
+	)
 
 	return (
 		<Query
@@ -52,17 +52,23 @@ const VideoIndex = (props) => {
 				let sortedVideobyLike = data.artsByCategory.sort((a, b) => (a.likers.length > b.likers.length) ? -1 : 1)
 
 				let allArtList = sortedVideobyLike.map((art) => {
+					
+					const linkStrArr = art.videoLink.split("/")
+					const linkId = linkStrArr[linkStrArr.length - 1]
+
 					return (
 						<li key={art.id} className="video-index-li">
 							
 							<Link to={`/videos/${art.id}`}>
-								<div className="video-modal"></div>
+								<div className="video-smoke-screen"></div>
+								<img className="art-photo-thumbnail"
+										src={`https://img.youtube.com/vi/${linkId}/0.jpg`}
+										// src="https://img.youtube.com/vi/CjSz290apM0/1.jpg"
+										// src="https://img.youtube.com/vi/CjSz290apM0/2.jpg"
+										// src="https://img.youtube.com/vi/CjSz290apM0/3.jpg"
+										alt="" 
+								/>
 							</Link>	
-
-							<iframe width="300" height="200"
-								src={art.videoLink}>
-							</iframe>
-							
 						</li>
 					)
 				})
