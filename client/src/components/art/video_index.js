@@ -42,7 +42,7 @@ const VideoIndex = (props) => {
         if (loading)
           return (
             <div className="video-index-container">
-              <p>Loading...</p>
+              <p className="loading-text">Loading...</p>
             </div>
           );
         if (error)

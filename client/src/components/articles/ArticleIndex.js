@@ -26,7 +26,7 @@ class ArticleIndex extends React.Component {
                       if (loading)
                         return (
                           <div className="art-index-container">
-                            <p>Loading...</p>
+                            <p className="loading-text">Loading...</p>
                           </div>
                         );
 

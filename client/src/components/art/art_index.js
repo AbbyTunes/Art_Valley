@@ -14,7 +14,7 @@ const ArtIndex = (props) => {
 						{({ loading, error, data }) => {
 				
 							if (loading) return (
-								<div >
+								<div className="loading-text">
 									<p>Loading...</p>
 								</div>
 							);
@@ -44,13 +44,13 @@ const ArtIndex = (props) => {
         if (loading)
           return (
             <div className="art-index-container">
-              <p>Loading...</p>
+              <p className="loading-text">Loading...</p>
             </div>
           );
         if (error)
           return (
             <div className="art-index-container">
-              <p>Error</p>
+              <p className="loading-text">Error</p>
             </div>
           );
 
