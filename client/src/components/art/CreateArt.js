@@ -162,7 +162,7 @@ class CreateArt extends Component {
                   className="art-form-field-title"
                   onChange={this.update("title")}
                   value={this.state.title}
-                  placeholder="Add your title"
+                  placeholder="Title"
                   maxLength="40"
                   required
                 />
@@ -186,10 +186,10 @@ class CreateArt extends Component {
                 className="art-form-field-description"
                 value={this.state.description}
                 onChange={this.update("description")}
-                data-text="Tell everybody what your art is"
+                data-text="Description"
                 type="text"
                 spellCheck="false"
-                placeholder="Tell everybody what your art is"
+                placeholder="Description"
               />
 
               <button className="art-form-field-submit" type="submit">

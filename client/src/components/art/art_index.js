@@ -61,6 +61,7 @@ const ArtIndex = (props) => {
 						<li key={art.id} className="art-index-li">
 							<Link to={`/arts/${art.id}`}>
 								<img className="art-photo-thumbnail" src={art.photoLink} alt="" />
+								<div className="art-photo-thumbnail-text">{art.title}</div>
 							</Link>
 						</li>
 					)
