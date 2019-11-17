@@ -52,12 +52,22 @@
     margin: 20px 0;
 }
 
+.article-show-title-edit {
+    font-weight: 900;
+    font-size: 1.2rem;
+    resize: none;
+    white-space: pre-wrap;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
 .article-show-body {
     display: block;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.5;
-   
+    white-space: pre-wrap;
     
     -webkit-box-flex: 1;
     margin-block-start: 1em;
@@ -65,7 +75,30 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-				
+
+.article-show-header-edit { 
+    resize: none;
+    white-space: pre-wrap;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+            
+.article-show-body-edit {
+   display: block;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    resize: none;
+    width: 100%;
+    -webkit-box-flex: 1;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px; 
+    font-family: 'Montserrat', sans-serif;
+}
 
 .article-info-2 {
     width: 100%;
