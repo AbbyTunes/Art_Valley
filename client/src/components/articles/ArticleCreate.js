@@ -106,9 +106,25 @@ class ArticleCreate extends React.Component {
         <div className="form-group">
           <input type="file" name="" id="" onChange={this.handleSelectedFile} />
         </div>
-        <input className="article-title-input" value={this.state.title} onChange={this.update("title")} placeholder="Title"/>
-        <textarea className="article-title-header" value={this.state.header} onChange={this.update("header")} placeholder="Header"/>
-        <textarea className="article-title-body" value={this.state.body} onChange={this.update("body")} placeholder="Body"/>
+        <TextareaAutosize 
+          className="article-title-input" 
+          value={this.state.title} 
+          onChange={this.update("title")} 
+          placeholder="Title"
+        />
+        <TextareaAutosize
+          className="article-title-header" 
+          value={this.state.header} 
+          onChange={this.update("header")} 
+          placeholder="Header"
+        />
+        <TextareaAutosize
+          className="article-title-body" 
+          value={this.state.body} 
+          onChange={this.update("body")} 
+          placeholder="Body"
+        />
+          
         {/* image here */}
         <input type="submit" value="Save Article" />
         <div className="article-message">{this.state.message}</div>
