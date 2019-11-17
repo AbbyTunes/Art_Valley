@@ -51,36 +51,36 @@ class CreateVideo extends Component {
 				>
 					{(newVideo) => (
 						<div className="profile-container">
-							<div className="art-form-container">
+							<div className="video-form-container">
 								<form onSubmit={() => this.addArt(newVideo)}>
 
-									<div className="art-form-content">
+									<div className="video-form-content">
 										<input
-											className="art-form-field-title"
+											className="video-form-field-title"
 											onChange={this.update("title")}
 											value={this.state.title}
 											placeholder="Add your title"
 											maxLength="40"
 											required
 										/>
-										<div className="art-form-field-name">
-											<div className="art-form-field-user-icon">
+										<div className="video-form-field-name">
+											<div className="video-form-field-user-icon">
 												<span
 													role="img"
 													alt=""
 													aria-label="debug"
-													className="art-form-field-user-icon-pic"
+													className="video-form-field-user-icon-pic"
 												>
 													👤
 												</span>
 											</div>
-											<span className="art-form-field-user-icon-text">
+											<span className="video-form-field-user-icon-text">
 												{localStorage.currentUsername}
 											</span>
 										</div>
 									</div>
 									<TextareaAutosize
-										className="art-form-field-description"
+										className="video-form-field-description"
 										value={this.state.description}
 										onChange={this.update("description")}
 										data-text="Tell everybody what your art is"
@@ -90,14 +90,14 @@ class CreateVideo extends Component {
 									/>
 
 									<input
-										className="art-form-field-link"
+										className="video-form-field-link"
 										onChange={this.update("videoLink")}
 										value={this.state.videoLink}
 										placeholder="Place URL for image/video here"
 										type="text"
 									/>
 
-									<button className="art-form-field-submit" type="submit">
+									<button className="video-form-field-submit" type="submit">
 										Create Video
 									</button>
 								</form>
