@@ -5,6 +5,7 @@ import { IconContext } from "react-icons";
 import { FaPencilAlt } from "react-icons/fa";
 import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
+import TextareaAutosize from "react-textarea-autosize";
 import { merge } from "lodash";
 const { UPDATE_ART_DESCRIPTION } = Mutations;
 const { FETCH_ART } = Queries;
@@ -70,7 +71,8 @@ class ArtDescriptionDetail extends React.Component {
                   }).then(() => this.setState({ editing: false }));
                 }}
               >
-                <input
+                <TextareaAutosize
+                className="art-show-description-edit"
                   value={this.state.description}
                   onChange={this.fieldUpdate("description")}
                 />
