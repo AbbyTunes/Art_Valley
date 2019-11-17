@@ -9,13 +9,20 @@
 }
 
 .art-header{
-		margin-top: 60px;
-		margin-bottom: 30px;
-    font-size: 2rem;
-    font-weight: 900;
+		margin-top: 20px;
+    display: inline-block;
+    min-width: 200px;
+    padding: 0px 10px;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-weight: 800;
 }
 
 .art-index-ul{
+		position: relative;
+		top: 25px;
 		display: grid;
     grid-template-columns: 100%;
     grid-row-gap: 20px;
@@ -25,7 +32,6 @@
 }
 
 .art-index-li{
-		border: 1px solid grey;
     height: 300px;
 }
 
@@ -74,6 +80,8 @@
 	}
 
 	.art-index-ul{
+			position: relative;
+			top: 15px;
 			display: flex;
 			flex-wrap: wrap;
 			min-width: 1000px;
@@ -82,8 +90,6 @@
 	}
 
 	.art-index-li{
-			border: 1px solid grey;
-			/* background: rgb(230, 230, 230); */
 			min-width: 300px;
 			max-width: 300px;
 			min-height: 230px;
