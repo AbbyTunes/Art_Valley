@@ -73,8 +73,7 @@ class ArtShow extends Component {
 
 					return (
 						<div className="show-container">
-							
-
+						
 
 							<div className="show-art">
 								
@@ -117,8 +116,9 @@ class ArtShow extends Component {
 								{deleteArtButton}
 							</div>
 						</div>
-	
-					
+						</div>
+					)
+					}}
 			</Query>
 		)
 	}
