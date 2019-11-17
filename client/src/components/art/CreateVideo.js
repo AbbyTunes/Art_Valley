@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import { Mutation, Query } from "react-apollo";
+import { Mutation } from "react-apollo";
 import "./video_form.css";
 import Mutations from "../../graphql/mutations";
-import Queries from "../../graphql/queries";
 import TextareaAutosize from "react-textarea-autosize";
 const { CREATE_VIDEO } = Mutations;
-const { FETCH_ART, FETCH_USER, FETCH_CATEGORIES } = Queries;
 
 class CreateVideo extends Component {
 	constructor(props) {

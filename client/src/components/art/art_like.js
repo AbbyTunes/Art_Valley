@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Query, Mutation } from "react-apollo";
+import { Mutation } from "react-apollo";
 import { merge } from "lodash";
 import "./art_show.scss";
 import { withRouter } from "react-router-dom";

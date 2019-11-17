@@ -135,7 +135,6 @@ class CreateComment extends React.Component {
                                     type="submit"
                                     value="Add Comment"
                                 />
-                                
                             </div>
                             <ul>
                                 {commentData.map((comment, idx) => {

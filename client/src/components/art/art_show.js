@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Query, Mutation } from "react-apollo";
+import { Query} from "react-apollo";
 import "./art_show.scss";
 import { withRouter, Link } from "react-router-dom";
 import CreateComment from "../comments/CreateComment";
@@ -74,7 +74,6 @@ class ArtShow extends Component {
 					}
 
 					return (
-
 						<div className="show-container">
 							<div className="show-art">
 								<div className="show-pic">
