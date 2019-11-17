@@ -54,9 +54,10 @@ class ArtShow extends Component {
 
 						let artPubList = artPublishedLimit.map(artPub => {
 							return (
-								<li className="published-li" key={artPub.id}>
+								<li className="home-article-example" key={artPub.id}>
 									<Link to={`${artPub.id}`}>
-										<img className="published-photo-thumbnail" alt="" src={artPub.photoLink} />
+										<img className="home-article-example-thumb" src={artPub.photoLink} />
+										<div className="video-photo-thumbnail-text">{artPub.title}</div>
 									</Link>
 								</li>
 							);
@@ -64,6 +65,7 @@ class ArtShow extends Component {
 						showArtist = (
 							<div className="show-artist">
 								<h1 className="published-header">Art by the Author</h1>
+								
 								<ul className="published-ul">{artPubList}</ul>
 							</div>
 						);
@@ -72,44 +74,44 @@ class ArtShow extends Component {
 					}
 
 					return (
-            <div className="show-container">
-              <div className="show-art">
-                <div className="show-pic">
-                  <img className="show-image" alt="" src={photoLink}></img>
-                </div>
+						<div className="show-container">
+							<div className="show-art">
+								<div className="show-pic">
+									<img className="show-image" src={photoLink}></img>
+								</div>
 
-                <div className="show-info">
-                  <div className="info-main">
-                    <div className="info-1">
-                      <div className="show-title">{titleOption}</div>
-                      <div className="author-name">{author.name}</div>
-                      <div className="show-description">
-                        {descriptionOption}
-                      </div>
-                    </div>
+								<div className="show-info">
 
-                    <div className="info-2">
-                      <ArtLike likers={likers} />
-                    </div>
-                  </div>
+									<div className="info-main">
+										<div className="info-1">
+											<div className="show-title">
+												{titleOption}
+											</div>
+											<div className="author-name">
+												{author.name}
+											</div>
+											<div className="show-description">
+												{descriptionOption}
+											</div>
+										</div>
 
-                  <div className="info-3">
-                    <div className="show-comment">Comments</div>
-                  </div>
+										<div className="info-2">
+											<ArtLike likers={likers} />
+										</div>
+									</div>
 
-                  <CreateComment
-                    artId={data.artById.id}
-                    comments={data.artById.comments}
-                  />
-                </div>
+									<div className="info-3">
+										<div className="show-comment">
+											<CreateComment artId={data.artById.id} comments={data.artById.comments} />
+										</div>
+									</div>
+									{showArtist}
 
-                {showArtist}
-
-                <div className="show-category"></div>
-              </div>
-              {deleteArtButton}
-            </div>
-          );
+								</div>
+							</div>
+							{deleteArtButton}
+						</div>
+					);
 				}}
 			</Query>
 		)
