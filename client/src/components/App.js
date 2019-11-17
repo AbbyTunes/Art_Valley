@@ -8,6 +8,7 @@ import Nav from "./nav/Nav";
 import Profile from "./user/Profile"
 import Settings from "./user/Settings";
 import CreateArt from "./art/CreateArt";
+import CreateVideo from "./art/CreateVideo";
 import ArtIndex from "./art/art_index";
 import ArtShow from "./art/art_show";
 import ArticleCreate from './articles/ArticleCreate';
@@ -39,6 +40,7 @@ const App = () => {
 			</Switch>
 			<Route exact path="/" component={Home}/>
 			<Route exact path="/create" component={CreateArt}/>
+			<Route exact path="/create-video" component={CreateVideo}/>
 			<Route exact path="/users/:userId" component={Profile} />
 			<Route exact path="/settings/:userId" component={Settings} />
 		</div>
