@@ -25,7 +25,6 @@
 }
 
 .video-index-li{
-		border: 1px solid grey;
     height: 300px;
 }
 
@@ -82,7 +81,6 @@
 	}
 
 	.video-index-li{
-			border: 1px solid grey;
 			min-width: 300px;
 			max-width: 300px;
 			min-height: 230px;
