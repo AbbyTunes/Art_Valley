@@ -33,7 +33,6 @@ display: block;
 .settings-form-display {
   /* temp add - tell chris */
   width: 600px;
-  padding: 40px;
   position: relative;
 /* temp add - tell chris */
 display: block;
@@ -78,4 +77,37 @@ display: block;
   font-size: 16px;
   background: inherit;
   font-family: system-ui
+}
+
+.settings-user-header {
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: #525558;
+}
+
+.settings-user-bio {
+    font-size: 14px;
+    line-height: 1.4em;
+    color: #525558;
+}
+
+.settings-user-inline-info {
+    display: inline-block;
+    color:#b9c1c7;
+    margin: 0 10px;
+    line-height: 1.4em;
+    font-size: 14px;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.settings-user-details {
+    margin-top: 10px;
+    justify-content: center;
+    text-align: center;
 }

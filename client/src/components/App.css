@@ -48,7 +48,7 @@ a {
 }
 
 span {
-    background-color: #3f9598;
+    background: inherit;
 }
 
 .art-debug{

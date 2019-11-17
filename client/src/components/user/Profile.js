@@ -2,12 +2,14 @@ import React from "react";
 import { Query } from "react-apollo";
 import "./profile.css"
 import { Link } from "react-router-dom";
-//test//
-import CreateComment from "../comments/CreateComment";
 import Settings from "./Settings";
-//
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 import Queries from "../../graphql/queries";
+import Gallery from "react-grid-gallery";
 const { FETCH_USER } = Queries;
+
+
 
 class Profile extends React.Component {
   constructor(props) {
@@ -62,45 +64,22 @@ class Profile extends React.Component {
             );
 
           console.log(data);
-          // let settings;
-          // if (
-          //   this.props.match.params.userId ===
-          //   localStorage.getItem("currentUserId")
-          // ) {
-          //   settings = (
-          //     // <div className="settings-link">
-          //     //   {/* <Link
-  
-          //     //     to={`/settings/${localStorage.currentUserId}`}
-          //     //   >
-          //     //     +
-          //     //   </Link> */}
-
-          //     //   {/* <Link
-          //     //     to={{
-          //     //       pathname: `/settings/${localStorage.currentUserId}`,
-          //     //       state: { data }
-          //     //     }}
-          //     //   >
-          //     //     +
-          //     //   </Link> */}
-               
-          //     // </div>
-              
-          //   );
-          // }
 
           let settings;
           if (localStorage.currentUserId === data.user.id) {
             settings = (
-              <div>
+              <div className="settings-container">
                 <button className="settings-button" onClick={this.handleClick}>
-                  Edit
+                  ✎
                 </button>
-                {this.state.clicked ? <Settings user={data} clicked={true}/> : null}
-                {this.state.clicked ?  null : <Settings user={data} clicked={false}/>}
+                {this.state.clicked ? (
+                  <Settings user={data} clicked={true} />
+                ) : null}
+                {this.state.clicked ? null : (
+                  <Settings user={data} clicked={false} />
+                )}
               </div>
-            )
+            );
           } else {
             settings = (
               <div>
@@ -109,85 +88,111 @@ class Profile extends React.Component {
             )
           }
 
-          
+          const recentlyLiked = data.user.likedArts.reverse().slice(0, 6);
+          const artLikedList = recentlyLiked.map(art => {
+            return {
+              src: art.photoLink,
+              thumbnail: art.photoLink,
+              thumbnailWidth: 320,
+              thumbnailHeight: 174,
+              caption: (
+                <a className="art-title" href={`#/arts/${art.id}`}>
+                  <span className="profile-gallery-span">{art.title}</span>
+                </a>
+              )
+            };
+          });
 
-          let recentlyLiked;
-          if (data.user.likedArts.length !== 0) {
-            let artListLimit = data.user.likedArts.slice(0, 6);
-            // let artList = artListLimit.map(art => {
-            let artList = data.user.likedArts.map(art => {
-              return (
-                <li key={art.id}>
-                  {/* {art.title} */}
-                  <img
-                    className="profile-photo-thumbnail"
-                    src={art.photoLink}
-                  />
-                </li>
-              );
-            });
-            recentlyLiked = (
-              <div className="recently-liked">
-                <h1 className="profile-header">Recently Liked</h1>
-                <ul className="liked-list">{artList}</ul>
-                <div className="see-more-button">
-                  <Link to="#">See More</Link>
-                </div>
+          const artPublishedLimit = data.user.publishedArts.reverse().slice(0, 6);
+          const artPubList = artPublishedLimit.map(art => {
+            return {
+              src: art.photoLink,
+              thumbnail: art.photoLink,
+              thumbnailWidth: 320,
+              thumbnailHeight: 174,
+              caption: (
+                <a className="art-title" href={`#/arts/${art.id}`}>
+                  <span className="profile-gallery-span">{art.title}</span>
+                </a>
+              )
+            };
+          });
+        
+
+          const articlePublishedLimit = data.user.publishedArticles.reverse().slice(0, 6);
+          const articlePubList = articlePublishedLimit.map(article => {
+            return {
+              src: article.photoLink,
+              thumbnail: article.photoLink,
+              thumbnailWidth: 320,
+              thumbnailHeight: 174,
+              caption: (
+                <a className="art-title" href={`#/community/${article.id}`}>
+                  <span className="profile-gallery-span">{article.title}</span>
+                </a>
+              )
+            };
+          });
+
+          const publishedArt = (
+            <div className="profile-published">
+                <Gallery
+                  images={artPubList}
+                  enableLightbox={true}
+                  enableImageSelection={false}
+                  backdropClosesModal
+                  margin={5}
+                />
               </div>
-            );
-          }
+          )
 
-          let artPublishedLimit = data.user.publishedArts.slice(0, 6);
-          let artPubList = artPublishedLimit.map(art => {
-            return (
-              <li key={art.id}>
-                <img className="profile-photo-thumbnail" src={art.photoLink} />
-              </li>
-            );
-          });
+          const publishedArticles = (
+            <div className="profile-published">
+            
+              <Gallery
+                images={articlePubList}
+                enableLightbox={true}
+                enableImageSelection={false}
+                backdropClosesModal
+                margin={5}
+              />
+            </div>
+          );
 
-          let articlePublishedLimit = data.user.publishedArticles.slice(0, 6);
-          let articlePubList = articlePublishedLimit.map(article => {
-            return (
-              <li key={article.id}>
-                <img className="profile-photo-thumbnail" src={article.photoLink} />
-              </li>
-            );
-          });
+          const recentlyLikedTab = (
+            <div className="profile-published">
+            
+              <Gallery
+                images={artLikedList}
+                enableLightbox={true}
+                enableImageSelection={false}
+                backdropClosesModal
+                margin={5}
+              />
+            </div>
+          );
 
           return (
             <div className="profile-container">
-              <div className="user-info">
-                <h1 className="user-header">{data.user.name}</h1>
-                {/* {settings} */}
-              </div>
-
-              {/* <button className="settings-button" onClick={this.handleClick}>
-                Edit
-              </button>
-              {this.state.clicked ? <Settings user={data} clicked={true}/> : null}
-              {this.state.clicked ?  null : <Settings user={data} clicked={false}/>} */}
+              <div className="user-info"></div>
               {settings}
 
-              {/* <div className="profile-playlist">
-                <h1 className="profile-header">Playlist</h1> */}
-              {/* <ul className="liked-list">
-                  {artList}
-                </ul>
-              <div className="see-more-button">
-                  <Link to="#">See More</Link>
-              </div> */}
-              {/* </div> */}
-              <div className="profile-published">
-                <h1 className="profile-header">Recently Published Art</h1>
-                <ul className="published-list">{artPubList}</ul>
-              </div>
-              <div className="profile-published">
-                <h1 className="profile-header">Recently Published Articles</h1>
-                <ul className="published-list">{articlePubList}</ul>
-              </div>
-              <h1>TEST BELOW</h1>
-              <CreateComment className="comment"></CreateComment>
+              
+
+              
+
+              <Tabs className="profile-tabs"
+              selectedTabClassName="profile-tab-single-selected">
+                <TabList>
+                  <Tab className="profile-tab-single">Recent Art</Tab>
+                  <Tab className="profile-tab-single">Recent Articles</Tab>
+                  <Tab className="profile-tab-single">Recently Liked</Tab>
+                </TabList>
+
+                <TabPanel>{publishedArt}</TabPanel>
+                <TabPanel>{publishedArticles}</TabPanel>
+                <TabPanel>{recentlyLikedTab}</TabPanel>
+              </Tabs>
             </div>
           );
         }}
