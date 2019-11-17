@@ -94,11 +94,11 @@ class Nav extends React.Component {
                 className="fas fa-bars"
                 onClick={() => this.extend("nav-links", "nav-links-2")}
               ></i>
-              <i
+              {/* <i
                 id="search"
                 className="fas fa-search"
                 onClick={() => this.extend("search-input", "search-input-2")}
-              ></i>
+              ></i> */}
              {user}
             </div>
             <div className="nav-logo">
@@ -106,7 +106,7 @@ class Nav extends React.Component {
             </div>
           </div>
 
-          <div className="nav-extends">
+          {/* <div className="nav-extends">
             <div id="search-input" className="nav-search">
               <input
                 id="search-input-2"
@@ -114,7 +114,7 @@ class Nav extends React.Component {
                 placeholder="Search Art Valley"
               />
             </div>
-          </div>
+          </div> */}
         </div>
         <div id="nav-links" className="nav-links-container">
           <ApolloConsumer>
