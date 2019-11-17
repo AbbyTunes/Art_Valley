@@ -1,9 +1,11 @@
 import React from "react";
 import { Mutation } from "react-apollo";
+import "./article_show.css"
 // we added the "react-icons" library to have access to a pencil icon for editting
 import { IconContext } from "react-icons";
 import { FaPencilAlt } from "react-icons/fa";
 import Mutations from '../../graphql/mutations';
+import TextareaAutosize from "react-textarea-autosize";
 import Queries from '../../graphql/queries';
 import {merge} from "lodash"
 const { UPDATE_ARTICLE_TITLE } = Mutations;
@@ -70,7 +72,8 @@ class ArticleTitleDetail extends React.Component {
                   }).then(() => this.setState({ editing: false }));
                 }}
               >
-                <input
+                <TextareaAutosize
+                  className="article-show-title-edit"
                   value={this.state.title}
                   onChange={this.fieldUpdate("title")}
                 />

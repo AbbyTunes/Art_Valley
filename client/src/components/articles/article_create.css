@@ -19,6 +19,7 @@
     font-size: 30px;
     padding: 20px 20px 0px 20px;
     border: 0;
+    resize: none;
 }
 
 .article-title-header{
@@ -26,6 +27,7 @@
     font-size: 25px;
     padding: 20px 20px 0px 20px;
     border: 0;
+    resize: none;
 }
 
 .article-title-body{
@@ -33,11 +35,34 @@
     font-size: 25px;
     padding: 20px 20px 0px 20px;
     border: 0;
+    resize: none;
+    margin-bottom: 40px;
 }
 
 
 
+.article-submit {
+  width: 140px;
+  height: 40px;
+  background: black;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  float: right;
+  position: relative;
+  display: block;
+  bottom: 10px;
+  margin: 0 auto;
+}
 
+.article-submit:hover {
+  align-self: center;
+  background: #3f9598;
+  transition: 0.2s;
+  cursor: pointer; 
+}
 
 
 .article-form-image-container {
@@ -100,6 +125,7 @@
 
 @media screen and (min-width: 1000px){
     .article-create-form{
+      width: 900px;
         max-width: 1230px;
     }
 }

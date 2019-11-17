@@ -9,8 +9,15 @@ class ArticleDelete extends React.Component {
     constructor(props) {
         super(props);
         this.delete = this.delete.bind(this);
-
+        this.confirmDelete = this.confirmDelete.bind(this);
         
+    }
+
+    confirmDelete(deleteArticle) {
+        let result = window.confirm("Delete this article permanently?")
+        if (result) {
+            this.delete(deleteArticle)
+        }
     }
 
     delete(deleteArticle) {
@@ -31,7 +38,7 @@ class ArticleDelete extends React.Component {
                     <a
                     className="comment-body-delete"
                     onClick={e => {
-                        this.delete(deleteArticle);
+                        this.confirmDelete(deleteArticle);
                         // e.preventDefault();
                         // deleteArticle({ variables: { _id: this.props.match.params.articleId } });
                     }}

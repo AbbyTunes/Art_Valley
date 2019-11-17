@@ -43,6 +43,13 @@
 						margin: 20px 0;
 					}
 
+					.author-name{
+						font-weight: 900;
+						font-size: 1.2rem;
+						margin: 20px 0;
+					
+					}
+
 					.show-description {
 						display: block;
 						font-size: .8rem;
@@ -141,15 +148,16 @@
 			margin: auto;
 
 			.show-pic {
-				display: block;
+				display: flex;
+    			justify-content: center;
 				height: auto;
 				overflow: hidden;
 				width: 700px;
-				height: 450px;
+				max-height: 700px;
 				margin: auto;
 
 				.show-image {
-					width: 100%;
+					width: auto;
 					height: 100%;
 					object-fit: cover;
 				}

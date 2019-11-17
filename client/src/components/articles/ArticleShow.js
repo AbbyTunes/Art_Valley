@@ -117,7 +117,7 @@ class ArticleShow extends Component {
                             commentData={data.article.comments}
                           />
                         </div>
-                        {deleteArticleButton}
+                        {/* {deleteArticleButton} */}
                         
                       </div>
                     );

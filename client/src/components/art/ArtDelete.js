@@ -9,12 +9,20 @@ class ArtDelete extends React.Component {
   constructor(props) {
     super(props);
     this.delete = this.delete.bind(this);
+    this.confirmDelete = this.confirmDelete.bind(this);
+  }
+
+  confirmDelete(deleteArt) {
+    let result = window.confirm("Delete this piece permanently?")
+    if (result) {
+      this.delete(deleteArt)
+    }
   }
 
   delete(deleteArt) {
     deleteArt({
       variables: { _id: this.props.match.params.artId }
-    }).then(this.props.history.push("/"));
+    }).then(this.props.history.push("/arts"));
   }
 
   render() {
@@ -27,8 +35,8 @@ class ArtDelete extends React.Component {
           <a
             className="comment-body-delete"
             onClick={e => {
-              this.delete(deleteArt);
-        
+              // this.delete(deleteArt);
+              this.confirmDelete(deleteArt);
             }}
           >
             Delete

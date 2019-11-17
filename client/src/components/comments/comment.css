@@ -93,6 +93,10 @@
   font-family: sans-serif;
 }
 
+.comment-author:hover{
+  color: #adbebf;
+}
+
 .comment-body {
   font-size: 12px;
 }

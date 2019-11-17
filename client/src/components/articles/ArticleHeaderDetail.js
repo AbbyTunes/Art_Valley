@@ -2,6 +2,7 @@ import React from "react";
 import { Mutation } from "react-apollo";
 // we added the "react-icons" library to have access to a pencil icon for editting
 import { IconContext } from "react-icons";
+import TextareaAutosize from "react-textarea-autosize";
 import { FaPencilAlt } from "react-icons/fa";
 import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
@@ -70,7 +71,8 @@ class ArticleHeaderDetail extends React.Component {
                   }).then(() => this.setState({ editing: false }));
                 }}
               >
-                <input
+                <TextareaAutosize
+                className="article-show-header-edit"
                   value={this.state.header}
                   onChange={this.fieldUpdate("header")}
                 />
