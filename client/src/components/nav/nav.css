@@ -10,6 +10,9 @@
     border-bottom: 1px solid #888;
 }
 
+.nav-categories-list{
+    display: none;
+}
 
 
 .nav-container{
