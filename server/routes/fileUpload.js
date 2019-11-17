@@ -59,6 +59,7 @@ router.post("/upload", upload.single("file"), function(req, res) {
 });
 
 
+
 // router.route("/:id").delete((req, res, next) => {
 //   DOCUMENT.findByIdAndRemove(req.params.id, (err, result) => {
 //     if (err) {
@@ -90,5 +91,6 @@ router.post("/upload", upload.single("file"), function(req, res) {
 //     });
 //   });
 // });
+
 
 module.exports = router;

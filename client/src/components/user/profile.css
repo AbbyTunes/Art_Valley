@@ -5,7 +5,10 @@
     align-items: center;
     position: relative;
     top: 90px;
+    width: 100%;
 }
+
+
 
 .user-info{
     display: flex;
@@ -38,14 +41,37 @@
     min-width: 200px;
     padding: 0px 10px;
     font-size: 24px;
-    border-top: 2px solid #3f9598;
     text-align: center;
     padding-top: 40px;
     padding-bottom: 40px;
 }
 
+.profile-tabs{
+    width: 100%;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+}
+
+.profile-tab-single {
+    display: inline-block;
+    padding: 20px;
+}
+
+.profile-tab-single:hover {
+    background: rgba(44, 117, 107, 0.068);
+    cursor: pointer;
+}
+
+.profile-tab-single-selected {
+    font-weight: 700;
+    background: rgba(44, 117, 107, 0.185);
+
+}
+
 .profile-published{
     text-align: center;
+    padding: 20px;
 }
 
 .user-header{
@@ -146,8 +172,23 @@
     background: red;
 }
 
+.art-title {
+    color: white;
+    font-weight: 700;
+}
 
+.profile-gallery-span {
+    display: block;
+    width: 100%;
+    background: inherit;
+    text-align: center;
+}
 
+.profile-gallery-span:hover {
+    text-decoration: underline;
+    color: rgb(214, 214, 214);
+
+}
 .profile-art-create-link {
   width: 120px;
   background: #dadada;

@@ -2,7 +2,6 @@
   margin-top: 110px;
   display: block;
   position: relative;
-  width: 100%
 }
 
 .home-container{
@@ -13,10 +12,17 @@
 }
 
 .home-splash-image {
+  display: block;
   width: 100%;
-  height: 540px;
+  height: auto;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.home-splash-container{
+  width: 100%;
+  display: block;
+  margin-bottom: 100px;
 }
 
 // .home-splash-carousel-legend {
@@ -41,7 +47,7 @@
   margin-top: 50%;
   margin-left: 0 auto;
   width: 50%;
-  height: 40%;
+  height: 20%;
   border-radius: 10px;
   background: rgb(255, 255, 255);
   color: black;
@@ -111,6 +117,7 @@
   font-weight: 600;
   text-align: center;
   margin-bottom: 20px;
+  font-family: sans-serif;
 }
 
 
@@ -136,7 +143,7 @@
   display: inline-block;
   margin: 5px;
   padding: 5px;
-  width: 160px;
+  width: 190px;
   height: 130px;
 }
 
@@ -154,6 +161,25 @@
 }
 
 .home-article-index-container{
-  width: fit-content;
-  margin: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* top: 90px; */
+    width: 100%;
+}
+
+.home-art-container {
+  display: block;
+  overflow: hidden;
+  background: inherit;
+  width: 100%;
+}
+
+span {
+  background: inherit;
+}
+
+.home-list {
+ text-align: center;
+ columns: 23%;
 }

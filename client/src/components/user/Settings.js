@@ -51,15 +51,34 @@ class Settings extends React.Component {
       <div className="settings-form-display">
         <span className="session-errors"></span>
         {/* <h3 className="session-input-title">Username</h3>
-        <div className="settings-input-info">{this.props.user.user.name}</div>
+        
         <h3 className="session-input-title">Email Address</h3>
         <div className="settings-input-info">{this.props.user.user.email}</div> */}
-        <h3 className="session-input-title">Location</h3>
-        <div className="settings-input-info">
+        <div h1 className="settings-user-header">
+          {this.props.user.user.name}
+        </div>
+        <div className="settings-user-bio">{this.props.user.user.bio}</div>
+
+
+        <div className="settings-user-details">
+         <div className="settings-user-inline-info">
+            <span className="bold">{this.props.user.user.publishedArts.length}</span> Published Art Pieces
+          </div>
+          <div className="settings-user-inline-info">
+            <span className="bold">{this.props.user.user.publishedArticles.length}</span> Published Articles
+          </div>
+
+          <div className="settings-user-inline-info">
+            <span className="bold">{this.props.user.user.likedArts.length}</span> Likes
+          </div>
+
+        
+
+        <div className="settings-user-inline-info">
           {this.props.user.user.location}
         </div>
-        <h3 className="session-input-title">Bio</h3>
-        <div className="settings-input-info">{this.props.user.user.bio}</div>
+        </div>
+        
       </div>
     );
 

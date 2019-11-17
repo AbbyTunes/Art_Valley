@@ -113,7 +113,7 @@
 
 .nav-links-container.show{
     display: block;
-    position: absolute;
+    position: fixed;
     min-height: 30px;
     width: 260px;
     top: 50px;

@@ -5,17 +5,21 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Queries from "../../graphql/queries";
 import "./home.scss";
+import Gallery from "react-grid-gallery";
+import ArticleIndexItem from "../articles/ArticleIndexItem";
+
 
 const { FETCH_ARTS_BY_CATEGORY, FETCH_ARTICLES } = Queries;
 const divLine = (<div className="home-div-line" />);
 
+
 class Home extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
+    console.log(props);
   }
 
-  artHomeExamples () {
+  artHomeGallery() {
     return (
       <Query
         query={FETCH_ARTS_BY_CATEGORY}
@@ -24,7 +28,67 @@ class Home extends Component {
         {({ loading, error, data }) => {
           if (loading)
             return (
-              <div className="art-index-container"><p>Loading...</p></div>
+              <div className="art-index-container">
+                <p>Loading...</p>
+              </div>
+            );
+          if (error)
+            return (
+              <div className="home-article-index-container">
+                <p>Error</p>
+              </div>
+            );
+
+
+          const allArtList = data.artsByCategory.slice(0, 8).map(art => {
+            return {
+              src: art.photoLink,
+              thumbnail: art.photoLink,
+              thumbnailWidth: 420,
+              thumbnailHeight: 320,
+              // caption: art.title
+              caption: art.title
+            };
+          });
+
+          console.log(allArtList);
+
+          
+
+          return (
+            // <div className="home-article-index-container">
+            <div className="home-art-container">
+              {divLine}
+              <h2 className="home-header-text">Featured Art</h2>
+
+              <Gallery
+                images={allArtList}
+                enableLightbox={true}
+                maxRows={1}
+                backdropClosesModal
+                enableImageSelection={false}
+                // currentImage={3}
+                // isOpen={ true}
+              />
+            </div>
+          );
+        }}
+      </Query>
+    );
+  }
+
+  artHomeExamples() {
+    return (
+      <Query
+        query={FETCH_ARTS_BY_CATEGORY}
+        variables={{ categoryId: "5dc603aa4dc3a23d54cbb4fb" }}
+      >
+        {({ loading, error, data }) => {
+          if (loading)
+            return (
+              <div className="art-index-container">
+                <p>Loading...</p>
+              </div>
             );
           if (error)
             return (
@@ -35,7 +99,7 @@ class Home extends Component {
 
           let allArtList = data.artsByCategory.slice(0, 6).map(art => {
             return (
-              <li key={art.id} className="home-article-example"    >
+              <li key={art.id} className="home-article-example">
                 <Link to={`/arts/${art.id}`}>
                   <img
                     className="home-article-example-thumb"
@@ -51,7 +115,7 @@ class Home extends Component {
             <div className="home-article-index-container">
               {divLine}
               <h2 className="home-header-text">Featured Art</h2>
-              {allArtList}
+              <div className="home-list">{allArtList}</div>
             </div>
           );
         }}
@@ -75,15 +139,18 @@ class Home extends Component {
                 <p>Loading...</p>
               </div>
             );
-          let allArticleList = data.articles.slice(0, 6).map(article => {
+          let allArticleList = data.articles.slice(0, 3).map(article => {
             return (
-              <li key={article.id} className="home-article-example">
-                <Link to={`/community/${article.id}`}>
+              <li key={article.id} className="article-index-li">
+                {/* <Link to={`/community/${article.id}`}>
                   <img
                     className="home-article-example-thumb"
                     src={article.photoLink}
                     alt={article.title}
                   />
+                </Link> */}
+                <Link to={`/community/${article.id}`}>
+                  <ArticleIndexItem article={article} />
                 </Link>
               </li>
             );
@@ -93,7 +160,7 @@ class Home extends Component {
             <div className="home-article-index-container">
               {divLine}
               <h2 className="home-header-text">Featured Articles</h2>
-              {allArticleList}
+              <div className="article-index-list">{allArticleList}</div>
             </div>
           );
         }}
@@ -112,9 +179,10 @@ class Home extends Component {
   }
 
   render() {
-    
     return (
       <div>
+
+        <div className="home-splash-container">
         <Carousel
           className="home-splash"
           showThumbs={false}
@@ -122,30 +190,30 @@ class Home extends Component {
           infiniteLoop={true}
           swipeable={true}
           autoPlay={true}
-          interval="5000"
-          transitionTime="1000"
-          swipeScrollTolerance="20"
+          interval={5000}
+          transitionTime={1000}
+          swipeScrollTolerance={20}
+          dynamicHeight={true}
         >
-          <div className="home-splash-image">
+          {/* <div className="home-splash-image">
             <img src="https://cdn.theculturetrip.com/wp-content/uploads/2016/01/Golden-Dawn-Bridge-watercolor-%C2%A9-Nicolas-RaymondFlickr.jpg" />
             <p className="home-splash-carousel-legend">Legend 1</p>
           </div>
           <div className="home-splash-image">
             <img src="https://cdn.vox-cdn.com/thumbor/0OpaMlR5wdbpAHNHH-HVUVd8TRc=/0x0:1000x812/1200x800/filters:focal(664x399:824x559)/cdn.vox-cdn.com/uploads/chorus_image/image/63309864/shutterstock_1209873721.0.jpg" />
             <p className="home-splash-carousel-legend">Legend 2</p>
-          </div>
+          </div> */}
           <div className="home-splash-image">
-            <img src="https://ihg.scene7.com/is/image/ihg/kimpton-SF-Bay-Area-header" />
-            <p className="home-splash-carousel-legend">Legend 3</p>
+            <img src="https://ihg.scene7.com/is/image/ihg/kimpton-SF-Bay-Area-header" alt=""/>
+            <p className="home-splash-carousel-legend">Bridge</p>
           </div>
         </Carousel>
-        <div className="home-container">
 
-          
+        </div>
+        <div className="home-container">
           {this.artHomeExamples()}
           {this.articleHomeExamples()}
           {this.developerInformation()}
-
         </div>
       </div>
     );
