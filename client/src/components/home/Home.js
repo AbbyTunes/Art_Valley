@@ -180,7 +180,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="home-total-container">
 
         <div className="home-splash-container">
         <Carousel

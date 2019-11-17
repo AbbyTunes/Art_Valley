@@ -13,17 +13,22 @@
 
 
 .nav-container{
-    display: flex;
+    position: fixed;
+    width: 100%;
     justify-content: space-between;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     padding: 10px 15px 0px 15px;
+    background: white;
+    display: inline-block;
+    border-bottom: 1px solid #888;
+    z-index: 155;
 }
 
 
 
 .nav-icon-container{
-    display: flex;
+    display: inline-block;
     flex-wrap: wrap;
     height: 57px; 
     width: 68px;
@@ -62,10 +67,13 @@
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
+    display: inline-block;
+    float: right;
+    margin-right: 50px;
 }
 
 .nav-logo:hover {
-    opacity: 0.6;
+    opacity: 0.4;
 }
 
 
@@ -75,6 +83,29 @@
     height: 100vh;
     width: 100vh;
     z-index: -100;
+}
+
+.navbar {
+  width: 100%;
+  display: block;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.616);
+  top: 60px;
+  transition: top 0.6s;
+  border-bottom: 1px solid black;
+    justify-content: center;
+    top: 67px;
+    border-bottom: 1px solid #888;
+    z-index: 14;
+}
+
+.navbar:hover {
+    background: rgba(255, 255, 255, 0.884);
+    transition: 0.3s;
+}
+
+.navbar--hidden {
+  top: -50px;
 }
 
 .nav-modal.active {
@@ -203,6 +234,8 @@
     outline: none;
 }
 
+
+
 @keyframes searchOpen{
     0% { opacity: 0;}
     100% { opacity: 1;}
@@ -252,15 +285,19 @@
     .nav-categories-list{
         display: flex;
         justify-content: space-around;
-        min-width: 400px;
-        max-width: 40%;
+        /* min-width: 400px; */
+        /* max-width: 40%; */
         padding: 20px;
+        justify-content: center;
+        /* width: 40%; */
     }
 
     .nav-categories-list > li{
         text-transform: uppercase;
         font-size: 16px;
         font-weight: 500;
+        padding-left: 40px;
+        padding-right: 40px;
     }
 
     .nav-categories-list > li > a:hover{
@@ -280,7 +317,7 @@
 
 @media screen and (min-width: 1200px){
     .nav-container, .nav-extends{
-        width: 1200px;
+        /* width: 1200px; */
         margin: 0 auto;
     }
 }

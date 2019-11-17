@@ -7,8 +7,16 @@
 .home-container{
   display: block;
 	position: relative;
-	top: 70px;
+	top: 100px;
   padding: 40px;
+}
+
+.home-total-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 70px;
+    width: 100%;
 }
 
 .home-splash-image {
