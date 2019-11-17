@@ -13,8 +13,8 @@ class Nav extends React.Component {
     this.extend = this.extend.bind(this);
     this.state = {
       elements: "",
-      prevScrollpos: window.pageYOffset,
-      visible: true
+      oldYPosition: window.pageYOffset,
+      visibility: true
     };
   }
 
@@ -33,14 +33,12 @@ class Nav extends React.Component {
   }
 
   handleScroll = () => {
-    const { prevScrollpos } = this.state;
-
-    const currentScrollPos = window.pageYOffset;
-    const visible = prevScrollpos > currentScrollPos;
-
+    const { oldYPosition } = this.state;
+    const scrollYPosition = window.pageYOffset;
+    const visibility = oldYPosition > scrollYPosition;
     this.setState({
-      prevScrollpos: currentScrollPos,
-      visible
+      oldYPosition: scrollYPosition,
+      visibility
     });
   };
 
@@ -263,7 +261,7 @@ class Nav extends React.Component {
 
         <nav
           className={classnames("navbar", {
-            "navbar--hidden": !this.state.visible
+            "navbar--hidden": !this.state.visibility
           })}
         >
           <ul className="nav-categories-list">
