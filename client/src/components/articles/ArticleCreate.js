@@ -118,7 +118,7 @@ class ArticleCreate extends React.Component {
         aria-label="debug"
         className="article-form-image-debug-icon"
       >
-        📷
+        
       </span>
     );
     return (

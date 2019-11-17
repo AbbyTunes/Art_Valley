@@ -35,16 +35,16 @@ class ArtDescriptionDetail extends React.Component {
     const art = cache.readQuery({
       query: FETCH_ART,
       variables: {
-        _id: this.props.art.id
+        artId: this.props.art.id
       }
     });
     let newArt = merge({}, art);
-    newArt.art.description = this.state.description;
+    newArt.artById.description = this.state.description;
     cache.writeQuery({
       query: FETCH_ART,
       data: newArt,
       variables: {
-        _id: this.props.art.id
+        artId: this.props.art.id
       }
     });
   }
