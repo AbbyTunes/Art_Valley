@@ -78,32 +78,6 @@
 }
 
 
-/* .art-photo-thumbnail:hover{
-	display: block;
-	opacity: .9;
-	background-color: gray;
-}
-
-.art-photo-thumbnail:hover ~ .art-photo-thumbnail-text{
-	display: flex;
-}
-
-.art-photo-thumbnail-text{
-	display: none;
-    position: relative;
-    /* z-index: 5; */
-    /* color: white;
-	font-weight: 800;
-	font-size: 40px;
-	top: -200px;
-	text-shadow: black;
-	justify-content: center;
-	align-items: center;
-} */
-
-
-
-
 
 
 @media screen and (min-width: 1000px){
