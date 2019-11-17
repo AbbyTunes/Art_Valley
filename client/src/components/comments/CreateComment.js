@@ -121,6 +121,7 @@ class CreateComment extends React.Component {
                     {newComment => (
                         <form onSubmit={e => this.handleSubmit(e, newComment)}>
                             <div className="comment-form-container">
+															<div className="comment-line"></div>
                                 <TextareaAutosize
                                     className="comment-form"
                                     value={this.state.body}
@@ -134,7 +135,6 @@ class CreateComment extends React.Component {
                                     type="submit"
                                     value="Add Comment"
                                 />
-                                {/* <div className="comment-line" /> */}
                             </div>
                             <ul>
                                 {commentData.map((comment, idx) => {
