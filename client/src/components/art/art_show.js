@@ -42,7 +42,6 @@ class ArtShow extends Component {
 					let descriptionOption; 
 					descriptionOption = author.id === localStorage.currentUserId ?
 					<ArtDescriptionDetail art={data.artById}></ArtDescriptionDetail> : <div>{description}</div>
-
 					
 					let showArtist;
 					if (author.publishedArts.length !== 1 ) {

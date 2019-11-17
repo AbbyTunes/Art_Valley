@@ -122,14 +122,14 @@ class CreateArt extends Component {
           <div className="art-form-container">
             <form onSubmit={e => this.handleSubmit(e)}>
               <div className="art-form-header-bar">
-                <select
+                {/* <select
                   className="art-form-category"
                   value={this.state.category}
                   onChange={this.update("category")}
                 >
                   <option value="Photo">Photo</option>
                   <option value="Video">Video</option>
-                </select>
+                </select> */}
               </div>
 
               <div className="art-form-content">

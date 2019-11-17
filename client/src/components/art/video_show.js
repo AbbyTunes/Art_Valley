@@ -30,9 +30,8 @@ class VideoShow extends Component {
 					);
 
 					const { id, description, videoLink, title, likers, author } = data.artById;
-					console.dir(data)
-
 					let showArtist;
+<<<<<<< HEAD
 					// if (author.publishedArts){
 						// if (author.publishedArts.length > 1) 
 						if (author.publishedArts.length !== 1 ) {
@@ -74,6 +73,42 @@ class VideoShow extends Component {
 							showArtist = (null)
 						}
 					// }
+=======
+				
+					if (author.publishedArts.length !== 1 ) {
+						const artPublishedLimit = author.publishedArts.filter(pubArt => pubArt.id !== id)
+							.filter(pubArt => pubArt.videoLink)
+							.slice(0, 3);
+				
+						let allVideoList = artPublishedLimit.map((video) => {
+					
+							const linkStrArr = video.videoLink.split("/")
+							const linkId = linkStrArr[linkStrArr.length - 1]
+
+							return (
+								<li key={video.id} className="home-article-example" >
+									
+									<Link to={`/videos/${video.id}`}>
+										<img className="home-article-example-thumb"
+												src={`https://img.youtube.com/vi/${linkId}/0.jpg`}
+												alt="" 
+										/>
+										<div className="video-photo-thumbnail-text">{video.title}</div>
+									</Link>	
+								</li>
+							)
+						})
+
+						showArtist = (
+							<div className="show-artist">
+								<h1 className="published-header">Art of the Author</h1>
+								<ul className="published-ul">{allVideoList}</ul>
+							</div>
+						);
+					} else {
+						showArtist = (null)
+					}
+>>>>>>> master
 
 					return (
 						<div className="show-container">

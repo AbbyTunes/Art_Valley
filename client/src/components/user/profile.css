@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 90px;
+    top: 140px;
     width: 100%;
 }
 
@@ -60,7 +60,9 @@
 
 .profile-tab-single:hover {
     background: rgba(44, 117, 107, 0.068);
+    transition: 0.5s;
     cursor: pointer;
+    user-select: none;
 }
 
 .profile-tab-single-selected {
@@ -187,6 +189,7 @@
 .profile-gallery-span:hover {
     text-decoration: underline;
     color: rgb(214, 214, 214);
+    
 
 }
 .profile-art-create-link {

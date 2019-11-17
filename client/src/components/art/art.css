@@ -72,6 +72,18 @@
   background: black;
 }
 
+.loading{
+
+  width: 100px;
+  height: 100px;
+  position: relative;
+  background-color: red;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: 3;
+
+}
+
 .art-form-image-preview:hover{
   background: rgb(209, 209, 209);
   cursor: pointer;

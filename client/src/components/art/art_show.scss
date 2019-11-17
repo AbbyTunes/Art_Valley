@@ -1,7 +1,7 @@
 .show-container {
 	display: block;
 	position: relative;
-	top: 70px;
+	top: 120px;
 	padding: 40px;
 
 	.show-art {
@@ -29,7 +29,7 @@
 
 		.show-pic:hover {
 			background: #eeeeee;
-			radius: 10px;
+			border-radius: 10px;
 			overflow: hidden;
 		}
 
@@ -179,7 +179,7 @@
 	.show-container {
 		display: block;
 		position: relative;
-		top: 70px;
+		top: 120px;
 		padding: 40px 60px;
 
 		.show-art {
@@ -195,7 +195,7 @@
 				width: 700px;
 				max-height: 700px;
 				margin: auto;
-				radius: 10px;
+				border-radius: 10px;
 				overflow: hidden;
 
 				.show-image {
@@ -290,7 +290,7 @@
 			.published-ul {
 				display: flex;
 				margin: auto;
-				fit-content
+				width: fit-content;
 
 				.home-article-example { 
 					display: inline-block;
