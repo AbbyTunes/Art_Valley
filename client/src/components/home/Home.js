@@ -181,34 +181,42 @@ class Home extends Component {
   render() {
     return (
       <div className="home-total-container">
-
         <div className="home-splash-container">
-        <Carousel
-          className="home-splash"
-          showThumbs={false}
-          showStatus={false}
-          infiniteLoop={true}
-          swipeable={true}
-          autoPlay={true}
-          interval={5000}
-          transitionTime={1000}
-          swipeScrollTolerance={20}
-          dynamicHeight={true}
-        >
-          {/* <div className="home-splash-image">
-            <img src="https://cdn.theculturetrip.com/wp-content/uploads/2016/01/Golden-Dawn-Bridge-watercolor-%C2%A9-Nicolas-RaymondFlickr.jpg" />
-            <p className="home-splash-carousel-legend">Legend 1</p>
-          </div>
-          <div className="home-splash-image">
-            <img src="https://cdn.vox-cdn.com/thumbor/0OpaMlR5wdbpAHNHH-HVUVd8TRc=/0x0:1000x812/1200x800/filters:focal(664x399:824x559)/cdn.vox-cdn.com/uploads/chorus_image/image/63309864/shutterstock_1209873721.0.jpg" />
-            <p className="home-splash-carousel-legend">Legend 2</p>
-          </div> */}
-          <div className="home-splash-image">
-            <img src="https://ihg.scene7.com/is/image/ihg/kimpton-SF-Bay-Area-header" alt=""/>
-            <p className="home-splash-carousel-legend">Bridge</p>
-          </div>
-        </Carousel>
-
+          <Carousel
+            className="home-splash"
+            showThumbs={false}
+            showStatus={false}
+            infiniteLoop={true}
+            swipeable={true}
+            autoPlay={true}
+            interval={5000}
+            transitionTime={1000}
+            swipeScrollTolerance={20}
+            dynamicHeight={true}
+          >
+            <div className="home-splash-image">
+              <img src="https://i.imgur.com/CDFQxi8.jpg" />
+              <p className="home-splash-carousel-legend">Legend 1</p>
+            </div>
+            <div className="home-splash-image">
+              <img src="https://preview.redd.it/jqh7g7r1o00y.png?width=1024&auto=webp&s=f9cf60ff966efa8661cd954a6f25d19d614793d6" />
+              <p className="home-splash-carousel-legend">Legend 2</p>
+            </div>
+            <div className="home-splash-image">
+              <img
+                src="https://external-preview.redd.it/5R5f1op4jygLaFHqhgBBlLWcdqiZEkjYZE97Fk1Gt9o.jpg?width=1024&auto=webp&s=eb16a26f648b0c4a20ffdb3e0405ceaf794d4887"
+                alt=""
+              />
+              <p className="home-splash-carousel-legend">Legend example</p>
+            </div>
+            <div className="home-splash-image">
+              <img
+                src="https://ihg.scene7.com/is/image/ihg/kimpton-SF-Bay-Area-header"
+                alt=""
+              />
+              <p className="home-splash-carousel-legend">gjladjdge</p>
+            </div>
+          </Carousel>
         </div>
         <div className="home-container">
           {this.artHomeExamples()}
