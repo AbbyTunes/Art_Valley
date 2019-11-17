@@ -34,25 +34,38 @@ class VideoShow extends Component {
 
 					let showArtist;
 					if (author.publishedArts.length !== 1 ) {
-						// console.log(author.publishedArts)
 						let artPublishedLimit = author.publishedArts
 							.filter(pubArt => pubArt.id !== id)
 							.filter(pubArt => pubArt.videoLink.length !== 0)
 							.slice(0, 3);
 						console.log(artPublishedLimit)
-						let artPubList = artPublishedLimit.map(artPub => {
+				
+						let allVideoList = artPublishedLimit.map((video) => {
+					
+							const linkStrArr = video.videoLink.split("/")
+							const linkId = linkStrArr[linkStrArr.length - 1]
+
 							return (
-								<li className="published-li" key={artPub.id}>
-									<Link to={`${artPub.id}`}>
-										<img className="published-photo-thumbnail" src={artPub.videoLink} />
-									</Link>
+								<li key={video.id} className="home-article-example" >
+									
+									<Link to={`/videos/${video.id}`}>
+										<img className="home-article-example-thumb"
+												src={`https://img.youtube.com/vi/${linkId}/0.jpg`}
+												// src="https://img.youtube.com/vi/CjSz290apM0/1.jpg"
+												// src="https://img.youtube.com/vi/CjSz290apM0/2.jpg"
+												// src="https://img.youtube.com/vi/CjSz290apM0/3.jpg"
+												alt="" 
+										/>
+										<div className="video-photo-thumbnail-text">{video.title}</div>
+									</Link>	
 								</li>
-							);
-						});
+							)
+						})
+
 						showArtist = (
 							<div className="show-artist">
 								<h1 className="published-header">Art of the Author</h1>
-								<ul className="published-ul">{artPubList}</ul>
+								<ul className="published-ul">{allVideoList}</ul>
 							</div>
 						);
 					} else {
@@ -84,15 +97,16 @@ class VideoShow extends Component {
 									</div>
 
 									<div className="info-3">
-										<div className="show-comment">Comment</div>
+										<div className="show-comment">
+											<CreateComment artId={data.artById.id} comments={data.artById.comments} />
+										</div>
 									</div>
+									{showArtist}
 
-									<CreateComment artId={data.artById.id} comments={data.artById.comments} />
 								</div>
 
-								{showArtist}
+								
 
-								<div className="show-category"></div>
 							</div>
 						</div>
 					);

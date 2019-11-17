@@ -54,9 +54,10 @@ class ArtShow extends Component {
 
 						let artPubList = artPublishedLimit.map(artPub => {
 							return (
-								<li className="published-li" key={artPub.id}>
+								<li className="home-article-example" key={artPub.id}>
 									<Link to={`${artPub.id}`}>
-										<img className="published-photo-thumbnail" src={artPub.photoLink} />
+										<img className="home-article-example-thumb" src={artPub.photoLink} />
+										<div className="video-photo-thumbnail-text">{artPub.title}</div>
 									</Link>
 								</li>
 							);
@@ -64,6 +65,7 @@ class ArtShow extends Component {
 						showArtist = (
 							<div className="show-artist">
 								<h1 className="published-header">Art by the Author</h1>
+								
 								<ul className="published-ul">{artPubList}</ul>
 							</div>
 						);
@@ -100,16 +102,13 @@ class ArtShow extends Component {
 									</div>
 
 									<div className="info-3">
-										<div className="show-comment">Comments</div>
+										<div className="show-comment">
+											<CreateComment artId={data.artById.id} comments={data.artById.comments} />
+										</div>
 									</div>
-
-									<CreateComment artId={data.artById.id} comments={data.artById.comments} />
+									{showArtist}
 
 								</div>
-
-								{showArtist}
-
-								<div className="show-category"></div>
 							</div>
 							{deleteArtButton}
 						</div>

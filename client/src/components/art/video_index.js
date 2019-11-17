@@ -1,6 +1,6 @@
 import React from "react";
 import { Query } from "react-apollo";
-import "./art_index.css"
+import "./video_index.css"
 import { Link, withRouter } from "react-router-dom";
 import Queries from "../../graphql/queries";
 const { FETCH_ARTS_BY_CATEGORY, IS_LOGGED_IN } = Queries;
@@ -39,12 +39,12 @@ const VideoIndex = (props) => {
 			{({ loading, error, data }) => {
 
 				if (loading) return (
-					<div className="art-index-container">
+					<div className="video-index-container">
 						<p>Loading...</p>
 					</div>
 				);
 				if (error) return (
-					<div className="art-index-container">
+					<div className="video-index-container">
 						<p>Error</p>
 					</div>
 				);
@@ -60,14 +60,14 @@ const VideoIndex = (props) => {
 						<li key={art.id} className="video-index-li">
 							
 							<Link to={`/videos/${art.id}`}>
-								<div className="video-smoke-screen"></div>
-								<img className="art-photo-thumbnail"
+								<img className="video-photo-thumbnail"
 										src={`https://img.youtube.com/vi/${linkId}/0.jpg`}
 										// src="https://img.youtube.com/vi/CjSz290apM0/1.jpg"
 										// src="https://img.youtube.com/vi/CjSz290apM0/2.jpg"
 										// src="https://img.youtube.com/vi/CjSz290apM0/3.jpg"
 										alt="" 
 								/>
+								<div className="video-photo-thumbnail-text">{art.title}</div>
 							</Link>	
 						</li>
 					)
@@ -80,14 +80,14 @@ const VideoIndex = (props) => {
 				)
 
 				return (
-					<div className="art-index-container">
-						<div className="art-header">
+					<div className="video-index-container">
+						<div className="video-header">
 							Videos
 						</div>
 
 						{createVideo}
 
-						<ul className="art-index-ul">
+						<ul className="video-index-ul">
 							{allArtList}
 						</ul>
 

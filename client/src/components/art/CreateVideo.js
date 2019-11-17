@@ -37,7 +37,6 @@ class CreateVideo extends Component {
 			}
 		})
 	}
-
 	
 	render() {
 		if (!localStorage.length) {
@@ -47,7 +46,6 @@ class CreateVideo extends Component {
 			return (
 				<Mutation mutation={CREATE_VIDEO}
 					onError={err => this.setState({ message: err.message })}
-					update={(cache, data) => this.updateCache(cache, data)}
 				>
 					{(newVideo) => (
 						<div className="profile-container">
