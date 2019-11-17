@@ -35,7 +35,7 @@ const VideoIndex = (props) => {
 							</Link>	
 
 							<iframe width="300" height="200"
-								src={art.photoLink}>
+								src={art.videoLink}>
 							</iframe>
 							
 						</li>
