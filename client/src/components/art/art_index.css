@@ -8,6 +8,10 @@
 		padding-bottom: 30px;
 }
 
+.loading-text{
+	position: absolute;
+	top: 200px;
+}
 .art-header{
 		margin-top: 20px;
     display: inline-block;

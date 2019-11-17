@@ -77,7 +77,7 @@ class ArticleBodyDetail extends React.Component {
                   value={this.state.body}
                   onChange={this.fieldUpdate("body")}
                 />
-                <button type="submit">Update Body</button>
+                <button className="edit-info-button"type="submit">Update Body</button>
               </form>
             </div>
           )}

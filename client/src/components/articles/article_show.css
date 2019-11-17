@@ -1,6 +1,6 @@
 .temp {
     position: relative;
-    top: 90px;
+    top: 290px;
     text-align: center;
 }
 
@@ -139,6 +139,29 @@
     margin: 20px 0;
 }
 
+.back-to-community{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+
+.edit-info-button {
+    margin-top: 10px;
+    background: black;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    color: white;
+    padding: 5px;
+    outline: white;
+    transition: all .2s;
+}
+
+.edit-info-button:hover {
+    background: #3f9598;
+    cursor: pointer;
+}
+
 @media screen and (min-width: 800px) {
 
 	.article-show-container {
@@ -150,10 +173,11 @@
     .article-info-main {
         width: 100%;
         display: flex;
+        flex-direction: column;
     }
 
     .article-info-1 {
-        width: 70%;
+        width: 100%;
     }
 
     .article-show-title {
@@ -163,7 +187,7 @@
     }
 
     .article-info-2 {
-        width: 30%;
+        /* width: 130px; */
         display: flex;
         justify-content: flex-end;
     }

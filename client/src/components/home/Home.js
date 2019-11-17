@@ -173,7 +173,6 @@ class Home extends Component {
       <div className="home-article-index-container">
         {divLine}
         <h2 className="home-header-text">Connect with us</h2>
-        DATA SET 1 DATA SET 2 DATA SET 3 GIT HUBS BLAH BLAH
       </div>
     );
   }

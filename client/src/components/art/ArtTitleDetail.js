@@ -5,6 +5,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import { withRouter } from "react-router-dom";
 import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
+import TextareaAutosize from "react-textarea-autosize";
 import { merge } from "lodash";
 const { UPDATE_ART_TITLE } = Mutations;
 const { FETCH_ART } = Queries;
@@ -30,23 +31,14 @@ class ArtTitleDetail extends React.Component {
   }
 
   updateCache(cache, data) {
-    //   console.log("HELLO");
-
-    //   console.log(this.props.art.id)
-    //   debugger;
-    //   console.log(this.props.art.id === this.props.match.params.artId)
     const art = cache.readQuery({
       query: FETCH_ART,
       variables: {
         artId: this.props.art.id
       }
     });
-    console.log(art)
-    console.log("art here ^^^^^^^")
     let newArt = merge({}, art);
     newArt.artById.title = this.state.title;
-    console.log(newArt);
-    console.log("newArt here ^^^^^^^");
     cache.writeQuery({
       query: FETCH_ART,
       data: newArt,
@@ -76,11 +68,14 @@ class ArtTitleDetail extends React.Component {
                   }).then(() => this.setState({ editing: false }));
                 }}
               >
-                <input
+                <TextareaAutosize
+                  className="art-show-title-edit"
                   value={this.state.title}
                   onChange={this.fieldUpdate("title")}
                 />
-                <button type="submit">Update Title</button>
+                <button className="edit-info-button" type="submit">
+                  Update Title
+                </button>
               </form>
             </div>
           )}

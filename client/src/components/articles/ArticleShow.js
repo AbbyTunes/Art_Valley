@@ -89,9 +89,12 @@ class ArticleShow extends Component {
 
                         <div className="article-show-info">
                           <div className="article-info-main">
+                            <div className="article-info-2">
+                              <ArticleLike likers={likers} />
+                            </div>
                             <div className="article-info-1">
                               <div className="article-show-title">
-                                  {titleOption}
+                                {titleOption}
                               </div>
                               <div className="article-show-header">
                                 {headerOption}
@@ -100,25 +103,21 @@ class ArticleShow extends Component {
                                 {bodyOption}
                               </div>
                             </div>
-                            <div className="article-info-2">
-                              <ArticleLike likers={likers} />
-                            </div>
                           </div>
                         </div>
 
-                        <div>
-                          <Link to="/community" className="back-to-community">
-                            Back to Community
-                          </Link>
-                        </div>
                         <div>
                           <ArticleComments
                             articleId={this.props.match.params.articleId}
                             commentData={data.article.comments}
                           />
                         </div>
-                        {/* {deleteArticleButton} */}
-                        
+                        {deleteArticleButton}
+                        <div>
+                          <Link to="/community" className="back-to-community">
+                            Back to Community
+                          </Link>
+                        </div>
                       </div>
                     );
                 }}

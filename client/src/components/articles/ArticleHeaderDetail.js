@@ -76,7 +76,7 @@ class ArticleHeaderDetail extends React.Component {
                   value={this.state.header}
                   onChange={this.fieldUpdate("header")}
                 />
-                <button type="submit">Update Header</button>
+                <button className="edit-info-button"type="submit">Update Header</button>
               </form>
             </div>
           )}
