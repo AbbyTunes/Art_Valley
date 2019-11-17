@@ -30,13 +30,13 @@ class VideoShow extends Component {
 					);
 
 					const { id, description, videoLink, title, likers, author } = data.artById;
-					console.dir(data)
+					// console.dir(data)
 
 					let showArtist;
+				
 					if (author.publishedArts.length !== 1 ) {
-						let artPublishedLimit = author.publishedArts
-							.filter(pubArt => pubArt.id !== id)
-							.filter(pubArt => pubArt.videoLink.length !== 0)
+						const artPublishedLimit = author.publishedArts.filter(pubArt => pubArt.id !== id)
+							.filter(pubArt => pubArt.videoLink)
 							.slice(0, 3);
 						console.log(artPublishedLimit)
 				
