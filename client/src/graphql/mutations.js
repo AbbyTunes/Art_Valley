@@ -47,7 +47,6 @@ export default {
     mutation VerifyUser($token: String!) {
       verifyUser(token: $token) {
         loggedIn
-				isCurrentUser
       }
     }
   `,
@@ -91,6 +90,61 @@ export default {
       }
     }
   `,
+	// CREATE_VIDEO: gql`
+  //   mutation newVideo(
+  //     $category: ID!
+  //     $author: ID!
+  //     $title: String!
+  //     $description: String!
+  //     $videoLink: String!
+  //   ) {
+  //     newVideo(
+  //       category: $category
+  //       author: $author
+  //       title: $title
+  //       description: $description
+  //       videoLink: $videoLink
+  //     ) {
+	// 			id
+  //       author {
+  //         id
+  //         name
+  //         publishedArts {
+  //           id
+  //           title
+  //           photoLink
+  //           author {
+  //             id
+  //           }
+  //         }
+  //         likedArts {
+  //           id
+  //           title
+  //           photoLink
+  //         }
+  //       }
+  //       photoLink
+  //       title
+  //       description
+  //       likers {
+  //         id
+	// 				name
+  //       }
+  //       category {
+  //         id
+  //         name
+  //       }
+  //       comments {
+  //         body
+  //         author {
+  //           name
+  //           id
+  //         }
+  //         id
+  //       }
+  //     }
+  //   }
+  // `,
   CREATE_ART: gql`
     mutation CreateArt(
       $category: ID!

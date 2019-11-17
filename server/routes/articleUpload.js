@@ -19,7 +19,7 @@ router.post("/upload", upload.single("file"), function(req, res) {
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     region: process.env.AWS_REGION
   });
-debugger;
+
   let key = file ? file.originalname : "art-san.jpeg";
   let body = file ? file.buffer : "";
   let ContentType = file ? file.mimetype : "";
@@ -39,7 +39,7 @@ debugger;
   let s3_key = file ? params.Key : "art-san.jpeg";
 
   s3bucket.upload(params, function(err, data) {
-    debugger;
+    // debugger;
     if (err) {
       res.status(500).json({ error: true, Message: err });
     } else {
