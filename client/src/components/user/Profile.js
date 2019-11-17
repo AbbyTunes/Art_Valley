@@ -102,7 +102,7 @@ class Profile extends React.Component {
               src: art.photoLink,
               thumbnail: art.photoLink,
               thumbnailWidth: 320,
-              thumbnailHeight: 174,
+              thumbnailHeight: 320,
               caption: (
                 <a className="art-title" href={`#/arts/${art.id}`}>
                   <span className="profile-gallery-span">{art.title}</span>
@@ -118,8 +118,8 @@ class Profile extends React.Component {
             return {
               src: art.photoLink,
               thumbnail: art.photoLink,
-              thumbnailWidth: 320,
-              thumbnailHeight: 174,
+              // thumbnailHeight: 174,
+              thumbnailHeight: 320,
               caption: (
                 <a className="art-title" href={`#/arts/${art.id}`}>
                   <span className="profile-gallery-span">{art.title}</span>
@@ -137,6 +137,7 @@ class Profile extends React.Component {
               thumbnail: article.photoLink,
               thumbnailWidth: 320,
               thumbnailHeight: 174,
+              // thumbnailHeight: 320,
               caption: (
                 <a className="art-title" href={`#/community/${article.id}`}>
                   <span className="profile-gallery-span">{article.title}</span>

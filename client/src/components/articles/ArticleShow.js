@@ -107,17 +107,17 @@ class ArticleShow extends Component {
                         </div>
 
                         <div>
-                          <Link to="/community" className="back-to-community">
-                            Back to Community
-                          </Link>
-                        </div>
-                        <div>
                           <ArticleComments
                             articleId={this.props.match.params.articleId}
                             commentData={data.article.comments}
                           />
                         </div>
-                        {/* {deleteArticleButton} */}
+                        {deleteArticleButton}
+                        <div>
+                          <Link to="/community" className="back-to-community">
+                            Back to Community
+                          </Link>
+                        </div>
                         
                       </div>
                     );

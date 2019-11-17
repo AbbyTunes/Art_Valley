@@ -45,13 +45,13 @@ class ArtShow extends Component {
 
 					
 					let showArtist;
-						
-						if (author.publishedArts.length !== 1 ) {
+					if (author.publishedArts.length !== 1 ) {
+						// debugger;
 						let artPublishedLimit = author.publishedArts
 							.filter(pubArt => pubArt.id !== id)
 							.filter(pubArt => pubArt.photoLink.length !== 0)
 							.slice(0, 3);
-
+// debugger;
 						let artPubList = artPublishedLimit.map(artPub => {
 							return (
 								<li className="home-article-example" key={artPub.id}>
@@ -64,7 +64,7 @@ class ArtShow extends Component {
 						});
 						showArtist = (
 							<div className="show-artist">
-								<h1 className="published-header">Art by the Author</h1>
+								<h1 className="published-header">More art by {author.name} </h1>
 								
 								<ul className="published-ul">{artPubList}</ul>
 							</div>

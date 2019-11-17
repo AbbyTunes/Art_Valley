@@ -33,73 +33,70 @@ const VideoIndex = (props) => {
 	)
 
 	return (
-		<Query
-			query={FETCH_ARTS_BY_CATEGORY}
-			variables={{ categoryId: "5dcc556324cdd659e23e1e5a" }} >
-			{({ loading, error, data }) => {
+    <Query
+      query={FETCH_ARTS_BY_CATEGORY}
+      variables={{ categoryId: "5dcc556324cdd659e23e1e5a" }}
+      fetchPolicy={"network-only"}
+    >
+      {({ loading, error, data }) => {
+        if (loading)
+          return (
+            <div className="video-index-container">
+              <p>Loading...</p>
+            </div>
+          );
+        if (error)
+          return (
+            <div className="video-index-container">
+              <p>Error</p>
+            </div>
+          );
 
-				if (loading) return (
-					<div className="video-index-container">
-						<p>Loading...</p>
-					</div>
-				);
-				if (error) return (
-					<div className="video-index-container">
-						<p>Error</p>
-					</div>
-				);
+        let sortedVideobyLike = data.artsByCategory.sort((a, b) =>
+          a.likers.length > b.likers.length ? -1 : 1
+        );
 
-				let sortedVideobyLike = data.artsByCategory.sort((a, b) => (a.likers.length > b.likers.length) ? -1 : 1)
+        let allArtList = sortedVideobyLike.map(art => {
+          const linkStrArr = art.videoLink.split("/");
+          const linkId = linkStrArr[linkStrArr.length - 1];
 
-				let allArtList = sortedVideobyLike.map((art) => {
-					
-					const linkStrArr = art.videoLink.split("/")
-					const linkId = linkStrArr[linkStrArr.length - 1]
+          return (
+            <li key={art.id} className="video-index-li">
+              <Link to={`/videos/${art.id}`}>
+                <img
+                  className="video-photo-thumbnail"
+                  src={`https://img.youtube.com/vi/${linkId}/0.jpg`}
+                  // src="https://img.youtube.com/vi/CjSz290apM0/1.jpg"
+                  // src="https://img.youtube.com/vi/CjSz290apM0/2.jpg"
+                  // src="https://img.youtube.com/vi/CjSz290apM0/3.jpg"
+                  alt=""
+                />
+                <div className="video-photo-thumbnail-text">{art.title}</div>
+              </Link>
+            </li>
+          );
+        });
 
-					return (
-						<li key={art.id} className="video-index-li">
-							
-							<Link to={`/videos/${art.id}`}>
-								<img className="video-photo-thumbnail"
-										src={`https://img.youtube.com/vi/${linkId}/0.jpg`}
-										// src="https://img.youtube.com/vi/CjSz290apM0/1.jpg"
-										// src="https://img.youtube.com/vi/CjSz290apM0/2.jpg"
-										// src="https://img.youtube.com/vi/CjSz290apM0/3.jpg"
-										alt="" 
-								/>
-								<div className="video-photo-thumbnail-text">{art.title}</div>
-							</Link>	
-						</li>
-					)
-				})
+        let seeMoreButton = (
+          <div className="see-more-button">
+            <Link to="#">See More</Link>
+          </div>
+        );
 
-				let seeMoreButton = (
-					<div className="see-more-button">
-						<Link to="#">See More</Link>
-					</div>
-				)
+        return (
+          <div className="video-index-container">
+            <div className="video-header">Videos</div>
 
-				return (
-					<div className="video-index-container">
-						<div className="video-header">
-							Videos
-						</div>
+            {createVideo}
 
-						{createVideo}
+            <ul className="video-index-ul">{allArtList}</ul>
 
-						<ul className="video-index-ul">
-							{allArtList}
-						</ul>
-
-						<div className="see-more-button">
-							{seeMoreButton}
-						</div>
-
-					</div>
-				);
-			}}
-		</Query>
-	);
+            <div className="see-more-button">{seeMoreButton}</div>
+          </div>
+        );
+      }}
+    </Query>
+  );
 }
 
 export default withRouter(VideoIndex);
