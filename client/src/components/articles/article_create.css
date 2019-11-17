@@ -3,7 +3,6 @@
     flex-direction: column;
     width: 400px;
     height: auto;
-    background: green;
     margin: 0 auto;
     position: relative;
     top: 90px;
@@ -41,15 +40,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 .article-form-image-container {
   display: inline-block;
   width: 300px;
@@ -64,13 +54,12 @@
 .article-form-image-preview {
   display: inline-block;
   position: relative;
-  width: 300px;
+  width: 100%;
   height: 300px;
   background: #efefef;
   /* display: inline-block; */
   border-radius: 10px;
   float: left;
-  margin-right: 30px;
   margin-bottom: 10px;
 }
 

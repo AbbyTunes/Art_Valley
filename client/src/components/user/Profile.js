@@ -168,6 +168,7 @@ class Profile extends React.Component {
               {this.state.clicked ? <Settings user={data} clicked={true}/> : null}
               {this.state.clicked ?  null : <Settings user={data} clicked={false}/>} */}
               {settings}
+              {recentlyLiked}
 
               {/* <div className="profile-playlist">
                 <h1 className="profile-header">Playlist</h1> */}
