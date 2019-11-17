@@ -126,7 +126,7 @@ class ArticleCreate extends React.Component {
         />
           
         {/* image here */}
-        <input type="submit" value="Save Article" />
+        <input type="submit" className="article-submit" value="Save Article" />
         <div className="article-message">{this.state.message}</div>
       </form>
     );
