@@ -1,7 +1,7 @@
 import React from "react";
 import { Mutation } from "react-apollo";
 import { withRouter } from "react-router-dom";
-import Queries from "../../graphql/queries";
+// import Queries from "../../graphql/queries";
 import Mutations from "../../graphql/mutations";
 const { DELETE_ARTICLE } = Mutations;
 

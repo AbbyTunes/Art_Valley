@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Query, Mutation } from "react-apollo";
+import { Query } from "react-apollo";
 import "./article_show.css";
 // import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Queries from "../../graphql/queries";
-import Mutations from "../../graphql/mutations";
+// import Mutations from "../../graphql/mutations";
 import ArticleLike from "./ArticleLike";
 import ArticleComments from "../comments/ArticleComments";
 import ArticleTitleDetail from "./ArticleTitleDetail.js";
@@ -12,14 +12,14 @@ import ArticleBodyDetail from "./ArticleBodyDetail";
 import ArticleHeaderDetail from "./ArticleHeaderDetail";
 import ArticleDelete from "./ArticleDelete";
 const { FETCH_ARTICLE } = Queries;
-const { ADD_ARTICLE_LIKE, DELETE_ARTICLE } = Mutations; 
+// const { ADD_ARTICLE_LIKE, DELETE_ARTICLE } = Mutations; 
 
 class ArticleShow extends Component {
 
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
         
-    }
+    // }
 
    
     render() {

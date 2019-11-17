@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import { Mutation, Query } from "react-apollo";
 import "./art.css";
 import "./art.js";
-import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
 import TextareaAutosize from "react-textarea-autosize";
 import axios from "axios";
-const { CREATE_ART } = Mutations;
-const { FETCH_ART, FETCH_USER, FETCH_CATEGORIES } = Queries;
+const { FETCH_ART} = Queries;
 
  
 let endpoint;
@@ -111,7 +108,7 @@ class CreateArt extends Component {
   render() {
     console.log(this.state);
     let preview = this.state.previewUrl ? 
-      <img className="art-form-image-previewed" src={this.state.previewUrl} /> 
+      <img className="art-form-image-previewed" alt="" src={this.state.previewUrl} /> 
           : <span
               role="img"
               alt=""

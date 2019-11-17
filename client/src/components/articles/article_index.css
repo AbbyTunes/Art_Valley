@@ -27,6 +27,11 @@
     margin-bottom: 80px;
 }
 
+.article-index-li:hover {
+    opacity: 0.9;
+    transition: 0.8s;
+}
+
 
 .article-create-link {
   width: 120px;

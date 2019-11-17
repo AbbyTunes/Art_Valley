@@ -1,10 +1,7 @@
 import React from "react";
-import { Mutation } from "react-apollo";
 import "./article_create.css";
-import Mutations from "../../graphql/mutations";
 import TextareaAutosize from "react-textarea-autosize";
 import axios from "axios";
-const { CREATE_ARTICLE } = Mutations;
  
 let endpoint;
 if (process.env.NODE_ENV === "production") {

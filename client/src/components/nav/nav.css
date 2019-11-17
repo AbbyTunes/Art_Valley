@@ -51,8 +51,10 @@
     z-index: 102;
 }
 
+
 .fas:hover{
     cursor: pointer;
+    opacity: 0.6;
 }
 
 .nav-logo{
@@ -60,6 +62,10 @@
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+.nav-logo:hover {
+    opacity: 0.6;
 }
 
 

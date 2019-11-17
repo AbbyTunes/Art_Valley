@@ -54,7 +54,7 @@ class Settings extends React.Component {
         
         <h3 className="session-input-title">Email Address</h3>
         <div className="settings-input-info">{this.props.user.user.email}</div> */}
-        <div h1 className="settings-user-header">
+        <div className="settings-user-header">
           {this.props.user.user.name}
         </div>
         <div className="settings-user-bio">{this.props.user.user.bio}</div>
