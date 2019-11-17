@@ -96,7 +96,7 @@ class Profile extends React.Component {
             );
           }
 
-          const recentlyLiked = data.user.likedArts.reverse().slice(0, 6);
+          const recentlyLiked = data.user.likedArts.reverse();
           const artLikedList = recentlyLiked.map(art => {
             return {
               src: art.photoLink,
@@ -112,8 +112,7 @@ class Profile extends React.Component {
           });
 
           const artPublishedLimit = data.user.publishedArts
-            .reverse()
-            .slice(0, 6);
+            .reverse();
           const artPubList = artPublishedLimit.map(art => {
             return {
               src: art.photoLink,
@@ -128,9 +127,7 @@ class Profile extends React.Component {
             };
           });
 
-          const articlePublishedLimit = data.user.publishedArticles
-            .reverse()
-            .slice(0, 6);
+          const articlePublishedLimit = data.user.publishedArticles.reverse();
           const articlePubList = articlePublishedLimit.map(article => {
             return {
               src: article.photoLink,
@@ -195,9 +192,9 @@ class Profile extends React.Component {
                 selectedTabClassName="profile-tab-single-selected"
               >
                 <TabList>
-                  <Tab className="profile-tab-single">Recent Art</Tab>
-                  <Tab className="profile-tab-single">Recent Articles</Tab>
-                  <Tab className="profile-tab-single">Recently Liked</Tab>
+                  <Tab className="profile-tab-single">Published Art</Tab>
+                  <Tab className="profile-tab-single">Published Articles</Tab>
+                  <Tab className="profile-tab-single">Liked</Tab>
                 </TabList>
 
                 <TabPanel>{publishedArt}</TabPanel>
