@@ -170,8 +170,8 @@ class Home extends Component {
 
   developerInformation() {
     return (
-      <div className="home-article-index-container">
-        {divLine}
+      <div className="footer-container">
+        <div className="footer-div-line" />
         <div className="footer">
           <h2 className="home-header-text">Connect with us</h2>
           <div className="git-links-container">
@@ -238,8 +238,8 @@ class Home extends Component {
         <div className="home-container">
           {this.artHomeExamples()}
           {this.articleHomeExamples()}
-          {this.developerInformation()}
         </div>
+        {this.developerInformation()}
       </div>
     );
   }
