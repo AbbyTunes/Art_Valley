@@ -38,6 +38,7 @@ const App = () => {
 
 
 			</Switch>
+			
 			<Route exact path="/" component={Home}/>
 			<Route exact path="/create" component={CreateArt}/>
 			<Route exact path="/create-video" component={CreateVideo}/>

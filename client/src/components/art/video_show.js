@@ -56,7 +56,7 @@ class VideoShow extends Component {
 
 						showArtist = (
 							<div className="show-artist">
-								<h1 className="published-header">Art of the Author</h1>
+								<h1 className="published-header">More videos by {author.name}</h1>
 								<ul className="published-ul">{allVideoList}</ul>
 							</div>
 						);
