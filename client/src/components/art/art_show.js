@@ -85,7 +85,7 @@ class ArtShow extends Component {
 												{titleOption}
 											</div>
 											<div className="author-name">
-												{author.name}
+												<Link to={`/users/${author.id}`}>{author.name}</Link>
 											</div>
 											<div className="show-description">
 												{descriptionOption}
