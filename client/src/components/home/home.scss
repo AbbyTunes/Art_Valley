@@ -48,21 +48,23 @@
   -moz-transition: all 0.5s ease-in-out;
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s ease-in-out;
   position: absolute;
   bottom: 25%;
   left: 25%;
-  margin-top: 50%;
+  // margin-top: 50%;
   margin-left: 0 auto;
   width: 50%;
   height: 20%;
   border-radius: 10px;
-  background: rgb(255, 255, 255);
-  color: black;
+  // background: rgb(255, 255, 255);
+  color: white;
+  text-shadow: 1px 1px 2px black;
   padding: 10px;
-  font-size: 12px;
+  font-size: 60px;
+  font-weight: 800;
   text-align: center;
-  opacity: 0.3;
+  // opacity: 0.3;
   -webkit-transition: opacity 0.35s ease-in-out;
   -moz-transition: opacity 0.35s ease-in-out;
   -ms-transition: opacity 0.35s ease-in-out;
@@ -117,6 +119,16 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-div-line{
+  position: relative;
+  border-top: 2px solid #3f9598;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
   margin-bottom: 40px;
 }
 
@@ -190,4 +202,38 @@ span {
 .home-list {
  text-align: center;
  columns: 23%;
+}
+
+.git-links {
+  display: flex;
+  justify-content: space-between;
+  // background: #d8d8d8;
+  
+  width: 100%;
+}
+
+.git-links a:hover{
+  color: white;
+}
+
+.footer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 40px;
+  background:url('localhost:3000/GitHub-Mark-32px.png');
+}
+
+.git-kit{
+  height: 15px;
+  margin-right: 10px;
+}
+
+.git-links-container{
+  width: 500px;
+}
+
+.footer-container{
+  background: #b0b5b5;
 }

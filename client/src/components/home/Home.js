@@ -170,9 +170,27 @@ class Home extends Component {
 
   developerInformation() {
     return (
-      <div className="home-article-index-container">
-        {divLine}
-        <h2 className="home-header-text">Connect with us</h2>
+      <div className="footer-container">
+        <div className="footer-div-line" />
+        <div className="footer">
+          <h2 className="home-header-text">Connect with us</h2>
+          <div className="git-links-container">
+            <div className="git-links">
+              <div>
+                <img className="git-kit" src="http://localhost:3000/GitHub-Mark-32px.png"></img>
+                <a href="https://github.com/AbbyTunes">Abby Xu</a>
+              </div>
+              <div>
+                <img className="git-kit" src="http://localhost:3000/GitHub-Mark-32px.png"></img>
+                <a href="https://github.com/cfo8473">Christopher Fong</a>
+              </div>
+              <div>
+                <img className="git-kit" src="http://localhost:3000/GitHub-Mark-32px.png"></img>
+                <a href="https://github.com/gbarrios212">Gabriel Barrios</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -194,34 +212,35 @@ class Home extends Component {
             dynamicHeight={true}
           >
             <div className="home-splash-image">
-              <img src="https://i.imgur.com/CDFQxi8.jpg" />
-              <p className="home-splash-carousel-legend">Legend 1</p>
+              {/* <img src="https://i.imgur.com/CDFQxi8.jpg" /> */}
+              {/* <img src="https://i.ytimg.com/vi/SiThJdF_VMo/maxresdefault.jpg" /> */}
+              <img src="https://i.imgur.com/yEQJ83r.png"/>
+              <p className="home-splash-carousel-legend">Discover talent in the Bay Area.</p>
             </div>
             <div className="home-splash-image">
-              <img src="https://preview.redd.it/jqh7g7r1o00y.png?width=1024&auto=webp&s=f9cf60ff966efa8661cd954a6f25d19d614793d6" />
-              <p className="home-splash-carousel-legend">Legend 2</p>
+              <img src="https://i.imgur.com/kXAJwZr.png"></img>
+              {/* <img src="https://preview.redd.it/jqh7g7r1o00y.png?width=1024&auto=webp&s=f9cf60ff966efa8661cd954a6f25d19d614793d6" /> */}
+              <p className="home-splash-carousel-legend">Share your work with like-minded peers.</p>
             </div>
             <div className="home-splash-image">
-              <img
-                src="https://external-preview.redd.it/5R5f1op4jygLaFHqhgBBlLWcdqiZEkjYZE97Fk1Gt9o.jpg?width=1024&auto=webp&s=eb16a26f648b0c4a20ffdb3e0405ceaf794d4887"
-                alt=""
-              />
-              <p className="home-splash-carousel-legend">Legend example</p>
+              <img src="https://i.imgur.com/IuO0mO8.png"></img>
+              {/* <img src="https://external-preview.redd.it/5R5f1op4jygLaFHqhgBBlLWcdqiZEkjYZE97Fk1Gt9o.jpg?width=1024&auto=webp&s=eb16a26f648b0c4a20ffdb3e0405ceaf794d4887" alt=""/> */}
+              <p className="home-splash-carousel-legend">Contribute to local criticism.</p>
             </div>
-            <div className="home-splash-image">
+            {/* <div className="home-splash-image">
               <img
                 src="https://ihg.scene7.com/is/image/ihg/kimpton-SF-Bay-Area-header"
                 alt=""
               />
               <p className="home-splash-carousel-legend">gjladjdge</p>
-            </div>
+            </div> */}
           </Carousel>
         </div>
         <div className="home-container">
           {this.artHomeExamples()}
           {this.articleHomeExamples()}
-          {this.developerInformation()}
         </div>
+        {this.developerInformation()}
       </div>
     );
   }
