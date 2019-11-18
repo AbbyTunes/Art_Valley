@@ -1,5 +1,6 @@
 import React from "react";
 import "./article-index-item.css";
+import { Link } from "react-router-dom";
 
 const ArticleIndexItem = (props) => {
     return (
@@ -11,7 +12,7 @@ const ArticleIndexItem = (props) => {
           />
         </div>
         <div className="article-index-item-author">
-          {props.article.author.name}
+          <Link to={`/users/${props.article.author.id}`}>{props.article.author.name}</Link>
         </div>
         <div className="article-index-item-title">{props.article.title}</div>
         <div className="article-index-item-header">{props.article.header}</div>

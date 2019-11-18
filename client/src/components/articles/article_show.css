@@ -11,7 +11,14 @@
     padding: 40px;
     
 }
+.article-show-author{
+    font-weight: 800;
+    margin-bottom: 20px;
+}
 
+.article-show-author > a:hover{
+    color: gray;
+}
 .article-show-art {
     display: block;
     justify-content: center;

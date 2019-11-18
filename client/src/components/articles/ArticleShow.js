@@ -41,7 +41,7 @@ class ArticleShow extends Component {
 
 
 
-                    const { body, photoLink, title, likers, comments, header } = data.article;
+                    const { body, photoLink, title, likers, comments, header, id, author } = data.article;
 
                     let deleteArticleButton;
                     deleteArticleButton = data.article.author.id === localStorage.currentUserId ? 
@@ -95,6 +95,9 @@ class ArticleShow extends Component {
                             <div className="article-info-1">
                               <div className="article-show-title">
                                 {titleOption}
+                              </div>
+                              <div className="article-show-author">
+                                <Link to={`/users/${author.id}`}>By {author.name}</Link>
                               </div>
                               <div className="article-show-header">
                                 {headerOption}

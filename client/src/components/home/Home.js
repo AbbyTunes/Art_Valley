@@ -177,15 +177,15 @@ class Home extends Component {
           <div className="git-links-container">
             <div className="git-links">
               <div>
-                <img className="git-kit" src="http://localhost:3000/GitHub-Mark-32px.png"></img>
+                {/* <img className="git-kit" src="http://localhost:3000/GitHub-Mark-32px.png"></img> */}
                 <a href="https://github.com/AbbyTunes">Abby Xu</a>
               </div>
               <div>
-                <img className="git-kit" src="http://localhost:3000/GitHub-Mark-32px.png"></img>
+                {/* <img className="git-kit" src="http://localhost:3000/GitHub-Mark-32px.png"></img> */}
                 <a href="https://github.com/cfo8473">Christopher Fong</a>
               </div>
               <div>
-                <img className="git-kit" src="http://localhost:3000/GitHub-Mark-32px.png"></img>
+                {/* <img className="git-kit" src="http://localhost:3000/GitHub-Mark-32px.png"></img> */}
                 <a href="https://github.com/gbarrios212">Gabriel Barrios</a>
               </div>
             </div>
