@@ -38,7 +38,7 @@ const register = async data => {
     user.save();
     const token = jwt.sign({ id: user._id }, keys);
 
-    console.log(token)
+    // console.log(token)
     // console.log(loggedIn)
     // console.log(...user._doc)
     return { token, loggedIn: true, ...user._doc, password: null };

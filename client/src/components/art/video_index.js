@@ -16,9 +16,9 @@ const VideoIndex = (props) => {
 						<p>Loading...</p>
 					</div>
 				);
-				if (error) return (
-					console.log(error)
-				);
+				// if (error) return (
+				// 	console.log(error)
+				// );
 				if ( data.isLoggedIn ) {
 					return (
 						<Link to="/create-video" className="article-create-link">

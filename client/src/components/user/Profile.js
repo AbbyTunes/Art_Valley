@@ -48,7 +48,7 @@ class Profile extends React.Component {
         clicked: true
       });
     }
-    console.log(this.state.clicked);
+    // console.log(this.state.clicked);
   }
 
   render() {
@@ -71,7 +71,7 @@ class Profile extends React.Component {
               </div>
             );
 
-          console.log(data);
+          // console.log(data);
 
           let settings;
           if (localStorage.currentUserId === data.user.id) {

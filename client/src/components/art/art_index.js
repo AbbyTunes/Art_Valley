@@ -19,7 +19,7 @@ const ArtIndex = (props) => {
 								</div>
 							);
 							if (error) return (
-								console.log(error)
+								// console.log(error)
 							);
 							if ( data.isLoggedIn ) {
 								return (
