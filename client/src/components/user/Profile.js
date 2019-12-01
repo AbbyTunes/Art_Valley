@@ -98,14 +98,16 @@ class Profile extends React.Component {
 
           const recentlyLiked = data.user.likedArts.reverse();
           const artLikedList = recentlyLiked.map(art => {
-            debugger
             let src;
+            let nav;
             if (art.videoLink) {
               let linkStrArr = art.videoLink.split("/");
               let linkId = linkStrArr[linkStrArr.length - 1];
               src = `https://img.youtube.com/vi/${linkId}/0.jpg`;
+              nav = "videos";
             } else {
               src = art.photoLink;
+              nav = "arts"
             }
             return {
               src: src,
@@ -114,7 +116,7 @@ class Profile extends React.Component {
               thumbnailHeight: 320,
               img: { objectFit: "cover"},
               caption: (
-                <a className="art-title" href={`#/arts/${art.id}`}>
+                <a className="art-title" href={`#/${nav}/${art.id}`}>
                   <span className="profile-gallery-span">{art.title}</span>
                 </a>
               )
@@ -125,12 +127,15 @@ class Profile extends React.Component {
             .reverse();
           const artPubList = artPublishedLimit.map(art => {
             let src;
+            let nav;
             if (art.videoLink) {
               let linkStrArr = art.videoLink.split("/");
               let linkId = linkStrArr[linkStrArr.length - 1];
-              src = `https://img.youtube.com/vi/${linkId}/0.jpg`
+              src = `https://img.youtube.com/vi/${linkId}/0.jpg`;
+              nav = "videos";
             } else {
               src = art.photoLink;
+              nav="arts";
             }
             return {
               src: src,
@@ -138,7 +143,7 @@ class Profile extends React.Component {
               // thumbnailHeight: 174,
               thumbnailHeight: 320,
               caption: (
-                <a className="art-title" href={`#/arts/${art.id}`}>
+                <a className="art-title" href={`#/${nav}/${art.id}`}>
                   <span className="profile-gallery-span">{art.title}</span>
                 </a>
               )
