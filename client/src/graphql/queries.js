@@ -170,6 +170,7 @@ export default {
           id
           title
           photoLink
+          videoLink
         }
         publishedArticles {
           id

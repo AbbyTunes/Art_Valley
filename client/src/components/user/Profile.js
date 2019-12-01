@@ -98,6 +98,7 @@ class Profile extends React.Component {
 
           const recentlyLiked = data.user.likedArts.reverse();
           const artLikedList = recentlyLiked.map(art => {
+            debugger;
             return {
               src: art.photoLink,
               thumbnail: art.photoLink,
@@ -115,9 +116,18 @@ class Profile extends React.Component {
           const artPublishedLimit = data.user.publishedArts
             .reverse();
           const artPubList = artPublishedLimit.map(art => {
+            let src;
+            if (art.videoLink) {
+              let linkStrArr = art.videoLink.split("/");
+              let linkId = linkStrArr[linkStrArr.length - 1];
+              src = `https://img.youtube.com/vi/${linkId}/0.jpg`
+            } else {
+              src = art.photoLink;
+            }
+            // debugger;
             return {
-              src: art.photoLink,
-              thumbnail: art.photoLink,
+              src: src,
+              thumbnail: src,
               // thumbnailHeight: 174,
               thumbnailHeight: 320,
               caption: (
