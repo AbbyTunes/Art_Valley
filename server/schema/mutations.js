@@ -122,8 +122,8 @@ const mutation = new GraphQLObjectType({
 				author: { type: new GraphQLNonNull(GraphQLID) }
       },
       resolve(_, args) {
-				console.log(args._id)
-				console.log(args.author)
+				// console.log(args._id)
+				// console.log(args.author)
 				return User.deleteArticle(args.author, args._id)
           .then(user => user)
           .catch(err => null)
@@ -242,13 +242,13 @@ const mutation = new GraphQLObjectType({
         if (email) updateObj.email = email;
         if (location) updateObj.location = location;
         if (bio) updateObj.bio = bio;
-        console.log(updateObj);
+        // console.log(updateObj);
         return User.findOneAndUpdate(
           { _id: id },
           { $set: updateObj },
           { new: true },
           (err, user) => {
-            console.log(user);
+            // console.log(user);
             return user;
           }
         );
@@ -319,21 +319,22 @@ const mutation = new GraphQLObjectType({
             .then(comment => {
               if (comment.article) {
                 return Article.findById(comment.article).then(article => {
-                  console.log(article);
+                  // console.log(article);
                   article.comments.push(comment._id);
                   article.save();
                   return comment;
                 });
               } else {
                 return Art.findById(comment.art).then(art => {
-                  console.log(art);
+                  // console.log(art);
                   art.comments.push(comment._id);
                   art.save();
                   return comment;
                 });
               }
             })
-            .catch(err => console.log(err));
+            // .catch(err => 
+            //   console.log(err));
         });
       }
     }

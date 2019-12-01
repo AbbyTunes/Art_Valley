@@ -50,8 +50,8 @@ router.post("/upload", upload.single("file"), function(req, res) {
         // console.log(res)
         Art.addCategory(data.cateogry, data._id)
         User.addPublishedArt(data.author, data._id)
-        console.log("DATA RESPONSE FROM FILEUPLOAD")
-        console.log(data)
+        // console.log("DATA RESPONSE FROM FILEUPLOAD")
+        // console.log(data)
         res.send({ data });
       }).catch(err => console.log(err))
     }

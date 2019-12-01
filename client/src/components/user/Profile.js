@@ -48,7 +48,7 @@ class Profile extends React.Component {
         clicked: true
       });
     }
-    console.log(this.state.clicked);
+    // console.log(this.state.clicked);
   }
 
   render() {
@@ -71,7 +71,7 @@ class Profile extends React.Component {
               </div>
             );
 
-          console.log(data);
+          // console.log(data);
 
           let settings;
           if (localStorage.currentUserId === data.user.id) {
@@ -98,14 +98,25 @@ class Profile extends React.Component {
 
           const recentlyLiked = data.user.likedArts.reverse();
           const artLikedList = recentlyLiked.map(art => {
+            let src;
+            let nav;
+            if (art.videoLink) {
+              let linkStrArr = art.videoLink.split("/");
+              let linkId = linkStrArr[linkStrArr.length - 1];
+              src = `https://img.youtube.com/vi/${linkId}/0.jpg`;
+              nav = "videos";
+            } else {
+              src = art.photoLink;
+              nav = "arts"
+            }
             return {
-              src: art.photoLink,
-              thumbnail: art.photoLink,
+              src: src,
+              thumbnail: src,
               thumbnailWidth: 320,
               thumbnailHeight: 320,
               img: { objectFit: "cover"},
               caption: (
-                <a className="art-title" href={`#/arts/${art.id}`}>
+                <a className="art-title" href={`#/${nav}/${art.id}`}>
                   <span className="profile-gallery-span">{art.title}</span>
                 </a>
               )
@@ -115,13 +126,24 @@ class Profile extends React.Component {
           const artPublishedLimit = data.user.publishedArts
             .reverse();
           const artPubList = artPublishedLimit.map(art => {
+            let src;
+            let nav;
+            if (art.videoLink) {
+              let linkStrArr = art.videoLink.split("/");
+              let linkId = linkStrArr[linkStrArr.length - 1];
+              src = `https://img.youtube.com/vi/${linkId}/0.jpg`;
+              nav = "videos";
+            } else {
+              src = art.photoLink;
+              nav="arts";
+            }
             return {
-              src: art.photoLink,
-              thumbnail: art.photoLink,
+              src: src,
+              thumbnail: src,
               // thumbnailHeight: 174,
               thumbnailHeight: 320,
               caption: (
-                <a className="art-title" href={`#/arts/${art.id}`}>
+                <a className="art-title" href={`#/${nav}/${art.id}`}>
                   <span className="profile-gallery-span">{art.title}</span>
                 </a>
               )

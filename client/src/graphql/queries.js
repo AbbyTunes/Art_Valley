@@ -165,11 +165,13 @@ export default {
           id
           title
           photoLink
+          videoLink
         }
         publishedArts {
           id
           title
           photoLink
+          videoLink
         }
         publishedArticles {
           id

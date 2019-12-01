@@ -16,7 +16,7 @@ const divLine = (<div className="home-div-line" />);
 class Home extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    // console.log(props);
   }
 
   artHomeGallery() {
@@ -51,7 +51,7 @@ class Home extends Component {
             };
           });
 
-          console.log(allArtList);
+          // console.log(allArtList);
 
           
 

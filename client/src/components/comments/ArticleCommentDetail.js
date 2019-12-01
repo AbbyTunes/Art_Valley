@@ -30,7 +30,7 @@ class ArticleCommentDetail extends React.Component {
             return comment.id !== data.data.deleteComment.id
         })
 
-        console.log(newArticle);
+        // console.log(newArticle);
         cache.writeQuery({
             query: FETCH_ARTICLE, data: newArticle,
             variables: {
