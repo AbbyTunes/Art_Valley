@@ -1,5 +1,4 @@
-# [artvalley.com](https://art-valley.herokuapp.com)
-![ArtValley Logo]
+# [Art-Valley Demo](https://art-valley.herokuapp.com)
 
 ## Background and Overview
 
