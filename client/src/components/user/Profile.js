@@ -98,10 +98,18 @@ class Profile extends React.Component {
 
           const recentlyLiked = data.user.likedArts.reverse();
           const artLikedList = recentlyLiked.map(art => {
-            debugger;
+            debugger
+            let src;
+            if (art.videoLink) {
+              let linkStrArr = art.videoLink.split("/");
+              let linkId = linkStrArr[linkStrArr.length - 1];
+              src = `https://img.youtube.com/vi/${linkId}/0.jpg`;
+            } else {
+              src = art.photoLink;
+            }
             return {
-              src: art.photoLink,
-              thumbnail: art.photoLink,
+              src: src,
+              thumbnail: src,
               thumbnailWidth: 320,
               thumbnailHeight: 320,
               img: { objectFit: "cover"},
@@ -124,7 +132,6 @@ class Profile extends React.Component {
             } else {
               src = art.photoLink;
             }
-            // debugger;
             return {
               src: src,
               thumbnail: src,

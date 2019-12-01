@@ -165,6 +165,7 @@ export default {
           id
           title
           photoLink
+          videoLink
         }
         publishedArts {
           id
