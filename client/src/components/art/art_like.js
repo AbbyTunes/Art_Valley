@@ -19,6 +19,7 @@ class ArtLike extends Component {
 			userId: localStorage.getItem("currentUserId"),
 			artId: this.props.match.params.artId,
 			message: ""
+			// ,loading: false
 		}
 	}
 
@@ -66,12 +67,14 @@ class ArtLike extends Component {
 
 
 	like(addUserLikedArt) {
+		// this.setState({loading: true});
 		addUserLikedArt({
 			variables: {
 				userId: localStorage.getItem("currentUserId"),
 				artId: this.props.match.params.artId
 			}
 		})
+		// .then(this.setState({loading: false}))
 	}
 
 	unlike(userUnlikeArt) {
