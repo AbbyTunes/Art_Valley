@@ -35,7 +35,7 @@ class ArticleDelete extends React.Component {
             // update={(cache, data) => this.updateCache(cache, data)}
             >
                 {deleteArticle => (
-                    <a
+                    <a href
                     className="comment-body-delete"
                     onClick={e => {
                         this.confirmDelete(deleteArticle);
