@@ -11,8 +11,8 @@ const { EDIT_USER_SETTINGS, VERIFY_USER } = Mutations;
 
 class Settings extends React.Component {
   constructor(props) {
-      console.log("PROPS")
-      console.log(props)
+      // console.log("PROPS")
+      // console.log(props)
     super(props);
     this.state = {
       clicked: props.clicked,
@@ -106,7 +106,7 @@ class Settings extends React.Component {
                           bio: this.state.bio
                         }
                       }).then(resp => {
-                        console.log(resp)
+                        // console.log(resp)
                         localStorage.setItem("currentUsername", this.state.username);
                         window.location.reload();
                       })

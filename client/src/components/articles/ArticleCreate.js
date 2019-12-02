@@ -51,10 +51,10 @@ class ArticleCreate extends React.Component {
     data.append("author", this.state.author);
     data.append("body", this.state.body);
     axios.post(endpoint, data).then(response => {
-      console.log(endpoint);
-      console.log(data);
+      // console.log(endpoint);
+      // console.log(data);
 
-      console.log(response);
+      // console.log(response);
       if (response.data && response.status === 200) {
         this.setState({ message: "Article successfully uploaded!" });
         const redirectId = response.data.data._id;
