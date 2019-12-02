@@ -7,6 +7,9 @@ export default {
         name
         email
         loggedIn
+        id
+        token
+
       }
     }
   `,

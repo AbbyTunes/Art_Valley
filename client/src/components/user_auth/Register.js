@@ -46,6 +46,8 @@ class Register extends Component {
           onCompleted={data => {
             const { token } = data.login;
             localStorage.setItem("auth-token", token);
+            localStorage.setItem("currentUserId", data.login.id);
+            localStorage.setItem("currentUsername", data.login.name);
             this.props.history.push("/");
           }}
           update={(client, data) => this.updateLoginCache(client, data)}
@@ -73,9 +75,11 @@ class Register extends Component {
         mutation={REGISTER_USER}
         onError={err => this.setState({ message: err.message })}
         onCompleted={data => {
-          // console.log(data);
           const { token } = data.register;
           localStorage.setItem("auth-token", token);
+          localStorage.setItem("currentUserId", data.register.id);
+          localStorage.setItem("currentUsername", data.register.name);
+          
           this.props.history.push("/");
         }}
         update={(client, data) => this.updateCache(client, data)}

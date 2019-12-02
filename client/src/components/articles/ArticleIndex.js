@@ -7,9 +7,9 @@ import "./article_index.css"
 const { FETCH_ARTICLES } = Queries;
 
 class ArticleIndex extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     
 
