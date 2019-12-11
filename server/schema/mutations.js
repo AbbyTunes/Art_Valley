@@ -33,7 +33,7 @@ const mutation = new GraphQLObjectType({
         return new Category(args).save();
       }
     },
-		newVideo: {
+	newVideo: {
       type: ArtType,
       args: {
         category: { type: GraphQLID },
@@ -42,13 +42,13 @@ const mutation = new GraphQLObjectType({
         description: { type: GraphQLString },
         videoLink: { type: GraphQLString }
       },
-			async resolve(_, args) {
+		async resolve(_, args) {
         return new Art(args).save().then(art => {
           return User.findById(art.author)
             .then(user => {
               user.publishedArts.push(art);
               user.save();
-							return art;
+				return art;
             })
             .catch(err => null);
         }).then(art => {

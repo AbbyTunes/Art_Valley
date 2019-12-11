@@ -22,38 +22,38 @@ export default {
             id
             title
             photoLink
-						videoLink
+				videoLink
             author {
-              id
-							name
-							publishedArts {
-								id
-								title
-							}
+				id
+				name
+				publishedArts {
+					id
+					title
+				}
             }
           }
           likedArts {
             id
             title
             photoLink
-						videoLink
+			videoLink
           }
         }
         photoLink
-				videoLink
+		videoLink
         title
         description
         likers {
-          id
-					name
+			id
+			name
         }
         category {
           id
           name
-					arts {
-						id
-						title
-					}
+			arts {
+				id
+				title
+			}
         }
         comments {
           body
