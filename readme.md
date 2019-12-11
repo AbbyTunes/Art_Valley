@@ -1,74 +1,61 @@
-# [Art-Valley Demo](https://art-valley.herokuapp.com)
+# Art Valley
+
+
+![alt text](https://imgur.com/VrMHztL.png)
+
+Created by
+
+[Visit Us!](https://art-valley.herokuapp.com)
+
+[Christopher Fong](https://github.com/cfo8473)
+
+[Gabriel Barrios](https://github.com/gbarrios212)
+
+[Abby Xu](https://github.com/AbbyTunes)
+
+## Technologies
+ * Database: MongoDB
+ * Backend: Express, Node.js, GraphQL
+ * Frontend: React-Apollo, GraphQL
 
 ## Background and Overview
 
-Despite ongoing associations with tech, Bay Area remains rooted in art, and it has so much more to to be discovered.
-Art Valley seeks to make discovering talent in art, film, and local criticism easy. 
+Despite powerful associations with tech, the Bay Area remains rooted in art, and it has so much more to to be discovered. Art Valley seeks to makes finding talent in art, film, and local criticism easy.
 
-Through Art Valley, users can view a collection of essays on local contemporary art.  Users can discover new talent with our curated videos and assorted photography. Users can take part in the conversation by uploading their own blog posts to share their takes on the exciting, new directions of Bay Area art. 
-<!-- "hi-tech modern art", biotech, new material, art device, into our collection. -->
+Through Art Valley, users can create accounts to follow their favorite artists.  Users may create a profile sections, wherein they may present themselves and their art to a community of art enthusiasts.  Users may additionally publish essays on the Bay Area art scene.  Artworks, videos and thoughts all contain likes and comments.  Navigation is made easy on ArtValley, and users are never more than a click away from a new cultural experience. 
 
-## Functionality and MVP
-- [ ] User Auth
-    <!-- login, register, demo -->
-- [ ] Nav Bar
-    <!-- login/signup, search, playlist carousel, category dropdown -->
-- [ ] Art Index
-    <!-- -->
-- [ ] Art Show
-    <!-- Video/Photo URL, Title, Bio, Likes, Related videos -->
-- [ ] Comments, Likes
-- [ ] Category/Playlist
-- [ ] User Profile
-### BONUS 
-- [ ] Search functionality 
-- [ ] Video Uploading
-- [ ] Blog
-- [ ] Post text editor 
-- [ ] Related Videos/Editor's Picks 
 
-## Technologies
- * Database: MongoDB, Express
- * Backend: MongoDB, Express, and Node
- * Frontend: React-Apollo, GraphQL
 
-## Group Members and Contributions
- * Abby: https://github.com/AbbyTunes
- * Gabriel: https://github.com/gbarrios212
- * Chris: https://github.com/cfo8473
+## Design
 
-## Features and Technical Challenges
 
-<!-- ### Integration of User, Question, Answer associations
-* Highly customized backend routes and configurations
-* All answers tied to parent question
-* User Profile shows answers and questions specific to User on switchable feed -->
+![alt text](https://imgur.com/Mo5Gc4L.png)
+Clean style and respectful presentation are key values at ArtValley.  On navigating to any particular work on the site, users are able to view their work in full resolution against a neutral  background on hover.  The title, artist info, and descriptions, as well as an option to like or unlike a work are directly beneath. 
 
-```javascript 
-//profile.jsx
+A comment section can be found on the opposite side of a dividing line, where users may freely add opinions about the select artwork.  Should a user lament a post, they can quickly delete their comment right from the page.   
 
-```
-<!-- 
-### Upvotes and Downvotes
-* Upvotes and downvotes for answers
-* Require individual answers to store information regarding voters
-* Vote persistence for each individual user updated across different pages
-* Answer items with a large amount of nested functionality -->
 
-```javascript
-//question_answer_index_item.jsx
+![alt text](https://imgur.com/Dgw6qD2.png)
 
-```
-<!-- 
-### Create and Edit Forms
-* Highly interactive UI for create and edit functionality
-* Responsive interaction through modals, dropdowns, and hideable forms -->
+Furthermore, users are presented with other popular artworks by the same artist. 
 
-```javascript
-//question_edit_pop_up.jsx
-```
+![alt text](https://imgur.com/iJRWrJU.png)
 
-### Upcoming Features
-* 
-* 
-* 
+Special care is given to all aspects of the site, including those centered on text.  ArtValley's index pages provide an organized display of resources against a minimalist backdrop to ensure no design outshines the work being presented.  
+
+## Sample Code
+
+user profile 
+art upload 
+
+
+## Challenges 
+
+Given the complicated cross-model relationships inherent to social media sites paired with the expectations for rapid interactions on behalf of users, special care had to be given to the way in which we chose to access our backend.  To account for the many resources any one user could "own" and to provide quick navigation through the site, we used GraphQL to leverage its rich querying tools in conjunction with MongoDB's document based collections.  
+
+Challenges working with this technology included ways to maintain session related user information across various pages.  A workaround to accessing a global state involved injecting auth tokens, usernames, and the like directly into localStorage.  
+
+## Upcoming Features
+* A rich text editor for further artilce customization. 
+* An algorithm that sorts the homepage according to site-wide user interactivity. 
+* A search function to facilitate artistic discovery. 
