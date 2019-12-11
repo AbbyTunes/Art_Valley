@@ -18,8 +18,9 @@ class ArtLike extends Component {
 		this.state = { 
 			userId: localStorage.getItem("currentUserId"),
 			artId: this.props.match.params.artId,
-			message: ""
-			// ,loading: false
+			message: "",
+			loading: false,
+			loggedIn: true
 		}
 	}
 
@@ -67,26 +68,35 @@ class ArtLike extends Component {
 
 
 	like(addUserLikedArt) {
-		// this.setState({loading: true});
+
+		this.setState({loading: true});
 		addUserLikedArt({
 			variables: {
 				userId: localStorage.getItem("currentUserId"),
 				artId: this.props.match.params.artId
 			}
-		})
-		// .then(this.setState({loading: false}))
+		}).then(this.setState({loading: false}));
 	}
 
 	unlike(userUnlikeArt) {
+		this.setState({ loading: true });
 		userUnlikeArt({
 			variables: {
 				userId: localStorage.getItem("currentUserId"),
 				artId: this.props.match.params.artId
 			}
-		})
+		}).then(this.setState({ loading: false }));
 	}
 	
 	render() {
+
+		if (!this.state.userId) {
+			return (
+				<div className="show-likes-loggedout">
+					Likes {this.props.likers.length}
+				</div>
+			)
+		}
 		const likersIdArr = this.props.likers.map(liker => liker.id)
 		if (likersIdArr.includes(this.state.userId)) {
 			return (
@@ -95,13 +105,14 @@ class ArtLike extends Component {
 					update={(cache, data) => this.updateUnlikeCache(cache, data)}
 				>
 					{(userUnlikeArt) => (
-						<div className="show-likes"
+						<div className="show-likes-minus"
 							onClick={(e) => {
 								e.preventDefault();
-								this.unlike(userUnlikeArt);
-								this.update();
-							}}
-						>
+								if (!this.state.loading) {
+									this.unlike(userUnlikeArt);
+									this.update();
+								}
+							}} >
 							Unlike {this.props.likers.length}
 						</div>
 					)}
@@ -115,8 +126,13 @@ class ArtLike extends Component {
 					onError={err => this.setState({ message: err.message })}
 				>
 					{ addUserLikedArt => (
-						<div className="show-likes"
-							onClick={() => this.like(addUserLikedArt)} >
+						<div className="show-likes-plus"
+							onClick={(e) => {
+								e.preventDefault();
+								if (!this.state.loading) {
+									this.like(addUserLikedArt)
+								}
+							}} >
 							Like {this.props.likers.length}
 						</div>
 					)}
