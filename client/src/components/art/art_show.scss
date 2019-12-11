@@ -75,19 +75,31 @@
 				.info-2 {
 					width: 100%;
 
-					.show-likes {
+					[class^="show-likes-"] {
 						position: relative;
-						top: 0;
+						top: 20px;
 						left: 0;
-						width: 70px;
-						height: 20px;
+						width: 80px;
+						height: 24px;
 						text-align: center;
-						padding-top: 8px;
+						padding-top: 10px;
 						color: white;
-						font-size: 13px;
+						font-size: 14px;
 						border-radius: 10px;
-						background: rgb(93, 93, 201);
+					}
+
+					.show-likes-minus {
+						background: #3f9598;
 						cursor: pointer;
+					}
+
+					.show-likes-plus {
+						background: #3f9598;
+						cursor: pointer;
+					}
+
+					.show-likes-loggedout {
+						background: rgb(153, 153, 153);
 					}
 				}
 			}
