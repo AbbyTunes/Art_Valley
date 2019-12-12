@@ -226,9 +226,9 @@ const register = async data => {
 
 ## Challenges 
 
-Given the complicated cross-model relationships inherent to social media sites paired with the expectations for rapid interactions on behalf of users, special care had to be given to the way in which we chose to access our backend.  To account for the many resources any one user could "own" and to provide quick navigation through the site, we used GraphQL to leverage its rich querying tools in conjunction with MongoDB's document based collections.  
+Given the complicated cross-model relationships inherent to social media sites paired with the expectations for rapid interactions on behalf of users, special care had to be given to the way in which we chose to access our backend.  To account for the many resources any one user could "own" and to provide quick navigation throughout the site, we used GraphQL to leverage rich querying tools in conjunction with MongoDB's document based collections.  
 
-Challenges working with this technology included ways to maintain session related user information across various pages.  A workaround to accessing a global state involved injecting auth tokens, usernames, and the like directly into localStorage.  
+Challenges working with this technology included ways to maintain session related user information across various pages.  A workaround to accessing a global state involved injecting auth tokens, usernames, and the like directly into localStorage.  In this way, user information was easy to render regardless of what page a user found themselves in.   
 
 ## Upcoming Features
 * A rich text editor for further artilce customization. 
