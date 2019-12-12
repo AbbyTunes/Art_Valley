@@ -1,7 +1,7 @@
 # Art Valley
 
 
-![alt text](https://imgur.com/VrMHztL.png)
+![alt text](https://imgur.com/1nc73BD.png)
 
 [Visit Us!](https://art-valley.herokuapp.com)
 
@@ -179,6 +179,33 @@ updateLikeCache(cache, data) {
 ```
 
 we were able to update the number of likes being represented on the page for a particular art piece by directly writing the new information to the cache. 
+
+Given the emphasis on visuals, coordination between React, HTML, and CSS was crucial.  Below, a sample of videos is sorted according to number of likes and rendered with a youtube thumbnail.
+```
+ let sortedVideobyLike = data.artsByCategory.sort((a, b) =>
+          a.likers.length > b.likers.length ? -1 : 1
+        );
+
+        let allArtList = sortedVideobyLike.map(art => {
+          const linkStrArr = art.videoLink.split("/");
+          const linkId = linkStrArr[linkStrArr.length - 1];
+
+          return (
+            <li key={art.id} className="video-index-li">
+              <Link to={`/videos/${art.id}`}>
+                <img className="video-photo-thumbnail"
+                  src={`https://img.youtube.com/vi/${linkId}/0.jpg`}
+                  alt="" />
+                <div className="video-photo-thumbnail-text">{art.title}</div>
+              </Link>
+            </li>
+          );
+        });
+```
+
+On hover, a title would key users in to the content to be consumed. 
+
+![alt text](https://imgur.com/gdXhQV7.png)
 
 
 Below, a sample of how our users are registered on to our site, using Express connected to MongoDB with Mongoose: 
