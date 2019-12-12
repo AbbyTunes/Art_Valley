@@ -1,7 +1,7 @@
 # Art Valley
 
 
-![alt text](https://imgur.com/HAtzc9q.png)
+![alt text](https://imgur.com/rTVLQYF.png)
 
 [Visit Us!](https://art-valley.herokuapp.com)
 
