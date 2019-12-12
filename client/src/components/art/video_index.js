@@ -58,30 +58,25 @@ const VideoIndex = (props) => {
 
         let allArtList = sortedVideobyLike.map(art => {
           const linkStrArr = art.videoLink.split("/");
-          const linkId = linkStrArr[linkStrArr.length - 1];
+		  const linkId = linkStrArr[linkStrArr.length - 1];
 
           return (
             <li key={art.id} className="video-index-li">
               <Link to={`/videos/${art.id}`}>
-                <img
-                  className="video-photo-thumbnail"
+                <img className="video-photo-thumbnail"
                   src={`https://img.youtube.com/vi/${linkId}/0.jpg`}
-                  // src="https://img.youtube.com/vi/CjSz290apM0/1.jpg"
-                  // src="https://img.youtube.com/vi/CjSz290apM0/2.jpg"
-                  // src="https://img.youtube.com/vi/CjSz290apM0/3.jpg"
-                  alt=""
-                />
+                  alt="" />
                 <div className="video-photo-thumbnail-text">{art.title}</div>
               </Link>
             </li>
           );
         });
 
-        let seeMoreButton = (
-          <div className="see-more-button">
-            <Link to="#">See More</Link>
-          </div>
-        );
+        // let seeMoreButton = (
+        //   <div className="see-more-button">
+        //     <Link to="#">See More</Link>
+        //   </div>
+        // );
 
         return (
           <div className="video-index-container">
@@ -90,8 +85,7 @@ const VideoIndex = (props) => {
             {createVideo}
 
             <ul className="video-index-ul">{allArtList}</ul>
-
-            <div className="see-more-button">{seeMoreButton}</div>
+            {/* <div className="see-more-button">{seeMoreButton}</div> */}
           </div>
         );
       }}

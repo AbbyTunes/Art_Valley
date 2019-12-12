@@ -20,12 +20,13 @@ class ArtLike extends Component {
 			artId: this.props.match.params.artId,
 			message: "",
 			loading: false,
-			loggedIn: true
+			loggedIn: true,
+			numOfLikes: this.props.likers.length
 		}
 	}
 
-	update() {
-		this.setState({ likeNum: this.props.likers.length });
+	updateNum() {
+		this.setState({ numOfLikes: this.props.likers.length });
 	}
 
 	updateLikeCache(cache, data) { 
@@ -69,31 +70,31 @@ class ArtLike extends Component {
 
 	like(addUserLikedArt) {
 
-		this.setState({loading: true});
+		// this.setState({loading: true});
 		addUserLikedArt({
 			variables: {
 				userId: localStorage.getItem("currentUserId"),
 				artId: this.props.match.params.artId
 			}
-		}).then(this.setState({loading: false}));
+		}) //.then(this.setState({loading: false}));
 	}
 
 	unlike(userUnlikeArt) {
-		this.setState({ loading: true });
+		// this.setState({ loading: true });
 		userUnlikeArt({
 			variables: {
 				userId: localStorage.getItem("currentUserId"),
 				artId: this.props.match.params.artId
 			}
-		}).then(this.setState({ loading: false }));
+		}) //.then(this.setState({ loading: false }));
 	}
 	
 	render() {
 
 		if (!this.state.userId) {
 			return (
-				<div className="show-likes-loggedout">
-					Likes {this.props.likers.length}
+				<div className="show-likes-loggedout" id="liking">
+					Likes {this.state.numOfLikes }
 				</div>
 			)
 		}
@@ -105,15 +106,23 @@ class ArtLike extends Component {
 					update={(cache, data) => this.updateUnlikeCache(cache, data)}
 				>
 					{(userUnlikeArt) => (
-						<div className="show-likes-minus"
+						<div className="show-likes-minus" id="liking"
 							onClick={(e) => {
 								e.preventDefault();
 								if (!this.state.loading) {
-									this.unlike(userUnlikeArt);
-									this.update();
+
+									let liking = document.getElementById("liking");
+									liking.disabled = true;
+									this.setState({ loading: true });
+									
+									this.unlike(userUnlikeArt).then(() => {
+										this.updateNum() // this.setState({ numOfLikes: this.props.likers.length });
+										liking.disabled = false;
+										this.setState({ loading: false });
+									})
 								}
 							}} >
-							Unlike {this.props.likers.length}
+							Unlike {this.state.numOfLikes}
 						</div>
 					)}
 				</Mutation>
@@ -126,14 +135,23 @@ class ArtLike extends Component {
 					onError={err => this.setState({ message: err.message })}
 				>
 					{ addUserLikedArt => (
-						<div className="show-likes-plus"
+						<div className="show-likes-plus" id="liking"
 							onClick={(e) => {
 								e.preventDefault();
 								if (!this.state.loading) {
-									this.like(addUserLikedArt)
+
+									let liking = document.getElementById("liking");
+									liking.disabled = true;
+									this.setState({ loading: true });
+
+									this.like(addUserLikedArt).then(() => {
+										this.updateNum() // this.setState({ numOfLikes: this.props.likers.length });
+										liking.disabled = false;
+										this.setState({ loading: false });
+									})
 								}
 							}} >
-							Like {this.props.likers.length}
+							Like { this.state.numOfLikes }
 						</div>
 					)}
 				</Mutation>
