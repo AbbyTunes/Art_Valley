@@ -7,7 +7,7 @@ import { ApolloCache } from "apollo-cache";
 import "./settings.css";
 import { InMemoryCache } from "apollo-cache-inmemory";
 const { FETCH_USER } = Queries;
-const { EDIT_USER_SETTINGS, VERIFY_USER } = Mutations;
+const { EDIT_USER_SETTINGS } = Mutations;
 
 class Settings extends React.Component {
   constructor(props) {

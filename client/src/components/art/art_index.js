@@ -73,19 +73,11 @@ const ArtIndex = (props) => {
           );
         });
 
-        let seeMoreButton = (
-          <div className="see-more-button">
-            <Link to="#">See More</Link>
-          </div>
-        );
-
         return (
           <div className="art-index-container">
             <div className="art-header">Photos</div>
             {createArt}
             <ul className="art-index-ul">{allArtList}</ul>
-
-            <div className="see-more-button">{seeMoreButton}</div>
           </div>
         );
       }}

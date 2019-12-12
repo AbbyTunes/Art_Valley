@@ -7,17 +7,18 @@
 
 Created by
 
-[Abby Xu](https://github.com/AbbyTunes)
+Abby - [LinkedIn](https://www.linkedin.com/in/abby-jun-xu/) - [Github](https://www.linkedin.com/in/abby-jun-xu/)
 
-[Christopher Fong](https://github.com/cfo8473)
+Christopher Fong - [LinkedIn](https://www.linkedin.com/in/chris-fong-33b6b3197/) - [Github](https://github.com/cfo8473) - 
 
-[Gabriel Barrios](https://github.com/gbarrios212)
+Gabriel Barrios - [LinkedIn](https://www.linkedin.com/in/gabriel-antonio-barrios/) - [Github](https://github.com/gbarrios212)
 
 
 ## Technologies
  * Database: MongoDB
  * Backend: Express, Node.js, GraphQL
  * Frontend: React-Apollo, GraphQL
+ * Cloud Storage: AWS
 
 ## Background and Overview
 
@@ -61,15 +62,16 @@ To provide users with a quick way to target edits across the page, be it art des
 
 ```
 class ArticleHeaderDetail extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      editing: false,
-      header: this.props.article.header || ""
-    };
+	constructor(props) {
+		super(props);
+		this.state = {
+		editing: false,
+		header: this.props.article.header || ""
+		};
 
-    this.handleEdit = this.handleEdit.bind(this);
-  }
+		this.handleEdit = this.handleEdit.bind(this);
+	}
+}
 ```
 
 Upon arrival to an article, a user would see
@@ -79,20 +81,17 @@ Upon arrival to an article, a user would see
 Which itself would correspond with the elements below: 
 
 ```
-      return (
-        <div>
-          <div onClick={this.handleEdit}>
-            {this.props.article.header}
-            <IconContext.Provider value={{ className: "custom-icon" }}>
-              <FaPencilAlt />
-            </IconContext.Provider>
-          </div>
-          <h2>{this.state.Titile}</h2>
-        </div>
-      );
-    }
-  }
-}
+	return (
+		<div>
+			<div onClick={this.handleEdit}>
+			{this.props.article.header}
+			<IconContext.Provider value={{ className: "custom-icon" }}>
+				<FaPencilAlt />
+			</IconContext.Provider>
+			</div>
+			<h2>{this.state.Titile}</h2>
+		</div>
+	);
 ```
 
 On clicking this header element, the handleEdit function would set editing state to true, which in turn would render the following: 
@@ -157,25 +156,25 @@ which allows the user to instantly update information in place.  On submission, 
 
 Given the emphasis on visuals, coordination between React, HTML, and CSS was crucial.  Below, a sample of videos is sorted according to number of likes and rendered with a youtube thumbnail.
 ```
- let sortedVideobyLike = data.artsByCategory.sort((a, b) =>
-          a.likers.length > b.likers.length ? -1 : 1
-        );
+let sortedVideobyLike = data.artsByCategory.sort((a, b) =>
+	a.likers.length > b.likers.length ? -1 : 1
+);
 
-        let allArtList = sortedVideobyLike.map(art => {
-          const linkStrArr = art.videoLink.split("/");
-          const linkId = linkStrArr[linkStrArr.length - 1];
+let allArtList = sortedVideobyLike.map(art => {
+	const linkStrArr = art.videoLink.split("/");
+	const linkId = linkStrArr[linkStrArr.length - 1];
 
-          return (
-            <li key={art.id} className="video-index-li">
-              <Link to={`/videos/${art.id}`}>
-                <img className="video-photo-thumbnail"
-                  src={`https://img.youtube.com/vi/${linkId}/0.jpg`}
-                  alt="" />
-                <div className="video-photo-thumbnail-text">{art.title}</div>
-              </Link>
-            </li>
-          );
-        });
+	return (
+	<li key={art.id} className="video-index-li">
+		<Link to={`/videos/${art.id}`}>
+		<img className="video-photo-thumbnail"
+			src={`https://img.youtube.com/vi/${linkId}/0.jpg`}
+			alt="" />
+		<div className="video-photo-thumbnail-text">{art.title}</div>
+		</Link>
+	</li>
+	);
+});
 ```
 
 On hover, a title would key users in to the content to be consumed. 
