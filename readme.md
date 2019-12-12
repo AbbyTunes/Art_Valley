@@ -7,11 +7,12 @@
 
 Created by
 
+[Abby Xu](https://github.com/AbbyTunes)
+
 [Christopher Fong](https://github.com/cfo8473)
 
 [Gabriel Barrios](https://github.com/gbarrios212)
 
-[Abby Xu](https://github.com/AbbyTunes)
 
 ## Technologies
  * Database: MongoDB
