@@ -154,31 +154,6 @@ which allows the user to instantly update information in place.  On submission, 
   }
 ```
 
-GraphQL opened many opportunities for working with the cache to minimize the amount of queries needed to be made while updating resources in the frontend in real time.  In the sample below: 
-
-```
-updateLikeCache(cache, data) { 
-        const artWork = cache.readQuery({
-            query: FETCH_ART,
-            variables: {
-                artId: this.props.match.params.artId
-            }
-        });
-
-        let newArtWork = merge({}, artWork);
-        newArtWork.artById.likers.push(data.data.addUserLikedArt)
-
-        cache.writeQuery({
-            query: FETCH_ART, data: newArtWork,
-            variables: {
-                artId: this.props.match.params.artId
-            }
-        })
-    }
-```
-
-we were able to update the number of likes being represented on the page for a particular art piece by directly writing the new information to the cache. 
-
 Given the emphasis on visuals, coordination between React, HTML, and CSS was crucial.  Below, a sample of videos is sorted according to number of likes and rendered with a youtube thumbnail.
 ```
 let sortedVideobyLike = data.artsByCategory.sort((a, b) =>
