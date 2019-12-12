@@ -29,9 +29,9 @@ Through Art Valley, users can create accounts to follow their favorite artists. 
 
 ## Design
 
-![alt text](https://imgur.com/Mo5Gc4L.png)
+![alt text](https://imgur.com/6M4SKkY.png)
 
-Clean style and respectful presentation are key values at ArtValley.  On navigating to any particular work on the site, users are able to view their work in full resolution against a neutral  background on hover.  The title, artist info, and descriptions, as well as an option to like or unlike a work are directly beneath. 
+Clean style and respectful presentation are key values at ArtValley.  On navigating to any particular work on the site, users are able to view their work in full resolution against a neutral  background.  The title, artist info, and descriptions, as well as an option to like or unlike a work are directly beneath. 
 
 A comment section can be found on the opposite side of a dividing line, where users may freely add opinions about the select artwork.  Should a user lament a post, they can quickly delete their comment right from the page.   
 
