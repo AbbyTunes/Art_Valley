@@ -7,11 +7,11 @@
 
 Created by
 
-[Abby Xu](https://www.linkedin.com/in/abby-jun-xu/)
+Abby - [LinkedIn](https://www.linkedin.com/in/abby-jun-xu/) - [Github](https://www.linkedin.com/in/abby-jun-xu/)
 
-[Christopher Fong](https://github.com/cfo8473)
+Christopher Fong - [LinkedIn](https://www.linkedin.com/in/chris-fong-33b6b3197/) - [Github](https://github.com/cfo8473) - 
 
-[Gabriel Barrios](https://github.com/gbarrios212)
+Gabriel Barrios - [LinkedIn](https://www.linkedin.com/in/gabriel-antonio-barrios/) - [Github](https://github.com/gbarrios212)
 
 
 ## Technologies
