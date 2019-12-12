@@ -35,22 +35,21 @@ Clean style and respectful presentation are key values at ArtValley.  On navigat
 
 A comment section can be found on the opposite side of a dividing line, where users may freely add opinions about the select artwork.  Should a user lament a post, they can quickly delete their comment right from the page.   
 
+Furthermore, users are presented with other popular artworks by the same artist. 
 
 ![alt text](https://imgur.com/Dgw6qD2.png)
 
-Furthermore, users are presented with other popular artworks by the same artist. 
+Special care is given to all aspects of the site, including those centered on text.  ArtValley's index pages provide an organized display of resources against a minimalist backdrop to ensure no design outshines the work being presented.
 
 ![alt text](https://imgur.com/iJRWrJU.png)
 
-Special care is given to all aspects of the site, including those centered on text.  ArtValley's index pages provide an organized display of resources against a minimalist backdrop to ensure no design outshines the work being presented.  
+Users are also given a comfortable home for their personal information.  On their profile page, users have the option to customize their biography and view their collected activity.
 
 ![alt text](https://imgur.com/vGZm0Vz.png)
 
-Users are given a comfortable home for their personal information.  On their profile page, users have the option to customize their biography and view their collected activity.  
+ A quick button click will render a form that updates their profile in real time.
 
 ![alt text](https://imgur.com/AjbaqV4.png)
-
-A quick button click will render a form that updates their profile in real time.  
 
 Below, they can find their art, articles, and liked pieces separated out by tabs for easy navigation.  On clicking any of these thumbnails, a full resolution image of the piece will display alongisde a link to the individual show page.  
 
