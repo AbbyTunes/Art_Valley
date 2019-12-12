@@ -21,7 +21,6 @@ class ArticleHeaderDetail extends React.Component {
     this.handleEdit = this.handleEdit.bind(this);
   }
 
-  // this is the function that will trigger "editing" mode
   handleEdit(e) {
     e.preventDefault();
     this.setState({ editing: true });
@@ -32,7 +31,6 @@ class ArticleHeaderDetail extends React.Component {
   }
 
   updateCache(cache, data) {
-    // update cache instead of setState
     const article = cache.readQuery({
       query: FETCH_ARTICLE,
       variables: {
@@ -51,7 +49,6 @@ class ArticleHeaderDetail extends React.Component {
   }
 
   render() {
-    // if we are editing we'll return a Mutation component
     if (this.state.editing) {
       return (
         <Mutation
