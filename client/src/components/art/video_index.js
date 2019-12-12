@@ -72,12 +72,6 @@ const VideoIndex = (props) => {
           );
         });
 
-        // let seeMoreButton = (
-        //   <div className="see-more-button">
-        //     <Link to="#">See More</Link>
-        //   </div>
-        // );
-
         return (
           <div className="video-index-container">
             <div className="video-header">Videos</div>
@@ -85,7 +79,6 @@ const VideoIndex = (props) => {
             {createVideo}
 
             <ul className="video-index-ul">{allArtList}</ul>
-            {/* <div className="see-more-button">{seeMoreButton}</div> */}
           </div>
         );
       }}
