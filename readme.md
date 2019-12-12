@@ -3,9 +3,9 @@
 
 ![alt text](https://imgur.com/VrMHztL.png)
 
-Created by
-
 [Visit Us!](https://art-valley.herokuapp.com)
+
+Created by
 
 [Christopher Fong](https://github.com/cfo8473)
 
