@@ -21,16 +21,16 @@ Created by
 
 ## Background and Overview
 
-Despite powerful associations with tech, the Bay Area remains rooted in art, and it has so much more to to be discovered. Art Valley seeks to makes finding talent in art, film, and local criticism easy.
+Despite powerful associations with tech, the Bay Area remains rooted in culture, and it offers so much more left to be discovered. Art Valley seeks to makes finding talent in art, film, and local criticism easy.
 
-Through Art Valley, users can create accounts to follow their favorite artists.  Users may create a profile sections, wherein they may present themselves and their art to a community of art enthusiasts.  Users may additionally publish essays on the Bay Area art scene.  Artworks, videos and thoughts all contain likes and comments.  Navigation is made easy on ArtValley, and users are never more than a click away from a new cultural experience. 
+Through Art Valley, users can create accounts to follow their favorite artists.  Users may create a profile, wherein they may present themselves and their art to a community of art enthusiasts.  Users may additionally publish essays on the Bay Area art scene.  Artworks, videos and articles all contain likes and comments.  Navigation is made easy on ArtValley, and users are never more than a click away from a new cultural experience. 
 
 
 
 ## Design
 
-
 ![alt text](https://imgur.com/Mo5Gc4L.png)
+
 Clean style and respectful presentation are key values at ArtValley.  On navigating to any particular work on the site, users are able to view their work in full resolution against a neutral  background on hover.  The title, artist info, and descriptions, as well as an option to like or unlike a work are directly beneath. 
 
 A comment section can be found on the opposite side of a dividing line, where users may freely add opinions about the select artwork.  Should a user lament a post, they can quickly delete their comment right from the page.   
