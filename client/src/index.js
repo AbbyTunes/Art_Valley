@@ -33,7 +33,7 @@ const httpLink = createHttpLink({
 });
 
 const errorLink = onError(({ graphQLErrors }) => {
-	if (graphQLErrors) graphQLErrors.map(({ message }) => console.log(message));
+	// if (graphQLErrors) graphQLErrors.map(({ message }) => console.log(message));
 });
 
 const cache = new InMemoryCache({
@@ -45,7 +45,7 @@ const cache = new InMemoryCache({
 // 	storage: localStorage
 // });
 
-console.dir(localStorage);
+// console.dir(localStorage);
 
 const client = new ApolloClient({
 	link: ApolloLink.from([errorLink, httpLink]),
