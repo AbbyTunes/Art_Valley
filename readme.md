@@ -3,13 +3,13 @@
 
 ![alt text](https://imgur.com/1GkD4Zh.png)
 
-[Visit Us!](https://art-valley.herokuapp.com)
+## [Visit Us!](https://art-valley.herokuapp.com)
 
 Created by
 
 Abby - [LinkedIn](https://www.linkedin.com/in/abby-jun-xu/) - [Github](https://www.linkedin.com/in/abby-jun-xu/)
 
-Christopher Fong - [LinkedIn](https://www.linkedin.com/in/chris-fong-33b6b3197/) - [Github](https://github.com/cfo8473) - 
+Christopher Fong - [LinkedIn](https://www.linkedin.com/in/chris-fong-33b6b3197/) - [Github](https://github.com/cfo8473)
 
 Gabriel Barrios - [LinkedIn](https://www.linkedin.com/in/gabriel-antonio-barrios/) - [Github](https://github.com/gbarrios212)
 
