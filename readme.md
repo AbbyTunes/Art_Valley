@@ -3,7 +3,7 @@
 
 ![alt text](https://imgur.com/1GkD4Zh.png)
 
-[Visit Us!](https://art-valley.herokuapp.com)
+## [Visit Us!](https://art-valley.herokuapp.com)
 
 Created by
 
