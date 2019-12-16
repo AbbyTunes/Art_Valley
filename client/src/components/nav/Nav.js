@@ -89,6 +89,7 @@ class Nav extends React.Component {
           ></div>
           <div className="nav-container">
             <div className="nav-icon-container">
+              {user}
               <i
                 id="links"
                 className="fas fa-bars"
@@ -99,10 +100,14 @@ class Nav extends React.Component {
                 className="fas fa-search"
                 onClick={() => this.extend("search-input", "search-input-2")}
               ></i> */}
-             {user}
+             
             </div>
             <div className="nav-logo">
-              <Link to="/">Art Valley</Link>
+              <Link to="/">Art Valley
+              <div className="nav-logo-sub">
+                  where art comes together
+              </div></Link>
+              
             </div>
           </div>
 
