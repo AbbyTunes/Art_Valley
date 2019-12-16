@@ -61,7 +61,7 @@
 	width: 300px;
 	background: rgba(128, 128, 128, 0.598);
 	font-weight: 800;
-	font-size: 40px;
+	font-size: 15px;
 	color: white;
 	transition: opacity .2s, visibility .2s;
 }

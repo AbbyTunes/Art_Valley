@@ -73,7 +73,8 @@ class ArticleShow extends Component {
                           article={data.article}
                         ></ArticleBodyDetail>
                       ) : (
-                        <div>{body}</div>
+                        // <div>{body}</div>
+                        <div className="temp-font">{body}</div> // temporary
                       );
 
                     return (

@@ -33,14 +33,16 @@
 .nav-icon-container{
     display: inline-block;
     flex-wrap: wrap;
-    height: 57px; 
+    float: right;
+    height: 47px; 
     width: 68px;
+    margin-right: 10px;
 }
 
 .fa-search, .fa-bars, .fa-indent{
     display: inline-block;
     height: 18px;
-    font-size: 18px;
+    font-size: 25px;
     color: #888888;
     padding: 4px 12px 4px 0px;
 }
@@ -53,6 +55,7 @@
 
 .fa-user{
     display: none;
+    font-size: 25px;
 }
 
 .user-link{
@@ -71,7 +74,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     display: inline-block;
-    float: right;
+    float: left;
     margin-right: 50px;
 }
 
@@ -97,7 +100,7 @@
   transition: top 0.6s;
   border-bottom: 1px solid black;
     justify-content: center;
-    top: 67px;
+    top: 58px;
     border-bottom: 1px solid #888;
     z-index: 14;
 }
@@ -147,6 +150,8 @@
 
 .nav-links-container{
     display: block;
+    float: right;
+    right: 0px;
     width: 0px;
     transition: all .5s;
 }
@@ -155,13 +160,14 @@
     display: block;
     position: fixed;
     min-height: 30px;
-    width: 260px;
+    width: 133px;
     top: 50px;
     z-index: 102;
     background: #fff;
     box-shadow: 5px 5px 10px 0 rgba(0,0,0,.3);
     transition: all .5s;
 }
+
 
 .nav-links{
     display: none;
@@ -254,7 +260,7 @@
 
 @media screen and (min-width: 321px){
     .nav-icon-container {
-        width: 181px;
+        width: 101px;
         /* max-width: 100%; */
         
     }
@@ -266,13 +272,20 @@
     .fa-user{
         display: inline-block;
         height: 18px;
-        font-size: 18px;
+        font-size: 25px;
         color: #888888; 
     }
 
     .nav-logo{
         font-size: 26px;
     }
+
+    .nav-logo-sub{
+        font-size: 12px;
+        letter-spacing: 0.3px;
+        text-transform: lowercase;
+    }
+
 }
 
 @media screen and (min-width: 401px){
