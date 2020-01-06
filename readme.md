@@ -7,7 +7,7 @@
 
 Created by
 
-Abby - [LinkedIn](https://www.linkedin.com/in/abby-jun-xu/) - [Github](https://www.linkedin.com/in/abby-jun-xu/)
+Abby Xu - [LinkedIn](https://www.linkedin.com/in/abby-jun-xu/) - [Github](https://www.github.com/AbbyTunes)
 
 Christopher Fong - [LinkedIn](https://www.linkedin.com/in/chris-fong-33b6b3197/) - [Github](https://github.com/cfo8473)
 
